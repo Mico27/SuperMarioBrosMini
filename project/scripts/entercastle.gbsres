@@ -1,0 +1,176 @@
+{
+  "_resourceType": "script",
+  "id": "9c8751d9-6c8e-4f37-b76d-34364f54179c",
+  "name": "EnterCastle",
+  "description": "",
+  "variables": {
+    "V0": {
+      "id": "V0",
+      "name": "World",
+      "passByReference": false
+    },
+    "V1": {
+      "id": "V1",
+      "name": "Level",
+      "passByReference": false
+    },
+    "V2": {
+      "id": "V2",
+      "name": "UndergroundTransition",
+      "passByReference": false
+    }
+  },
+  "actors": {},
+  "symbol": "script_8",
+  "script": [
+    {
+      "command": "EVENT_SCRIPT_LOCK",
+      "args": {},
+      "id": "98d864de-4fab-431c-a814-4d9fabd4c07b"
+    },
+    {
+      "command": "EVENT_ACTOR_HIDE",
+      "args": {
+        "actorId": "$self$"
+      },
+      "id": "da88cead-4321-45ec-a38e-d19f602cc369"
+    },
+    {
+      "command": "EVENT_LOOP_WHILE",
+      "args": {
+        "condition": {
+          "type": "gt",
+          "valueA": {
+            "type": "variable",
+            "value": "0"
+          },
+          "valueB": {
+            "type": "number",
+            "value": 0
+          }
+        },
+        "__collapse": true
+      },
+      "children": {
+        "true": [
+          {
+            "command": "EVENT_DEC_VALUE",
+            "args": {
+              "variable": "0"
+            },
+            "id": "a39094ba-9ca1-4e6f-b4a7-7aec90f5fd48"
+          },
+          {
+            "command": "EVENT_SET_VALUE",
+            "args": {
+              "variable": "12",
+              "value": {
+                "type": "expression",
+                "value": "$12$ + 5"
+              }
+            },
+            "id": "8887d369-5511-4752-93db-a48541308e5f"
+          },
+          {
+            "command": "EVENT_GBVM_SCRIPT",
+            "args": {
+              "script": "VM_LOAD_TEXT 2 \n.dw VAR_SCORE\n.dw VAR_DEATHTIMER\n.asciz \"\\003\\001\\002%D6\\003\\022\\002%D3\"\nVM_CALL_NATIVE b_ui_alt_display_text, _ui_alt_display_text",
+              "__collapse": false
+            },
+            "id": "7f598ecf-a39a-4409-ac95-ee47b2e8d4b4"
+          },
+          {
+            "command": "EVENT_IDLE",
+            "args": {},
+            "id": "fffca1de-3a1e-4a7d-9632-a8b1ff7350d4"
+          }
+        ]
+      },
+      "id": "02639c79-2681-41e7-97ca-f2a8922a70b9"
+    },
+    {
+      "command": "EVENT_WAIT",
+      "args": {
+        "time": 2,
+        "frames": 30
+      },
+      "id": "550a40bb-f142-40d3-9fc6-6347b9e0cef8"
+    },
+    {
+      "command": "EVENT_SET_VALUE",
+      "args": {
+        "variable": "9",
+        "value": {
+          "type": "variable",
+          "value": "V0"
+        }
+      },
+      "id": "3044dbbd-e999-43d6-aa5f-1b1775c20154"
+    },
+    {
+      "command": "EVENT_SET_VALUE",
+      "args": {
+        "variable": "10",
+        "value": {
+          "type": "variable",
+          "value": "V1"
+        }
+      },
+      "id": "792fe9ab-3800-42b3-8972-25a0a9040796"
+    },
+    {
+      "command": "EVENT_IF",
+      "args": {
+        "condition": {
+          "type": "eq",
+          "valueA": {
+            "type": "variable",
+            "value": "V2"
+          },
+          "valueB": {
+            "type": "number",
+            "value": 1
+          }
+        },
+        "__collapseElse": false,
+        "__collapse": false
+      },
+      "children": {
+        "true": [
+          {
+            "command": "EVENT_SET_VALUE",
+            "args": {
+              "variable": "22",
+              "value": {
+                "type": "number",
+                "value": 1
+              }
+            },
+            "id": "2c1a4398-5c98-4112-ab3c-badb539a5570"
+          }
+        ],
+        "false": [
+          {
+            "command": "EVENT_SET_VALUE",
+            "args": {
+              "variable": "22",
+              "value": {
+                "type": "number",
+                "value": 0
+              }
+            },
+            "id": "320d12d1-bf38-4d3b-bc31-9c6ed89f516d"
+          }
+        ]
+      },
+      "id": "26cb10fd-bd3a-4f95-a6ea-faa33b8b958a"
+    },
+    {
+      "command": "EVENT_CALL_CUSTOM_EVENT",
+      "args": {
+        "customEventId": "1da14dfe-ad02-4e47-addd-68af4399854d"
+      },
+      "id": "60cd207e-c3c1-47f3-80e5-085be3cbe3c7"
+    }
+  ]
+}

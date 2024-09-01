@@ -1,0 +1,95 @@
+{
+  "_resourceType": "scene",
+  "id": "1b7eb368-5076-4abe-b35b-3723d440b80a",
+  "_index": 4,
+  "type": "PLATFORM",
+  "name": "1-3",
+  "symbol": "scene_10",
+  "x": 96,
+  "y": 704,
+  "width": 164,
+  "height": 18,
+  "backgroundId": "338300b6-a7b5-4516-8587-4b0471d56242",
+  "tilesetId": "",
+  "paletteIds": [
+    "0b34ba59-4ceb-4897-bd6a-6e6458884900",
+    "a7415857-4bf3-4e79-b9fe-cd6f84b15b86",
+    "abc0af7c-6751-410a-908e-4a2aac7112cd",
+    "572f8e81-850f-4d59-aa02-98ebed8231a1",
+    "60169a40-7960-4b61-96fa-56b76cc5ad0c",
+    "fd06d57c-8b6b-4c95-8e09-b3c75b1f2a1c"
+  ],
+  "spritePaletteIds": [],
+  "autoFadeSpeed": null,
+  "playerSpriteSheetId": "82297e17-ae19-4d6c-84f3-47e5fe14a6ad",
+  "script": [
+    {
+      "command": "EVENT_SET_VALUE",
+      "args": {
+        "variable": "9",
+        "value": {
+          "type": "number",
+          "value": 1
+        },
+        "__collapse": true
+      },
+      "id": "8d773c8e-42ca-4881-bbbf-72ffdd05e9d7"
+    },
+    {
+      "command": "EVENT_SET_VALUE",
+      "args": {
+        "variable": "10",
+        "value": {
+          "type": "number",
+          "value": 3
+        },
+        "__collapse": true
+      },
+      "id": "cc9c39ed-b5b6-43fc-908f-fa817ac9faae"
+    },
+    {
+      "command": "EVENT_SET_VALUE",
+      "args": {
+        "variable": "18",
+        "value": {
+          "type": "number",
+          "value": 1
+        },
+        "__collapse": true
+      },
+      "id": "2ddb9839-ee62-4feb-86f5-8be9d13f4989"
+    },
+    {
+      "command": "EVENT_SET_VALUE",
+      "args": {
+        "variable": "21",
+        "value": {
+          "type": "number",
+          "value": 1
+        },
+        "__collapse": true
+      },
+      "id": "d981cf80-ded8-4260-89fb-7833793d5c7b"
+    },
+    {
+      "command": "EVENT_CALL_CUSTOM_EVENT",
+      "args": {
+        "customEventId": "32d76253-2c63-4808-a673-2c3b44b8615b",
+        "$variable[V0]$": {
+          "type": "number",
+          "value": 1
+        },
+        "$variable[V1]$": {
+          "type": "number",
+          "value": 2
+        },
+        "__collapse": true
+      },
+      "id": "badd395c-5dc7-4920-8740-813f10d4dcc0"
+    }
+  ],
+  "playerHit1Script": [],
+  "playerHit2Script": [],
+  "playerHit3Script": [],
+  "collisions": "00b88+"
+}

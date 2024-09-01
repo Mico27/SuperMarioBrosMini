@@ -1,0 +1,173 @@
+{
+  "version": "4.0.0-e0",
+
+  "fields": [    
+    {
+      "key": "plat_camera_deadzone_x",
+      "label": "Camera Deadzone X",
+      "group": "Platformer Plus Level Controls",
+      "type": "slider",
+      "cType": "BYTE",
+      "defaultValue": 4,
+      "min": 0,
+      "max": 32
+    },
+    {
+      "key": "plat_camera_block",
+      "label": "Lock Player to Camera Edge",
+      "group": "Platformer Plus Level Controls",
+      "type": "select",
+      "options": [
+        [0, "None"],
+        [1, "Left"],
+        [2, "Right"],
+        [3, "Both"]
+      ],
+      "cType": "UBYTE",
+      "defaultValue": 0
+    },    
+    {
+      "key": "plat_mp_group",
+      "label": "Platform Actor Collision Group",
+      "group": "Platformer Plus Level Controls",
+      "type": "select",
+      "options": [
+        [0, "None"],
+        [2, "Collision Group 1"],
+        [4, "Collision Group 2"],
+        [8, "Collision Group 3"]
+      ],
+      "cType": "UBYTE",
+      "defaultValue": 0
+    },
+    {
+      "key": "plat_solid_group",
+      "label": "Solid Actor Collision Group",
+      "group": "Platformer Plus Level Controls",
+      "type": "select",
+      "options": [
+        [0, "None"],
+        [2, "Collision Group 1"],
+        [4, "Collision Group 2"],
+        [8, "Collision Group 3"]
+      ],
+      "cType": "UBYTE",
+      "defaultValue": 0
+    },
+    {
+      "key": "plat_jump_min",
+      "label": "Minimum Jump Height",
+      "group": "Platformer Plus",
+      "type": "slider",
+      "cType": "WORD",
+      "defaultValue": 0,
+      "min": 0,
+      "max": 16384
+    },  
+    {
+      "key": "plat_hold_jump_max",
+      "label": "Jump Frames",
+      "group": "Platformer Plus",
+      "type": "slider",
+      "cType": "UBYTE",
+      "defaultValue": 1,
+      "min": 1,
+      "max": 100
+    },       
+    {
+      "key": "plat_jump_reduction",
+      "label": "Height Reduction on Subsequent Jumps",
+      "group": "Platformer Plus",
+      "type": "slider",
+      "cType": "WORD",
+      "defaultValue": 0,
+      "min": 0,
+      "max": 8192
+    },
+    {
+      "key": "plat_coyote_max",
+      "label": "Coyote Time",
+      "group": "Platformer Plus",
+      "type": "slider",
+      "cType": "UBYTE",
+      "defaultValue": 0,
+      "min": 0,
+      "max": 10
+    },
+    {
+      "key": "plat_buffer_max",
+      "label": "Jump Buffer",
+      "group": "Platformer Plus",
+      "type": "slider",
+      "cType": "UBYTE",
+      "defaultValue": 0,
+      "min": 0,
+      "max": 20
+    }, 
+    {
+      "key": "plat_float_input",
+      "label": "Float Input",
+      "group": "Platformer Plus",
+      "type": "select",
+      "options": [
+        [0, "None"],
+        [1, "Hold Jump"],
+        [2, "Hold Up"]
+      ],
+      "cType": "UBYTE",
+      "defaultValue": 0
+    },
+    {
+      "key": "plat_float_grav",
+      "label": "Float Fall Speed",
+      "group": "Platformer Plus",
+      "type": "slider",
+      "cType": "WORD",
+      "defaultValue": 912,
+      "min": 0,
+      "max": 8192
+    },  
+    {
+      "key": "plat_turn_control",
+      "label": "Change Avatar Direction in the Air",
+      "group": "Platformer Plus",
+      "type": "select",
+      "options": [
+        [0, "Disable"],
+        [1, "Enable"]
+      ],
+      "cType": "UBYTE",
+      "defaultValue": 1
+    },
+    {
+      "key": "plat_air_dec",
+      "label": "Air Deceleration",
+      "group": "Platformer Plus",
+      "type": "slider",
+      "cType": "WORD",
+      "defaultValue": 208,
+      "min": 0,
+      "max": 768
+    },
+    {
+      "key": "plat_turn_acc",
+      "label": "Acceleration when Turning",
+      "group": "Platformer Plus",
+      "type": "slider",
+      "cType": "WORD",
+      "defaultValue": 712,
+      "min": 0,
+      "max": 2304
+    }, 
+    {
+      "key": "plat_run_boost",
+      "label": "Jump Boost from Run Speed",
+      "group": "Platformer Plus",
+      "type": "slider",
+      "cType": "UBYTE",
+      "defaultValue": 0,
+      "min": 0,
+      "max": 255
+    }
+  ]
+}

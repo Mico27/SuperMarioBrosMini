@@ -1,0 +1,113 @@
+{
+  "_resourceType": "script",
+  "id": "6df14c3d-d5fd-4cc9-b7e8-f586255d3cc4",
+  "name": "AddCoin",
+  "description": "",
+  "variables": {
+    "V0": {
+      "id": "V0",
+      "name": "Amount",
+      "passByReference": false
+    }
+  },
+  "actors": {},
+  "symbol": "script_4",
+  "script": [
+    {
+      "command": "EVENT_SET_VALUE",
+      "args": {
+        "variable": "6",
+        "value": {
+          "type": "expression",
+          "value": "$06$ + $V0$"
+        }
+      },
+      "id": "092bfa2c-0359-4edf-bf40-afba2bad05f3"
+    },
+    {
+      "command": "EVENT_SET_VALUE",
+      "args": {
+        "variable": "12",
+        "value": {
+          "type": "expression",
+          "value": "$12$ + (20 * $V0$)"
+        },
+        "__collapse": false
+      },
+      "id": "e27a353b-3985-4e5b-9b51-9be99aa0643a"
+    },
+    {
+      "command": "EVENT_IF",
+      "args": {
+        "condition": {
+          "type": "gte",
+          "valueA": {
+            "type": "variable",
+            "value": "6"
+          },
+          "valueB": {
+            "type": "number",
+            "value": 100
+          }
+        },
+        "__collapseElse": true,
+        "__collapse": false
+      },
+      "children": {
+        "true": [
+          {
+            "command": "EVENT_SET_VALUE",
+            "args": {
+              "variable": "6",
+              "value": {
+                "type": "expression",
+                "value": "$06$ - 100"
+              }
+            },
+            "id": "f8e552b9-080c-4413-a448-e7737f60ef5b"
+          },
+          {
+            "command": "EVENT_INC_VALUE",
+            "args": {
+              "variable": "2"
+            },
+            "id": "6e2bf5b1-46ac-475d-972c-2e83a5ff5008"
+          },
+          {
+            "command": "EVENT_GBVM_SCRIPT",
+            "args": {
+              "script": "VM_LOAD_TEXT 1 \n.dw VAR_LIVES\n.asciz \"\\003\\007\\001%D2\"\nVM_CALL_NATIVE b_ui_alt_display_text, _ui_alt_display_text",
+              "references": [
+                {
+                  "type": "variable",
+                  "id": "2"
+                }
+              ]
+            },
+            "id": "965f13d0-1377-44c7-9e26-57b65b431a87"
+          }
+        ],
+        "false": []
+      },
+      "id": "945595a7-6c81-4f9e-bf77-4482016329d2"
+    },
+    {
+      "command": "EVENT_GBVM_SCRIPT",
+      "args": {
+        "script": "VM_LOAD_TEXT 2 \n.dw VAR_COINS\n.dw VAR_SCORE\n.asciz \"\\003\\012\\002%D2\\003\\001\\002%D6\"\nVM_CALL_NATIVE b_ui_alt_display_text, _ui_alt_display_text",
+        "references": [
+          {
+            "type": "variable",
+            "id": "6"
+          },
+          {
+            "type": "variable",
+            "id": "12"
+          }
+        ],
+        "__collapse": false
+      },
+      "id": "721b24ee-daad-4dcf-a1eb-536f4dffed75"
+    }
+  ]
+}
