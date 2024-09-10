@@ -4,32 +4,24 @@ const name = "Set Platformer+ State";
 
 const fields = [
   {
-    key: "state",
-    label: "Select Player State to Set (this feature is still experimental)",
-    type: "select",
-    defaultValue: "0",
-    options: [
-      ["0", "Falling"],
-      ["3", "Grounded"],
-      ["6", "Jumping"],
-      ["9", "Dashing"],
-      ["12", "On a Ladder"],
-      ["15", "On a Wall"],
-      ["18", "Knockback"],
-      ["20", "Blank"],
-    ],
-  },
-  {
-    key: "field",
-    defaultValue: "que_state",
-  },
+	key: "state",
+	label: "Select Player State to Set",
+	type: "value",
+	defaultValue: {
+		type: "number",
+		value: 0,
+	},
+  }
 ];
 
 const compile = (input, helpers) => {
-  const { _addComment, _addNL, _setConstMemInt16, _setMemInt16ToVariable } =
+  const { _addComment, _addNL, _declareLocal, variableSetToScriptValue, _setMemInt16ToVariable } =
     helpers;
+	
+	const tmp_0 = _declareLocal("tmp_0", 1, true);
+	variableSetToScriptValue(tmp_0, input.state);
     _addComment("Set Platformer Plus State");
-    _setConstMemInt16(input.field, input.state);
+    _setMemInt16ToVariable("que_state", tmp_0);
 
   _addNL();
 };

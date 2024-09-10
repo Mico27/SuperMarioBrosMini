@@ -22,9 +22,10 @@
     "abc0af7c-6751-410a-908e-4a2aac7112cd"
   ],
   "spritePaletteIds": [
-    "",
-    "default-bg-5",
-    "default-bg-6"
+    "e3b4697e-c57b-4ada-bc32-8e8cf3d244e4",
+    "d8571d7d-2726-4d23-923c-b864acf88926",
+    "208e4138-0984-4c70-aaa1-3a3d73cc30f6",
+    "b38a1471-560c-45dc-ac6b-67484fdd459b"
   ],
   "autoFadeSpeed": null,
   "parallax": [
@@ -102,6 +103,105 @@
         "__collapse": true
       },
       "id": "db99fd58-576d-4b21-9ab0-8bcbb18cb9e9"
+    },
+    {
+      "command": "PM_EVENT_PLATMARIO_SPECIFIC_SCRIPT",
+      "args": {
+        "specific_event": "1",
+        "__scriptTabs": "scriptinput",
+        "__collapse": true
+      },
+      "children": {
+        "script": [
+          {
+            "command": "EVENT_CALL_CUSTOM_EVENT",
+            "args": {
+              "customEventId": "010dfb2c-fbd5-47e5-8b29-80af76159f1f",
+              "$variable[V0]$": {
+                "type": "variable",
+                "value": "5"
+              },
+              "$variable[V1]$": {
+                "type": "variable",
+                "value": "30"
+              },
+              "$variable[V2]$": {
+                "type": "variable",
+                "value": "27"
+              },
+              "$actor[0]$": "f4503cde-33d5-42f7-bc1a-607ebab062de",
+              "$actor[1]$": "c51ef5e2-bb49-4ccd-a297-78582b4846c7"
+            },
+            "id": "b906b901-31c7-408f-99de-6f97be736be5"
+          }
+        ]
+      },
+      "id": "040e9a68-0506-4f5c-943f-e42fbc9b9e12"
+    },
+    {
+      "command": "PM_EVENT_PLATMARIO_SPECIFIC_SCRIPT",
+      "args": {
+        "specific_event": "0",
+        "__scriptTabs": "scriptinput",
+        "__collapse": true
+      },
+      "children": {
+        "script": [
+          {
+            "command": "EVENT_CALL_CUSTOM_EVENT",
+            "args": {
+              "customEventId": "6df14c3d-d5fd-4cc9-b7e8-f586255d3cc4",
+              "$variable[V0]$": {
+                "type": "variable",
+                "value": "4"
+              }
+            },
+            "id": "5379cd10-ad60-4862-a8c1-36820359ce1f"
+          }
+        ]
+      },
+      "id": "f8ba022c-98dd-4cce-becf-ddb19ba77c9e"
+    },
+    {
+      "command": "PM_EVENT_PLATMARIO_SPECIFIC_SCRIPT",
+      "args": {
+        "specific_event": "2",
+        "__scriptTabs": "scriptinput",
+        "__collapse": false
+      },
+      "children": {
+        "script": [
+          {
+            "command": "EVENT_CALL_CUSTOM_EVENT",
+            "args": {
+              "customEventId": "7c6520c5-0bfb-4811-94d0-c92f2543bdde"
+            },
+            "id": "241d2746-8784-4d8d-ac95-f13e63a6b217"
+          }
+        ]
+      },
+      "id": "72d1d718-541d-426d-ad3d-0ff48e7d8a1f"
+    },
+    {
+      "command": "PM_EVENT_PLATPLUS_STATE_SCRIPT",
+      "args": {
+        "state": 31,
+        "__scriptTabs": "scriptinput",
+        "__label": "Attach script to Mario death state",
+        "__collapse": true
+      },
+      "children": {
+        "script": [
+          {
+            "command": "EVENT_CALL_CUSTOM_EVENT",
+            "args": {
+              "customEventId": "76fe8e78-2831-42e9-9d12-aa187baf35b8"
+            },
+            "id": "91000f07-fd45-414c-945b-dfb781d99d34"
+          }
+        ]
+      },
+      "id": "e0bbd0cf-c963-4547-a3da-a0db92fb61aa"
     }
   ],
   "playerHit1Script": [],

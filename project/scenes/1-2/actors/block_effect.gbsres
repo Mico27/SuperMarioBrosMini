@@ -1,0 +1,93 @@
+{
+  "_resourceType": "actor",
+  "id": "a2185831-d9fe-46e7-8b97-7d548a4f8e30",
+  "name": "Block_effect",
+  "frame": 0,
+  "animate": false,
+  "spriteSheetId": "8dbb443a-eb83-48bb-86c9-ffd9012f45c7",
+  "prefabId": "",
+  "direction": "down",
+  "moveSpeed": 1,
+  "animSpeed": 1,
+  "paletteId": "",
+  "isPinned": false,
+  "persistent": false,
+  "collisionGroup": "",
+  "prefabScriptOverrides": {},
+  "_index": 4,
+  "symbol": "actor_12",
+  "x": 0,
+  "y": 0,
+  "script": [],
+  "startScript": [
+    {
+      "command": "EVENT_ACTOR_DEACTIVATE",
+      "args": {
+        "actorId": "$self$",
+        "__collapse": true
+      },
+      "id": "1146611d-32d4-4923-95c4-34a8a6f11b1c"
+    },
+    {
+      "command": "EVENT_LAUNCH_PROJECTILE",
+      "args": {
+        "spriteSheetId": "8a540f8d-26fb-41fc-b83c-ce6c4807188b",
+        "spriteStateId": "Score20",
+        "actorId": "$self$",
+        "x": 0,
+        "y": 0,
+        "directionType": "direction",
+        "otherActorId": "$self$",
+        "direction": "up",
+        "angle": 0,
+        "angleVariable": "V0",
+        "targetActorId": "$self$",
+        "initialOffset": 8,
+        "speed": 0.25,
+        "animSpeed": 127,
+        "lifeTime": 0.5,
+        "loopAnim": false,
+        "destroyOnHit": false,
+        "collisionGroup": "3",
+        "collisionMask": [],
+        "__collapse": true,
+        "__section": "source",
+        "__comment": true
+      },
+      "id": "d243cc20-91f7-4f19-9043-b8972ad545d0"
+    },
+    {
+      "command": "EVENT_LAUNCH_PROJECTILE",
+      "args": {
+        "spriteSheetId": "8dbb443a-eb83-48bb-86c9-ffd9012f45c7",
+        "spriteStateId": "BrickBreak",
+        "actorId": "$self$",
+        "x": -4,
+        "y": -32,
+        "directionType": "direction",
+        "otherActorId": "$self$",
+        "direction": "down",
+        "angle": 0,
+        "angleVariable": "V0",
+        "targetActorId": "$self$",
+        "initialOffset": 0,
+        "speed": 0.25,
+        "animSpeed": 3,
+        "lifeTime": 0.4,
+        "loopAnim": false,
+        "destroyOnHit": false,
+        "collisionGroup": "3",
+        "collisionMask": [],
+        "__collapse": true,
+        "__section": "presets",
+        "__presetId": "2c756fb6-506b-44a9-b297-cb27352c9179",
+        "__comment": true
+      },
+      "id": "c442f920-7cfd-4e57-ac39-c5e55bd317f7"
+    }
+  ],
+  "updateScript": [],
+  "hit1Script": [],
+  "hit2Script": [],
+  "hit3Script": []
+}

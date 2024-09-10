@@ -1,11 +1,11 @@
 {
   "_resourceType": "actor",
   "id": "f4503cde-33d5-42f7-bc1a-607ebab062de",
-  "_index": 2,
+  "_index": 0,
   "symbol": "actor_2",
   "prefabId": "",
-  "name": "Effect_Cursor",
-  "x": 214,
+  "name": "Block_effect",
+  "x": 0,
   "y": 0,
   "frame": 0,
   "animate": false,
@@ -13,7 +13,7 @@
   "paletteId": "",
   "direction": "down",
   "moveSpeed": 1,
-  "animSpeed": 15,
+  "animSpeed": 1,
   "isPinned": false,
   "persistent": false,
   "collisionGroup": "",
@@ -21,11 +21,12 @@
   "script": [],
   "startScript": [
     {
-      "command": "EVENT_ACTOR_HIDE",
+      "command": "EVENT_ACTOR_DEACTIVATE",
       "args": {
-        "actorId": "$self$"
+        "actorId": "$self$",
+        "__collapse": true
       },
-      "id": "3e926e63-2f95-417d-a814-9024d945bea1"
+      "id": "13c3e434-fa60-445b-9429-ec2c204e6612"
     },
     {
       "command": "EVENT_LAUNCH_PROJECTILE",
@@ -48,9 +49,10 @@
         "loopAnim": false,
         "destroyOnHit": false,
         "collisionGroup": "3",
-        "collisionMask": [
-          "1"
-        ]
+        "collisionMask": [],
+        "__collapse": true,
+        "__section": "source",
+        "__comment": true
       },
       "id": "3b1db9f7-308a-4d25-bfe1-f381d27e9f95"
     },
@@ -61,23 +63,25 @@
         "spriteStateId": "BrickBreak",
         "actorId": "$self$",
         "x": -4,
-        "y": 0,
+        "y": -32,
         "directionType": "direction",
         "otherActorId": "$self$",
-        "direction": "up",
+        "direction": "down",
         "angle": 0,
         "angleVariable": "V0",
         "targetActorId": "$self$",
         "initialOffset": 0,
-        "speed": 0,
+        "speed": 0.25,
         "animSpeed": 3,
-        "lifeTime": 0.2,
+        "lifeTime": 0.4,
         "loopAnim": false,
         "destroyOnHit": false,
         "collisionGroup": "3",
-        "collisionMask": [
-          "1"
-        ]
+        "collisionMask": [],
+        "__collapse": true,
+        "__section": "presets",
+        "__presetId": "2c756fb6-506b-44a9-b297-cb27352c9179",
+        "__comment": true
       },
       "id": "a396ed08-93d4-4686-8420-a919ba61d0fe"
     }

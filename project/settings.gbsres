@@ -82,9 +82,41 @@
     "Shift"
   ],
   "colorMode": "mixed",
-  "generateDebugFilesEnabled": false,
-  "compilerOptimisation": "none",
+  "generateDebugFilesEnabled": true,
   "compilerPreset": 3000,
-  "scriptEventPresets": {},
+  "scriptEventPresets": {
+    "EVENT_LAUNCH_PROJECTILE": {
+      "2c756fb6-506b-44a9-b297-cb27352c9179": {
+        "id": "2c756fb6-506b-44a9-b297-cb27352c9179",
+        "name": "BrickBreak",
+        "groups": [
+          "projectile",
+          "direction",
+          "source"
+        ],
+        "args": {
+          "spriteSheetId": "8dbb443a-eb83-48bb-86c9-ffd9012f45c7",
+          "spriteStateId": "BrickBreak",
+          "speed": 0.25,
+          "animSpeed": 3,
+          "lifeTime": 0.4,
+          "loopAnim": false,
+          "destroyOnHit": false,
+          "collisionGroup": "3",
+          "collisionMask": [],
+          "actorId": "$self$",
+          "x": -4,
+          "y": -32,
+          "directionType": "direction",
+          "otherActorId": "$self$",
+          "direction": "down",
+          "angle": 0,
+          "angleVariable": "V0",
+          "targetActorId": "$self$",
+          "initialOffset": 0
+        }
+      }
+    }
+  },
   "scriptEventDefaultPresets": {}
 }

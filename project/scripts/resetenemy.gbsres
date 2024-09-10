@@ -1,0 +1,64 @@
+{
+  "_resourceType": "script",
+  "id": "7472c75b-28ba-4e82-9e18-5c1cc4daf097",
+  "name": "ResetEnemy",
+  "description": "",
+  "variables": {
+    "V0": {
+      "id": "V0",
+      "name": "PosX",
+      "passByReference": false
+    },
+    "V1": {
+      "id": "V1",
+      "name": "PosY",
+      "passByReference": false
+    }
+  },
+  "actors": {
+    "0": {
+      "id": "0",
+      "name": "Actor A"
+    }
+  },
+  "symbol": "script_10",
+  "script": [
+    {
+      "command": "EVENT_ACTOR_SET_POSITION",
+      "args": {
+        "actorId": "0",
+        "x": {
+          "type": "variable",
+          "value": "V0"
+        },
+        "y": {
+          "type": "variable",
+          "value": "V1"
+        },
+        "__collapse": true
+      },
+      "id": "ea1c8c07-4b58-4939-8d65-6972fc5db1fe"
+    },
+    {
+      "command": "EVENT_SET_ACTOR_STATE",
+      "args": {
+        "actorId": "0",
+        "stateId": {
+          "type": "number",
+          "value": 0
+        },
+        "__collapse": true
+      },
+      "id": "c9b5691a-1e07-44dd-a86f-e50a22a56508"
+    },
+    {
+      "command": "EVENT_ACTOR_ACTIVATE",
+      "args": {
+        "actorId": "0",
+        "__comment": false,
+        "__collapse": true
+      },
+      "id": "5ff32ec9-2e10-4ea2-afd7-09bcbe4310a7"
+    }
+  ]
+}

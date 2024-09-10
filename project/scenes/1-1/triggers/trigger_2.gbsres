@@ -1,35 +1,46 @@
 {
   "_resourceType": "trigger",
-  "id": "a89556f4-ad74-4db8-a916-98b2fe540781",
+  "id": "5a1c1795-822c-4f1d-873a-e7ed7890bb34",
   "_index": 1,
-  "symbol": "trigger_1",
+  "symbol": "trigger_4",
   "prefabId": "",
   "name": "",
-  "x": 206,
-  "y": 14,
-  "width": 1,
-  "height": 2,
+  "x": 59,
+  "y": 11,
+  "width": 2,
+  "height": 1,
   "prefabScriptOverrides": {},
   "script": [
     {
-      "command": "EVENT_CALL_CUSTOM_EVENT",
+      "command": "EVENT_SET_VALUE",
       "args": {
-        "customEventId": "9c8751d9-6c8e-4f37-b76d-34364f54179c",
-        "$variable[V0]$": {
+        "variable": "22",
+        "value": {
           "type": "number",
-          "value": 1
-        },
-        "$variable[V1]$": {
-          "type": "number",
-          "value": 2
-        },
-        "$variable[V2]$": {
-          "type": "number",
-          "value": 1
+          "value": 3
         }
       },
-      "id": "8c7b7e9d-c988-4ce5-b675-6c66aadf2e2b"
+      "id": "9d304720-7606-47d0-b8a8-6a5517fb4b8b"
+    },
+    {
+      "command": "EVENT_GBVM_SCRIPT",
+      "args": {
+        "script": "VM_SET_CONST_INT16 _entry_mode, 3\nVM_SET_CONST_INT16 _entry_x, 384\nVM_SET_CONST_INT16 _entry_y, 256"
+      },
+      "id": "d19cac18-1fab-4860-9d06-0e9f47263d06"
     }
   ],
-  "leaveScript": []
+  "leaveScript": [
+    {
+      "command": "EVENT_SET_VALUE",
+      "args": {
+        "variable": "22",
+        "value": {
+          "type": "number",
+          "value": 0
+        }
+      },
+      "id": "8fd1de12-d3c1-4ce3-b637-064843201ca9"
+    }
+  ]
 }

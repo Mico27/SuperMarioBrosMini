@@ -18,7 +18,10 @@ typedef struct script_state_t {
 typedef enum {              //Specific event types
 	COIN_COLLECTED_EVENT = 0,
 	HIT_BLOCK_EVENT = 1,
+	ENTER_DOWN_PIPE_EVENT = 2,
 }  pSpecificEvent;
+
+extern script_state_t specific_events[3];
 
 extern WORD pl_vel_x;
 extern WORD pl_vel_y;

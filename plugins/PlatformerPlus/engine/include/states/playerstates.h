@@ -3,8 +3,7 @@
 
 void fall_state(void) BANKED;
 void ground_state(void) BANKED;
-//void crouch_state(void) BANKED;
-//void skid_state(void) BANKED;
+void crouch_state(void) BANKED;
 void jump_state(void) BANKED;
 //void vine_state(void) BANKED;
 void blank_state(void) BANKED;
@@ -74,6 +73,7 @@ extern WORD jump_reduction_val;    //Holds a temporary jump velocity reduction
 extern WORD jump_per_frame;        //Holds a jump amount that has been normalized over the number of jump frames
 extern WORD jump_reduction;        //Holds the reduction amount that has been normalized over the number of jump frames
 extern WORD boost_val;
+extern UBYTE enemy_bounce;
 
 //WALKING AND RUNNING VARIABLES
 extern WORD pl_vel_x;              //Tracks the player's x-velocity between frames

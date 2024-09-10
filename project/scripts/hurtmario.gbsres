@@ -1,0 +1,162 @@
+{
+  "_resourceType": "script",
+  "id": "7cc914c2-6df4-4f26-a46f-72d7e3165f2c",
+  "name": "HurtMario",
+  "description": "",
+  "variables": {},
+  "actors": {},
+  "symbol": "script_0",
+  "script": [
+    {
+      "command": "EVENT_IF",
+      "args": {
+        "condition": {
+          "type": "gt",
+          "valueA": {
+            "type": "variable",
+            "value": "24"
+          },
+          "valueB": {
+            "type": "number",
+            "value": 0
+          }
+        },
+        "__collapseElse": false,
+        "__collapse": false
+      },
+      "children": {
+        "true": [
+          {
+            "command": "EVENT_GROUP",
+            "args": {
+              "__label": "Hurt Mario",
+              "__collapse": false
+            },
+            "children": {
+              "true": [
+                {
+                  "command": "EVENT_SCRIPT_LOCK",
+                  "args": {
+                    "__collapse": true
+                  },
+                  "id": "8f6c5fd6-056c-4d99-9390-50493ee4c919"
+                },
+                {
+                  "command": "EVENT_ACTOR_SET_STATE",
+                  "args": {
+                    "actorId": "player",
+                    "spriteStateId": "ChangeSize",
+                    "loopAnim": true,
+                    "__collapse": true
+                  },
+                  "id": "97a52ca1-e935-4fad-b613-97e3361bb579"
+                },
+                {
+                  "command": "EVENT_WAIT",
+                  "args": {
+                    "time": 2,
+                    "frames": 15,
+                    "units": "frames",
+                    "__collapse": true
+                  },
+                  "id": "340745a2-f87c-46b7-9e78-fd8be493da8e"
+                },
+                {
+                  "command": "EVENT_PLAYER_SET_SPRITE",
+                  "args": {
+                    "spriteSheetId": "f6e3773c-ecfd-4844-8c6e-0facf92edfe0",
+                    "__collapse": true
+                  },
+                  "id": "fab8c41b-bfe1-4901-b43b-6dc6d001ab57"
+                },
+                {
+                  "command": "EVENT_ACTOR_SET_STATE",
+                  "args": {
+                    "actorId": "player",
+                    "spriteStateId": "ChangeSize",
+                    "loopAnim": true,
+                    "__collapse": true
+                  },
+                  "id": "8fcdae7f-c919-4262-99a8-ec17e97c1f38"
+                },
+                {
+                  "command": "EVENT_WAIT",
+                  "args": {
+                    "time": 0.5,
+                    "frames": 15,
+                    "units": "frames",
+                    "__collapse": true
+                  },
+                  "id": "b410d7bd-5191-455c-9c5f-e674919c48cd"
+                },
+                {
+                  "command": "EVENT_ACTOR_SET_STATE",
+                  "args": {
+                    "actorId": "player",
+                    "spriteStateId": "",
+                    "loopAnim": true,
+                    "__collapse": true
+                  },
+                  "id": "a658eaf5-c632-49b7-833b-abfd5b41a85a"
+                },
+                {
+                  "command": "EVENT_SET_VALUE",
+                  "args": {
+                    "variable": "23",
+                    "value": {
+                      "type": "number",
+                      "value": 60
+                    },
+                    "__collapse": true
+                  },
+                  "id": "85f6e84c-9e53-49c9-b168-6fa5ce6d9bd8"
+                },
+                {
+                  "command": "EVENT_DEC_VALUE",
+                  "args": {
+                    "variable": "24",
+                    "__collapse": true
+                  },
+                  "id": "6d2e712b-0b61-44a1-aa3d-acbbe63ad8bb"
+                },
+                {
+                  "command": "EVENT_SCRIPT_UNLOCK",
+                  "args": {
+                    "__collapse": true
+                  },
+                  "id": "487a48f8-2624-4d23-be2b-ec89e90781a4"
+                },
+                {
+                  "command": "EVENT_ACTOR_EFFECTS",
+                  "args": {
+                    "effect": "flicker",
+                    "actorId": "player",
+                    "distance": 10,
+                    "speed": 2,
+                    "time": 0.5,
+                    "frames": 60,
+                    "__comment": false,
+                    "timeUnits": "frames",
+                    "__collapse": true
+                  },
+                  "id": "5c76e6ed-8206-4e38-97ec-60ab694ea37b"
+                }
+              ]
+            },
+            "id": "562d4586-4524-4e98-9343-aa05b6292eeb"
+          }
+        ],
+        "false": [
+          {
+            "command": "EVENT_CALL_CUSTOM_EVENT",
+            "args": {
+              "customEventId": "76fe8e78-2831-42e9-9d12-aa187baf35b8"
+            },
+            "id": "c608b082-40c8-4059-98c1-848669abe813"
+          }
+        ]
+      },
+      "id": "54e2dcef-0a78-4ec7-bef0-92eda3e1cf48"
+    }
+  ]
+}

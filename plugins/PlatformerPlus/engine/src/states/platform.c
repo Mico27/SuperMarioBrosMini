@@ -84,7 +84,7 @@ BUGS:
 #include "states/playerstatesb.h"
 #include "meta_tiles.h"
 #include "data/game_globals.h"
-
+#include "actor_behavior.h"
 
 #ifndef INPUT_PLATFORM_JUMP
 #define INPUT_PLATFORM_JUMP        INPUT_A
@@ -102,10 +102,11 @@ BUGS:
 #define MAX_METATILE_CHANGE_CHECKS 4
 
 #define ANIM_STATE_DEFAULT 0
-#define ANIM_STATE_CROUCH 19
-#define ANIM_STATE_SKID 22
-#define ANIM_STATE_CLIMB 23
-#define ANIM_STATE_PIPETRANSITION 24
+#define ANIM_STATE_CROUCH 2
+#define ANIM_STATE_SKID 5
+#define ANIM_STATE_CLIMB 6
+#define ANIM_STATE_PIPETRANSITION 7
+#define ANIM_STATE_DEATH 1
 
 script_state_t state_events[40];
 
@@ -171,6 +172,7 @@ WORD jump_reduction_val;    //Holds a temporary jump velocity reduction
 WORD jump_per_frame;        //Holds a jump amount that has been normalized over the number of jump frames
 WORD jump_reduction;        //Holds the reduction amount that has been normalized over the number of jump frames
 WORD boost_val;
+UBYTE enemy_bounce;
 
 //WALKING AND RUNNING VARIABLES
 WORD pl_vel_x;              //Tracks the player's x-velocity between frames
@@ -186,6 +188,9 @@ WORD mod_image_left;
 UBYTE entry_mode; //0 = start of level, 1 = from pipe, 2 = from vine, 3 = from sky
 UWORD entry_x; // entry's x position
 UWORD entry_y; // entry's y position
+
+//TEMP VARIABLES
+WORD temp_counter;
 
 
 UBYTE previous_top_tile;
@@ -277,11 +282,12 @@ void platform_init(void) BANKED {
     hold_jump_val = plat_hold_jump_max;
     deltaX = 0;
     deltaY = 0;
-
+	actor_behavior_init();
 }
 
 void platform_update(void) BANKED {
     //The switch here is to disagreggate the state code, because it had collectively grown too large to stay in a single bank.
+	actor_behavior_update();
     plat_state = que_state;
 	script_memory[VAR_FRAMECOINS] = 0;
     switch(plat_state){
@@ -300,16 +306,19 @@ void platform_update(void) BANKED {
         case GROUND_INIT:
             que_state = GROUND_STATE;
 			load_animations(PLAYER.sprite.ptr, PLAYER.sprite.bank, ANIM_STATE_DEFAULT, PLAYER.animations);
-            //pl_vel_y = 256;
+            pl_vel_y = 256;
             ct_val = plat_coyote_max; 
             jump_reduction_val = 0;
+			enemy_bounce = 0;
         case GROUND_STATE:
             ground_state();
             break;
 		case CROUCH_INIT:
 			que_state = CROUCH_STATE;
 			load_animations(PLAYER.sprite.ptr, PLAYER.sprite.bank, ANIM_STATE_CROUCH, PLAYER.animations);
+			pl_vel_y = 256;
 		case CROUCH_STATE:
+			crouch_state();
 			break;
 		case SKID_INIT:
 			que_state = SKID_STATE;
@@ -347,6 +356,10 @@ void platform_update(void) BANKED {
 		case DEAD_INIT:
 			que_state = DEAD_STATE;
 		case DEAD_STATE:
+		//State-Based Events
+			if(state_events[plat_state].script_addr != 0){
+				script_execute(state_events[plat_state].script_bank, state_events[plat_state].script_addr, 0, 0);
+			}
 			break;
 		case FIREFLOWER_INIT:
 			que_state = FIREFLOWER_STATE;
@@ -364,6 +377,11 @@ void platform_update(void) BANKED {
             blank_state();
             break;
     }
+	script_memory[VAR_PLAYER_XPOS] = PLAYER.pos.x;
+	script_memory[VAR_PLAYER_YPOS] = PLAYER.pos.y;
+	if (script_memory[VAR_PLAYER_IFRAMES] > 0){
+		script_memory[VAR_PLAYER_IFRAMES]--;
+	}
 	check_player_metatiles_entered();
 	if(script_memory[VAR_FRAMECOINS] && specific_events[COIN_COLLECTED_EVENT].script_addr != 0){
         script_execute(specific_events[COIN_COLLECTED_EVENT].script_bank, specific_events[COIN_COLLECTED_EVENT].script_addr, 0, 0);
@@ -451,19 +469,33 @@ void on_player_metatile_collision(UBYTE tile_x, UBYTE tile_y, UBYTE direction) B
 		actors_collisionx_cache[direction] = tile_x;
 		actors_collisiony_cache[direction] = tile_y;
 				
-		if (direction == 2){
-			UBYTE tile_id = sram_map_data[VRAM_OFFSET(tile_x, tile_y)];
-			switch(tile_id){
-				case 5://coin block
-				case 7://brick					
-					if(specific_events[HIT_BLOCK_EVENT].script_addr != 0){
-						script_memory[VAR_HITBLOCKID] = tile_id;
-						script_memory[VAR_HITBLOCKX] = tile_x;
-						script_memory[VAR_HITBLOCKY] = tile_y;
-						script_execute(specific_events[HIT_BLOCK_EVENT].script_bank, specific_events[HIT_BLOCK_EVENT].script_addr, 0, 0);
-					}
-					break;
-			}
+		switch(direction){
+			case DIR_UP:
+				UBYTE tile_id = sram_map_data[VRAM_OFFSET(tile_x, tile_y)];
+				switch(tile_id){
+					case 5://coin block
+					case 7://brick	
+					case 152://multi coin brick
+					case 153://beanstalk brick
+					case 154://star brick
+					case 155://1up brick
+					case 156://powerup block	
+					case 157://beanstalk block
+					case 158://star block
+					case 159://1up block
+					case 160://invis coin block
+					case 161://invis powerup block
+					case 162://invis star block
+					case 163://invis 1up block	
+						if(specific_events[HIT_BLOCK_EVENT].script_addr != 0){
+							script_memory[VAR_HITBLOCKID] = tile_id;
+							script_memory[VAR_HITBLOCKX] = tile_x;
+							script_memory[VAR_HITBLOCKY] = tile_y;
+							script_execute(specific_events[HIT_BLOCK_EVENT].script_bank, specific_events[HIT_BLOCK_EVENT].script_addr, 0, 0);
+						}
+						break;
+				}
+				break;
 		}
 	}
 }
@@ -851,6 +883,12 @@ void fall_state(void) BANKED {
         jb_val = plat_buffer_max; 
         }
     } 
+	
+	//FALL -> DEATH check
+	if (PLAYER.pos.y > 2560 && PLAYER.pos.y < 5120){
+		que_state = DEAD_INIT;
+	}
+	
 
     //Check for final frame
     if (que_state != FALL_STATE){

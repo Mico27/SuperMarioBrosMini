@@ -11,6 +11,7 @@ const fields = [
         options: [
           ["0", "Coins collected"],
           ["1", "Hit block"],
+		  ["2", "Enter down pipe"],
         ],
     },
     {

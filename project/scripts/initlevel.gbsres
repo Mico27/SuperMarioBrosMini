@@ -55,66 +55,10 @@
       "id": "1752fc5c-0cd9-4c02-b664-c43eb86a5adc"
     },
     {
-      "command": "PM_EVENT_PLATMARIO_SPECIFIC_SCRIPT",
-      "args": {
-        "specific_event": "0",
-        "__scriptTabs": "scriptinput",
-        "__collapse": true
-      },
-      "children": {
-        "script": [
-          {
-            "command": "EVENT_CALL_CUSTOM_EVENT",
-            "args": {
-              "customEventId": "6df14c3d-d5fd-4cc9-b7e8-f586255d3cc4",
-              "$variable[V0]$": {
-                "type": "variable",
-                "value": "4"
-              }
-            },
-            "id": "32e75945-3c6f-40bd-be06-d42a96142fd9"
-          }
-        ]
-      },
-      "id": "1e9a7291-3bf6-4d82-aeb8-768eac19e928"
-    },
-    {
-      "command": "PM_EVENT_PLATMARIO_SPECIFIC_SCRIPT",
-      "args": {
-        "specific_event": "1",
-        "__scriptTabs": "scriptinput",
-        "__collapse": true
-      },
-      "children": {
-        "script": [
-          {
-            "command": "EVENT_CALL_CUSTOM_EVENT",
-            "args": {
-              "customEventId": "010dfb2c-fbd5-47e5-8b29-80af76159f1f",
-              "$variable[V0]$": {
-                "type": "variable",
-                "value": "5"
-              },
-              "$variable[V1]$": {
-                "type": "variable",
-                "value": "30"
-              },
-              "$variable[V2]$": {
-                "type": "variable",
-                "value": "27"
-              }
-            },
-            "id": "97354845-9995-4eaa-bd38-9242c30b83b5"
-          }
-        ]
-      },
-      "id": "3f31e298-8e1c-4ea6-a59f-71f0d417c9e9"
-    },
-    {
       "command": "EVENT_GROUP",
       "args": {
         "__label": "Initialize Level UI",
-        "__collapse": false
+        "__collapse": true
       },
       "children": {
         "true": [
@@ -554,6 +498,70 @@
       "id": "bd1ce9f8-b983-489f-9203-7abd3dceec18"
     },
     {
+      "command": "EVENT_GROUP",
+      "args": {
+        "__label": "Init Mario",
+        "__collapse": false
+      },
+      "children": {
+        "true": [
+          {
+            "command": "EVENT_SET_VALUE",
+            "args": {
+              "variable": "24",
+              "value": {
+                "type": "number",
+                "value": 1
+              },
+              "__comment": true
+            },
+            "id": "48cadb4c-2f70-441b-8d41-ba57d9c2bccf"
+          },
+          {
+            "command": "EVENT_IF",
+            "args": {
+              "condition": {
+                "type": "gt",
+                "valueA": {
+                  "type": "variable",
+                  "value": "24"
+                },
+                "valueB": {
+                  "type": "number",
+                  "value": 0
+                }
+              },
+              "__collapseElse": false
+            },
+            "children": {
+              "true": [
+                {
+                  "command": "EVENT_ACTOR_SET_SPRITE",
+                  "args": {
+                    "actorId": "$self$",
+                    "spriteSheetId": "82297e17-ae19-4d6c-84f3-47e5fe14a6ad"
+                  },
+                  "id": "b4254fe6-5058-4bc7-b484-0f24c58bb7f3"
+                }
+              ],
+              "false": [
+                {
+                  "command": "EVENT_ACTOR_SET_SPRITE",
+                  "args": {
+                    "actorId": "$self$",
+                    "spriteSheetId": "f6e3773c-ecfd-4844-8c6e-0facf92edfe0"
+                  },
+                  "id": "9b0018a6-dec7-469b-8755-8605a79ee21e"
+                }
+              ]
+            },
+            "id": "c7242b4a-e28f-4f52-9574-70b5be674976"
+          }
+        ]
+      },
+      "id": "d64619ef-512f-442a-976c-c2d3c8de2d0a"
+    },
+    {
       "command": "EVENT_FADE_IN",
       "args": {
         "speed": "2",
@@ -572,7 +580,7 @@
       "command": "EVENT_GROUP",
       "args": {
         "__label": "Start Menu",
-        "__collapse": false
+        "__collapse": true
       },
       "children": {
         "true": [

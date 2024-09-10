@@ -23,6 +23,17 @@
       "id": "9333e2b7-0cf6-45e0-b90f-b2c332f97b43"
     },
     {
+      "command": "EVENT_ENGINE_FIELD_SET",
+      "args": {
+        "engineFieldKey": "fade_style",
+        "value": {
+          "type": "number",
+          "value": 1
+        }
+      },
+      "id": "a91a39c3-1196-4ca1-8a42-410e32b49688"
+    },
+    {
       "command": "EVENT_CALL_CUSTOM_EVENT",
       "args": {
         "customEventId": "1da14dfe-ad02-4e47-addd-68af4399854d"

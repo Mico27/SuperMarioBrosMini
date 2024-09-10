@@ -23,8 +23,9 @@
   ],
   "spritePaletteIds": [
     "",
-    "default-bg-5",
-    "default-bg-6"
+    "51beb5b2-6322-4970-a2d8-177069dca633",
+    "5fbe9f6e-8881-472f-975e-6cfbcdabf537",
+    "9f561bd7-338c-4c7c-9891-b1c5dfdc81e5"
   ],
   "autoFadeSpeed": null,
   "parallax": [
@@ -102,6 +103,40 @@
         "__collapse": false
       },
       "id": "24cd5994-ca02-48d1-8fdb-e381fdbf53bc"
+    },
+    {
+      "command": "PM_EVENT_PLATMARIO_SPECIFIC_SCRIPT",
+      "args": {
+        "specific_event": "1",
+        "__scriptTabs": "scriptinput",
+        "__collapse": true
+      },
+      "children": {
+        "script": [
+          {
+            "command": "EVENT_CALL_CUSTOM_EVENT",
+            "args": {
+              "customEventId": "010dfb2c-fbd5-47e5-8b29-80af76159f1f",
+              "$variable[V0]$": {
+                "type": "variable",
+                "value": "5"
+              },
+              "$variable[V1]$": {
+                "type": "variable",
+                "value": "30"
+              },
+              "$variable[V2]$": {
+                "type": "variable",
+                "value": "27"
+              },
+              "$actor[0]$": "a2185831-d9fe-46e7-8b97-7d548a4f8e30",
+              "$actor[1]$": "e8f64e93-a002-4d25-9974-c44fc3f3bbda"
+            },
+            "id": "8a579d09-407e-4fe7-a0de-8b74568ebbb7"
+          }
+        ]
+      },
+      "id": "7ac3d4ea-5f70-48fa-b85a-f9e26b0c327e"
     }
   ],
   "playerHit1Script": [],
