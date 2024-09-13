@@ -4,6 +4,13 @@
   "name": "FlagTrigger",
   "script": [
     {
+      "command": "EVENT_TIMER_DISABLE",
+      "args": {
+        "timer": 1
+      },
+      "id": "bfe264d1-0616-4b4a-ab6e-6721124348cc"
+    },
+    {
       "command": "PM_EVENT_SET_PP_STATE",
       "args": {
         "state": {
@@ -41,23 +48,12 @@
       "id": "38e96f3a-bd8b-4673-ad13-f61d862c3802"
     },
     {
-      "command": "EVENT_SET_VALUE",
-      "args": {
-        "variable": "14",
-        "value": {
-          "type": "number",
-          "value": 1596
-        }
-      },
-      "id": "4adb8fde-1dc9-4fa6-abb7-dec7a098ba5e"
-    },
-    {
       "command": "EVENT_ACTOR_SET_POSITION",
       "args": {
         "actorId": "$self$",
         "x": {
-          "type": "variable",
-          "value": "14"
+          "type": "expression",
+          "value": "($14$ - ($14$ & 7)) + 4"
         },
         "y": {
           "type": "expression",
@@ -184,7 +180,7 @@
         "time": 0.5,
         "frames": 60,
         "units": "frames",
-        "__collapse": true
+        "__collapse": false
       },
       "id": "cf5af40a-3838-43c4-8e13-4c51f318daf8"
     },
@@ -194,7 +190,7 @@
         "actorId": "$self$",
         "spriteStateId": "",
         "loopAnim": true,
-        "__collapse": true
+        "__collapse": false
       },
       "id": "0533d2ee-000c-4fc1-97dc-8381166fa568"
     },
@@ -205,7 +201,7 @@
           "type": "number",
           "value": 6
         },
-        "__collapse": true
+        "__collapse": false
       },
       "id": "720d5e5a-ab5e-49c3-aab4-d011c4b37d18"
     },
@@ -213,7 +209,7 @@
       "command": "EVENT_START_SIMULATED_INPUTS",
       "args": {
         "input_cancel": [],
-        "__collapse": true
+        "__collapse": false
       },
       "children": {
         "input_sequence": [

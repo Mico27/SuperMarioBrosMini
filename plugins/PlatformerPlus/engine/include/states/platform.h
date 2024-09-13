@@ -19,9 +19,10 @@ typedef enum {              //Specific event types
 	COIN_COLLECTED_EVENT = 0,
 	HIT_BLOCK_EVENT = 1,
 	ENTER_DOWN_PIPE_EVENT = 2,
+	ENTER_RIGHT_PIPE_EVENT = 3,
 }  pSpecificEvent;
 
-extern script_state_t specific_events[3];
+extern script_state_t specific_events[4];
 
 extern WORD pl_vel_x;
 extern WORD pl_vel_y;

@@ -12,7 +12,7 @@
       "args": {
         "__label": "Death",
         "__comment": false,
-        "__collapse": false
+        "__collapse": true
       },
       "children": {
         "true": [
@@ -22,6 +22,18 @@
               "__collapse": true
             },
             "id": "9e849abc-de42-4800-9e53-cee1640b9d1b"
+          },
+          {
+            "command": "EVENT_SET_VALUE",
+            "args": {
+              "variable": "24",
+              "value": {
+                "type": "number",
+                "value": 0
+              },
+              "__collapse": true
+            },
+            "id": "b2a48e1b-73fc-4860-babe-48b30cbcb139"
           },
           {
             "command": "EVENT_PLAYER_SET_SPRITE",

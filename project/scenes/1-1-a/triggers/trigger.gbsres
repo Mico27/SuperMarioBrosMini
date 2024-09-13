@@ -14,6 +14,17 @@
     {
       "command": "EVENT_SET_VALUE",
       "args": {
+        "variable": "29",
+        "value": {
+          "type": "number",
+          "value": 1
+        }
+      },
+      "id": "780b71cb-324d-4618-9ca7-bc82d964eaa0"
+    },
+    {
+      "command": "EVENT_SET_VALUE",
+      "args": {
         "variable": "22",
         "value": {
           "type": "number",
@@ -23,12 +34,28 @@
       "id": "0959e79e-7ed3-4e66-8439-86b4694e9f92"
     },
     {
-      "command": "EVENT_GBVM_SCRIPT",
+      "command": "EVENT_SET_VALUE",
       "args": {
-        "script": "VM_SET_CONST_INT16 _entry_mode, 1\nVM_SET_CONST_INT16 _entry_x, 21184\nVM_SET_CONST_INT16 _entry_y, 1664"
+        "variable": "31",
+        "value": {
+          "type": "number",
+          "value": 1
+        }
       },
-      "id": "fc0044c5-9cf2-42fb-a956-ec8aa00f4eec"
+      "id": "3a7bdaeb-a7cf-4500-847c-318e41ee7573"
     }
   ],
-  "leaveScript": []
+  "leaveScript": [
+    {
+      "command": "EVENT_SET_VALUE",
+      "args": {
+        "variable": "29",
+        "value": {
+          "type": "number",
+          "value": 0
+        }
+      },
+      "id": "677f444f-eb19-4556-af92-9232bb76b85e"
+    }
+  ]
 }

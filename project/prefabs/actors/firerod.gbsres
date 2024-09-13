@@ -1,0 +1,29 @@
+{
+  "_resourceType": "actorPrefab",
+  "id": "b063913a-a70d-4495-ae08-7063329967e3",
+  "name": "FireRod",
+  "frame": 0,
+  "animate": false,
+  "spriteSheetId": "8dbb443a-eb83-48bb-86c9-ffd9012f45c7",
+  "moveSpeed": 1,
+  "animSpeed": 15,
+  "paletteId": "",
+  "persistent": false,
+  "collisionGroup": "1",
+  "script": [],
+  "startScript": [
+    {
+      "command": "EVENT_ACTOR_SET_STATE",
+      "args": {
+        "actorId": "$self$",
+        "spriteStateId": "FireBar",
+        "loopAnim": true
+      },
+      "id": "db1edc56-8a5e-4cb3-b020-d1559fd0830d"
+    }
+  ],
+  "updateScript": [],
+  "hit1Script": [],
+  "hit2Script": [],
+  "hit3Script": []
+}

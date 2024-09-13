@@ -167,7 +167,7 @@
       "args": {
         "specific_event": "2",
         "__scriptTabs": "scriptinput",
-        "__collapse": false
+        "__collapse": true
       },
       "children": {
         "script": [
@@ -181,6 +181,27 @@
         ]
       },
       "id": "72d1d718-541d-426d-ad3d-0ff48e7d8a1f"
+    },
+    {
+      "command": "PM_EVENT_PLATMARIO_SPECIFIC_SCRIPT",
+      "args": {
+        "specific_event": "3",
+        "__scriptTabs": "scriptinput",
+        "__collapse": true,
+        "__comment": false
+      },
+      "children": {
+        "script": [
+          {
+            "command": "EVENT_CALL_CUSTOM_EVENT",
+            "args": {
+              "customEventId": "b2fbfc7d-b900-4694-aa6b-ace5044a447a"
+            },
+            "id": "3426cb8a-48d7-4847-809a-4f40d65492f4"
+          }
+        ]
+      },
+      "id": "0ab3ca98-3a0c-4c00-9a90-23d73587f3c3"
     },
     {
       "command": "PM_EVENT_PLATPLUS_STATE_SCRIPT",

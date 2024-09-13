@@ -1,0 +1,70 @@
+{
+  "_resourceType": "actorPrefab",
+  "id": "378f3dc7-4ac2-44a5-82ab-5a471d1d6376",
+  "name": "PyrhanaPlant",
+  "frame": 0,
+  "animate": false,
+  "spriteSheetId": "403934fb-0970-4bb4-80d5-426a4e426cfb",
+  "moveSpeed": 1,
+  "animSpeed": 15,
+  "paletteId": "",
+  "persistent": false,
+  "collisionGroup": "1",
+  "script": [
+    {
+      "command": "EVENT_GBVM_SCRIPT",
+      "args": {
+        "script": "VM_SET_CONST_UINT8 _player_iframes, 0"
+      },
+      "id": "d0e35093-80e7-4a8c-b87d-b02558a23891"
+    },
+    {
+      "command": "EVENT_IF",
+      "args": {
+        "condition": {
+          "type": "eq",
+          "valueA": {
+            "type": "variable",
+            "value": "23"
+          },
+          "valueB": {
+            "type": "number",
+            "value": 0
+          }
+        },
+        "__collapseElse": true
+      },
+      "children": {
+        "true": [
+          {
+            "command": "EVENT_CALL_CUSTOM_EVENT",
+            "args": {
+              "customEventId": "7cc914c2-6df4-4f26-a46f-72d7e3165f2c",
+              "__comment": false
+            },
+            "id": "51bf51c5-818f-4456-b171-66ed5b7054a1"
+          }
+        ],
+        "false": []
+      },
+      "id": "9d491f4b-d94b-4ce5-b385-8a5013450c65"
+    }
+  ],
+  "startScript": [
+    {
+      "command": "EVENT_SET_ACTOR_BEHAVIOR",
+      "args": {
+        "actorId": "$self$",
+        "behaviorId": {
+          "type": "number",
+          "value": 5
+        }
+      },
+      "id": "8fc12b54-d606-40b7-b508-cb2013ad61b1"
+    }
+  ],
+  "updateScript": [],
+  "hit1Script": [],
+  "hit2Script": [],
+  "hit3Script": []
+}

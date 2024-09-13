@@ -23,8 +23,9 @@
   ],
   "spritePaletteIds": [
     "",
-    "default-bg-5",
-    "default-bg-6"
+    "51beb5b2-6322-4970-a2d8-177069dca633",
+    "5fbe9f6e-8881-472f-975e-6cfbcdabf537",
+    "9f561bd7-338c-4c7c-9891-b1c5dfdc81e5"
   ],
   "autoFadeSpeed": null,
   "playerSpriteSheetId": "82297e17-ae19-4d6c-84f3-47e5fe14a6ad",
@@ -56,6 +57,40 @@
         "__collapse": true
       },
       "id": "8bc91bbb-3e0d-4b4a-8d63-18895dd9ee6c"
+    },
+    {
+      "command": "PM_EVENT_PLATMARIO_SPECIFIC_SCRIPT",
+      "args": {
+        "specific_event": "1",
+        "__scriptTabs": "scriptinput",
+        "__collapse": false
+      },
+      "children": {
+        "script": [
+          {
+            "command": "EVENT_CALL_CUSTOM_EVENT",
+            "args": {
+              "customEventId": "010dfb2c-fbd5-47e5-8b29-80af76159f1f",
+              "$variable[V0]$": {
+                "type": "variable",
+                "value": "5"
+              },
+              "$variable[V1]$": {
+                "type": "variable",
+                "value": "30"
+              },
+              "$variable[V2]$": {
+                "type": "variable",
+                "value": "27"
+              },
+              "$actor[0]$": "afd38c6a-968a-4f48-93ec-2fd2636ae82c",
+              "$actor[1]$": "7fa99cd4-7422-40b0-8a74-cfcc858a08df"
+            },
+            "id": "ab7dc294-e5c0-465a-969c-c344edaf8098"
+          }
+        ]
+      },
+      "id": "423d9653-7db6-4085-b2ac-813161ed5725"
     }
   ],
   "playerHit1Script": [],

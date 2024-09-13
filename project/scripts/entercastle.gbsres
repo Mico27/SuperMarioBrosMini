@@ -4,16 +4,6 @@
   "name": "EnterCastle",
   "description": "",
   "variables": {
-    "V0": {
-      "id": "V0",
-      "name": "World",
-      "passByReference": false
-    },
-    "V1": {
-      "id": "V1",
-      "name": "Level",
-      "passByReference": false
-    },
     "V2": {
       "id": "V2",
       "name": "UndergroundTransition",
@@ -99,24 +89,59 @@
     {
       "command": "EVENT_SET_VALUE",
       "args": {
-        "variable": "9",
-        "value": {
-          "type": "variable",
-          "value": "V0"
-        }
-      },
-      "id": "3044dbbd-e999-43d6-aa5f-1b1775c20154"
-    },
-    {
-      "command": "EVENT_SET_VALUE",
-      "args": {
         "variable": "10",
         "value": {
-          "type": "variable",
-          "value": "V1"
+          "type": "expression",
+          "value": "$10$ + 1"
         }
       },
       "id": "792fe9ab-3800-42b3-8972-25a0a9040796"
+    },
+    {
+      "command": "EVENT_IF",
+      "args": {
+        "condition": {
+          "type": "gt",
+          "valueA": {
+            "type": "variable",
+            "value": "10"
+          },
+          "valueB": {
+            "type": "number",
+            "value": 4
+          }
+        },
+        "__collapseElse": true,
+        "__comment": false
+      },
+      "children": {
+        "true": [
+          {
+            "command": "EVENT_SET_VALUE",
+            "args": {
+              "variable": "10",
+              "value": {
+                "type": "number",
+                "value": 1
+              }
+            },
+            "id": "5a4cb660-aee9-4cee-b7de-0d2664bb1117"
+          },
+          {
+            "command": "EVENT_SET_VALUE",
+            "args": {
+              "variable": "9",
+              "value": {
+                "type": "expression",
+                "value": "$09$ + 1"
+              }
+            },
+            "id": "91231499-611a-43ee-b6fc-ed51a6060bde"
+          }
+        ],
+        "false": []
+      },
+      "id": "a7413eea-d884-4a21-8db0-2d3496aa066f"
     },
     {
       "command": "EVENT_IF",

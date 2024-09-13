@@ -1,0 +1,115 @@
+{
+  "_resourceType": "script",
+  "id": "b2fbfc7d-b900-4694-aa6b-ace5044a447a",
+  "name": "OnEnterRightPipe",
+  "description": "",
+  "variables": {},
+  "actors": {},
+  "symbol": "script_12",
+  "script": [
+    {
+      "command": "EVENT_IF",
+      "args": {
+        "condition": {
+          "type": "eq",
+          "valueA": {
+            "type": "variable",
+            "value": "29"
+          },
+          "valueB": {
+            "type": "number",
+            "value": 1
+          }
+        },
+        "__collapseElse": true
+      },
+      "children": {
+        "true": [
+          {
+            "command": "EVENT_SCRIPT_LOCK",
+            "args": {},
+            "id": "8a0910f5-72c3-4ec9-8879-49d0df2a7f87"
+          },
+          {
+            "command": "EVENT_SET_VALUE",
+            "args": {
+              "variable": "29",
+              "value": {
+                "type": "number",
+                "value": 0
+              }
+            },
+            "id": "692876cc-7841-4861-914c-1171ccd5b7d1"
+          },
+          {
+            "command": "EVENT_ACTOR_SET_MOVEMENT_SPEED",
+            "args": {
+              "actorId": "$self$",
+              "speed": 0.5
+            },
+            "id": "4d7fc2a2-04e4-4766-ac07-a346e6d0c118"
+          },
+          {
+            "command": "EVENT_ACTOR_GET_POSITION",
+            "args": {
+              "actorId": "$self$",
+              "vectorX": "14",
+              "vectorY": "1",
+              "units": "pixels"
+            },
+            "id": "7dcddb99-71f0-4081-acf4-7faa90d63b09"
+          },
+          {
+            "command": "EVENT_ACTOR_SET_STATE",
+            "args": {
+              "actorId": "$self$",
+              "spriteStateId": "PipeTransition",
+              "loopAnim": true
+            },
+            "id": "78e9a076-6644-46a4-96b1-9496bc966614"
+          },
+          {
+            "command": "EVENT_ACTOR_MOVE_RELATIVE",
+            "args": {
+              "actorId": "$self$",
+              "x": {
+                "type": "expression",
+                "value": "8"
+              },
+              "y": {
+                "type": "number",
+                "value": 0
+              },
+              "moveType": "horizontal",
+              "useCollisions": false,
+              "units": "pixels"
+            },
+            "id": "ce6859a2-e3b7-4450-8997-ece896962c02"
+          },
+          {
+            "command": "EVENT_WAIT",
+            "args": {
+              "time": 0.5,
+              "frames": 30
+            },
+            "id": "b3d5c747-e99e-44e3-be8b-af8e9aded63e"
+          },
+          {
+            "command": "EVENT_SCRIPT_UNLOCK",
+            "args": {},
+            "id": "781ca961-56a0-4f02-9ce4-df6072d59d7b"
+          },
+          {
+            "command": "EVENT_CALL_CUSTOM_EVENT",
+            "args": {
+              "customEventId": "1da14dfe-ad02-4e47-addd-68af4399854d"
+            },
+            "id": "5b1e10e6-22c5-4d84-82b5-1453718be321"
+          }
+        ],
+        "false": []
+      },
+      "id": "554dd9f8-255b-4e98-af1d-37f8f939837d"
+    }
+  ]
+}

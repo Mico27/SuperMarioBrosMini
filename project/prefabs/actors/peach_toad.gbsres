@@ -1,0 +1,65 @@
+{
+  "_resourceType": "actorPrefab",
+  "id": "d78e43f3-58d3-41b9-a7b5-c58f93ba95ab",
+  "name": "Peach_Toad",
+  "frame": 0,
+  "animate": false,
+  "spriteSheetId": "c9bfb6f0-c00f-429e-ba25-eab1c93e6bec",
+  "moveSpeed": 1,
+  "animSpeed": 15,
+  "paletteId": "",
+  "persistent": false,
+  "collisionGroup": "",
+  "script": [],
+  "startScript": [
+    {
+      "command": "EVENT_IF",
+      "args": {
+        "condition": {
+          "type": "and",
+          "valueA": {
+            "type": "eq",
+            "valueA": {
+              "type": "expression",
+              "value": "$09$ & 7"
+            },
+            "valueB": {
+              "type": "number",
+              "value": 0
+            }
+          },
+          "valueB": {
+            "type": "eq",
+            "valueA": {
+              "type": "expression",
+              "value": "$10$ & 3"
+            },
+            "valueB": {
+              "type": "number",
+              "value": 0
+            }
+          }
+        },
+        "__collapseElse": true
+      },
+      "children": {
+        "true": [
+          {
+            "command": "EVENT_ACTOR_SET_SPRITE",
+            "args": {
+              "actorId": "$self$",
+              "spriteSheetId": "a6c34264-e9db-44cf-be2e-762769d86d1a"
+            },
+            "id": "0513b722-8dc5-43d2-bb1e-d3c84e8a8a2c"
+          }
+        ],
+        "false": []
+      },
+      "id": "5fab5429-9ef6-4e5b-bb4f-d27971d27a0c"
+    }
+  ],
+  "updateScript": [],
+  "hit1Script": [],
+  "hit2Script": [],
+  "hit3Script": []
+}

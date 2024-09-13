@@ -32,22 +32,100 @@ void actor_behavior_init(void) BANKED {
 	memset(actor_counter_a, 0, sizeof(actor_counter_a));
 }
 
+UWORD inline check_collision(UWORD start_x, UWORD start_y, bounding_box_t *bounds, col_check_dir_e check_dir) {
+    WORD tx, ty;
+    switch (check_dir) {
+        case CHECK_DIR_LEFT:  // Check left (bottom left)
+            tx = (((start_x >> 4) + bounds->left) >> 3);
+            ty = (((start_y >> 4) + bounds->bottom) >> 3);
+            if (tile_at(tx, ty) & COLLISION_RIGHT) {
+                return ((tx + 1) << 7) - (bounds->left << 4);
+            }
+            return start_x;
+        case CHECK_DIR_RIGHT:  // Check right (bottom right)
+            tx = (((start_x >> 4) + bounds->right) >> 3);
+            ty = (((start_y >> 4) + bounds->bottom) >> 3);
+            if (tile_at(tx, ty) & COLLISION_LEFT) {
+                return (tx << 7) - ((bounds->right + 1) << 4);
+            }
+            return start_x;
+        case CHECK_DIR_UP:  // Check up (middle up)
+            ty = (((start_y >> 4) + bounds->top) >> 3);
+            tx = (((start_x >> 4) + ((bounds->left + bounds->right) >> 1)) >> 3);
+            if (tile_at(tx, ty) & COLLISION_BOTTOM) {
+                return ((ty + 1) << 7) - ((bounds->top) << 4);
+            }
+            return start_y;
+        case CHECK_DIR_DOWN:  // Check down (right bottom and left bottom)
+            ty = (((start_y >> 4) + bounds->bottom) >> 3);
+            tx = (((start_x >> 4) + bounds->left) >> 3);
+            if (tile_at(tx, ty) & COLLISION_TOP) {
+                return ((ty) << 7) - ((bounds->bottom + 1) << 4);
+            }			
+			tx = (((start_x >> 4) + bounds->right) >> 3);
+			if (tile_at(tx, ty) & COLLISION_TOP) {
+                return ((ty) << 7) - ((bounds->bottom + 1) << 4);
+            }
+            return start_y;
+    }
+    return start_x;
+}
+
+UWORD inline check_pit(UWORD start_x, UWORD start_y, bounding_box_t *bounds, col_check_dir_e check_dir) {
+     WORD tx, ty;
+    switch (check_dir) {
+        case CHECK_DIR_LEFT:  // Check left (bottom left)
+            tx = (((start_x >> 4) + bounds->left) >> 3);
+            ty = (((start_y >> 4) + bounds->bottom) >> 3) + 1;
+            if (!(tile_at(tx, ty) & COLLISION_TOP)) {
+                return ((tx + 1) << 7) - (bounds->left << 4);
+            }
+            return start_x;
+        case CHECK_DIR_RIGHT:  // Check right (bottom right)
+            tx = (((start_x >> 4) + bounds->right) >> 3);
+            ty = (((start_y >> 4) + bounds->bottom) >> 3) + 1;
+            if (!(tile_at(tx, ty) & COLLISION_TOP)) {
+                return (tx << 7) - ((bounds->right + 1) << 4);
+            }
+            return start_x;       
+    }
+    return start_x;
+}
+
 void inline apply_gravity(UBYTE actor_idx) {
 	actor_vel_y[actor_idx] += (plat_grav >> 8);
 	actor_vel_y[actor_idx] = MIN(actor_vel_y[actor_idx], (plat_max_fall_vel >> 8));
 }
 
-void inline apply_velocity(UBYTE actor_idx, actor_t * actor) {
+void apply_velocity(UBYTE actor_idx, actor_t * actor) BANKED {
 	//Apply velocity
 	WORD new_y =  actor->pos.y + actor_vel_y[actor_idx];
 	WORD new_x =  actor->pos.x + actor_vel_x[actor_idx];
 	if (actor->collision_enabled){
 		//Tile Collision
-		actor->pos.x = check_collision_in_direction(actor->pos.x, actor->pos.y, &actor->bounds, new_x, ((actor->pos.x > new_x) ? CHECK_DIR_LEFT : CHECK_DIR_RIGHT));
+		actor->pos.x = check_collision(new_x, actor->pos.y, &actor->bounds, ((actor->pos.x > new_x) ? CHECK_DIR_LEFT : CHECK_DIR_RIGHT));
 		if (actor->pos.x != new_x){
 			actor_vel_x[actor_idx] = -actor_vel_x[actor_idx];
 		}
-		actor->pos.y = check_collision_in_direction(actor->pos.x, actor->pos.y, &actor->bounds, new_y, ((actor->pos.y > new_y) ? CHECK_DIR_UP : CHECK_DIR_DOWN));
+		actor->pos.y = check_collision(actor->pos.x, new_y, &actor->bounds, ((actor->pos.y > new_y) ? CHECK_DIR_UP : CHECK_DIR_DOWN));
+	} else {
+		actor->pos.x = new_x;
+		actor->pos.y = new_y;
+	}
+}
+
+void apply_velocity_avoid_fall(UBYTE actor_idx, actor_t * actor) BANKED {
+	//Apply velocity
+	WORD new_y =  actor->pos.y + actor_vel_y[actor_idx];
+	WORD new_x =  actor->pos.x + actor_vel_x[actor_idx];
+	if (actor->collision_enabled){
+		//Tile Collision
+		new_x = check_collision(new_x, actor->pos.y, &actor->bounds, ((actor->pos.x > new_x) ? CHECK_DIR_LEFT : CHECK_DIR_RIGHT));
+		actor->pos.x = check_pit(new_x, actor->pos.y, &actor->bounds, ((actor->pos.x > new_x) ? CHECK_DIR_LEFT : CHECK_DIR_RIGHT));
+		if (actor->pos.x != new_x){
+			actor_vel_x[actor_idx] = -actor_vel_x[actor_idx];
+		}
+		actor->pos.y = check_collision(actor->pos.x, new_y, &actor->bounds, ((actor->pos.y > new_y) ? CHECK_DIR_UP : CHECK_DIR_DOWN));
 	} else {
 		actor->pos.x = new_x;
 		actor->pos.y = new_y;
@@ -55,7 +133,7 @@ void inline apply_velocity(UBYTE actor_idx, actor_t * actor) {
 }
 
 void actor_behavior_update(void) BANKED {
-	for (UBYTE i = 0; i < MAX_ACTORS; i++){
+	for (UBYTE i = 1; i < MAX_ACTORS; i++){
 		actor_t * actor = (actors + i);
 		if (!actor->active){
 			continue;
@@ -116,8 +194,144 @@ void actor_behavior_update(void) BANKED {
 				case 255:
 					deactivate_actor(actor);
 					break;
+			}
+			break;			
+			case 3://Bowser
+			switch(actor_states[i]){
+				case 0: //Init
+					if ((((actor->pos.x >> 4) + 8) - draw_scroll_x) < BEHAVIOR_ACTIVATION_THRESHOLD){ actor_states[i] = 1; }
+					break;
+				case 1: //Main state
+					if ((((actor->pos.x >> 4) + 8) - draw_scroll_x) > BEHAVIOR_DEACTIVATION_THRESHOLD){ 
+						actor_states[i] = 255; 
+						break;
+					}
+					apply_gravity(i);
+					apply_velocity(i, actor);
+					//Animation
+					if (PLAYER.pos.x < actor->pos.x) {
+						actor_set_dir(actor, DIR_LEFT, TRUE);
+					} else {
+						actor_set_dir(actor, DIR_RIGHT, TRUE);
+					}
+					break;
+				case 2: //Jump state
+					if ((((actor->pos.x >> 4) + 8) - draw_scroll_x) > BEHAVIOR_DEACTIVATION_THRESHOLD){ 
+						actor_states[i] = 255; 
+						break;
+					}
+					actor_vel_y[i] += (plat_grav >> 10);
+					apply_velocity(i, actor);
+					//Animation
+					if (PLAYER.pos.x < actor->pos.x) {
+						actor_set_anim(actor, ANIM_JUMP_LEFT);
+					} else {
+						actor_set_anim(actor, ANIM_JUMP_RIGHT);
+					}
+					if (actor_vel_y[i] > 0){
+						actor_states[i] = 1;
+					}
+					break;
+				case 255: //Deactivate
+					deactivate_actor(actor);
+					break;
 			}		
-			break;					
+			break;	
+			case 4://Bowser fire
+			switch(actor_states[i]){
+				case 0: //Init
+					if ((((actor->pos.x >> 4) + 8) - draw_scroll_x) < BEHAVIOR_ACTIVATION_THRESHOLD){ actor_states[i] = 1; }
+					break;
+				case 1: //Main state
+					if ((((actor->pos.x >> 4) + 8) - draw_scroll_x) > BEHAVIOR_DEACTIVATION_THRESHOLD){ 
+						actor_states[i] = 255; 
+						break;
+					}
+					actor->pos.x =  actor->pos.x + actor_vel_x[i];
+					break;
+				case 255: //Deactivate
+					deactivate_actor(actor);
+					break;
+			}		
+			break;			
+			case 5://Pyrahna Plant
+			switch(actor_states[i]){
+				case 0: //Init
+					if ((((actor->pos.x >> 4) + 8) - draw_scroll_x) < BEHAVIOR_ACTIVATION_THRESHOLD){ 
+						actor_states[i] = 1; 
+						actor_counter_a[i] = 180;
+					}
+					break;
+				case 1: //Main state
+					if ((((actor->pos.x >> 4) + 8) - draw_scroll_x) > BEHAVIOR_DEACTIVATION_THRESHOLD){ 
+						actor_states[i] = 255; 
+						break;
+					}
+					if (actor_vel_y[i] > 0){
+						actor->pos.y += 16;
+						actor_vel_y[i]--;
+					}
+					else if (((actor->pos.y >> 7) - 2) != PLAYER.pos.y >> 7){ //dont pop out if player is on top
+						actor_counter_a[i]--;
+						if (actor_counter_a[i] <= 0){
+							actor_counter_a[i] = 120;
+							actor_vel_y[i] = 16;
+							actor_states[i] = 2; 
+						}
+					}
+					break;
+				case 2: //Out state
+					if ((((actor->pos.x >> 4) + 8) - draw_scroll_x) > BEHAVIOR_DEACTIVATION_THRESHOLD){ 
+						actor_states[i] = 255; 
+						break;
+					}
+					if (actor_vel_y[i] > 0){
+						actor->pos.y -= 16;
+						actor_vel_y[i]--;
+					}
+					actor_counter_a[i]--;
+					if (actor_counter_a[i] <= 0){
+						actor_counter_a[i] = 180;
+						actor_vel_y[i] = 16;
+						actor_states[i] = 1; 
+					}
+					break;
+				case 255: //Deactivate
+					deactivate_actor(actor);
+					break;
+			}		
+			break;
+			case 6: //Red Koopa
+			switch(actor_states[i]){
+				case 0:
+					if ((((actor->pos.x >> 4) + 8) - draw_scroll_x) < BEHAVIOR_ACTIVATION_THRESHOLD){ actor_states[i] = 1; }
+					break;
+				case 1: //Main state
+					if ((((actor->pos.x >> 4) + 8) - draw_scroll_x) > BEHAVIOR_DEACTIVATION_THRESHOLD){ 
+						actor_states[i] = 255; 
+						break;
+					}
+					apply_gravity(i);
+					apply_velocity_avoid_fall(i, actor);
+					//Actor Collision					
+					actor_t * hit_actor = actor_overlapping_bb(&actor->bounds, &actor->pos, actor, FALSE);
+					if (hit_actor && hit_actor->script.bank){
+						script_execute(hit_actor->script.bank, hit_actor->script.ptr, 0, 1, (UWORD)(actor->collision_group));
+					}
+					//Animation
+					if (actor_vel_x[i] < 0) {
+						actor_set_dir(actor, DIR_LEFT, TRUE);
+					} else if (actor_vel_x[i] > 0) {
+						actor_set_dir(actor, DIR_RIGHT, TRUE);
+					} else {
+						actor_set_anim_idle(actor);
+					}
+					break;
+				case 255:
+					deactivate_actor(actor);
+					break;
+			}
+			break;				
 		}			
 	}
 }

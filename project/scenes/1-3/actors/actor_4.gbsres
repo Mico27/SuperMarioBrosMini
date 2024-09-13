@@ -1,0 +1,92 @@
+{
+  "_resourceType": "actor",
+  "id": "68a31a7d-0aae-4bb1-bc3c-c65c79009bed",
+  "name": "",
+  "frame": 0,
+  "animate": false,
+  "spriteSheetId": "f372b635-2699-4923-9caf-067e60099a3f",
+  "prefabId": "",
+  "direction": "down",
+  "moveSpeed": 0.5,
+  "animSpeed": 15,
+  "paletteId": "",
+  "isPinned": false,
+  "persistent": false,
+  "collisionGroup": "3",
+  "prefabScriptOverrides": {
+    "837f5b59-bff4-4d13-a3ea-563b8fed07b5": {
+      "id": "837f5b59-bff4-4d13-a3ea-563b8fed07b5",
+      "args": {
+        "y": {
+          "type": "number",
+          "value": 8
+        }
+      }
+    },
+    "1d23d72c-3c1c-4e50-9c58-140cc42a3118": {
+      "id": "1d23d72c-3c1c-4e50-9c58-140cc42a3118",
+      "args": {
+        "y": {
+          "type": "number",
+          "value": -18
+        }
+      }
+    },
+    "b3da2a26-3725-4f96-bc30-d3b3298ca8f7": {
+      "id": "b3da2a26-3725-4f96-bc30-d3b3298ca8f7",
+      "args": {
+        "y": {
+          "type": "number",
+          "value": 10
+        }
+      }
+    }
+  },
+  "symbol": "actor_44",
+  "script": [],
+  "startScript": [],
+  "updateScript": [
+    {
+      "command": "EVENT_ACTOR_MOVE_RELATIVE",
+      "args": {
+        "actorId": "$self$",
+        "x": {
+          "type": "number",
+          "value": -3
+        },
+        "y": {
+          "type": "number",
+          "value": 0
+        },
+        "moveType": "horizontal",
+        "useCollisions": false
+      },
+      "id": "4341fc93-2252-4603-bcd0-19792482dde9",
+      "children": {}
+    },
+    {
+      "command": "EVENT_ACTOR_MOVE_RELATIVE",
+      "args": {
+        "actorId": "$self$",
+        "x": {
+          "type": "number",
+          "value": 3
+        },
+        "y": {
+          "type": "number",
+          "value": 0
+        },
+        "moveType": "horizontal",
+        "useCollisions": false
+      },
+      "id": "a6c3d560-7e47-45cd-abc2-66cbe35a17be",
+      "children": {}
+    }
+  ],
+  "hit1Script": [],
+  "hit2Script": [],
+  "hit3Script": [],
+  "x": 131,
+  "y": 9,
+  "_index": 6
+}

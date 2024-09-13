@@ -14,6 +14,7 @@
 #include "vm.h"
 #include "states/playerstates.h"
 #include "meta_tiles.h"
+#include "data/game_globals.h"
 
 #ifndef INPUT_PLATFORM_JUMP
 #define INPUT_PLATFORM_JUMP        INPUT_A
@@ -206,6 +207,14 @@ void ground_state(void) BANKED {
 					pl_vel_x = 0;
 					col = 1;
 					last_wall = 1;
+					switch(sram_map_data[VRAM_OFFSET(tile_x, tile_start)]){
+						case 61: //top part of right pipe
+						case 62: //bottom part of right pipe
+							if (specific_events[ENTER_RIGHT_PIPE_EVENT].script_addr != 0){
+								script_execute(specific_events[ENTER_RIGHT_PIPE_EVENT].script_bank, specific_events[ENTER_RIGHT_PIPE_EVENT].script_addr, 0, 0);
+							}
+							break;
+					}
 					on_player_metatile_collision(tile_x, tile_start, DIR_RIGHT); 
 					break;
                 } else {
@@ -239,8 +248,8 @@ void ground_state(void) BANKED {
     {
         deltaY = CLAMP(deltaY, -127, 127);
 
-        UBYTE tile_start = (((PLAYER.pos.x >> 4) + PLAYER.bounds.left)  >> 3);
-        UBYTE tile_end   = (((PLAYER.pos.x >> 4) + PLAYER.bounds.right) >> 3) + 1;
+        UBYTE tile_start = (((PLAYER.pos.x >> 4) + PLAYER.bounds.left - ((pl_vel_x > plat_walk_vel)?3:0))  >> 3); //extend check by 3 pixels if running to be able to run over 1 tile gaps
+        UBYTE tile_end   = (((PLAYER.pos.x >> 4) + PLAYER.bounds.right + ((pl_vel_x < -plat_walk_vel)?3:0)) >> 3) + 1;
 		UBYTE is_leftmost = 1;
         if (deltaY > 0) {
             //Moving Downward
@@ -837,6 +846,9 @@ void crouch_state(void) BANKED {
 
     //Check for final frame
     if (que_state != CROUCH_STATE){
+		if (script_memory[VAR_MARIOSTATUS_0] > 0){
+			PLAYER.bounds.top = -7;
+		}		
         plat_state = CROUCH_END;
     }
 
@@ -1025,39 +1037,40 @@ void jump_state(void) BANKED {
         }
 
         //Step-Check for collisions one tile left or right for each avatar height tile
-        if (new_x > PLAYER.pos.x) {
-            tile_x = ((new_x >> 4) + PLAYER.bounds.right) >> 3;
+        
+        tile_x = ((new_x >> 4) + PLAYER.bounds.right) >> 3;
 
-            while (tile_start < tile_end) {
-               
-                col = tile_at(tile_x, tile_start);
-                if (col & COLLISION_LEFT) {
-                    
-					new_x = (((tile_x << 3) - PLAYER.bounds.right) << 4) - 1;
-					pl_vel_x = 0;
-					col = 1;
-					last_wall = 1;
-					break;
-                }
-                tile_start++;
+        while (tile_start < tile_end) {
+           
+            col = tile_at(tile_x, tile_start);
+            if (col & COLLISION_LEFT) {
+                
+				new_x = (((tile_x << 3) - PLAYER.bounds.right) << 4) - 1;
+				pl_vel_x = 0;
+				col = 1;
+				last_wall = 1;
+				break;
             }
-        } else if (new_x < PLAYER.pos.x) {
-            tile_x = ((new_x >> 4) + PLAYER.bounds.left) >> 3;           
-
-            while (tile_start < tile_end) {
-                col = tile_at(tile_x, tile_start);
-
-                if (col & COLLISION_RIGHT) {
-                    
-                    new_x = ((((tile_x + 1) << 3) - PLAYER.bounds.left) << 4) + 1;
-                    pl_vel_x = 0;
-                    col = -1;
-                    last_wall = -1;
-                    break;
-                }
-                tile_start++;
-            }
+            tile_start++;
         }
+        
+		tile_start = (((PLAYER.pos.y >> 4) + PLAYER.bounds.top)    >> 3);
+        tile_x = ((new_x >> 4) + PLAYER.bounds.left) >> 3;           
+
+        while (tile_start < tile_end) {
+            col = tile_at(tile_x, tile_start);
+
+            if (col & COLLISION_RIGHT) {
+                
+                new_x = ((((tile_x + 1) << 3) - PLAYER.bounds.left) << 4) + 1;
+                pl_vel_x = 0;
+                col = -1;
+                last_wall = -1;
+                break;
+            }
+            tile_start++;
+        }
+        
         PLAYER.pos.x = new_x;
     }
 
@@ -1115,30 +1128,27 @@ void jump_state(void) BANKED {
 
         } else if (deltaY < 0) {
             //Moving Upward
+			tile_start = (((PLAYER.pos.x >> 4) + ((PLAYER.bounds.left + PLAYER.bounds.right) >> 1))  >> 3);
             WORD new_y = PLAYER.pos.y + deltaY;
             UBYTE tile_y = (((new_y >> 4) + PLAYER.bounds.top) >> 3);
-            while (tile_start < tile_end) {
-                if (tile_at(tile_start, tile_y) & COLLISION_BOTTOM) {
-                    new_y = ((((UBYTE)(tile_y + 1) << 3) - PLAYER.bounds.top) << 4) + 1;
-                    pl_vel_y = 0;
-                    //MP Test: Attempting stuff to stop the player from continuing upward
-                    if(actor_attached){
-                        temp_y = last_actor->pos.y;
-                        if (last_actor->bounds.top > 0){
-                            temp_y += last_actor->bounds.top + last_actor->bounds.bottom << 5;
-                        }
-                        new_y = temp_y;
+            if (tile_at(tile_start, tile_y) & COLLISION_BOTTOM) {
+                new_y = ((((UBYTE)(tile_y + 1) << 3) - PLAYER.bounds.top) << 4) + 1;
+                pl_vel_y = 0;
+                //MP Test: Attempting stuff to stop the player from continuing upward
+                if(actor_attached){
+                    temp_y = last_actor->pos.y;
+                    if (last_actor->bounds.top > 0){
+                        temp_y += last_actor->bounds.top + last_actor->bounds.bottom << 5;
                     }
-                    ct_val = 0;
-                    que_state = FALL_INIT;
-                    actor_attached = FALSE;
-					on_player_metatile_collision(tile_start, tile_y, DIR_UP); 
-                    break;
-                } else {
-					reset_collision_cache(DIR_UP);
-				}
-                tile_start++;
-            }
+                    new_y = temp_y;
+                }
+                ct_val = 0;
+                que_state = FALL_INIT;
+                actor_attached = FALSE;
+				on_player_metatile_collision(tile_start, tile_y, DIR_UP); 
+            } else {
+				reset_collision_cache(DIR_UP);
+			}
             PLAYER.pos.y = new_y;
         }
     }

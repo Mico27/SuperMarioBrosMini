@@ -141,6 +141,10 @@ UBYTE ui_alt_draw_text_buffer_char(void) BANKED {
                 // fall down to default
             default:
 				UBYTE tile = ReadBankedUBYTE(char_tileset_mapping + (*ui_alt_text_ptr) , BANK(char_tileset_mapping));
+				//warp around of vram instead of next line
+				if (((UBYTE)ui_alt_dest_ptr >> 5) != ((UBYTE)ui_alt_dest_base >> 5)) {
+					ui_alt_dest_ptr -= 32u;
+				}
                 ui_alt_set_tile(ui_alt_dest_ptr, tile);
 				ui_alt_dest_ptr++;
                 ui_alt_text_ptr++;

@@ -41,8 +41,8 @@ void start_level_init(void) BANKED {
 		break;
 		case 1:
 			//Pipe
-			PLAYER.pos.x = PLAYER.pos.x + 64; //horizontal offset to middle of pipe
-			entry_y = PLAYER.pos.y;
+			PLAYER.pos.x = entry_x;
+			PLAYER.pos.y = entry_y;
 			PLAYER.pos.y = PLAYER.pos.y + 128;//Offset below entry to animate coming out of pipe
 			load_animations(PLAYER.sprite.ptr, PLAYER.sprite.bank, ANIM_STATE_PIPETRANSITION, PLAYER.animations); //set pipe transition animation
 			que_state = START_LEVEL_STATE;

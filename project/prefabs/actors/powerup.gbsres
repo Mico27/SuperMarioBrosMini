@@ -1,0 +1,342 @@
+{
+  "_resourceType": "actorPrefab",
+  "id": "3f7e36ec-45fb-4f36-95f5-b24444c1ac89",
+  "name": "Powerup",
+  "frame": 0,
+  "animate": false,
+  "spriteSheetId": "8dbb443a-eb83-48bb-86c9-ffd9012f45c7",
+  "moveSpeed": 1,
+  "animSpeed": 15,
+  "paletteId": "",
+  "persistent": false,
+  "collisionGroup": "1",
+  "prefabScriptOverrides": {},
+  "_index": 1,
+  "script": [
+    {
+      "command": "EVENT_IF",
+      "args": {
+        "condition": {
+          "type": "eq",
+          "valueA": {
+            "type": "variable",
+            "value": "24"
+          },
+          "valueB": {
+            "type": "number",
+            "value": 0
+          }
+        },
+        "__collapseElse": false
+      },
+      "children": {
+        "true": [
+          {
+            "command": "EVENT_GROUP",
+            "args": {
+              "__label": "Grow Mario",
+              "__collapse": true
+            },
+            "children": {
+              "true": [
+                {
+                  "command": "EVENT_SCRIPT_LOCK",
+                  "args": {
+                    "__collapse": true
+                  },
+                  "id": "9ff0a214-5fa4-4927-b870-da4397b5b1f5",
+                  "children": {}
+                },
+                {
+                  "command": "EVENT_SET_VALUE",
+                  "args": {
+                    "variable": "24",
+                    "value": {
+                      "type": "number",
+                      "value": 1
+                    },
+                    "__collapse": true,
+                    "__comment": false
+                  },
+                  "id": "bd88c1a4-e93b-401d-9f53-c1ff967f9bf2",
+                  "children": {}
+                },
+                {
+                  "command": "EVENT_ACTOR_SET_STATE",
+                  "args": {
+                    "actorId": "player",
+                    "spriteStateId": "ChangeSize",
+                    "loopAnim": true,
+                    "__collapse": true
+                  },
+                  "id": "5fda7801-4160-46bc-8390-266b78f86836",
+                  "children": {}
+                },
+                {
+                  "command": "EVENT_WAIT",
+                  "args": {
+                    "time": 2,
+                    "frames": 15,
+                    "units": "frames",
+                    "__collapse": true
+                  },
+                  "id": "947dfdac-6e71-4a2c-a008-a00d4616c0fb",
+                  "children": {}
+                },
+                {
+                  "command": "EVENT_PLAYER_SET_SPRITE",
+                  "args": {
+                    "spriteSheetId": "82297e17-ae19-4d6c-84f3-47e5fe14a6ad",
+                    "__collapse": true
+                  },
+                  "id": "26a9bbb1-65e8-4d3e-acfe-50b685a74db2",
+                  "children": {}
+                },
+                {
+                  "command": "EVENT_ACTOR_SET_STATE",
+                  "args": {
+                    "actorId": "player",
+                    "spriteStateId": "ChangeSize",
+                    "loopAnim": true,
+                    "__collapse": true
+                  },
+                  "id": "2b995a7c-2105-4b38-b9fd-35e683b20db1",
+                  "children": {}
+                },
+                {
+                  "command": "EVENT_WAIT",
+                  "args": {
+                    "time": 0.5,
+                    "frames": 15,
+                    "units": "frames",
+                    "__collapse": true
+                  },
+                  "id": "dbb1f81c-e9ba-4e59-a65a-2ed2c9516e78",
+                  "children": {}
+                },
+                {
+                  "command": "EVENT_ACTOR_SET_STATE",
+                  "args": {
+                    "actorId": "player",
+                    "spriteStateId": "",
+                    "loopAnim": true,
+                    "__collapse": true
+                  },
+                  "id": "cdd1a188-546c-4f9b-94e1-7bcf19175b66",
+                  "children": {}
+                },
+                {
+                  "command": "EVENT_SCRIPT_UNLOCK",
+                  "args": {
+                    "__collapse": true
+                  },
+                  "id": "3b36f722-e585-4c09-852a-c54008968c8d",
+                  "children": {}
+                }
+              ]
+            },
+            "id": "cac2d968-8034-4a79-970b-46b45edce635"
+          }
+        ],
+        "false": [
+          {
+            "command": "EVENT_GROUP",
+            "args": {
+              "__label": "Fire Mario",
+              "__collapse": true
+            },
+            "children": {
+              "true": [
+                {
+                  "command": "EVENT_SCRIPT_LOCK",
+                  "args": {
+                    "__collapse": true
+                  },
+                  "id": "db12b2c5-2ee9-4560-a254-ace724b8d218",
+                  "children": {}
+                },
+                {
+                  "command": "EVENT_SET_VALUE",
+                  "args": {
+                    "variable": "24",
+                    "value": {
+                      "type": "number",
+                      "value": 2
+                    },
+                    "__collapse": true,
+                    "__comment": false
+                  },
+                  "id": "b3cf4d7e-5a7c-4f98-bf3f-99ac539fc0fd",
+                  "children": {}
+                },
+                {
+                  "command": "EVENT_PALETTE_SET_SPRITE",
+                  "args": {
+                    "palette0": "f73a43b2-1319-44f1-8f74-bc605d554df8",
+                    "palette1": "keep",
+                    "palette2": "keep",
+                    "palette3": "keep",
+                    "palette4": "keep",
+                    "palette5": "keep",
+                    "palette6": "keep",
+                    "palette7": "keep",
+                    "__collapse": true
+                  },
+                  "id": "561a2fef-825e-4abb-ba59-9286c0a186d1"
+                },
+                {
+                  "command": "EVENT_WAIT",
+                  "args": {
+                    "time": 2,
+                    "frames": 15,
+                    "units": "frames",
+                    "__collapse": true
+                  },
+                  "id": "f0b47812-46bd-410f-a424-a93435002234",
+                  "children": {}
+                },
+                {
+                  "command": "EVENT_PALETTE_SET_SPRITE",
+                  "args": {
+                    "palette0": "208e4138-0984-4c70-aaa1-3a3d73cc30f6",
+                    "palette1": "keep",
+                    "palette2": "keep",
+                    "palette3": "keep",
+                    "palette4": "keep",
+                    "palette5": "keep",
+                    "palette6": "keep",
+                    "palette7": "keep",
+                    "__collapse": true
+                  },
+                  "id": "a32a7dc5-3095-4ef6-9070-facf6618c6d1"
+                },
+                {
+                  "command": "EVENT_WAIT",
+                  "args": {
+                    "time": 0.5,
+                    "frames": 15,
+                    "units": "frames",
+                    "__collapse": true
+                  },
+                  "id": "6212f0e4-c3de-4c8d-87f4-963d9e185654",
+                  "children": {}
+                },
+                {
+                  "command": "EVENT_PALETTE_SET_SPRITE",
+                  "args": {
+                    "palette0": "f73a43b2-1319-44f1-8f74-bc605d554df8",
+                    "palette1": "keep",
+                    "palette2": "keep",
+                    "palette3": "keep",
+                    "palette4": "keep",
+                    "palette5": "keep",
+                    "palette6": "keep",
+                    "palette7": "keep",
+                    "__collapse": true
+                  },
+                  "id": "3fed7388-b42c-4b1a-bbd7-e058b0c5efbf"
+                },
+                {
+                  "command": "EVENT_SCRIPT_UNLOCK",
+                  "args": {
+                    "__collapse": true
+                  },
+                  "id": "4b175589-c6e2-4159-96e5-07008183fa08",
+                  "children": {}
+                }
+              ]
+            },
+            "id": "018208fd-6b3b-4b96-9152-a0f67d1dafab"
+          }
+        ]
+      },
+      "id": "f925d565-c74e-430f-9869-e91c59ac3f3b"
+    },
+    {
+      "command": "EVENT_LAUNCH_PROJECTILE",
+      "args": {
+        "spriteSheetId": "8a540f8d-26fb-41fc-b83c-ce6c4807188b",
+        "spriteStateId": "Score20",
+        "actorId": "0",
+        "x": 0,
+        "y": 0,
+        "directionType": "direction",
+        "otherActorId": "$self$",
+        "direction": "up",
+        "angle": 0,
+        "angleVariable": "V0",
+        "targetActorId": "$self$",
+        "initialOffset": 8,
+        "speed": 0.25,
+        "animSpeed": 127,
+        "lifeTime": 0.5,
+        "loopAnim": false,
+        "destroyOnHit": false,
+        "collisionGroup": "3",
+        "collisionMask": [
+          "1"
+        ],
+        "__collapse": true,
+        "__section": "projectile"
+      },
+      "id": "cfe2ff88-7f84-4d86-b66b-364114ff9925",
+      "children": {}
+    },
+    {
+      "command": "EVENT_SET_VALUE",
+      "args": {
+        "variable": "12",
+        "value": {
+          "type": "expression",
+          "value": "$12$ + 20"
+        },
+        "__collapse": true,
+        "__comment": false
+      },
+      "id": "1b792750-ba79-42df-a231-11d895944295",
+      "children": {}
+    },
+    {
+      "command": "EVENT_GBVM_SCRIPT",
+      "args": {
+        "script": "VM_LOAD_TEXT 2 \n.dw VAR_COINS\n.dw VAR_SCORE\n.asciz \"\\003\\012\\002%D2\\003\\001\\002%D6\"\nVM_CALL_NATIVE b_ui_alt_display_text, _ui_alt_display_text",
+        "references": [
+          {
+            "type": "variable",
+            "id": "6"
+          },
+          {
+            "type": "variable",
+            "id": "12"
+          }
+        ],
+        "__collapse": true
+      },
+      "id": "ea008923-0aea-426b-9c16-9a53f192c32d",
+      "children": {}
+    },
+    {
+      "command": "EVENT_ACTOR_DEACTIVATE",
+      "args": {
+        "actorId": "$self$",
+        "__collapse": true
+      },
+      "id": "60b9b930-2c5b-4b4e-b864-a7e333a5ec55",
+      "children": {}
+    }
+  ],
+  "startScript": [
+    {
+      "command": "EVENT_ACTOR_DEACTIVATE",
+      "args": {
+        "actorId": "$self$"
+      },
+      "id": "7fe15b0c-1f6a-456a-951d-e1e05f4e1cc4",
+      "children": {}
+    }
+  ],
+  "updateScript": [],
+  "hit1Script": [],
+  "hit2Script": [],
+  "hit3Script": []
+}

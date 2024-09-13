@@ -1,0 +1,184 @@
+{
+  "_resourceType": "triggerPrefab",
+  "id": "f38aabc5-0eb5-481a-958c-6375442eb08a",
+  "name": "AxeTrigger",
+  "script": [
+    {
+      "command": "EVENT_TIMER_DISABLE",
+      "args": {
+        "timer": 1
+      },
+      "id": "e4d45e47-4baf-42e6-8c22-91e7056781ce"
+    },
+    {
+      "command": "EVENT_REPLACE_META_TILE",
+      "args": {
+        "x": {
+          "type": "expression",
+          "value": "140"
+        },
+        "y": {
+          "type": "number",
+          "value": 12
+        },
+        "metatile_id": {
+          "type": "number",
+          "value": 0
+        }
+      },
+      "id": "53624e17-1d56-409d-b42b-69c7e9d67e4f"
+    },
+    {
+      "command": "EVENT_WAIT",
+      "args": {
+        "time": 0.5,
+        "frames": 4,
+        "units": "frames"
+      },
+      "id": "815971f2-7129-458c-9e95-10e0e886e916"
+    },
+    {
+      "command": "EVENT_LOOP_FOR",
+      "args": {
+        "variable": "34",
+        "from": {
+          "type": "number",
+          "value": 12
+        },
+        "comparison": ">=",
+        "to": {
+          "type": "number",
+          "value": 0
+        },
+        "operation": "-=",
+        "value": {
+          "type": "number",
+          "value": 1
+        }
+      },
+      "children": {
+        "true": [
+          {
+            "command": "EVENT_REPLACE_META_TILE",
+            "args": {
+              "x": {
+                "type": "expression",
+                "value": "$34$ + 128"
+              },
+              "y": {
+                "type": "number",
+                "value": 13
+              },
+              "metatile_id": {
+                "type": "number",
+                "value": 0
+              }
+            },
+            "id": "088fc4f1-b5bc-43d6-be88-c1349c76f4af"
+          },
+          {
+            "command": "EVENT_WAIT",
+            "args": {
+              "time": 0.5,
+              "frames": 4,
+              "units": "frames"
+            },
+            "id": "9d492d69-6051-44d3-807d-ca12ceb1b353"
+          }
+        ]
+      },
+      "id": "bee2d02a-e937-4c54-a33f-4400268377bb"
+    },
+    {
+      "command": "EVENT_ACTOR_SET_STATE",
+      "args": {
+        "actorId": "$self$",
+        "spriteStateId": "Death",
+        "loopAnim": true
+      },
+      "id": "a25ff700-a816-4eb7-8939-416e72b40271"
+    },
+    {
+      "command": "EVENT_ACTOR_STOP_UPDATE",
+      "args": {
+        "actorId": "$self$"
+      },
+      "id": "82936388-0bc7-4bd9-903c-8af0d2a661f4"
+    },
+    {
+      "command": "EVENT_WAIT",
+      "args": {
+        "time": 0.5,
+        "frames": 30,
+        "units": "frames"
+      },
+      "id": "89f3f236-bd88-4ce4-8d9c-dcf27536680f"
+    },
+    {
+      "command": "EVENT_ACTOR_SET_MOVEMENT_SPEED",
+      "args": {
+        "actorId": "$self$",
+        "speed": 1
+      },
+      "id": "40f01315-a8d9-491e-95d4-11d9db67f466"
+    },
+    {
+      "command": "EVENT_THREAD_START",
+      "args": {
+        "variable": "25",
+        "__scriptTabs": "true"
+      },
+      "children": {
+        "true": [
+          {
+            "command": "EVENT_CAMERA_MOVE_TO",
+            "args": {
+              "x": {
+                "type": "number",
+                "value": 144
+              },
+              "y": {
+                "type": "number",
+                "value": 0
+              },
+              "speed": 1
+            },
+            "id": "1e45f792-11e6-4471-ae1e-d42d4b5857e3"
+          }
+        ]
+      },
+      "id": "4c73de0b-e605-4b7a-9956-3c79f91c53b3"
+    },
+    {
+      "command": "EVENT_START_SIMULATED_INPUTS",
+      "args": {
+        "input_cancel": [],
+        "__collapse": false
+      },
+      "children": {
+        "input_sequence": [
+          {
+            "command": "EVENT_SET_SIMULATED_INPUT",
+            "args": {
+              "input": [
+                "right"
+              ]
+            },
+            "id": "22ab6405-30ef-4295-9fd3-e3ebc3349996"
+          },
+          {
+            "command": "EVENT_WAIT",
+            "args": {
+              "time": 2,
+              "frames": 30
+            },
+            "id": "6bdab25c-db88-47a4-93e9-8a707d2f7dfc"
+          }
+        ],
+        "input_sequence_completed": []
+      },
+      "id": "36b3f815-1d20-446c-b2e9-1d5a5e782d97"
+    }
+  ],
+  "leaveScript": []
+}

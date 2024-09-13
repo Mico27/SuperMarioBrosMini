@@ -102,15 +102,15 @@ BUGS:
 #define MAX_METATILE_CHANGE_CHECKS 4
 
 #define ANIM_STATE_DEFAULT 0
-#define ANIM_STATE_CROUCH 2
-#define ANIM_STATE_SKID 5
-#define ANIM_STATE_CLIMB 6
-#define ANIM_STATE_PIPETRANSITION 7
+#define ANIM_STATE_CROUCH 3
+#define ANIM_STATE_SKID 6
+#define ANIM_STATE_CLIMB 7
+#define ANIM_STATE_PIPETRANSITION 8
 #define ANIM_STATE_DEATH 1
 
 script_state_t state_events[40];
 
-script_state_t specific_events[3];
+script_state_t specific_events[4];
 
 UBYTE grounded;
 
@@ -306,7 +306,7 @@ void platform_update(void) BANKED {
         case GROUND_INIT:
             que_state = GROUND_STATE;
 			load_animations(PLAYER.sprite.ptr, PLAYER.sprite.bank, ANIM_STATE_DEFAULT, PLAYER.animations);
-            pl_vel_y = 256;
+            //pl_vel_y = 256;
             ct_val = plat_coyote_max; 
             jump_reduction_val = 0;
 			enemy_bounce = 0;
@@ -316,7 +316,8 @@ void platform_update(void) BANKED {
 		case CROUCH_INIT:
 			que_state = CROUCH_STATE;
 			load_animations(PLAYER.sprite.ptr, PLAYER.sprite.bank, ANIM_STATE_CROUCH, PLAYER.animations);
-			pl_vel_y = 256;
+			PLAYER.bounds.top = 1;
+			//pl_vel_y = 256;
 		case CROUCH_STATE:
 			crouch_state();
 			break;
@@ -468,7 +469,6 @@ void on_player_metatile_collision(UBYTE tile_x, UBYTE tile_y, UBYTE direction) B
 	if (actors_collisionx_cache[direction] != tile_x || actors_collisiony_cache[direction] != tile_y) {
 		actors_collisionx_cache[direction] = tile_x;
 		actors_collisiony_cache[direction] = tile_y;
-				
 		switch(direction){
 			case DIR_UP:
 				UBYTE tile_id = sram_map_data[VRAM_OFFSET(tile_x, tile_y)];
@@ -476,7 +476,7 @@ void on_player_metatile_collision(UBYTE tile_x, UBYTE tile_y, UBYTE direction) B
 					case 5://coin block
 					case 7://brick	
 					case 152://multi coin brick
-					case 153://beanstalk brick
+					case 153://powerup brick
 					case 154://star brick
 					case 155://1up brick
 					case 156://powerup block	
@@ -730,7 +730,7 @@ void fall_state(void) BANKED {
                         //The distinction here is used so that we can check the velocity when the player hits the ground.
                         if(plat_state == GROUND_STATE){
                             que_state = GROUND_STATE; 
-                            pl_vel_y = 256;
+                            pl_vel_y = 0;
                         } else if(plat_state == GROUND_INIT){
                             que_state = GROUND_STATE;
                         } else {que_state = GROUND_INIT;}		

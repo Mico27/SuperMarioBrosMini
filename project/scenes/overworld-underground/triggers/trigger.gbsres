@@ -1,6 +1,6 @@
 {
   "_resourceType": "trigger",
-  "id": "ee2fe183-ab62-4fc5-bfee-a041f3017f41",
+  "id": "af1ea37c-e869-4387-905d-165e03f3f153",
   "name": "",
   "prefabId": "",
   "_index": 0,
@@ -14,42 +14,48 @@
     {
       "command": "EVENT_SET_VALUE",
       "args": {
+        "variable": "29",
+        "value": {
+          "type": "number",
+          "value": 1
+        }
+      },
+      "id": "2c593b11-5bc9-4b42-b553-af0e10a3a831"
+    },
+    {
+      "command": "EVENT_SET_VALUE",
+      "args": {
         "variable": "22",
         "value": {
           "type": "number",
           "value": 0
         }
       },
-      "id": "9333e2b7-0cf6-45e0-b90f-b2c332f97b43"
+      "id": "1e25f3ff-c062-4c89-9d2a-ddd7b03a1ffe"
     },
     {
-      "command": "EVENT_ENGINE_FIELD_SET",
+      "command": "EVENT_SET_VALUE",
       "args": {
-        "engineFieldKey": "fade_style",
+        "variable": "31",
         "value": {
           "type": "number",
-          "value": 1
+          "value": 0
         }
       },
-      "id": "a91a39c3-1196-4ca1-8a42-410e32b49688"
-    },
-    {
-      "command": "EVENT_CALL_CUSTOM_EVENT",
-      "args": {
-        "customEventId": "1da14dfe-ad02-4e47-addd-68af4399854d"
-      },
-      "id": "8de7e4bb-022b-4b29-b267-7dffefde9509"
+      "id": "e8fbbce1-38d5-477a-b18e-ba4151053c36"
     }
   ],
   "leaveScript": [
     {
-      "command": "EVENT_REMOVE_INPUT_SCRIPT",
+      "command": "EVENT_SET_VALUE",
       "args": {
-        "input": [
-          "right"
-        ]
+        "variable": "29",
+        "value": {
+          "type": "number",
+          "value": 0
+        }
       },
-      "id": "6b0eb1b1-feb6-4a73-98bd-e25f3415f932"
+      "id": "fb19c953-285a-4e31-8d34-0f24878c1dd0"
     }
   ]
 }

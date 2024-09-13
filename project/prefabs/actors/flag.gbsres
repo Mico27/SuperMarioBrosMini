@@ -11,24 +11,7 @@
   "persistent": false,
   "collisionGroup": "",
   "script": [],
-  "startScript": [
-    {
-      "command": "EVENT_ACTOR_SET_POSITION_RELATIVE",
-      "args": {
-        "actorId": "$self$",
-        "x": {
-          "type": "number",
-          "value": 4
-        },
-        "y": {
-          "type": "number",
-          "value": 0
-        },
-        "units": "pixels"
-      },
-      "id": "91ddb716-6d60-4c68-9a2d-c07a1dccf8a4"
-    }
-  ],
+  "startScript": [],
   "updateScript": [],
   "hit1Script": [],
   "hit2Script": [],
