@@ -22,10 +22,10 @@
       "command": "EVENT_IF",
       "args": {
         "condition": {
-          "type": "eq",
+          "type": "lte",
           "valueA": {
             "type": "variable",
-            "value": "23"
+            "value": "38"
           },
           "valueB": {
             "type": "number",
@@ -37,17 +37,40 @@
       "children": {
         "true": [
           {
-            "command": "EVENT_CALL_CUSTOM_EVENT",
+            "command": "EVENT_IF",
             "args": {
-              "customEventId": "7cc914c2-6df4-4f26-a46f-72d7e3165f2c",
-              "__comment": false
+              "condition": {
+                "type": "eq",
+                "valueA": {
+                  "type": "variable",
+                  "value": "23"
+                },
+                "valueB": {
+                  "type": "number",
+                  "value": 0
+                }
+              },
+              "__collapseElse": true
             },
-            "id": "65d7f6f8-c7c8-4b2c-a260-cafec091429d"
+            "children": {
+              "true": [
+                {
+                  "command": "EVENT_CALL_CUSTOM_EVENT",
+                  "args": {
+                    "customEventId": "7cc914c2-6df4-4f26-a46f-72d7e3165f2c",
+                    "__comment": false
+                  },
+                  "id": "65d7f6f8-c7c8-4b2c-a260-cafec091429d"
+                }
+              ],
+              "false": []
+            },
+            "id": "0e905cf5-e2cd-49dc-8114-4d7a511ffed3"
           }
         ],
         "false": []
       },
-      "id": "0e905cf5-e2cd-49dc-8114-4d7a511ffed3"
+      "id": "1358709a-d6cf-4a97-ba05-73506b4f7243"
     }
   ],
   "startScript": [

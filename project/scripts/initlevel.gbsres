@@ -58,7 +58,7 @@
       "command": "EVENT_GROUP",
       "args": {
         "__label": "Initialize Level UI",
-        "__collapse": false
+        "__collapse": true
       },
       "children": {
         "true": [
@@ -501,7 +501,7 @@
       "command": "EVENT_GROUP",
       "args": {
         "__label": "Init Mario",
-        "__collapse": true
+        "__collapse": false
       },
       "children": {
         "true": [
@@ -531,7 +531,8 @@
                   "value": 0
                 }
               },
-              "__collapseElse": false
+              "__collapseElse": false,
+              "__collapse": true
             },
             "children": {
               "true": [
@@ -556,10 +557,131 @@
               ]
             },
             "id": "c7242b4a-e28f-4f52-9574-70b5be674976"
+          },
+          {
+            "command": "EVENT_SET_VALUE",
+            "args": {
+              "variable": "38",
+              "value": {
+                "type": "number",
+                "value": 0
+              },
+              "__collapse": true
+            },
+            "id": "8731f7a6-a07a-4a23-8868-cd801495a2d2"
           }
         ]
       },
       "id": "d64619ef-512f-442a-976c-c2d3c8de2d0a"
+    },
+    {
+      "command": "EVENT_GROUP",
+      "args": {
+        "__label": "Set palettes",
+        "__collapse": true
+      },
+      "children": {
+        "true": [
+          {
+            "command": "EVENT_IF",
+            "args": {
+              "condition": {
+                "type": "eq",
+                "valueA": {
+                  "type": "variable",
+                  "value": "24"
+                },
+                "valueB": {
+                  "type": "number",
+                  "value": 2
+                }
+              },
+              "__collapseElse": false,
+              "__collapse": true
+            },
+            "children": {
+              "true": [
+                {
+                  "command": "EVENT_PALETTE_SET_SPRITE_EX",
+                  "args": {
+                    "palette0": "f73a43b2-1319-44f1-8f74-bc605d554df8",
+                    "palette1": "keep",
+                    "palette2": "keep",
+                    "palette3": "keep",
+                    "palette4": "keep",
+                    "palette5": "keep",
+                    "palette6": "keep",
+                    "palette7": "keep",
+                    "commit": false,
+                    "__collapse": true
+                  },
+                  "id": "020e1cfd-ff9f-48c7-b219-ff94bfaf16c6"
+                }
+              ],
+              "false": [
+                {
+                  "command": "EVENT_IF",
+                  "args": {
+                    "condition": {
+                      "type": "eq",
+                      "valueA": {
+                        "type": "variable",
+                        "value": "11"
+                      },
+                      "valueB": {
+                        "type": "number",
+                        "value": 0
+                      }
+                    },
+                    "__collapseElse": false
+                  },
+                  "children": {
+                    "true": [
+                      {
+                        "command": "EVENT_PALETTE_SET_SPRITE_EX",
+                        "args": {
+                          "palette0": "e3b4697e-c57b-4ada-bc32-8e8cf3d244e4",
+                          "palette1": "keep",
+                          "palette2": "keep",
+                          "palette3": "keep",
+                          "palette4": "keep",
+                          "palette5": "keep",
+                          "palette6": "keep",
+                          "palette7": "keep",
+                          "commit": false,
+                          "__collapse": true
+                        },
+                        "id": "ffc0fb3e-aca9-4df4-bac5-a1565a0f33c4"
+                      }
+                    ],
+                    "false": [
+                      {
+                        "command": "EVENT_PALETTE_SET_SPRITE_EX",
+                        "args": {
+                          "palette0": "bef8b617-da16-4cfa-86f2-a468ed493d5c",
+                          "palette1": "keep",
+                          "palette2": "keep",
+                          "palette3": "keep",
+                          "palette4": "keep",
+                          "palette5": "keep",
+                          "palette6": "keep",
+                          "palette7": "keep",
+                          "commit": false,
+                          "__collapse": true
+                        },
+                        "id": "4083e0f1-239a-4ebf-9a9f-0a31143e52e3"
+                      }
+                    ]
+                  },
+                  "id": "6d27c662-7a60-41f8-aa9d-3c12fe48321f"
+                }
+              ]
+            },
+            "id": "467adbc0-f7e2-47a7-bad2-22e0717168d5"
+          }
+        ]
+      },
+      "id": "7408d69c-b7a0-4e45-ba6b-114ebc473adc"
     },
     {
       "command": "EVENT_IF",

@@ -1,0 +1,29 @@
+{
+  "_resourceType": "actorPrefab",
+  "id": "9810ca84-21f0-4c5d-8370-506adf995af1",
+  "name": "Fireball",
+  "frame": 0,
+  "animate": false,
+  "spriteSheetId": "8dbb443a-eb83-48bb-86c9-ffd9012f45c7",
+  "moveSpeed": 1,
+  "animSpeed": 15,
+  "paletteId": "",
+  "persistent": false,
+  "collisionGroup": "",
+  "script": [],
+  "startScript": [
+    {
+      "command": "EVENT_ACTOR_SET_STATE",
+      "args": {
+        "actorId": "$self$",
+        "spriteStateId": "Fireball",
+        "loopAnim": true
+      },
+      "id": "4a09485e-5567-4168-b4a5-0bb38a489752"
+    }
+  ],
+  "updateScript": [],
+  "hit1Script": [],
+  "hit2Script": [],
+  "hit3Script": []
+}

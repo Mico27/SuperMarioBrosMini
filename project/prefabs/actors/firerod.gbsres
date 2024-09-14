@@ -6,12 +6,83 @@
   "animate": false,
   "spriteSheetId": "8dbb443a-eb83-48bb-86c9-ffd9012f45c7",
   "moveSpeed": 1,
-  "animSpeed": 15,
+  "animSpeed": 255,
   "paletteId": "",
   "persistent": false,
   "collisionGroup": "1",
-  "script": [],
+  "script": [
+    {
+      "command": "EVENT_GBVM_SCRIPT",
+      "args": {
+        "script": "VM_SET_CONST_UINT8 _player_iframes, 0",
+        "__collapse": true
+      },
+      "id": "5f517ada-bdc5-4658-b771-51cc69c757da"
+    },
+    {
+      "command": "EVENT_IF",
+      "args": {
+        "condition": {
+          "type": "lte",
+          "valueA": {
+            "type": "variable",
+            "value": "38"
+          },
+          "valueB": {
+            "type": "number",
+            "value": 0
+          }
+        },
+        "__collapseElse": true,
+        "__collapse": true
+      },
+      "children": {
+        "true": [
+          {
+            "command": "EVENT_IF",
+            "args": {
+              "condition": {
+                "type": "eq",
+                "valueA": {
+                  "type": "variable",
+                  "value": "23"
+                },
+                "valueB": {
+                  "type": "number",
+                  "value": 0
+                }
+              },
+              "__collapseElse": true
+            },
+            "children": {
+              "true": [
+                {
+                  "command": "EVENT_CALL_CUSTOM_EVENT",
+                  "args": {
+                    "customEventId": "7cc914c2-6df4-4f26-a46f-72d7e3165f2c",
+                    "__comment": false
+                  },
+                  "id": "280c9f72-6abd-430a-93cc-d16d650270d6"
+                }
+              ],
+              "false": []
+            },
+            "id": "c1278768-0567-413e-9660-bb40a01fef3d"
+          }
+        ],
+        "false": []
+      },
+      "id": "5b3fb34b-9a21-478a-bbc2-84cfc5e23016"
+    }
+  ],
   "startScript": [
+    {
+      "command": "EVENT_ACTOR_COLLISIONS_DISABLE",
+      "args": {
+        "actorId": "$self$"
+      },
+      "id": "9ad6bc00-cb42-43a9-b9af-5a0d812170c9"
+    },
     {
       "command": "EVENT_ACTOR_SET_STATE",
       "args": {
@@ -20,6 +91,17 @@
         "loopAnim": true
       },
       "id": "db1edc56-8a5e-4cb3-b020-d1559fd0830d"
+    },
+    {
+      "command": "EVENT_SET_ACTOR_BEHAVIOR",
+      "args": {
+        "actorId": "$self$",
+        "behaviorId": {
+          "type": "number",
+          "value": 8
+        }
+      },
+      "id": "5274548a-473c-45bb-b625-92f1210ddea3"
     }
   ],
   "updateScript": [],

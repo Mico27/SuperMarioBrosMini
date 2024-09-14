@@ -1,0 +1,57 @@
+{
+  "_resourceType": "script",
+  "id": "70c96f28-b99f-4a17-a885-b993c8676eb8",
+  "name": "OnFireballAttack",
+  "description": "",
+  "variables": {},
+  "actors": {
+    "0": {
+      "id": "0",
+      "name": "Fireball1"
+    },
+    "1": {
+      "id": "1",
+      "name": "Fireball2"
+    },
+    "2": {
+      "id": "2",
+      "name": "Fireball3"
+    }
+  },
+  "symbol": "script_14",
+  "script": [
+    {
+      "command": "EVENT_SET_ACTOR_STATE",
+      "args": {
+        "actorId": "0",
+        "stateId": {
+          "type": "number",
+          "value": 0
+        }
+      },
+      "id": "6f1ceda4-251b-449f-988f-389f1d96f802"
+    },
+    {
+      "command": "EVENT_SET_ACTOR_STATE",
+      "args": {
+        "actorId": "1",
+        "stateId": {
+          "type": "number",
+          "value": 0
+        }
+      },
+      "id": "e2e4bdf4-07f8-4246-a3e4-839f5b5820bd"
+    },
+    {
+      "command": "EVENT_SET_ACTOR_STATE",
+      "args": {
+        "actorId": "2",
+        "stateId": {
+          "type": "number",
+          "value": 0
+        }
+      },
+      "id": "eacc43bf-d363-483d-bd22-3dc75f2626c1"
+    }
+  ]
+}

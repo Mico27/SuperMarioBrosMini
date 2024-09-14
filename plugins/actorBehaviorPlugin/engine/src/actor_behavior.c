@@ -14,6 +14,7 @@
 #include "game_time.h"
 #include "actor_behavior.h"
 #include "states/platform.h"
+#include "meta_tiles.h"
 
 #define BEHAVIOR_ACTIVATION_THRESHOLD 168
 #define BEHAVIOR_DEACTIVATION_THRESHOLD 176
@@ -24,6 +25,10 @@ WORD actor_vel_x[MAX_ACTORS];
 WORD actor_vel_y[MAX_ACTORS];
 UBYTE actor_counter_a[MAX_ACTORS];
 
+upoint16_t tmp_point;
+const BYTE firebar_incx_lookup[] = { 0, 3, 6, 7, 8, 7, 6, 3, 0, -3, -6, -7, -8, -7, -6, -3 };
+const BYTE firebar_incy_lookup[] = { -8, -7, -6, -3, 0, 3, 6, 7, 8, 7, 6, 3, 0, -3, -6, -7 };
+
 void actor_behavior_init(void) BANKED {
     memset(actor_behavior_ids, 0, sizeof(actor_behavior_ids));
 	memset(actor_states, 0, sizeof(actor_states));
@@ -32,7 +37,7 @@ void actor_behavior_init(void) BANKED {
 	memset(actor_counter_a, 0, sizeof(actor_counter_a));
 }
 
-UWORD inline check_collision(UWORD start_x, UWORD start_y, bounding_box_t *bounds, col_check_dir_e check_dir) {
+UWORD check_collision(UWORD start_x, UWORD start_y, bounding_box_t *bounds, col_check_dir_e check_dir) BANKED{
     WORD tx, ty;
     switch (check_dir) {
         case CHECK_DIR_LEFT:  // Check left (bottom left)
@@ -71,7 +76,7 @@ UWORD inline check_collision(UWORD start_x, UWORD start_y, bounding_box_t *bound
     return start_x;
 }
 
-UWORD inline check_pit(UWORD start_x, UWORD start_y, bounding_box_t *bounds, col_check_dir_e check_dir) {
+UWORD check_pit(UWORD start_x, UWORD start_y, bounding_box_t *bounds, col_check_dir_e check_dir) BANKED {
      WORD tx, ty;
     switch (check_dir) {
         case CHECK_DIR_LEFT:  // Check left (bottom left)
@@ -97,7 +102,7 @@ void inline apply_gravity(UBYTE actor_idx) {
 	actor_vel_y[actor_idx] = MIN(actor_vel_y[actor_idx], (plat_max_fall_vel >> 8));
 }
 
-void apply_velocity(UBYTE actor_idx, actor_t * actor) BANKED {
+void inline apply_velocity(UBYTE actor_idx, actor_t * actor) {
 	//Apply velocity
 	WORD new_y =  actor->pos.y + actor_vel_y[actor_idx];
 	WORD new_x =  actor->pos.x + actor_vel_x[actor_idx];
@@ -114,7 +119,7 @@ void apply_velocity(UBYTE actor_idx, actor_t * actor) BANKED {
 	}
 }
 
-void apply_velocity_avoid_fall(UBYTE actor_idx, actor_t * actor) BANKED {
+void inline apply_velocity_avoid_fall(UBYTE actor_idx, actor_t * actor) {
 	//Apply velocity
 	WORD new_y =  actor->pos.y + actor_vel_y[actor_idx];
 	WORD new_x =  actor->pos.x + actor_vel_x[actor_idx];
@@ -177,11 +182,6 @@ void actor_behavior_update(void) BANKED {
 					}
 					apply_gravity(i);
 					apply_velocity(i, actor);
-					//Actor Collision					
-					actor_t * hit_actor = actor_overlapping_bb(&actor->bounds, &actor->pos, actor, FALSE);
-					if (hit_actor && hit_actor->script.bank){
-						script_execute(hit_actor->script.bank, hit_actor->script.ptr, 0, 1, (UWORD)(actor->collision_group));
-					}
 					//Animation
 					if (actor_vel_x[i] < 0) {
 						actor_set_dir(actor, DIR_LEFT, TRUE);
@@ -313,11 +313,6 @@ void actor_behavior_update(void) BANKED {
 					}
 					apply_gravity(i);
 					apply_velocity_avoid_fall(i, actor);
-					//Actor Collision					
-					actor_t * hit_actor = actor_overlapping_bb(&actor->bounds, &actor->pos, actor, FALSE);
-					if (hit_actor && hit_actor->script.bank){
-						script_execute(hit_actor->script.bank, hit_actor->script.ptr, 0, 1, (UWORD)(actor->collision_group));
-					}
 					//Animation
 					if (actor_vel_x[i] < 0) {
 						actor_set_dir(actor, DIR_LEFT, TRUE);
@@ -331,7 +326,158 @@ void actor_behavior_update(void) BANKED {
 					deactivate_actor(actor);
 					break;
 			}
-			break;				
+			break;	
+			case 7: //Flying Red Koopa
+			switch(actor_states[i]){
+				case 0:
+					if ((((actor->pos.x >> 4) + 8) - draw_scroll_x) < BEHAVIOR_ACTIVATION_THRESHOLD){ actor_states[i] = 1; }
+					break;
+				case 1: //Move up state
+					if ((((actor->pos.x >> 4) + 8) - draw_scroll_x) > BEHAVIOR_DEACTIVATION_THRESHOLD){ 
+						actor_states[i] = 255; 
+						break;
+					}
+					
+					if (actor_counter_a[i] < 120){
+						actor_counter_a[i]++;
+					} else {
+						actor_states[i] = 2;
+						actor_vel_y[i] = -actor_vel_y[i];
+						actor_vel_x[i] = -actor_vel_x[i];
+					}
+					actor->pos.y = actor->pos.y + actor_vel_y[i];		
+					actor->pos.x = actor->pos.x + actor_vel_x[i];						
+					//Animation
+					if (actor_vel_x[i] < 0) {
+						actor_set_dir(actor, DIR_LEFT, TRUE);
+					} else if (actor_vel_x[i] > 0) {
+						actor_set_dir(actor, DIR_RIGHT, TRUE);
+					} else {
+						actor_set_anim_idle(actor);
+					}
+					break;
+				case 2: //Move down state
+					if ((((actor->pos.x >> 4) + 8) - draw_scroll_x) > BEHAVIOR_DEACTIVATION_THRESHOLD){ 
+						actor_states[i] = 255; 
+						break;
+					}
+					
+					if (actor_counter_a[i] > 0){
+						actor_counter_a[i]--;
+					} else {
+						actor_states[i] = 1;
+						actor_vel_y[i] = -actor_vel_y[i];
+						actor_vel_x[i] = -actor_vel_x[i];
+					}
+					actor->pos.y = actor->pos.y + actor_vel_y[i];
+					actor->pos.x = actor->pos.x + actor_vel_x[i];	
+					//Animation
+					if (actor_vel_x[i] < 0) {
+						actor_set_dir(actor, DIR_LEFT, TRUE);
+					} else if (actor_vel_x[i] > 0) {
+						actor_set_dir(actor, DIR_RIGHT, TRUE);
+					} else {
+						actor_set_anim_idle(actor);
+					}
+					break;
+				case 255:
+					deactivate_actor(actor);
+					break;
+			}
+			break;	
+			case 8://Fire bar
+			switch(actor_states[i]){
+				case 0: //Init
+					if ((((actor->pos.x >> 4) + 8) - draw_scroll_x) < BEHAVIOR_ACTIVATION_THRESHOLD){ actor_states[i] = 1; }
+					break;
+				case 1: //Main state
+					if ((((actor->pos.x >> 4) + 8) - draw_scroll_x) > BEHAVIOR_DEACTIVATION_THRESHOLD){ 
+						actor_states[i] = 255; 
+						break;
+					}					
+					if (!(game_time & 7)){
+						actor_counter_a[i] = (actor_counter_a[i] + 1) & 15;
+						actor->frame = actor->frame_start + actor_counter_a[i];
+					}
+					tmp_point.x = (actor->pos.x >> 4) + 4;
+					tmp_point.y = (actor->pos.y >> 4) - 28;
+					for (UBYTE j = 0; j < 4; j++){		
+						if (bb_contains(&PLAYER.bounds, &PLAYER.pos, &tmp_point)){
+							script_execute(actor->script.bank, actor->script.ptr, 0, 1, 0);
+							break;
+						}	
+						tmp_point.x += firebar_incx_lookup[actor_counter_a[i]];
+						tmp_point.y += firebar_incy_lookup[actor_counter_a[i]];
+					}	
+					break;
+				case 255: //Deactivate
+					deactivate_actor(actor);
+					break;
+			}		
+			break;	
+			case 9://Bouncing entity
+			switch(actor_states[i]){
+				case 0: //Init
+					if ((((actor->pos.x >> 4) + 8) - draw_scroll_x) < BEHAVIOR_ACTIVATION_THRESHOLD){ actor_states[i] = 1; }
+					break;
+				case 1: //Main state
+					if ((((actor->pos.x >> 4) + 8) - draw_scroll_x) > BEHAVIOR_DEACTIVATION_THRESHOLD){ 
+						actor_states[i] = 255; 
+						break;
+					}
+					actor_vel_y[i] += (plat_grav >> 10);
+					actor_vel_y[i] = MIN(actor_vel_y[i], (plat_max_fall_vel >> 8));
+					//Apply velocity
+					WORD new_y =  actor->pos.y + actor_vel_y[i];
+					WORD new_x =  actor->pos.x + actor_vel_x[i];
+					//Tile Collision
+					actor->pos.x = check_collision(new_x, actor->pos.y, &actor->bounds, ((actor->pos.x > new_x) ? CHECK_DIR_LEFT : CHECK_DIR_RIGHT));
+					if (actor->pos.x != new_x){
+						actor_vel_x[i] = -actor_vel_x[i];
+					}
+					actor->pos.y = check_collision(actor->pos.x, new_y, &actor->bounds, ((actor->pos.y > new_y) ? CHECK_DIR_UP : CHECK_DIR_DOWN));
+					if (actor->pos.y < new_y){
+						actor_vel_y[i] = -48;
+					} else if (actor->pos.y > new_y){
+						actor_vel_y[i] = 0;
+					}
+					//Animation
+					if (actor_vel_x[i] < 0) {
+						actor_set_dir(actor, DIR_LEFT, TRUE);
+					} else if (actor_vel_x[i] > 0) {
+						actor_set_dir(actor, DIR_RIGHT, TRUE);
+					} else {
+						actor_set_anim_idle(actor);
+					}
+					break;
+				case 255: //Deactivate
+					deactivate_actor(actor);
+					break;
+			}		
+			break;	
+			case 10: //Koopa shell
+			switch(actor_states[i]){
+				case 0:
+					if ((((actor->pos.x >> 4) + 8) - draw_scroll_x) < BEHAVIOR_ACTIVATION_THRESHOLD){ actor_states[i] = 1; }
+					break;
+				case 1: //Main state
+					if ((((actor->pos.x >> 4) + 8) - draw_scroll_x) > BEHAVIOR_DEACTIVATION_THRESHOLD){ 
+						actor_states[i] = 255; 
+						break;
+					}
+					apply_gravity(i);
+					apply_velocity(i, actor);
+					//Actor Collision					
+					actor_t * hit_actor = actor_overlapping_bb(&actor->bounds, &actor->pos, actor, FALSE);
+					if (hit_actor && hit_actor->script.bank){
+						script_execute(hit_actor->script.bank, hit_actor->script.ptr, 0, 1, (UWORD)(actor->collision_group));
+					}
+					break;
+				case 255:
+					deactivate_actor(actor);
+					break;
+			}
+			break;		
 		}			
 	}
 }

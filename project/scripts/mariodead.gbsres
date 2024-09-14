@@ -12,7 +12,7 @@
       "args": {
         "__label": "Death",
         "__comment": false,
-        "__collapse": true
+        "__collapse": false
       },
       "children": {
         "true": [
@@ -166,6 +166,69 @@
               "__collapse": true
             },
             "id": "25ac168f-390e-4c65-af1a-9a66fc5b063c"
+          },
+          {
+            "command": "EVENT_IF",
+            "args": {
+              "condition": {
+                "type": "and",
+                "valueA": {
+                  "type": "eq",
+                  "valueA": {
+                    "type": "variable",
+                    "value": "8"
+                  },
+                  "valueB": {
+                    "type": "number",
+                    "value": 1
+                  }
+                },
+                "valueB": {
+                  "type": "eq",
+                  "valueA": {
+                    "type": "variable",
+                    "value": "11"
+                  },
+                  "valueB": {
+                    "type": "number",
+                    "value": 0
+                  }
+                }
+              },
+              "__collapseElse": false,
+              "__collapse": true
+            },
+            "children": {
+              "true": [
+                {
+                  "command": "EVENT_SET_VALUE",
+                  "args": {
+                    "variable": "11",
+                    "value": {
+                      "type": "number",
+                      "value": 1
+                    },
+                    "__collapse": true
+                  },
+                  "id": "28402932-cda5-427d-bb48-3277a51e09a3"
+                }
+              ],
+              "false": [
+                {
+                  "command": "EVENT_SET_VALUE",
+                  "args": {
+                    "variable": "11",
+                    "value": {
+                      "type": "number",
+                      "value": 0
+                    },
+                    "__collapse": true
+                  },
+                  "id": "0191d5ea-24a3-455b-9475-11016740b1a9"
+                }
+              ]
+            },
+            "id": "6fc402d2-4985-4303-b514-59683624463d"
           },
           {
             "command": "EVENT_CALL_CUSTOM_EVENT",

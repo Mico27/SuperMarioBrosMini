@@ -1,0 +1,104 @@
+{
+  "_resourceType": "script",
+  "id": "3b85e0b2-9630-43e3-8d68-9c57025fa6de",
+  "name": "SetMarioPalette",
+  "description": "",
+  "variables": {},
+  "actors": {},
+  "symbol": "script_13",
+  "script": [
+    {
+      "command": "EVENT_IF",
+      "args": {
+        "condition": {
+          "type": "eq",
+          "valueA": {
+            "type": "variable",
+            "value": "24"
+          },
+          "valueB": {
+            "type": "number",
+            "value": 2
+          }
+        },
+        "__collapseElse": false
+      },
+      "children": {
+        "true": [
+          {
+            "command": "EVENT_PALETTE_SET_SPRITE",
+            "args": {
+              "palette0": "f73a43b2-1319-44f1-8f74-bc605d554df8",
+              "palette1": "keep",
+              "palette2": "keep",
+              "palette3": "keep",
+              "palette4": "keep",
+              "palette5": "keep",
+              "palette6": "keep",
+              "palette7": "keep",
+              "__collapse": true
+            },
+            "id": "2e62db6c-a2d6-44f2-9627-056ec623f902"
+          }
+        ],
+        "false": [
+          {
+            "command": "EVENT_IF",
+            "args": {
+              "condition": {
+                "type": "eq",
+                "valueA": {
+                  "type": "variable",
+                  "value": "11"
+                },
+                "valueB": {
+                  "type": "number",
+                  "value": 0
+                }
+              },
+              "__collapseElse": false
+            },
+            "children": {
+              "true": [
+                {
+                  "command": "EVENT_PALETTE_SET_SPRITE",
+                  "args": {
+                    "palette0": "e3b4697e-c57b-4ada-bc32-8e8cf3d244e4",
+                    "palette1": "keep",
+                    "palette2": "keep",
+                    "palette3": "keep",
+                    "palette4": "keep",
+                    "palette5": "keep",
+                    "palette6": "keep",
+                    "palette7": "keep",
+                    "__collapse": true
+                  },
+                  "id": "75a5c378-0659-4396-8103-5720ffad4d3d"
+                }
+              ],
+              "false": [
+                {
+                  "command": "EVENT_PALETTE_SET_SPRITE",
+                  "args": {
+                    "palette0": "bef8b617-da16-4cfa-86f2-a468ed493d5c",
+                    "palette1": "keep",
+                    "palette2": "keep",
+                    "palette3": "keep",
+                    "palette4": "keep",
+                    "palette5": "keep",
+                    "palette6": "keep",
+                    "palette7": "keep",
+                    "__collapse": true
+                  },
+                  "id": "352675ff-272a-4334-ae40-745e610d57a6"
+                }
+              ]
+            },
+            "id": "34c0e15c-99c9-4a40-ac1d-8a5ea1d13524"
+          }
+        ]
+      },
+      "id": "b1b2e87e-8f15-4f23-8cca-b9f40a3531c5"
+    }
+  ]
+}
