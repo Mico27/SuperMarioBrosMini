@@ -1,60 +1,38 @@
 #include "states/platform.h"
 
-
 void fall_state(void) BANKED;
 void ground_state(void) BANKED;
 void crouch_state(void) BANKED;
 void jump_state(void) BANKED;
-//void vine_state(void) BANKED;
+void climb_state(void) BANKED;
 void blank_state(void) BANKED;
 
 typedef enum {              //Datatype for tracking states
-	START_LEVEL_INIT = 0,
-	START_LEVEL_STATE = 1,
-	START_LEVEL_END = 2,
-    FALL_INIT = 3,
-    FALL_STATE = 4,
-    FALL_END = 5,
-    GROUND_INIT = 6,
-    GROUND_STATE = 7,
-    GROUND_END = 8,
-	CROUCH_INIT = 9,
-	CROUCH_STATE = 10,
-	CROUCH_END = 11,
-	SKID_INIT = 12,
-	SKID_STATE = 13,
-	SKID_END = 14,
-    JUMP_INIT = 15,
-    JUMP_STATE = 16,
-    JUMP_END = 17,
-    VINE_INIT = 18,
-    VINE_STATE = 19,
-    VINE_END = 20,
-    PIPE_INIT = 21,
-    PIPE_STATE = 22,
-    PIPE_END = 23,
-    POLE_INIT = 24,
-    POLE_STATE = 25,
-    POLE_END = 26,
-    CHANGESIZE_INIT = 27,
-    CHANGESIZE_STATE = 28,
-	CHANGESIZE_END = 29,
-	DEAD_INIT = 30,
-	DEAD_STATE = 31,
-	DEAD_END = 32,
-	FIREFLOWER_INIT = 33,
-	FIREFLOWER_STATE = 34,
-	FIREFLOWER_END = 35,
-	END_LEVEL_INIT = 36,
-	END_LEVEL_STATE = 37,
-	END_LEVEL_END = 38,
-    BLANK_INIT = 39,
-    BLANK_STATE = 40
+    FALL_INIT = 0,
+    FALL_STATE = 1,
+    FALL_END = 2,
+    GROUND_INIT = 3,
+    GROUND_STATE = 4,
+    GROUND_END = 5,
+	CROUCH_INIT = 6,
+	CROUCH_STATE = 7,
+	CROUCH_END = 8,
+	SKID_INIT = 9,
+	SKID_STATE = 10,
+	SKID_END = 11,
+    JUMP_INIT = 12,
+    JUMP_STATE = 13,
+    JUMP_END = 14,
+    CLIMB_INIT = 15,
+    CLIMB_STATE = 16,
+    CLIMB_END = 17,
+    BLANK_INIT = 18,
+    BLANK_STATE = 19
 }  pStates;
 
 extern pStates plat_state;
 extern pStates que_state;
-extern script_state_t state_events[40];
+extern script_state_t state_events[20];
        
 extern UBYTE nocollide;            
 extern WORD deltaX;

@@ -204,11 +204,10 @@
       "id": "0ab3ca98-3a0c-4c00-9a90-23d73587f3c3"
     },
     {
-      "command": "PM_EVENT_PLATPLUS_STATE_SCRIPT",
+      "command": "PM_EVENT_PLATMARIO_SPECIFIC_SCRIPT",
       "args": {
-        "state": 31,
+        "specific_event": "4",
         "__scriptTabs": "scriptinput",
-        "__label": "Attach script to Mario death state",
         "__collapse": true
       },
       "children": {
@@ -216,13 +215,33 @@
           {
             "command": "EVENT_CALL_CUSTOM_EVENT",
             "args": {
-              "customEventId": "76fe8e78-2831-42e9-9d12-aa187baf35b8"
+              "customEventId": "6c769cfe-c827-4ad1-bcfa-c6b1c4927c9b"
             },
-            "id": "91000f07-fd45-414c-945b-dfb781d99d34"
+            "id": "13d43a1e-f84b-40b4-8173-404dc80465e1"
           }
         ]
       },
-      "id": "e0bbd0cf-c963-4547-a3da-a0db92fb61aa"
+      "id": "c537763c-318a-40dd-95bb-338880610ed9"
+    },
+    {
+      "command": "PM_EVENT_PLATMARIO_SPECIFIC_SCRIPT",
+      "args": {
+        "specific_event": "5",
+        "__scriptTabs": "scriptinput",
+        "__collapse": true
+      },
+      "children": {
+        "script": [
+          {
+            "command": "EVENT_CALL_CUSTOM_EVENT",
+            "args": {
+              "customEventId": "1982148b-f50d-494d-9273-a01fcf164fa4"
+            },
+            "id": "c3b67b88-fabd-48db-97c8-fd5a4fe9a31c"
+          }
+        ]
+      },
+      "id": "8a8da503-ccbc-40b2-91a0-a81804d3fe0a"
     },
     {
       "command": "EVENT_SET_INPUT_SCRIPT",
@@ -231,7 +250,8 @@
           "b"
         ],
         "override": false,
-        "__scriptTabs": "press"
+        "__scriptTabs": "press",
+        "__collapse": true
       },
       "children": {
         "true": [
@@ -247,7 +267,7 @@
           }
         ]
       },
-      "id": "40abc61a-86b9-4728-a6b1-f805d8556ec2"
+      "id": "a418734f-f617-4110-b784-826306504ad8"
     }
   ],
   "playerHit1Script": [],

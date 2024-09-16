@@ -20,9 +20,11 @@ typedef enum {              //Specific event types
 	HIT_BLOCK_EVENT = 1,
 	ENTER_DOWN_PIPE_EVENT = 2,
 	ENTER_RIGHT_PIPE_EVENT = 3,
+	VINE_WARP_EVENT = 4,
+	FELL_IN_PIT_EVENT = 5,
 }  pSpecificEvent;
 
-extern script_state_t specific_events[4];
+extern script_state_t specific_events[6];
 
 extern WORD pl_vel_x;
 extern WORD pl_vel_y;
@@ -57,6 +59,6 @@ extern UBYTE plat_run_boost;
 extern BYTE run_stage;
 
 extern UBYTE grounded;
-
+extern UBYTE current_vine_tile_x;
 
 #endif

@@ -1,0 +1,82 @@
+{
+  "_resourceType": "script",
+  "id": "1982148b-f50d-494d-9273-a01fcf164fa4",
+  "name": "OnMarioFellInPit",
+  "description": "",
+  "variables": {},
+  "actors": {},
+  "symbol": "script_16",
+  "script": [
+    {
+      "command": "EVENT_IF",
+      "args": {
+        "condition": {
+          "type": "eq",
+          "valueA": {
+            "type": "variable",
+            "value": "42"
+          },
+          "valueB": {
+            "type": "number",
+            "value": 0
+          }
+        },
+        "__collapseElse": false
+      },
+      "children": {
+        "true": [
+          {
+            "command": "EVENT_CALL_CUSTOM_EVENT",
+            "args": {
+              "customEventId": "76fe8e78-2831-42e9-9d12-aa187baf35b8"
+            },
+            "id": "9d40d6db-c681-43b1-9f4e-bcfdc370a084"
+          }
+        ],
+        "false": [
+          {
+            "command": "EVENT_SET_VALUE",
+            "args": {
+              "variable": "42",
+              "value": {
+                "type": "number",
+                "value": 0
+              }
+            },
+            "id": "8adbf25d-ecc5-418d-a5c9-c3b6b0ea00d4"
+          },
+          {
+            "command": "EVENT_SET_VALUE",
+            "args": {
+              "variable": "22",
+              "value": {
+                "type": "number",
+                "value": 0
+              }
+            },
+            "id": "981c93bd-bd3b-44f0-ae36-fa34b2df89df"
+          },
+          {
+            "command": "EVENT_SET_VALUE",
+            "args": {
+              "variable": "31",
+              "value": {
+                "type": "number",
+                "value": 3
+              }
+            },
+            "id": "28b2edcb-5278-4803-82e7-edf52178b75b"
+          },
+          {
+            "command": "EVENT_CALL_CUSTOM_EVENT",
+            "args": {
+              "customEventId": "1da14dfe-ad02-4e47-addd-68af4399854d"
+            },
+            "id": "dbd992e1-6038-474a-b91a-8808d4a0a473"
+          }
+        ]
+      },
+      "id": "f5ad06a4-3aec-41dc-870b-0d2580f0bd4b"
+    }
+  ]
+}

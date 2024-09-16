@@ -205,7 +205,7 @@
                   },
                   "valueB": {
                     "type": "number",
-                    "value": 4
+                    "value": 1
                   }
                 },
                 "valueB": {
@@ -322,7 +322,7 @@
                       {
                         "command": "EVENT_GBVM_SCRIPT",
                         "args": {
-                          "script": "VM_SET_CONST_INT16 _enemy_bounce, 1\nVM_SET_CONST_INT16 _que_state, 15",
+                          "script": "VM_SET_CONST_INT16 _enemy_bounce, 1\nVM_SET_CONST_INT16 _que_state, 12",
                           "__comment": false,
                           "__collapse": true
                         },
@@ -519,7 +519,7 @@
                       {
                         "command": "EVENT_GBVM_SCRIPT",
                         "args": {
-                          "script": "VM_SET_CONST_INT16 _enemy_bounce, 1\nVM_SET_CONST_INT16 _que_state, 15",
+                          "script": "VM_SET_CONST_INT16 _enemy_bounce, 1\nVM_SET_CONST_INT16 _que_state, 12",
                           "__comment": false,
                           "__collapse": true
                         },

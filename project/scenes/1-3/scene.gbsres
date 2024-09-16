@@ -137,6 +137,32 @@
         ]
       },
       "id": "c085cd03-610b-4af2-a02f-458a8e628764"
+    },
+    {
+      "command": "EVENT_SET_INPUT_SCRIPT",
+      "args": {
+        "input": [
+          "b"
+        ],
+        "override": false,
+        "__scriptTabs": "press",
+        "__collapse": true
+      },
+      "children": {
+        "true": [
+          {
+            "command": "EVENT_CALL_CUSTOM_EVENT",
+            "args": {
+              "customEventId": "70c96f28-b99f-4a17-a885-b993c8676eb8",
+              "$actor[0]$": "d6a16724-c677-447c-a5c8-c94cb5edeb61",
+              "$actor[1]$": "d77defab-0e68-4967-aff9-31da2357ebc3",
+              "$actor[2]$": "953dc77d-9149-4fbd-b243-7fc84682de98"
+            },
+            "id": "c4ab9132-ba30-4349-ab38-5b93a6681c30"
+          }
+        ]
+      },
+      "id": "ead01113-a12d-4426-86a3-5b6defd616a5"
     }
   ],
   "playerHit1Script": [],

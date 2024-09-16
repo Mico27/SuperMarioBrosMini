@@ -63,7 +63,7 @@
       "args": {
         "specific_event": "1",
         "__scriptTabs": "scriptinput",
-        "__collapse": false
+        "__collapse": true
       },
       "children": {
         "script": [
@@ -91,6 +91,32 @@
         ]
       },
       "id": "c30b8468-ffb7-448e-967d-4fbf533cfe51"
+    },
+    {
+      "command": "EVENT_SET_INPUT_SCRIPT",
+      "args": {
+        "input": [
+          "b"
+        ],
+        "override": false,
+        "__scriptTabs": "press",
+        "__collapse": true
+      },
+      "children": {
+        "true": [
+          {
+            "command": "EVENT_CALL_CUSTOM_EVENT",
+            "args": {
+              "customEventId": "70c96f28-b99f-4a17-a885-b993c8676eb8",
+              "$actor[0]$": "0e6fea5d-a032-4412-aee6-b173792930b8",
+              "$actor[1]$": "ab5e35bf-407b-47b4-8757-0a719dfe76c2",
+              "$actor[2]$": "a5c0061a-d3fd-4aa4-be79-0cd89d35295b"
+            },
+            "id": "7d1fd198-1100-4d58-a4c4-95d0a9a14c34"
+          }
+        ]
+      },
+      "id": "ec202667-440a-4c49-89e2-7cc5a2dccf41"
     }
   ],
   "playerHit1Script": [],

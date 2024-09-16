@@ -151,6 +151,18 @@
             "id": "2de0318d-5191-4ee4-a8f8-269a98afbc2d"
           },
           {
+            "command": "EVENT_SET_ACTOR_Y_VELOCITY",
+            "args": {
+              "actorId": "$self$",
+              "yVelocity": {
+                "type": "number",
+                "value": 0
+              },
+              "__collapse": true
+            },
+            "id": "f7c25f95-50a8-4c59-9b8b-6c869b5b0376"
+          },
+          {
             "command": "EVENT_SET_ACTOR_BEHAVIOR",
             "args": {
               "actorId": "$self$",
@@ -189,7 +201,7 @@
             "args": {
               "variable": "20",
               "field": "plat_state",
-              "__collapse": true
+              "__collapse": false
             },
             "id": "8e3b1416-2e2c-426f-b510-bfa4febb145a"
           },
@@ -204,20 +216,20 @@
                 },
                 "valueB": {
                   "type": "number",
-                  "value": 4
+                  "value": 1
                 }
               },
               "__collapseElse": false,
-              "__collapse": true
+              "__collapse": false
             },
             "children": {
               "true": [
                 {
                   "command": "EVENT_GBVM_SCRIPT",
                   "args": {
-                    "script": "VM_SET_CONST_INT16 _enemy_bounce, 1\nVM_SET_CONST_INT16 _que_state, 15",
+                    "script": "VM_SET_CONST_INT16 _enemy_bounce, 1\nVM_SET_CONST_INT16 _que_state, 12",
                     "__comment": false,
-                    "__collapse": true
+                    "__collapse": false
                   },
                   "id": "5d23c13e-465c-4b4d-9cc0-e97f188f3ab7"
                 },
@@ -432,6 +444,17 @@
         "__comment": false
       },
       "id": "a9be543a-d51f-4d84-8d9b-f1b51bf730b8"
+    },
+    {
+      "command": "EVENT_SET_ACTOR_Y_VELOCITY",
+      "args": {
+        "actorId": "$self$",
+        "yVelocity": {
+          "type": "number",
+          "value": 0
+        }
+      },
+      "id": "336f8ae9-e649-42a9-9db4-c458c100399a"
     }
   ],
   "updateScript": [],
@@ -547,6 +570,18 @@
         "__collapse": true
       },
       "id": "3b3443ca-53a5-40ef-b4de-db0e4b69b31d"
+    },
+    {
+      "command": "EVENT_SET_ACTOR_Y_VELOCITY",
+      "args": {
+        "actorId": "$self$",
+        "yVelocity": {
+          "type": "number",
+          "value": 0
+        },
+        "__collapse": true
+      },
+      "id": "5775937c-56d8-447a-8309-fddf404aab70"
     },
     {
       "command": "EVENT_SET_ACTOR_BEHAVIOR",

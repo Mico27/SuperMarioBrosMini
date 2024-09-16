@@ -81,7 +81,6 @@ BUGS:
 #include "trigger.h"
 #include "vm.h"
 #include "states/playerstates.h"
-#include "states/playerstatesb.h"
 #include "meta_tiles.h"
 #include "data/game_globals.h"
 #include "actor_behavior.h"
@@ -108,9 +107,9 @@ BUGS:
 #define ANIM_STATE_PIPETRANSITION 8
 #define ANIM_STATE_DEATH 1
 
-script_state_t state_events[40];
+script_state_t state_events[20];
 
-script_state_t specific_events[4];
+script_state_t specific_events[6];
 
 UBYTE grounded;
 
@@ -184,11 +183,6 @@ WORD *edge_right;
 WORD mod_image_right;
 WORD mod_image_left;
 
-//LEVEL START VARIABLES
-UBYTE entry_mode; //0 = start of level, 1 = from pipe, 2 = from vine, 3 = from sky
-UWORD entry_x; // entry's x position
-UWORD entry_y; // entry's y position
-
 //TEMP VARIABLES
 WORD temp_counter;
 
@@ -211,6 +205,8 @@ UBYTE* update_ui_ptr;
 
 UBYTE hit_block_bank;
 UBYTE* hit_block_ptr;
+
+UBYTE current_vine_tile_x;
 
 void platform_init(void) BANKED {
     //Initialize Camera
@@ -291,12 +287,6 @@ void platform_update(void) BANKED {
     plat_state = que_state;
 	script_memory[VAR_FRAMECOINS] = 0;
     switch(plat_state){
-		case START_LEVEL_INIT:
-			start_level_init();
-			break;
-		case START_LEVEL_STATE:
-			start_level_state();
-			break;
         case FALL_INIT:
             que_state = FALL_STATE;
 			load_animations(PLAYER.sprite.ptr, PLAYER.sprite.bank, ANIM_STATE_DEFAULT, PLAYER.animations);
@@ -306,7 +296,7 @@ void platform_update(void) BANKED {
         case GROUND_INIT:
             que_state = GROUND_STATE;
 			load_animations(PLAYER.sprite.ptr, PLAYER.sprite.bank, ANIM_STATE_DEFAULT, PLAYER.animations);
-            //pl_vel_y = 256;
+            pl_vel_y = 256;
             ct_val = plat_coyote_max; 
             jump_reduction_val = 0;
 			enemy_bounce = 0;
@@ -338,48 +328,25 @@ void platform_update(void) BANKED {
         case JUMP_STATE:
             jump_state();
             break;
-        case VINE_INIT:
-			que_state = VINE_STATE;
-		case VINE_STATE:
-			break;
-		case PIPE_INIT:
-			que_state = PIPE_STATE;
-		case PIPE_STATE:
-			break;
-		case POLE_INIT:
-			que_state = POLE_STATE;
-		case POLE_STATE:
-			break;
-		case CHANGESIZE_INIT:
-			que_state = CHANGESIZE_STATE;
-		case CHANGESIZE_STATE:
-			break;
-		case DEAD_INIT:
-			que_state = DEAD_STATE;
-		case DEAD_STATE:
-		//State-Based Events
-			if(state_events[plat_state].script_addr != 0){
-				script_execute(state_events[plat_state].script_bank, state_events[plat_state].script_addr, 0, 0);
-			}
-			break;
-		case FIREFLOWER_INIT:
-			que_state = FIREFLOWER_STATE;
-		case FIREFLOWER_STATE:
-			break;
-		case END_LEVEL_INIT:
-			que_state = END_LEVEL_STATE;
-		case END_LEVEL_STATE:
-			break;
+        case CLIMB_INIT:
+			que_state = CLIMB_STATE;
+			load_animations(PLAYER.sprite.ptr, PLAYER.sprite.bank, ANIM_STATE_CLIMB, PLAYER.animations);
+			pl_vel_y = 0;
+			pl_vel_x = 0;	
+		case CLIMB_STATE:
+			climb_state();
+			break;	
         case BLANK_INIT:
             que_state = BLANK_STATE;
             pl_vel_x = 0;
             pl_vel_y = 0;
         case BLANK_STATE:
-            blank_state();
+            //State-Based Events
+			if(state_events[plat_state].script_addr != 0){
+				script_execute(state_events[plat_state].script_bank, state_events[plat_state].script_addr, 0, 0);
+			}
             break;
     }
-	script_memory[VAR_PLAYER_XPOS] = PLAYER.pos.x;
-	script_memory[VAR_PLAYER_YPOS] = PLAYER.pos.y;
 	if (script_memory[VAR_PLAYER_IFRAMES] > 0){
 		script_memory[VAR_PLAYER_IFRAMES]--;
 	}
@@ -487,6 +454,7 @@ void on_player_metatile_collision(UBYTE tile_x, UBYTE tile_y, UBYTE direction) B
 					case 161://invis powerup block
 					case 162://invis star block
 					case 163://invis 1up block	
+					case 169://beanstalk brick
 						if(specific_events[HIT_BLOCK_EVENT].script_addr != 0){
 							script_memory[VAR_HITBLOCKID] = tile_id;
 							script_memory[VAR_HITBLOCKX] = tile_x;
@@ -513,7 +481,6 @@ void fall_state(void) BANKED {
     UBYTE tile_x_mid = ((PLAYER.pos.x >> 4) + PLAYER.bounds.left + p_half_width) >> 3; 
     UBYTE tile_y = ((PLAYER.pos.y >> 4) + PLAYER.bounds.top + 1) >> 3;
     UBYTE old_x = 0;
-     
     col = 0;
     
     //A. INPUT CHECK=================================================================================================
@@ -650,6 +617,13 @@ void fall_state(void) BANKED {
         //Step-Check for collisions one tile left or right for each avatar height tile
         if (new_x > PLAYER.pos.x) {
             tile_x = ((new_x >> 4) + PLAYER.bounds.right) >> 3;
+			switch(sram_map_data[VRAM_OFFSET(tile_x, tile_end - 1)]){
+				case 151: //beanstalk tile
+					que_state = CLIMB_INIT; 
+					current_vine_tile_x = tile_x;
+					actor_set_dir(&PLAYER, DIR_LEFT, FALSE);
+					break;
+			}
             
             while (tile_start < tile_end) {
                
@@ -668,7 +642,13 @@ void fall_state(void) BANKED {
             }
         } else if (new_x < PLAYER.pos.x) {
             tile_x = ((new_x >> 4) + PLAYER.bounds.left) >> 3;
-            
+            switch(sram_map_data[VRAM_OFFSET(tile_x, tile_end - 1)]){
+				case 151: //beanstalk tile
+					que_state = CLIMB_INIT; 
+					current_vine_tile_x = tile_x;
+					actor_set_dir(&PLAYER, DIR_RIGHT, FALSE);
+					break;
+			}
             while (tile_start < tile_end) {
                 col = tile_at(tile_x, tile_start);
                 if (col & COLLISION_RIGHT) {					
@@ -883,12 +863,12 @@ void fall_state(void) BANKED {
         jb_val = plat_buffer_max; 
         }
     } 
-	
-	//FALL -> DEATH check
-	if (PLAYER.pos.y > 2560 && PLAYER.pos.y < 5120){
-		que_state = DEAD_INIT;
+		
+	//Pit check
+	if (specific_events[FELL_IN_PIT_EVENT].script_addr != 0 && PLAYER.pos.y > 2560 && PLAYER.pos.y < 5120){
+		script_execute(specific_events[FELL_IN_PIT_EVENT].script_bank, specific_events[FELL_IN_PIT_EVENT].script_addr, 0, 0);
+		que_state = BLANK_INIT;
 	}
-	
 
     //Check for final frame
     if (que_state != FALL_STATE){
@@ -916,109 +896,6 @@ void fall_state(void) BANKED {
     //FUNCTION TRIGGERS
     trigger_activate_at_intersection(&PLAYER.bounds, &PLAYER.pos, INPUT_UP_PRESSED);
 
-    //COUNTERS===============================================================
-
-    //Hone Camera after the player has dashed
-    if (camera_deadzone_x > plat_camera_deadzone_x){
-        camera_deadzone_x -= 1;
-    }
-
-    //State-Based Events
-    if(state_events[plat_state].script_addr != 0){
-        script_execute(state_events[plat_state].script_bank, state_events[plat_state].script_addr, 0, 0);
-    }
-}
-
-void blank_state(void) BANKED {
-    //INITIALIZE VARS
-    WORD temp_y = 0;
-
-    UBYTE p_half_width = (PLAYER.bounds.right - PLAYER.bounds.left) >> 1;
-    UBYTE tile_x_mid = ((PLAYER.pos.x >> 4) + PLAYER.bounds.left + p_half_width) >> 3; 
-    UBYTE tile_y = ((PLAYER.pos.y >> 4) + PLAYER.bounds.top + 1) >> 3;
-    UBYTE old_x = 0;
-    col = 0;                  
-    
-    //Actor Collisions
-    gotoActorCol:
-    {
-        deltaX = 0;
-        deltaY = 0;
-        actor_t *hit_actor;
-        hit_actor = actor_overlapping_player(FALSE);
-        if (hit_actor != NULL && hit_actor->collision_group) {
-            //Solid Actors
-            if (hit_actor->collision_group == plat_solid_group){
-                if(!actor_attached || hit_actor != last_actor){
-                    if (temp_y < (hit_actor->pos.y + (hit_actor->bounds.top << 4)) && pl_vel_y >= 0){
-                        //Attach to MP
-                        last_actor = hit_actor;
-                        mp_last_x = hit_actor->pos.x;
-                        mp_last_y = hit_actor->pos.y;
-                        PLAYER.pos.y = hit_actor->pos.y + (hit_actor->bounds.top << 4) - (PLAYER.bounds.bottom << 4) - 4;
-                        //Other cleanup
-                        pl_vel_y = 0;
-                        actor_attached = TRUE;                        
-                        que_state = GROUND_INIT;
-                        //PLAYER bounds top seems to be 0 and counting down...
-                    } else if (temp_y + (PLAYER.bounds.top << 4) > hit_actor->pos.y + (hit_actor->bounds.bottom<<4)){
-                        deltaY += (hit_actor->pos.y - PLAYER.pos.y) + ((-PLAYER.bounds.top + hit_actor->bounds.bottom)<<4) + 32;
-                        pl_vel_y = plat_grav;
-
-                        if(que_state == JUMP_STATE || actor_attached){
-                            que_state = FALL_INIT;
-                        }
-
-                    } else if (PLAYER.pos.x < hit_actor->pos.x){
-                        deltaX = (hit_actor->pos.x - PLAYER.pos.x) - ((PLAYER.bounds.right + -hit_actor->bounds.left)<<4);
-                        col = 1;
-                        last_wall = 1;
-                        if(!INPUT_RIGHT){
-                            pl_vel_x = 0;
-                        }
-                    } else if (PLAYER.pos.x > hit_actor->pos.x){
-                        deltaX = (hit_actor->pos.x - PLAYER.pos.x) + ((-PLAYER.bounds.left + hit_actor->bounds.right)<<4)+16;
-                        col = -1;
-                        last_wall = -1;
-                        if (!INPUT_LEFT){
-                            pl_vel_x = 0;
-                        }
-                    }
-
-                }
-            } else if (hit_actor->collision_group == plat_mp_group){
-                //Platform Actors
-                if(!actor_attached || hit_actor != last_actor){
-                    if (temp_y < hit_actor->pos.y + (hit_actor->bounds.top << 4) && pl_vel_y >= 0){
-                        //Attach to MP
-                        last_actor = hit_actor;
-                        mp_last_x = hit_actor->pos.x;
-                        mp_last_y = hit_actor->pos.y;
-                        PLAYER.pos.y = hit_actor->pos.y + (hit_actor->bounds.top << 4) - (PLAYER.bounds.bottom << 4) - 4;
-                        //Other cleanup
-                        pl_vel_y = 0;
-                        actor_attached = TRUE;                        
-                        que_state = GROUND_INIT;
-                    }
-                }
-            }
-            //All Other Collisions
-            player_register_collision_with(hit_actor);
-        } else if (INPUT_PRESSED(INPUT_PLATFORM_INTERACT)) {
-            if (!hit_actor) {
-                hit_actor = actor_in_front_of_player(8, TRUE);
-            }
-            if (hit_actor && !hit_actor->collision_group && hit_actor->script.bank) {
-                script_execute(hit_actor->script.bank, hit_actor->script.ptr, 0, 1, 0);
-            }
-        }
-    }
-
-    gotoTriggerCol:
-    //FUNCTION TRIGGERS
-    trigger_activate_at_intersection(&PLAYER.bounds, &PLAYER.pos, INPUT_UP_PRESSED);
-
-    gotoCounters:
     //COUNTERS===============================================================
 
     //Hone Camera after the player has dashed

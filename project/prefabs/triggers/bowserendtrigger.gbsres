@@ -1,0 +1,294 @@
+{
+  "_resourceType": "triggerPrefab",
+  "id": "ee96e9a9-609c-412c-a92d-f8fed5b89f71",
+  "name": "BowserEndTrigger",
+  "prefabScriptOverrides": {},
+  "_index": 2,
+  "script": [
+    {
+      "command": "EVENT_SCRIPT_UNLOCK",
+      "args": {},
+      "id": "0b6ff3dc-474e-4086-bda4-44e240e00de4",
+      "children": {}
+    },
+    {
+      "command": "EVENT_SET_INPUT_SCRIPT",
+      "args": {
+        "input": [
+          "b",
+          "left",
+          "up",
+          "down",
+          "right",
+          "a",
+          "start",
+          "select"
+        ],
+        "override": true,
+        "__scriptTabs": "press"
+      },
+      "children": {
+        "true": []
+      },
+      "id": "ccfd021b-4a68-405d-b4c8-ce27c26fb428"
+    },
+    {
+      "command": "EVENT_WAIT",
+      "args": {
+        "time": 2,
+        "frames": 30
+      },
+      "id": "702c3254-9136-4b18-80d6-10e1154f973a",
+      "children": {}
+    },
+    {
+      "command": "EVENT_UI_ALT_DISPLAY_TEXT",
+      "args": {
+        "text": "THANK YOU MARIO!",
+        "x": 146,
+        "y": 6
+      },
+      "id": "3bca367e-4e75-4e57-9ad3-dcb0b23d2555",
+      "children": {}
+    },
+    {
+      "command": "EVENT_WAIT",
+      "args": {
+        "time": 1,
+        "frames": 30
+      },
+      "id": "c2f9fb3e-2cc7-401b-b092-c15b4405edab",
+      "children": {}
+    },
+    {
+      "command": "EVENT_IF",
+      "args": {
+        "condition": {
+          "type": "and",
+          "valueA": {
+            "type": "eq",
+            "valueA": {
+              "type": "expression",
+              "value": "$09$ & 7"
+            },
+            "valueB": {
+              "type": "number",
+              "value": 0
+            }
+          },
+          "valueB": {
+            "type": "eq",
+            "valueA": {
+              "type": "expression",
+              "value": "$10$ & 3"
+            },
+            "valueB": {
+              "type": "number",
+              "value": 0
+            }
+          }
+        },
+        "__collapseElse": false
+      },
+      "children": {
+        "true": [
+          {
+            "command": "EVENT_UI_ALT_DISPLAY_TEXT",
+            "args": {
+              "text": "YOUR QUEST IS OVER.\nWE PRESENT YOU WITH \n   A NEW QUEST.",
+              "x": 145,
+              "y": 8
+            },
+            "id": "75d832d2-31e6-479a-8d78-8da6712a0152",
+            "children": {}
+          },
+          {
+            "command": "EVENT_SET_INPUT_SCRIPT",
+            "args": {
+              "input": [
+                "b",
+                "a",
+                "left",
+                "up",
+                "down",
+                "right",
+                "start",
+                "select"
+              ],
+              "override": true,
+              "__scriptTabs": "press",
+              "__collapse": false
+            },
+            "children": {
+              "true": [
+                {
+                  "command": "EVENT_SET_VALUE",
+                  "args": {
+                    "variable": "9",
+                    "value": {
+                      "type": "number",
+                      "value": 1
+                    },
+                    "__comment": false
+                  },
+                  "id": "94622eee-61c3-4346-9f33-6f0619effebe",
+                  "children": {}
+                },
+                {
+                  "command": "EVENT_SET_VALUE",
+                  "args": {
+                    "variable": "10",
+                    "value": {
+                      "type": "number",
+                      "value": 1
+                    }
+                  },
+                  "id": "4bc85d15-6446-496d-b301-bf4b5efa927b",
+                  "children": {}
+                },
+                {
+                  "command": "EVENT_SET_VALUE",
+                  "args": {
+                    "variable": "22",
+                    "value": {
+                      "type": "number",
+                      "value": 0
+                    }
+                  },
+                  "id": "dae94b66-e08a-49d9-99bd-e9cab8224fc5",
+                  "children": {}
+                },
+                {
+                  "command": "EVENT_CALL_CUSTOM_EVENT",
+                  "args": {
+                    "customEventId": "1da14dfe-ad02-4e47-addd-68af4399854d"
+                  },
+                  "id": "d5169dee-3ab1-4e1e-9651-b71df5548bf7",
+                  "children": {}
+                }
+              ]
+            },
+            "id": "39ded211-b1c7-430c-b23e-9c3d0fca14c3"
+          }
+        ],
+        "false": [
+          {
+            "command": "EVENT_UI_ALT_DISPLAY_TEXT",
+            "args": {
+              "text": " BUT OUR PRINCESS \n  IS IN ANOTHER\n     CASTLE!",
+              "x": 145,
+              "y": 8
+            },
+            "id": "d885e96f-9eab-4043-b09e-086c42d0f648",
+            "children": {}
+          },
+          {
+            "command": "EVENT_SET_INPUT_SCRIPT",
+            "args": {
+              "input": [
+                "b",
+                "a",
+                "left",
+                "up",
+                "down",
+                "right",
+                "start",
+                "select"
+              ],
+              "override": true,
+              "__scriptTabs": "press",
+              "__collapse": false
+            },
+            "children": {
+              "true": [
+                {
+                  "command": "EVENT_SET_VALUE",
+                  "args": {
+                    "variable": "10",
+                    "value": {
+                      "type": "expression",
+                      "value": "$10$ + 1"
+                    },
+                    "__comment": false
+                  },
+                  "id": "60dd3dbe-56bb-4298-9772-8328e8a11c5d",
+                  "children": {}
+                },
+                {
+                  "command": "EVENT_IF",
+                  "args": {
+                    "condition": {
+                      "type": "gt",
+                      "valueA": {
+                        "type": "variable",
+                        "value": "10"
+                      },
+                      "valueB": {
+                        "type": "number",
+                        "value": 4
+                      }
+                    },
+                    "__collapseElse": true,
+                    "__comment": false,
+                    "__collapse": false
+                  },
+                  "children": {
+                    "true": [
+                      {
+                        "command": "EVENT_SET_VALUE",
+                        "args": {
+                          "variable": "10",
+                          "value": {
+                            "type": "number",
+                            "value": 1
+                          }
+                        },
+                        "id": "f95f4a32-e59b-4f5c-8188-5ce541b7dd8c"
+                      },
+                      {
+                        "command": "EVENT_SET_VALUE",
+                        "args": {
+                          "variable": "9",
+                          "value": {
+                            "type": "expression",
+                            "value": "$09$ + 1"
+                          }
+                        },
+                        "id": "602d5cc5-6d54-4a8d-9d7b-73c72ccb2d71"
+                      }
+                    ],
+                    "false": []
+                  },
+                  "id": "7e1b5781-b823-4470-9fbc-0db903616993"
+                },
+                {
+                  "command": "EVENT_SET_VALUE",
+                  "args": {
+                    "variable": "22",
+                    "value": {
+                      "type": "number",
+                      "value": 0
+                    }
+                  },
+                  "id": "4e60a754-f43f-4245-9d37-16de49b2e499",
+                  "children": {}
+                },
+                {
+                  "command": "EVENT_CALL_CUSTOM_EVENT",
+                  "args": {
+                    "customEventId": "1da14dfe-ad02-4e47-addd-68af4399854d"
+                  },
+                  "id": "c37b3540-3c70-4207-b9f1-8a7974b7ae41",
+                  "children": {}
+                }
+              ]
+            },
+            "id": "748f3e2d-be5f-47f5-875d-1eaaf7ab59ca"
+          }
+        ]
+      },
+      "id": "e9c2da40-2d9b-4a5b-b120-c766e0a93650"
+    }
+  ],
+  "leaveScript": []
+}

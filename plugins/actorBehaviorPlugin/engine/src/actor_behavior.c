@@ -14,10 +14,13 @@
 #include "game_time.h"
 #include "actor_behavior.h"
 #include "states/platform.h"
+#include "states/playerstates.h"
 #include "meta_tiles.h"
+#include "collision.h"
 
 #define BEHAVIOR_ACTIVATION_THRESHOLD 168
 #define BEHAVIOR_DEACTIVATION_THRESHOLD 176
+#define BEHAVIOR_DEACTIVATION_LOWER_THRESHOLD -8
 
 UBYTE actor_behavior_ids[MAX_ACTORS];
 UBYTE actor_states[MAX_ACTORS];
@@ -25,7 +28,8 @@ WORD actor_vel_x[MAX_ACTORS];
 WORD actor_vel_y[MAX_ACTORS];
 UBYTE actor_counter_a[MAX_ACTORS];
 
-upoint16_t tmp_point;
+WORD current_actor_x;
+point16_t tmp_point;
 const BYTE firebar_incx_lookup[] = { 0, 3, 6, 7, 8, 7, 6, 3, 0, -3, -6, -7, -8, -7, -6, -3 };
 const BYTE firebar_incy_lookup[] = { -8, -7, -6, -3, 0, 3, 6, 7, 8, 7, 6, 3, 0, -3, -6, -7 };
 
@@ -150,7 +154,8 @@ void actor_behavior_update(void) BANKED {
 					if ((((actor->pos.x >> 4) + 8) - draw_scroll_x) < BEHAVIOR_ACTIVATION_THRESHOLD){ actor_states[i] = 1; }
 					break;
 				case 1: //Main state
-					if ((((actor->pos.x >> 4) + 8) - draw_scroll_x) > BEHAVIOR_DEACTIVATION_THRESHOLD){ 
+					current_actor_x = ((actor->pos.x >> 4) + 8) - draw_scroll_x;
+					if (current_actor_x > BEHAVIOR_DEACTIVATION_THRESHOLD || current_actor_x < BEHAVIOR_DEACTIVATION_LOWER_THRESHOLD){ 
 						actor_states[i] = 255; 
 						break;
 					}
@@ -176,7 +181,8 @@ void actor_behavior_update(void) BANKED {
 					if ((((actor->pos.x >> 4) + 8) - draw_scroll_x) < BEHAVIOR_ACTIVATION_THRESHOLD){ actor_states[i] = 1; }
 					break;
 				case 1: //Main state
-					if ((((actor->pos.x >> 4) + 8) - draw_scroll_x) > BEHAVIOR_DEACTIVATION_THRESHOLD){ 
+					current_actor_x = ((actor->pos.x >> 4) + 8) - draw_scroll_x;
+					if (current_actor_x > BEHAVIOR_DEACTIVATION_THRESHOLD || current_actor_x < BEHAVIOR_DEACTIVATION_LOWER_THRESHOLD){ 
 						actor_states[i] = 255; 
 						break;
 					}
@@ -202,7 +208,8 @@ void actor_behavior_update(void) BANKED {
 					if ((((actor->pos.x >> 4) + 8) - draw_scroll_x) < BEHAVIOR_ACTIVATION_THRESHOLD){ actor_states[i] = 1; }
 					break;
 				case 1: //Main state
-					if ((((actor->pos.x >> 4) + 8) - draw_scroll_x) > BEHAVIOR_DEACTIVATION_THRESHOLD){ 
+					current_actor_x = ((actor->pos.x >> 4) + 8) - draw_scroll_x;
+					if (current_actor_x > BEHAVIOR_DEACTIVATION_THRESHOLD || current_actor_x < BEHAVIOR_DEACTIVATION_LOWER_THRESHOLD){ 
 						actor_states[i] = 255; 
 						break;
 					}
@@ -243,7 +250,8 @@ void actor_behavior_update(void) BANKED {
 					if ((((actor->pos.x >> 4) + 8) - draw_scroll_x) < BEHAVIOR_ACTIVATION_THRESHOLD){ actor_states[i] = 1; }
 					break;
 				case 1: //Main state
-					if ((((actor->pos.x >> 4) + 8) - draw_scroll_x) > BEHAVIOR_DEACTIVATION_THRESHOLD){ 
+					current_actor_x = ((actor->pos.x >> 4) + 8) - draw_scroll_x;
+					if (current_actor_x > BEHAVIOR_DEACTIVATION_THRESHOLD || current_actor_x < BEHAVIOR_DEACTIVATION_LOWER_THRESHOLD){ 
 						actor_states[i] = 255; 
 						break;
 					}
@@ -259,11 +267,12 @@ void actor_behavior_update(void) BANKED {
 				case 0: //Init
 					if ((((actor->pos.x >> 4) + 8) - draw_scroll_x) < BEHAVIOR_ACTIVATION_THRESHOLD){ 
 						actor_states[i] = 1; 
-						actor_counter_a[i] = 180;
+						actor_counter_a[i] = 60;
 					}
 					break;
 				case 1: //Main state
-					if ((((actor->pos.x >> 4) + 8) - draw_scroll_x) > BEHAVIOR_DEACTIVATION_THRESHOLD){ 
+					current_actor_x = ((actor->pos.x >> 4) + 8) - draw_scroll_x;
+					if (current_actor_x > BEHAVIOR_DEACTIVATION_THRESHOLD || current_actor_x < BEHAVIOR_DEACTIVATION_LOWER_THRESHOLD){ 
 						actor_states[i] = 255; 
 						break;
 					}
@@ -307,7 +316,8 @@ void actor_behavior_update(void) BANKED {
 					if ((((actor->pos.x >> 4) + 8) - draw_scroll_x) < BEHAVIOR_ACTIVATION_THRESHOLD){ actor_states[i] = 1; }
 					break;
 				case 1: //Main state
-					if ((((actor->pos.x >> 4) + 8) - draw_scroll_x) > BEHAVIOR_DEACTIVATION_THRESHOLD){ 
+					current_actor_x = ((actor->pos.x >> 4) + 8) - draw_scroll_x;
+					if (current_actor_x > BEHAVIOR_DEACTIVATION_THRESHOLD || current_actor_x < BEHAVIOR_DEACTIVATION_LOWER_THRESHOLD){ 
 						actor_states[i] = 255; 
 						break;
 					}
@@ -333,7 +343,8 @@ void actor_behavior_update(void) BANKED {
 					if ((((actor->pos.x >> 4) + 8) - draw_scroll_x) < BEHAVIOR_ACTIVATION_THRESHOLD){ actor_states[i] = 1; }
 					break;
 				case 1: //Move up state
-					if ((((actor->pos.x >> 4) + 8) - draw_scroll_x) > BEHAVIOR_DEACTIVATION_THRESHOLD){ 
+					current_actor_x = ((actor->pos.x >> 4) + 8) - draw_scroll_x;
+					if (current_actor_x > BEHAVIOR_DEACTIVATION_THRESHOLD || current_actor_x < BEHAVIOR_DEACTIVATION_LOWER_THRESHOLD){ 
 						actor_states[i] = 255; 
 						break;
 					}
@@ -391,10 +402,11 @@ void actor_behavior_update(void) BANKED {
 					if ((((actor->pos.x >> 4) + 8) - draw_scroll_x) < BEHAVIOR_ACTIVATION_THRESHOLD){ actor_states[i] = 1; }
 					break;
 				case 1: //Main state
-					if ((((actor->pos.x >> 4) + 8) - draw_scroll_x) > BEHAVIOR_DEACTIVATION_THRESHOLD){ 
+					current_actor_x = ((actor->pos.x >> 4) + 8) - draw_scroll_x;
+					if (current_actor_x > BEHAVIOR_DEACTIVATION_THRESHOLD || current_actor_x < BEHAVIOR_DEACTIVATION_LOWER_THRESHOLD){ 
 						actor_states[i] = 255; 
 						break;
-					}					
+					}				
 					if (!(game_time & 7)){
 						actor_counter_a[i] = (actor_counter_a[i] + 1) & 15;
 						actor->frame = actor->frame_start + actor_counter_a[i];
@@ -421,7 +433,8 @@ void actor_behavior_update(void) BANKED {
 					if ((((actor->pos.x >> 4) + 8) - draw_scroll_x) < BEHAVIOR_ACTIVATION_THRESHOLD){ actor_states[i] = 1; }
 					break;
 				case 1: //Main state
-					if ((((actor->pos.x >> 4) + 8) - draw_scroll_x) > BEHAVIOR_DEACTIVATION_THRESHOLD){ 
+					current_actor_x = ((actor->pos.x >> 4) + 8) - draw_scroll_x;
+					if (current_actor_x > BEHAVIOR_DEACTIVATION_THRESHOLD || current_actor_x < BEHAVIOR_DEACTIVATION_LOWER_THRESHOLD){ 
 						actor_states[i] = 255; 
 						break;
 					}
@@ -461,7 +474,8 @@ void actor_behavior_update(void) BANKED {
 					if ((((actor->pos.x >> 4) + 8) - draw_scroll_x) < BEHAVIOR_ACTIVATION_THRESHOLD){ actor_states[i] = 1; }
 					break;
 				case 1: //Main state
-					if ((((actor->pos.x >> 4) + 8) - draw_scroll_x) > BEHAVIOR_DEACTIVATION_THRESHOLD){ 
+					current_actor_x = ((actor->pos.x >> 4) + 8) - draw_scroll_x;
+					if (current_actor_x > BEHAVIOR_DEACTIVATION_THRESHOLD || current_actor_x < BEHAVIOR_DEACTIVATION_LOWER_THRESHOLD){ 
 						actor_states[i] = 255; 
 						break;
 					}
@@ -477,7 +491,113 @@ void actor_behavior_update(void) BANKED {
 					deactivate_actor(actor);
 					break;
 			}
+			break;	
+			case 11://Fire ball
+			switch(actor_states[i]){
+				case 0: //Init
+					if ((((actor->pos.x >> 4) + 8) - draw_scroll_x) < BEHAVIOR_ACTIVATION_THRESHOLD){ actor_states[i] = 1; }
+					break;
+				case 1: //Main state
+					current_actor_x = ((actor->pos.x >> 4) + 8) - draw_scroll_x;
+					if (current_actor_x > BEHAVIOR_DEACTIVATION_THRESHOLD || current_actor_x < BEHAVIOR_DEACTIVATION_LOWER_THRESHOLD){ 
+						actor_states[i] = 255; 
+						break;
+					}
+					actor_vel_y[i] += (plat_grav >> 9);
+					actor_vel_y[i] = MIN(actor_vel_y[i], (plat_max_fall_vel >> 8));
+					//Apply velocity
+					WORD new_y =  actor->pos.y + actor_vel_y[i];
+					WORD new_x =  actor->pos.x + actor_vel_x[i];
+					//Tile Collision
+					actor->pos.x = check_collision(new_x, actor->pos.y, &actor->bounds, ((actor->pos.x > new_x) ? CHECK_DIR_LEFT : CHECK_DIR_RIGHT));
+					if (actor->pos.x != new_x){
+						script_execute(actor->script.bank, actor->script.ptr, 0, 1, 2);
+						actor_states[i] = 255;
+						break;
+					}
+					actor->pos.y = check_collision(actor->pos.x, new_y, &actor->bounds, ((actor->pos.y > new_y) ? CHECK_DIR_UP : CHECK_DIR_DOWN));
+					if (actor->pos.y < new_y){
+						actor_vel_y[i] = -40;
+					} else if (actor->pos.y > new_y){
+						actor_vel_y[i] = 0;
+					}
+					//Actor Collision					
+					actor_t * hit_actor = actor_overlapping_bb(&actor->bounds, &actor->pos, actor, FALSE);
+					if (hit_actor && hit_actor->script.bank && actor->collision_group != hit_actor->collision_group){
+						script_execute(hit_actor->script.bank, hit_actor->script.ptr, 0, 1, 2);
+						script_execute(actor->script.bank, actor->script.ptr, 0, 1, 2);
+						actor_states[i] = 255;
+					}
+					break;
+				case 255: //Deactivate
+					deactivate_actor(actor);
+					break;
+			}		
 			break;		
+			case 12: //Growing Beanstalk
+			switch(actor_states[i]){
+				case 0:
+					if ((((actor->pos.x >> 4) + 8) - draw_scroll_x) < BEHAVIOR_ACTIVATION_THRESHOLD){ 
+						actor_counter_a[i] = 0;
+						actor_states[i] = 1; 
+						actor->pos.y = (actor->pos.y >> 7) << 7;
+						actor->pos.x = (actor->pos.x >> 7) << 7;
+						replace_meta_tile((actor->pos.x >> 7), (actor->pos.y >> 7) - 1, 151);
+					}
+				case 1: //Move up state
+					current_actor_x = ((actor->pos.x >> 4) + 8) - draw_scroll_x;
+					if (current_actor_x > BEHAVIOR_DEACTIVATION_THRESHOLD || current_actor_x < BEHAVIOR_DEACTIVATION_LOWER_THRESHOLD){ 
+						actor_states[i] = 255; 
+						break;
+					}
+					if (actor->pos.y > 384){
+						actor->pos.y = actor->pos.y - 8;	
+						actor_counter_a[i] = actor_counter_a[i] + 1;
+						if (actor_counter_a[i] > 15){
+							actor_counter_a[i] = 0;
+							replace_meta_tile((actor->pos.x >> 7), (actor->pos.y >> 7) - 1, 151);
+							if (tile_at((actor->pos.x >> 7), (actor->pos.y >> 7) - 2) & COLLISION_BOTTOM) {
+								actor_states[i] = 255; 
+							}
+						}
+					}	
+					else{
+						actor_states[i] = 255; 
+					}
+					break;
+				case 255:
+					actor_counter_a[i] = 0;
+					deactivate_actor(actor);
+					break;
+			}
+			break;
+			case 13: //Moving platform (activates on player touch)
+			switch(actor_states[i]){
+				case 0:
+					if ((((actor->pos.x >> 4) + 8) - draw_scroll_x) < BEHAVIOR_ACTIVATION_THRESHOLD){ actor_states[i] = 1; }
+				case 1: //Not moving state
+					if ((((actor->pos.x >> 4) + 8) - draw_scroll_x) > BEHAVIOR_DEACTIVATION_THRESHOLD){ 
+						actor_states[i] = 255; 
+						break;
+					}	
+					if (actor_attached && last_actor == actor) {//start moving on player attach
+						actor_states[i] = 2; 
+					}					
+					break;
+				case 2: //moving state
+					if ((((actor->pos.x >> 4) + 8) - draw_scroll_x) > BEHAVIOR_DEACTIVATION_THRESHOLD){ 
+						actor_states[i] = 255; 
+						break;
+					}
+					actor->pos.x = actor->pos.x + actor_vel_x[i];
+					actor->pos.y = actor->pos.y + actor_vel_y[i];
+					break;
+				case 255:
+					actor_counter_a[i] = 0;
+					deactivate_actor(actor);
+					break;
+			}
+			break;				
 		}			
 	}
 }
@@ -494,6 +614,11 @@ void vm_set_actor_state(SCRIPT_CTX * THIS) OLDCALL BANKED {
     actor_states[actor_idx] = state_id;
 }
 
+void vm_get_actor_state(SCRIPT_CTX * THIS) OLDCALL BANKED {
+    UBYTE actor_idx = *(uint8_t *)VM_REF_TO_PTR(FN_ARG0);
+	script_memory[*(int16_t*)VM_REF_TO_PTR(FN_ARG1)] = actor_states[actor_idx];
+}
+
 void vm_set_actor_velocity_x(SCRIPT_CTX * THIS) OLDCALL BANKED {
     UBYTE actor_idx = *(uint8_t *)VM_REF_TO_PTR(FN_ARG0);
     WORD vel_x = *(int16_t *)VM_REF_TO_PTR(FN_ARG1);
@@ -505,66 +630,3 @@ void vm_set_actor_velocity_y(SCRIPT_CTX * THIS) OLDCALL BANKED {
     WORD vel_y = *(int16_t *)VM_REF_TO_PTR(FN_ARG1);
     actor_vel_y[actor_idx] = vel_y;
 }
-/*
-void vm_set_actor_spritesheet_ex(SCRIPT_CTX * THIS) OLDCALL BANKED {
-	UBYTE actor_idx = *(uint8_t *)VM_REF_TO_PTR(FN_ARG0);
-    UBYTE base_tile = *(uint8_t *)VM_REF_TO_PTR(FN_ARG1);
-	UBYTE spritesheet_bank = *(uint8_t *)VM_REF_TO_PTR(FN_ARG2);
-	const spritesheet_t * spritesheet = *(const spritesheet_t * *)VM_REF_TO_PTR(FN_ARG3);	
-    actor_t * actor = (actors + actor_idx);	    
-	actor->base_tile = base_tile;
-    actor->sprite.bank = spritesheet_bank;
-    actor->sprite.ptr = (void *)spritesheet;
-    load_animations(spritesheet, spritesheet_bank, ANIM_SET_DEFAULT, actor->animations);
-    load_bounds(spritesheet, spritesheet_bank, &actor->bounds);
-    actor_reset_anim(actor);
-}
-
-void vm_load_spritesheet_ex(SCRIPT_CTX * THIS) OLDCALL BANKED {
-	UBYTE base_tile = *(uint8_t *)VM_REF_TO_PTR(FN_ARG0);
-	UBYTE spritesheet_bank = *(uint8_t *)VM_REF_TO_PTR(FN_ARG1);
-	const spritesheet_t * spritesheet = *(const spritesheet_t * *)VM_REF_TO_PTR(FN_ARG2);
-	load_sprite(base_tile, spritesheet, spritesheet_bank);
-}
-
-
-
-//Actor pooling
-UBYTE poolable_actors[MAX_ACTORS];
-
-void vm_init_actor_pool(SCRIPT_CTX * THIS) OLDCALL BANKED {
-	UBYTE pool_start_idx = MAX(*(uint8_t *)VM_REF_TO_PTR(FN_ARG0), 1);
-	UBYTE pool_end_idx = MIN(*(uint8_t *)VM_REF_TO_PTR(FN_ARG1), MAX_ACTORS);
-	//Init actor pool
-	memset(poolable_actors, 0, sizeof(poolable_actors));
-	for (UBYTE i = pool_start_idx; i < pool_end_idx; i++){
-		poolable_actors[i] = 1;
-	}
-}
-
-void vm_instanciate_actor(SCRIPT_CTX * THIS) OLDCALL BANKED {
-	UBYTE actor_idx = *(uint8_t *)VM_REF_TO_PTR(FN_ARG0);
-	WORD actor_pos_x = *(int16_t *)VM_REF_TO_PTR(FN_ARG1);
-	WORD actor_pos_y = *(int16_t *)VM_REF_TO_PTR(FN_ARG2);
-	UBYTE actor_bank = *(uint8_t *)VM_REF_TO_PTR(FN_ARG3);
-	const void* actor_ptr = *(const void* *)VM_REF_TO_PTR(FN_ARG4);
-	for (UBYTE i = 1; i < MAX_ACTORS; i++){
-		if (poolable_actors[i] == 1){
-			actor_t * actor = actors + i;
-			if (actor->active){
-				DL_REMOVE_ITEM(actors_active_head, actor);
-			} else {
-				DL_REMOVE_ITEM(actors_inactive_head, actor);
-			}
-			MemcpyBanked(actor, actor_ptr + actor_idx, sizeof(actor_t), actor_bank);
-			actor->active = FALSE;
-			actor->pos.x = actor_pos_x;
-			actor->pos.y = actor_pos_y;
-            DL_PUSH_HEAD(actors_inactive_head, actor);
-			poolable_actors[i] = 0;
-			break;
-		}
-	}
-	
-}
-*/

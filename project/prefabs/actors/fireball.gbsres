@@ -9,7 +9,7 @@
   "animSpeed": 15,
   "paletteId": "",
   "persistent": false,
-  "collisionGroup": "",
+  "collisionGroup": "2",
   "script": [],
   "startScript": [
     {
@@ -20,10 +20,55 @@
         "loopAnim": true
       },
       "id": "4a09485e-5567-4168-b4a5-0bb38a489752"
+    },
+    {
+      "command": "EVENT_SET_ACTOR_BEHAVIOR",
+      "args": {
+        "actorId": "$self$",
+        "behaviorId": {
+          "type": "number",
+          "value": 11
+        }
+      },
+      "id": "88a2c822-1f67-4b57-990e-5d17df71c6e2"
+    },
+    {
+      "command": "EVENT_ACTOR_DEACTIVATE",
+      "args": {
+        "actorId": "$self$"
+      },
+      "id": "c601f53b-5302-4947-9ff0-dce452995ac7"
     }
   ],
   "updateScript": [],
-  "hit1Script": [],
+  "hit1Script": [
+    {
+      "command": "EVENT_LAUNCH_PROJECTILE",
+      "args": {
+        "__section": "projectile",
+        "spriteSheetId": "8dbb443a-eb83-48bb-86c9-ffd9012f45c7",
+        "spriteStateId": "FireballHit",
+        "actorId": "$self$",
+        "x": 0,
+        "y": 0,
+        "directionType": "direction",
+        "otherActorId": "$self$",
+        "direction": "right",
+        "angle": 0,
+        "angleVariable": "0",
+        "targetActorId": "$self$",
+        "initialOffset": 0,
+        "speed": 0,
+        "animSpeed": 3,
+        "lifeTime": 0.1,
+        "loopAnim": false,
+        "destroyOnHit": false,
+        "collisionGroup": "3",
+        "collisionMask": []
+      },
+      "id": "5f3a0bed-6a97-478f-ada0-b6e005d4f7ba"
+    }
+  ],
   "hit2Script": [],
   "hit3Script": []
 }

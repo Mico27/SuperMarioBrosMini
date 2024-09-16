@@ -1,0 +1,52 @@
+{
+  "_resourceType": "script",
+  "id": "6c769cfe-c827-4ad1-bcfa-c6b1c4927c9b",
+  "name": "OnBeanstalkTransition",
+  "description": "",
+  "variables": {},
+  "actors": {},
+  "symbol": "script_15",
+  "script": [
+    {
+      "command": "EVENT_IF",
+      "args": {
+        "condition": {
+          "type": "eq",
+          "valueA": {
+            "type": "variable",
+            "value": "29"
+          },
+          "valueB": {
+            "type": "number",
+            "value": 1
+          }
+        },
+        "__collapseElse": true
+      },
+      "children": {
+        "true": [
+          {
+            "command": "EVENT_SET_VALUE",
+            "args": {
+              "variable": "29",
+              "value": {
+                "type": "number",
+                "value": 0
+              }
+            },
+            "id": "8cf1beab-ffab-400f-8bd3-30aa824440f5"
+          },
+          {
+            "command": "EVENT_CALL_CUSTOM_EVENT",
+            "args": {
+              "customEventId": "1da14dfe-ad02-4e47-addd-68af4399854d"
+            },
+            "id": "1e897720-8795-42af-b09a-ab849e6bfb26"
+          }
+        ],
+        "false": []
+      },
+      "id": "9e811d9d-6e76-46b5-b057-05b093e6cef8"
+    }
+  ]
+}
