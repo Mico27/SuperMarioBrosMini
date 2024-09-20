@@ -107,11 +107,6 @@
       "symbol": "var_playerstate"
     },
     {
-      "id": "21",
-      "name": "StartOfLevel",
-      "symbol": "var_startoflevel"
-    },
-    {
       "id": "22",
       "name": "CurrentSubLevel",
       "symbol": "var_currentsublevel"
@@ -133,8 +128,8 @@
     },
     {
       "id": "26",
-      "name": "TestX",
-      "symbol": "var_testx"
+      "name": "TmpX",
+      "symbol": "var_tmpx"
     },
     {
       "id": "27",
@@ -143,8 +138,8 @@
     },
     {
       "id": "28",
-      "name": "TestY",
-      "symbol": "var_testy"
+      "name": "tmpY",
+      "symbol": "var_tmpy"
     },
     {
       "id": "29",
@@ -212,6 +207,36 @@
       "symbol": "var_bowser_hp"
     },
     {
+      "id": "42",
+      "name": "IsSkyBonusLevel",
+      "symbol": "var_isskybonuslevel"
+    },
+    {
+      "id": "43",
+      "name": "FireworksCount",
+      "symbol": "var_fireworkscount"
+    },
+    {
+      "id": "44",
+      "name": "PowerStarComboScore",
+      "symbol": "var_powerstarcomboscore"
+    },
+    {
+      "id": "45",
+      "name": "ShellComboScore",
+      "symbol": "var_shellcomboscore"
+    },
+    {
+      "id": "46",
+      "name": "JumpComboScore",
+      "symbol": "var_jumpcomboscore"
+    },
+    {
+      "id": "47",
+      "name": "CurrentActorBehavior",
+      "symbol": "var_currentactorbehavior"
+    },
+    {
       "id": "99ba378a-ca76-4655-a8b8-8bf2dbc06f01__L0",
       "name": "Local 0",
       "symbol": "var_local_0"
@@ -220,11 +245,7 @@
       "id": "c4a43220-420e-4bee-90a1-a0fe18b75546__L0",
       "name": "Local 0",
       "symbol": "var_local_1"
-    },
-    {
-      "id": "42",
-      "name": "IsSkyBonusLevel",
-      "symbol": "var_isskybonuslevel"
     }
-  ]
+  ],
+  "constants": []
 }

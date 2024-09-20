@@ -26,9 +26,9 @@
   ],
   "collisions": "00f30+",
   "autoFadeSpeed": null,
-  "symbol": "scene_12",
+  "symbol": "scene_2_1",
   "x": 96,
-  "y": 1208,
+  "y": 896,
   "parallax": [
     {
       "height": 2,
@@ -78,18 +78,6 @@
       "id": "b933ca7a-f069-4d61-a4f8-ec02e7c7f7aa"
     },
     {
-      "command": "EVENT_SET_VALUE",
-      "args": {
-        "variable": "21",
-        "value": {
-          "type": "number",
-          "value": 1
-        },
-        "__collapse": true
-      },
-      "id": "0467d5c5-8ffa-4f7f-baf5-c0613e6b653d"
-    },
-    {
       "command": "EVENT_CALL_CUSTOM_EVENT",
       "args": {
         "customEventId": "32d76253-2c63-4808-a673-2c3b44b8615b",
@@ -110,7 +98,7 @@
       "args": {
         "specific_event": "1",
         "__scriptTabs": "scriptinput",
-        "__collapse": false
+        "__collapse": true
       },
       "children": {
         "script": [

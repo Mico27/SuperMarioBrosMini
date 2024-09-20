@@ -1,0 +1,33 @@
+{
+  "_resourceType": "actorPrefab",
+  "id": "eff17bf6-c5c6-4ff6-9498-e4d046ba246e",
+  "name": "Spring",
+  "frame": 0,
+  "animate": false,
+  "spriteSheetId": "e2b700aa-8ad6-4b0d-a71e-49cc6237b81e",
+  "moveSpeed": 1,
+  "animSpeed": 255,
+  "paletteId": "",
+  "persistent": false,
+  "collisionGroup": "3",
+  "prefabScriptOverrides": {},
+  "_index": 18,
+  "script": [],
+  "startScript": [
+    {
+      "command": "EVENT_SET_ACTOR_BEHAVIOR",
+      "args": {
+        "actorId": "$self$",
+        "behaviorId": {
+          "type": "number",
+          "value": 14
+        }
+      },
+      "id": "aa3bd37c-b4a0-4b8b-b4a8-5b018b43eccd"
+    }
+  ],
+  "updateScript": [],
+  "hit1Script": [],
+  "hit2Script": [],
+  "hit3Script": []
+}

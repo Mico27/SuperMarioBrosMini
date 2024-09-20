@@ -4,7 +4,7 @@
   "_index": 0,
   "type": "PLATFORM",
   "name": "1-1",
-  "symbol": "scene_1",
+  "symbol": "scene_1_1",
   "x": 96,
   "y": 192,
   "width": 216,
@@ -75,18 +75,6 @@
         "__collapse": true
       },
       "id": "48bca3e4-2ef9-4d6f-aa31-6c28c31d1e19"
-    },
-    {
-      "command": "EVENT_SET_VALUE",
-      "args": {
-        "variable": "21",
-        "value": {
-          "type": "number",
-          "value": 1
-        },
-        "__collapse": true
-      },
-      "id": "697f5a00-8ad8-4cfd-9173-5777df299a19"
     },
     {
       "command": "EVENT_CALL_CUSTOM_EVENT",
@@ -167,7 +155,7 @@
       "args": {
         "specific_event": "2",
         "__scriptTabs": "scriptinput",
-        "__collapse": true
+        "__collapse": false
       },
       "children": {
         "script": [
@@ -208,7 +196,7 @@
       "args": {
         "specific_event": "4",
         "__scriptTabs": "scriptinput",
-        "__collapse": true
+        "__collapse": false
       },
       "children": {
         "script": [
@@ -228,7 +216,7 @@
       "args": {
         "specific_event": "5",
         "__scriptTabs": "scriptinput",
-        "__collapse": true
+        "__collapse": false
       },
       "children": {
         "script": [
@@ -268,6 +256,30 @@
         ]
       },
       "id": "a418734f-f617-4110-b784-826306504ad8"
+    },
+    {
+      "command": "PM_EVENT_PLATPLUS_STATE_SCRIPT",
+      "args": {
+        "state": 3,
+        "__scriptTabs": "scriptinput",
+        "__collapse": true
+      },
+      "children": {
+        "script": [
+          {
+            "command": "EVENT_SET_VALUE",
+            "args": {
+              "variable": "46",
+              "value": {
+                "type": "number",
+                "value": 0
+              }
+            },
+            "id": "a5462b66-1178-405d-abe6-c8ca4b075d17"
+          }
+        ]
+      },
+      "id": "241853d8-1d41-4a76-9814-1bf561b84dd2"
     }
   ],
   "playerHit1Script": [],

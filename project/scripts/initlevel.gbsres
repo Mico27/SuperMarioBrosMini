@@ -165,15 +165,15 @@
                       "type": "eq",
                       "valueA": {
                         "type": "variable",
-                        "value": "21"
+                        "value": "31"
                       },
                       "valueB": {
                         "type": "number",
-                        "value": 1
+                        "value": 0
                       }
                     },
                     "__collapseElse": true,
-                    "__collapse": false
+                    "__collapse": true
                   },
                   "children": {
                     "true": [
@@ -321,16 +321,40 @@
               ],
               "false": [
                 {
-                  "command": "EVENT_SET_VALUE",
+                  "command": "EVENT_IF",
                   "args": {
-                    "variable": "0",
-                    "value": {
-                      "type": "number",
-                      "value": 300
+                    "condition": {
+                      "type": "eq",
+                      "valueA": {
+                        "type": "variable",
+                        "value": "31"
+                      },
+                      "valueB": {
+                        "type": "number",
+                        "value": 0
+                      }
                     },
+                    "__collapseElse": true,
                     "__collapse": true
                   },
-                  "id": "fa26a32c-ef04-496d-b220-479b64b2ee31"
+                  "children": {
+                    "true": [
+                      {
+                        "command": "EVENT_SET_VALUE",
+                        "args": {
+                          "variable": "0",
+                          "value": {
+                            "type": "number",
+                            "value": 300
+                          },
+                          "__collapse": true
+                        },
+                        "id": "fa26a32c-ef04-496d-b220-479b64b2ee31"
+                      }
+                    ],
+                    "false": []
+                  },
+                  "id": "d7d58f45-b70e-4743-9f3a-91ce49cacc73"
                 },
                 {
                   "command": "EVENT_GBVM_SCRIPT",
@@ -501,7 +525,7 @@
       "command": "EVENT_GROUP",
       "args": {
         "__label": "Init Mario",
-        "__collapse": false
+        "__collapse": true
       },
       "children": {
         "true": [
@@ -597,7 +621,7 @@
                 }
               },
               "__collapseElse": false,
-              "__collapse": true
+              "__collapse": false
             },
             "children": {
               "true": [
@@ -689,38 +713,87 @@
         "variable": "31",
         "choices": 2,
         "__collapseCase0": false,
-        "value0": 1,
+        "value0": {
+          "type": "number",
+          "value": 1
+        },
         "__collapseCase1": false,
-        "value1": 2,
+        "value1": {
+          "type": "number",
+          "value": 2
+        },
         "__collapseCase2": false,
-        "value2": 3,
+        "value2": {
+          "type": "number",
+          "value": 3
+        },
         "__collapseCase3": false,
-        "value3": 4,
+        "value3": {
+          "type": "number",
+          "value": 4
+        },
         "__collapseCase4": false,
-        "value4": 5,
+        "value4": {
+          "type": "number",
+          "value": 5
+        },
         "__collapseCase5": false,
-        "value5": 6,
+        "value5": {
+          "type": "number",
+          "value": 6
+        },
         "__collapseCase6": false,
-        "value6": 7,
+        "value6": {
+          "type": "number",
+          "value": 7
+        },
         "__collapseCase7": false,
-        "value7": 8,
+        "value7": {
+          "type": "number",
+          "value": 8
+        },
         "__collapseCase8": false,
-        "value8": 9,
+        "value8": {
+          "type": "number",
+          "value": 9
+        },
         "__collapseCase9": false,
-        "value9": 10,
+        "value9": {
+          "type": "number",
+          "value": 10
+        },
         "__collapseCase10": false,
-        "value10": 11,
+        "value10": {
+          "type": "number",
+          "value": 11
+        },
         "__collapseCase11": false,
-        "value11": 12,
+        "value11": {
+          "type": "number",
+          "value": 12
+        },
         "__collapseCase12": false,
-        "value12": 13,
+        "value12": {
+          "type": "number",
+          "value": 13
+        },
         "__collapseCase13": false,
-        "value13": 14,
+        "value13": {
+          "type": "number",
+          "value": 14
+        },
         "__collapseCase14": false,
-        "value14": 15,
+        "value14": {
+          "type": "number",
+          "value": 15
+        },
         "__collapseCase15": false,
-        "value15": 16,
-        "__collapseElse": false
+        "value15": {
+          "type": "number",
+          "value": 16
+        },
+        "__collapseElse": false,
+        "__collapse": true
       },
       "children": {
         "true0": [
@@ -892,15 +965,15 @@
                       "type": "eq",
                       "valueA": {
                         "type": "variable",
-                        "value": "21"
+                        "value": "31"
                       },
                       "valueB": {
                         "type": "number",
-                        "value": 1
+                        "value": 0
                       }
                     },
                     "__collapseElse": false,
-                    "__collapse": false
+                    "__collapse": true
                   },
                   "children": {
                     "true": [
@@ -1314,39 +1387,87 @@
               "variable": "16",
               "choices": 2,
               "__collapseCase0": false,
-              "value0": 0,
+              "value0": {
+                "type": "number",
+                "value": 0
+              },
               "__collapseCase1": false,
-              "value1": 1,
+              "value1": {
+                "type": "number",
+                "value": 1
+              },
               "__collapseCase2": false,
-              "value2": 2,
+              "value2": {
+                "type": "number",
+                "value": 2
+              },
               "__collapseCase3": false,
-              "value3": 3,
+              "value3": {
+                "type": "number",
+                "value": 3
+              },
               "__collapseCase4": false,
-              "value4": 5,
+              "value4": {
+                "type": "number",
+                "value": 5
+              },
               "__collapseCase5": false,
-              "value5": 6,
+              "value5": {
+                "type": "number",
+                "value": 6
+              },
               "__collapseCase6": false,
-              "value6": 7,
+              "value6": {
+                "type": "number",
+                "value": 7
+              },
               "__collapseCase7": false,
-              "value7": 8,
+              "value7": {
+                "type": "number",
+                "value": 8
+              },
               "__collapseCase8": false,
-              "value8": 9,
+              "value8": {
+                "type": "number",
+                "value": 9
+              },
               "__collapseCase9": false,
-              "value9": 10,
+              "value9": {
+                "type": "number",
+                "value": 10
+              },
               "__collapseCase10": false,
-              "value10": 11,
+              "value10": {
+                "type": "number",
+                "value": 11
+              },
               "__collapseCase11": false,
-              "value11": 12,
+              "value11": {
+                "type": "number",
+                "value": 12
+              },
               "__collapseCase12": false,
-              "value12": 13,
+              "value12": {
+                "type": "number",
+                "value": 13
+              },
               "__collapseCase13": false,
-              "value13": 14,
+              "value13": {
+                "type": "number",
+                "value": 14
+              },
               "__collapseCase14": false,
-              "value14": 15,
+              "value14": {
+                "type": "number",
+                "value": 15
+              },
               "__collapseCase15": false,
-              "value15": 16,
+              "value15": {
+                "type": "number",
+                "value": 16
+              },
               "__collapseElse": false,
-              "__collapse": true
+              "__collapse": false
             },
             "children": {
               "true0": [
@@ -1354,39 +1475,87 @@
                   "command": "EVENT_SWITCH",
                   "args": {
                     "variable": "18",
-                    "choices": 3,
+                    "choices": 5,
                     "__collapseCase0": false,
-                    "value0": 1,
+                    "value0": {
+                      "type": "number",
+                      "value": 1
+                    },
                     "__collapseCase1": false,
-                    "value1": 2,
-                    "__collapseCase2": true,
-                    "value2": 3,
+                    "value1": {
+                      "type": "number",
+                      "value": 2
+                    },
+                    "__collapseCase2": false,
+                    "value2": {
+                      "type": "number",
+                      "value": 3
+                    },
                     "__collapseCase3": false,
-                    "value3": 4,
+                    "value3": {
+                      "type": "number",
+                      "value": 4
+                    },
                     "__collapseCase4": false,
-                    "value4": 5,
+                    "value4": {
+                      "type": "number",
+                      "value": 5
+                    },
                     "__collapseCase5": false,
-                    "value5": 6,
+                    "value5": {
+                      "type": "number",
+                      "value": 6
+                    },
                     "__collapseCase6": false,
-                    "value6": 7,
+                    "value6": {
+                      "type": "number",
+                      "value": 7
+                    },
                     "__collapseCase7": false,
-                    "value7": 8,
+                    "value7": {
+                      "type": "number",
+                      "value": 8
+                    },
                     "__collapseCase8": false,
-                    "value8": 9,
+                    "value8": {
+                      "type": "number",
+                      "value": 9
+                    },
                     "__collapseCase9": false,
-                    "value9": 10,
+                    "value9": {
+                      "type": "number",
+                      "value": 10
+                    },
                     "__collapseCase10": false,
-                    "value10": 11,
+                    "value10": {
+                      "type": "number",
+                      "value": 11
+                    },
                     "__collapseCase11": false,
-                    "value11": 12,
+                    "value11": {
+                      "type": "number",
+                      "value": 12
+                    },
                     "__collapseCase12": false,
-                    "value12": 13,
+                    "value12": {
+                      "type": "number",
+                      "value": 13
+                    },
                     "__collapseCase13": false,
-                    "value13": 14,
+                    "value13": {
+                      "type": "number",
+                      "value": 14
+                    },
                     "__collapseCase14": false,
-                    "value14": 15,
+                    "value14": {
+                      "type": "number",
+                      "value": 15
+                    },
                     "__collapseCase15": false,
-                    "value15": 16,
+                    "value15": {
+                      "type": "number",
+                      "value": 16
+                    },
                     "__collapseElse": false,
                     "__collapse": true
                   },
@@ -1432,18 +1601,50 @@
                           "palette0": "keep",
                           "palette1": "keep",
                           "palette2": "keep",
+                          "palette3": "2ce22ce6-97d9-4dee-8cf4-a961c5ae078d",
+                          "palette4": "keep",
+                          "palette5": "keep",
+                          "palette6": "keep",
+                          "palette7": "keep",
+                          "__collapse": true
+                        },
+                        "id": "9151bfb8-1cf4-47e6-864c-6994d9a6eac6"
+                      }
+                    ],
+                    "true3": [
+                      {
+                        "command": "EVENT_PALETTE_SET_BACKGROUND",
+                        "args": {
+                          "palette0": "keep",
+                          "palette1": "keep",
+                          "palette2": "keep",
                           "palette3": "f0ead0ec-57e9-4de7-9a11-28f4b824c9b8",
                           "palette4": "keep",
                           "palette5": "keep",
                           "palette6": "keep",
                           "palette7": "keep",
-                          "__collapse": false
+                          "__collapse": true
                         },
                         "id": "e136dd18-0cd5-4fb6-962c-e3bd126cbb2a"
                       }
                     ],
-                    "true3": [],
-                    "true4": [],
+                    "true4": [
+                      {
+                        "command": "EVENT_PALETTE_SET_BACKGROUND",
+                        "args": {
+                          "palette0": "keep",
+                          "palette1": "keep",
+                          "palette2": "keep",
+                          "palette3": "c15b4347-cfc4-4d31-aabc-927e1ab00414",
+                          "palette4": "keep",
+                          "palette5": "keep",
+                          "palette6": "keep",
+                          "palette7": "keep",
+                          "__collapse": true
+                        },
+                        "id": "3cb394da-06df-4bd4-8bde-69a090aeaf5b"
+                      }
+                    ],
                     "true5": [],
                     "true6": [],
                     "true7": [],
@@ -1465,39 +1666,87 @@
                   "command": "EVENT_SWITCH",
                   "args": {
                     "variable": "18",
-                    "choices": 3,
+                    "choices": 5,
                     "__collapseCase0": false,
-                    "value0": 1,
+                    "value0": {
+                      "type": "number",
+                      "value": 1
+                    },
                     "__collapseCase1": false,
-                    "value1": 2,
+                    "value1": {
+                      "type": "number",
+                      "value": 2
+                    },
                     "__collapseCase2": false,
-                    "value2": 3,
+                    "value2": {
+                      "type": "number",
+                      "value": 3
+                    },
                     "__collapseCase3": false,
-                    "value3": 4,
+                    "value3": {
+                      "type": "number",
+                      "value": 4
+                    },
                     "__collapseCase4": false,
-                    "value4": 5,
+                    "value4": {
+                      "type": "number",
+                      "value": 5
+                    },
                     "__collapseCase5": false,
-                    "value5": 6,
+                    "value5": {
+                      "type": "number",
+                      "value": 6
+                    },
                     "__collapseCase6": false,
-                    "value6": 7,
+                    "value6": {
+                      "type": "number",
+                      "value": 7
+                    },
                     "__collapseCase7": false,
-                    "value7": 8,
+                    "value7": {
+                      "type": "number",
+                      "value": 8
+                    },
                     "__collapseCase8": false,
-                    "value8": 9,
+                    "value8": {
+                      "type": "number",
+                      "value": 9
+                    },
                     "__collapseCase9": false,
-                    "value9": 10,
+                    "value9": {
+                      "type": "number",
+                      "value": 10
+                    },
                     "__collapseCase10": false,
-                    "value10": 11,
+                    "value10": {
+                      "type": "number",
+                      "value": 11
+                    },
                     "__collapseCase11": false,
-                    "value11": 12,
+                    "value11": {
+                      "type": "number",
+                      "value": 12
+                    },
                     "__collapseCase12": false,
-                    "value12": 13,
+                    "value12": {
+                      "type": "number",
+                      "value": 13
+                    },
                     "__collapseCase13": false,
-                    "value13": 14,
+                    "value13": {
+                      "type": "number",
+                      "value": 14
+                    },
                     "__collapseCase14": false,
-                    "value14": 15,
+                    "value14": {
+                      "type": "number",
+                      "value": 15
+                    },
                     "__collapseCase15": false,
-                    "value15": 16,
+                    "value15": {
+                      "type": "number",
+                      "value": 16
+                    },
                     "__collapseElse": false,
                     "__collapse": true
                   },
@@ -1543,7 +1792,7 @@
                           "palette0": "keep",
                           "palette1": "keep",
                           "palette2": "keep",
-                          "palette3": "c17b2e55-98ea-46de-a86c-165f3ee4a88e",
+                          "palette3": "733f1479-667b-4399-983b-846101189677",
                           "palette4": "keep",
                           "palette5": "keep",
                           "palette6": "keep",
@@ -1553,8 +1802,40 @@
                         "id": "2f9dfcdd-4047-4026-af3f-f352c938386e"
                       }
                     ],
-                    "true3": [],
-                    "true4": [],
+                    "true3": [
+                      {
+                        "command": "EVENT_PALETTE_SET_BACKGROUND",
+                        "args": {
+                          "palette0": "keep",
+                          "palette1": "keep",
+                          "palette2": "keep",
+                          "palette3": "c17b2e55-98ea-46de-a86c-165f3ee4a88e",
+                          "palette4": "keep",
+                          "palette5": "keep",
+                          "palette6": "keep",
+                          "palette7": "keep",
+                          "__collapse": true
+                        },
+                        "id": "be83f544-09cc-403c-9a5d-2fbf2d6b18a2"
+                      }
+                    ],
+                    "true4": [
+                      {
+                        "command": "EVENT_PALETTE_SET_BACKGROUND",
+                        "args": {
+                          "palette0": "keep",
+                          "palette1": "keep",
+                          "palette2": "keep",
+                          "palette3": "7832734a-100f-42e5-9588-8440033756ca",
+                          "palette4": "keep",
+                          "palette5": "keep",
+                          "palette6": "keep",
+                          "palette7": "keep",
+                          "__collapse": true
+                        },
+                        "id": "896952e9-e33f-4c2d-bde9-d03edeba9587"
+                      }
+                    ],
                     "true5": [],
                     "true6": [],
                     "true7": [],
@@ -1594,54 +1875,90 @@
       "id": "582efe01-1df7-4db8-a6f2-f63a1af29731"
     },
     {
-      "command": "EVENT_SET_VALUE",
-      "args": {
-        "variable": "21",
-        "value": {
-          "type": "number",
-          "value": 0
-        },
-        "__collapse": true
-      },
-      "id": "683456fc-44cd-43c4-9075-cc1d95ee10b3"
-    },
-    {
       "command": "EVENT_SWITCH",
       "args": {
         "variable": "31",
         "choices": 2,
         "__collapseCase0": false,
-        "value0": 1,
+        "value0": {
+          "type": "number",
+          "value": 1
+        },
         "__collapseCase1": false,
-        "value1": 2,
+        "value1": {
+          "type": "number",
+          "value": 2
+        },
         "__collapseCase2": false,
-        "value2": 3,
+        "value2": {
+          "type": "number",
+          "value": 3
+        },
         "__collapseCase3": false,
-        "value3": 4,
+        "value3": {
+          "type": "number",
+          "value": 4
+        },
         "__collapseCase4": false,
-        "value4": 5,
+        "value4": {
+          "type": "number",
+          "value": 5
+        },
         "__collapseCase5": false,
-        "value5": 6,
+        "value5": {
+          "type": "number",
+          "value": 6
+        },
         "__collapseCase6": false,
-        "value6": 7,
+        "value6": {
+          "type": "number",
+          "value": 7
+        },
         "__collapseCase7": false,
-        "value7": 8,
+        "value7": {
+          "type": "number",
+          "value": 8
+        },
         "__collapseCase8": false,
-        "value8": 9,
+        "value8": {
+          "type": "number",
+          "value": 9
+        },
         "__collapseCase9": false,
-        "value9": 10,
+        "value9": {
+          "type": "number",
+          "value": 10
+        },
         "__collapseCase10": false,
-        "value10": 11,
+        "value10": {
+          "type": "number",
+          "value": 11
+        },
         "__collapseCase11": false,
-        "value11": 12,
+        "value11": {
+          "type": "number",
+          "value": 12
+        },
         "__collapseCase12": false,
-        "value12": 13,
+        "value12": {
+          "type": "number",
+          "value": 13
+        },
         "__collapseCase13": false,
-        "value13": 14,
+        "value13": {
+          "type": "number",
+          "value": 14
+        },
         "__collapseCase14": false,
-        "value14": 15,
+        "value14": {
+          "type": "number",
+          "value": 15
+        },
         "__collapseCase15": false,
-        "value15": 16,
+        "value15": {
+          "type": "number",
+          "value": 16
+        },
         "__collapseElse": false,
         "__collapse": true
       },
@@ -1675,12 +1992,24 @@
                 "type": "number",
                 "value": -16
               },
-              "moveType": "horizontal",
+              "moveType": "vertical",
               "useCollisions": false,
               "units": "pixels",
               "__collapse": true
             },
             "id": "67d78d7b-f3b5-4384-9e3d-d35b7c9d9a93"
+          },
+          {
+            "command": "EVENT_ACTOR_SET_DIRECTION",
+            "args": {
+              "actorId": "$self$",
+              "direction": {
+                "type": "direction",
+                "value": "right"
+              },
+              "__collapse": true
+            },
+            "id": "6813ef34-c712-4708-bd4d-19cf1852fdda"
           },
           {
             "command": "PM_EVENT_SET_PP_STATE",
@@ -1792,7 +2121,7 @@
           "type": "number",
           "value": 0
         },
-        "__collapse": true
+        "__collapse": false
       },
       "id": "b1d5dafe-31a1-49aa-9bde-7febcc5ae6b5"
     }

@@ -1,0 +1,102 @@
+{
+  "_resourceType": "scene",
+  "id": "33dc6863-fd0f-4034-a279-da3848e4ef45",
+  "_index": 10,
+  "type": "PLATFORM",
+  "name": "SubLevel 2",
+  "symbol": "scene_sublevel_2",
+  "x": 2056,
+  "y": 192,
+  "width": 35,
+  "height": 18,
+  "backgroundId": "4435de07-c172-4068-9ed5-1a270c2931f0",
+  "tilesetId": "9ecbffea-374f-49ec-a07d-46fea9501295",
+  "paletteIds": [
+    "0b34ba59-4ceb-4897-bd6a-6e6458884900",
+    "a7415857-4bf3-4e79-b9fe-cd6f84b15b86",
+    "abc0af7c-6751-410a-908e-4a2aac7112cd",
+    "572f8e81-850f-4d59-aa02-98ebed8231a1",
+    "60169a40-7960-4b61-96fa-56b76cc5ad0c",
+    "fd06d57c-8b6b-4c95-8e09-b3c75b1f2a1c",
+    "",
+    "abc0af7c-6751-410a-908e-4a2aac7112cd"
+  ],
+  "spritePaletteIds": [
+    "",
+    "d8571d7d-2726-4d23-923c-b864acf88926",
+    "208e4138-0984-4c70-aaa1-3a3d73cc30f6",
+    "b38a1471-560c-45dc-ac6b-67484fdd459b"
+  ],
+  "autoFadeSpeed": null,
+  "parallax": [
+    {
+      "height": 2,
+      "speed": 128
+    },
+    {
+      "height": 0,
+      "speed": 0
+    }
+  ],
+  "playerSpriteSheetId": "82297e17-ae19-4d6c-84f3-47e5fe14a6ad",
+  "script": [
+    {
+      "command": "EVENT_SET_VALUE",
+      "args": {
+        "variable": "18",
+        "value": {
+          "type": "number",
+          "value": 1
+        },
+        "__collapse": false
+      },
+      "id": "4afc3c14-9f61-4962-b346-bf76db150214"
+    },
+    {
+      "command": "EVENT_CALL_CUSTOM_EVENT",
+      "args": {
+        "customEventId": "32d76253-2c63-4808-a673-2c3b44b8615b",
+        "$variable[V0]$": {
+          "type": "number",
+          "value": 0
+        },
+        "$variable[V1]$": {
+          "type": "number",
+          "value": 1
+        },
+        "__collapse": true
+      },
+      "id": "fdf5ee8b-0a03-4ba8-aa1c-398e31b50c11"
+    },
+    {
+      "command": "EVENT_SET_INPUT_SCRIPT",
+      "args": {
+        "input": [
+          "b"
+        ],
+        "override": false,
+        "__scriptTabs": "press",
+        "__collapse": true
+      },
+      "children": {
+        "true": [
+          {
+            "command": "EVENT_CALL_CUSTOM_EVENT",
+            "args": {
+              "customEventId": "70c96f28-b99f-4a17-a885-b993c8676eb8",
+              "$actor[0]$": "a4a22631-6c99-40e2-8e58-818d6533b45e",
+              "$actor[1]$": "747a4526-7e66-4aae-8045-92acbffce97f",
+              "$actor[2]$": "485b0ce3-8a9a-41da-ba60-1f9fa10db6fd"
+            },
+            "id": "cd4766bc-683a-423a-9901-a97fd76fd139"
+          }
+        ]
+      },
+      "id": "83806ed1-271a-4d61-b2c3-90e1f925f42f"
+    }
+  ],
+  "playerHit1Script": [],
+  "playerHit2Script": [],
+  "playerHit3Script": [],
+  "collisions": "00276+"
+}

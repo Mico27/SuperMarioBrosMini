@@ -1,0 +1,50 @@
+{
+  "_resourceType": "scene",
+  "id": "407ba8b8-3176-4302-975b-fb6e0025768d",
+  "_index": 16,
+  "name": "Projectile_Score100",
+  "backgroundId": "c33582d5-40e4-468e-82e5-5876fde4b51b",
+  "tilesetId": "9ecbffea-374f-49ec-a07d-46fea9501295",
+  "width": 20,
+  "height": 2,
+  "type": "TOPDOWN",
+  "paletteIds": [],
+  "spritePaletteIds": [],
+  "collisions": "0028+",
+  "autoFadeSpeed": 1,
+  "symbol": "projectile_score100",
+  "x": 672,
+  "y": 32,
+  "script": [
+    {
+      "command": "EVENT_LAUNCH_PROJECTILE",
+      "args": {
+        "spriteSheetId": "8a540f8d-26fb-41fc-b83c-ce6c4807188b",
+        "spriteStateId": "Score100",
+        "actorId": "0",
+        "x": 0,
+        "y": 0,
+        "directionType": "direction",
+        "otherActorId": "$self$",
+        "direction": "up",
+        "angle": 0,
+        "angleVariable": "V0",
+        "targetActorId": "$self$",
+        "initialOffset": 8,
+        "speed": 0.25,
+        "animSpeed": 127,
+        "lifeTime": 0.5,
+        "loopAnim": false,
+        "destroyOnHit": false,
+        "collisionGroup": "3",
+        "collisionMask": [],
+        "__section": "projectile",
+        "__collapse": false
+      },
+      "id": "592d910f-4677-4e8e-b318-5b0fd7350abc"
+    }
+  ],
+  "playerHit1Script": [],
+  "playerHit2Script": [],
+  "playerHit3Script": []
+}

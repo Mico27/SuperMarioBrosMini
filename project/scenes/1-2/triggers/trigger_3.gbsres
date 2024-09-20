@@ -5,7 +5,7 @@
   "prefabId": "",
   "_index": 2,
   "symbol": "trigger_17",
-  "x": 178,
+  "x": 179,
   "y": 12,
   "width": 2,
   "height": 1,
@@ -28,10 +28,43 @@
         "variable": "22",
         "value": {
           "type": "number",
-          "value": 4
+          "value": 0
         }
       },
       "id": "00f8becc-5e2c-4f11-b234-d5cd6be4ef40"
+    },
+    {
+      "command": "EVENT_SET_VALUE",
+      "args": {
+        "variable": "31",
+        "value": {
+          "type": "number",
+          "value": 0
+        }
+      },
+      "id": "acf9cacc-a12d-4dc0-b802-219e56506020"
+    },
+    {
+      "command": "EVENT_SET_VALUE",
+      "args": {
+        "variable": "9",
+        "value": {
+          "type": "number",
+          "value": 4
+        }
+      },
+      "id": "04564c6f-d5c0-4404-8686-5ff383e09afb"
+    },
+    {
+      "command": "EVENT_SET_VALUE",
+      "args": {
+        "variable": "10",
+        "value": {
+          "type": "number",
+          "value": 1
+        }
+      },
+      "id": "25ba4475-dae6-4c86-b1af-8efb3ee84894"
     }
   ],
   "leaveScript": [

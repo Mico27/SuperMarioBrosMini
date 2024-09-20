@@ -1,0 +1,49 @@
+{
+  "_resourceType": "scene",
+  "id": "fc64aadf-1c5e-4ae1-9945-cdd4423e35df",
+  "_index": 20,
+  "name": "Projectile_FireballHit",
+  "backgroundId": "c33582d5-40e4-468e-82e5-5876fde4b51b",
+  "tilesetId": "9ecbffea-374f-49ec-a07d-46fea9501295",
+  "width": 20,
+  "height": 2,
+  "type": "TOPDOWN",
+  "paletteIds": [],
+  "spritePaletteIds": [],
+  "collisions": "0028+",
+  "autoFadeSpeed": 1,
+  "symbol": "projectile_fileballhit",
+  "x": 840,
+  "y": 88,
+  "script": [
+    {
+      "command": "EVENT_LAUNCH_PROJECTILE",
+      "args": {
+        "__section": "projectile",
+        "spriteSheetId": "8dbb443a-eb83-48bb-86c9-ffd9012f45c7",
+        "spriteStateId": "FireballHit",
+        "actorId": "$self$",
+        "x": 0,
+        "y": 0,
+        "directionType": "direction",
+        "otherActorId": "$self$",
+        "direction": "right",
+        "angle": 0,
+        "angleVariable": "0",
+        "targetActorId": "$self$",
+        "initialOffset": 0,
+        "speed": 0,
+        "animSpeed": 3,
+        "lifeTime": 0.1,
+        "loopAnim": false,
+        "destroyOnHit": false,
+        "collisionGroup": "3",
+        "collisionMask": []
+      },
+      "id": "39df27ae-9d23-4693-b299-a1baa0817bc6"
+    }
+  ],
+  "playerHit1Script": [],
+  "playerHit2Script": [],
+  "playerHit3Script": []
+}

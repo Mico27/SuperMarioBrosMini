@@ -39,148 +39,28 @@
       "children": {
         "true": [
           {
-            "command": "EVENT_ACTOR_SET_STATE",
-            "args": {
-              "actorId": "$self$",
-              "spriteStateId": "Knocked",
-              "loopAnim": false,
-              "__collapse": true
-            },
-            "id": "4ac0c4fd-86b6-4a85-8097-9fee59c1bea0"
-          },
-          {
-            "command": "EVENT_SET_ACTOR_X_VELOCITY",
-            "args": {
-              "actorId": "$self$",
-              "xVelocity": {
-                "type": "number",
-                "value": 0
-              },
-              "__collapse": true
-            },
-            "id": "a4d3a89b-a4c6-4ce7-b748-798b148c259a"
-          },
-          {
-            "command": "EVENT_SET_ACTOR_Y_VELOCITY",
-            "args": {
-              "actorId": "$self$",
-              "yVelocity": {
-                "type": "number",
-                "value": -96
-              },
-              "__collapse": true
-            },
-            "id": "a7ff34db-4506-4354-9bb1-6f1c56e61287"
-          },
-          {
-            "command": "EVENT_ACTOR_COLLISIONS_DISABLE",
-            "args": {
-              "actorId": "$self$",
-              "__collapse": true
-            },
-            "id": "b06dcfb1-662a-496a-887f-09effc57d4bc"
-          },
-          {
-            "command": "EVENT_LAUNCH_PROJECTILE",
-            "args": {
-              "spriteSheetId": "8a540f8d-26fb-41fc-b83c-ce6c4807188b",
-              "spriteStateId": "Score20",
-              "actorId": "$self$",
-              "x": 0,
-              "y": 0,
-              "directionType": "direction",
-              "otherActorId": "$self$",
-              "direction": "up",
-              "angle": 0,
-              "angleVariable": "V0",
-              "targetActorId": "$self$",
-              "initialOffset": 8,
-              "speed": 0.25,
-              "animSpeed": 127,
-              "lifeTime": 0.5,
-              "loopAnim": false,
-              "destroyOnHit": false,
-              "collisionGroup": "3",
-              "collisionMask": [
-                "1"
-              ],
-              "__section": "projectile",
-              "__collapse": true
-            },
-            "id": "c52d9b35-2e39-470a-a184-57ad7c30580b"
-          },
-          {
-            "command": "EVENT_WAIT",
-            "args": {
-              "time": 0.5,
-              "frames": 30,
-              "__collapse": true
-            },
-            "id": "9f70add8-47ad-437d-9355-263caad828e6"
-          },
-          {
-            "command": "EVENT_ACTOR_SET_STATE",
-            "args": {
-              "actorId": "0",
-              "spriteStateId": "",
-              "loopAnim": true,
-              "__collapse": true,
-              "__comment": false
-            },
-            "id": "c234f27c-6b95-4141-aab8-e17fad8b3766"
-          },
-          {
-            "command": "EVENT_ACTOR_COLLISIONS_ENABLE",
-            "args": {
-              "actorId": "$self$",
-              "__collapse": true
-            },
-            "id": "22cc57b5-b9ef-434c-bdf4-276ea2bd47ee"
-          },
-          {
-            "command": "EVENT_SET_ACTOR_X_VELOCITY",
-            "args": {
-              "actorId": "$self$",
-              "xVelocity": {
-                "type": "number",
-                "value": -4
-              },
-              "__comment": false,
-              "__collapse": true
-            },
-            "id": "fe4629e3-0247-4a2d-8a05-a6cdc76cc70b"
-          },
-          {
             "command": "EVENT_SET_ACTOR_BEHAVIOR",
             "args": {
               "actorId": "$self$",
               "behaviorId": {
                 "type": "number",
+                "value": 15
+              },
+              "__collapse": true
+            },
+            "id": "873fb4dd-d743-40b8-8fb5-fa4ea013ad49"
+          },
+          {
+            "command": "EVENT_CALL_CUSTOM_EVENT",
+            "args": {
+              "customEventId": "c99bf8d3-9942-4d5f-be4c-bdb1a43de650",
+              "$variable[V0]$": {
+                "type": "number",
                 "value": 3
               },
               "__collapse": true
             },
-            "id": "0956da1b-27d4-4ec7-bc89-675ded0ca9da"
-          },
-          {
-            "command": "EVENT_SET_ACTOR_STATE",
-            "args": {
-              "actorId": "$self$",
-              "stateId": {
-                "type": "number",
-                "value": 0
-              },
-              "__collapse": true
-            },
-            "id": "5f882f62-4f86-47c4-bcb5-1d8c125d2865"
-          },
-          {
-            "command": "EVENT_ACTOR_DEACTIVATE",
-            "args": {
-              "actorId": "$self$",
-              "__collapse": true
-            },
-            "id": "ed973441-069f-488d-b826-5cfde20b7272"
+            "id": "ac8e8e95-0c8f-49c8-97c5-e8a8abe3a954"
           }
         ],
         "false": [
@@ -308,37 +188,85 @@
                     "variable": "35",
                     "choices": 3,
                     "__collapseCase0": false,
-                    "value0": 0,
+                    "value0": {
+                      "type": "number",
+                      "value": 0
+                    },
                     "__collapseCase1": false,
-                    "value1": 1,
+                    "value1": {
+                      "type": "number",
+                      "value": 1
+                    },
                     "__collapseCase2": false,
-                    "value2": 2,
+                    "value2": {
+                      "type": "number",
+                      "value": 2
+                    },
                     "__collapseCase3": false,
-                    "value3": 4,
+                    "value3": {
+                      "type": "number",
+                      "value": 4
+                    },
                     "__collapseCase4": false,
-                    "value4": 5,
+                    "value4": {
+                      "type": "number",
+                      "value": 5
+                    },
                     "__collapseCase5": false,
-                    "value5": 6,
+                    "value5": {
+                      "type": "number",
+                      "value": 6
+                    },
                     "__collapseCase6": false,
-                    "value6": 7,
+                    "value6": {
+                      "type": "number",
+                      "value": 7
+                    },
                     "__collapseCase7": false,
-                    "value7": 8,
+                    "value7": {
+                      "type": "number",
+                      "value": 8
+                    },
                     "__collapseCase8": false,
-                    "value8": 9,
+                    "value8": {
+                      "type": "number",
+                      "value": 9
+                    },
                     "__collapseCase9": false,
-                    "value9": 10,
+                    "value9": {
+                      "type": "number",
+                      "value": 10
+                    },
                     "__collapseCase10": false,
-                    "value10": 11,
+                    "value10": {
+                      "type": "number",
+                      "value": 11
+                    },
                     "__collapseCase11": false,
-                    "value11": 12,
+                    "value11": {
+                      "type": "number",
+                      "value": 12
+                    },
                     "__collapseCase12": false,
-                    "value12": 13,
+                    "value12": {
+                      "type": "number",
+                      "value": 13
+                    },
                     "__collapseCase13": false,
-                    "value13": 14,
+                    "value13": {
+                      "type": "number",
+                      "value": 14
+                    },
                     "__collapseCase14": false,
-                    "value14": 15,
+                    "value14": {
+                      "type": "number",
+                      "value": 15
+                    },
                     "__collapseCase15": false,
-                    "value15": 16,
+                    "value15": {
+                      "type": "number",
+                      "value": 16
+                    },
                     "__collapseElse": false,
                     "__collapse": true
                   },
@@ -429,37 +357,85 @@
                     "variable": "35",
                     "choices": 3,
                     "__collapseCase0": false,
-                    "value0": 0,
+                    "value0": {
+                      "type": "number",
+                      "value": 0
+                    },
                     "__collapseCase1": false,
-                    "value1": 1,
+                    "value1": {
+                      "type": "number",
+                      "value": 1
+                    },
                     "__collapseCase2": false,
-                    "value2": 2,
+                    "value2": {
+                      "type": "number",
+                      "value": 2
+                    },
                     "__collapseCase3": false,
-                    "value3": 4,
+                    "value3": {
+                      "type": "number",
+                      "value": 4
+                    },
                     "__collapseCase4": false,
-                    "value4": 5,
+                    "value4": {
+                      "type": "number",
+                      "value": 5
+                    },
                     "__collapseCase5": false,
-                    "value5": 6,
+                    "value5": {
+                      "type": "number",
+                      "value": 6
+                    },
                     "__collapseCase6": false,
-                    "value6": 7,
+                    "value6": {
+                      "type": "number",
+                      "value": 7
+                    },
                     "__collapseCase7": false,
-                    "value7": 8,
+                    "value7": {
+                      "type": "number",
+                      "value": 8
+                    },
                     "__collapseCase8": false,
-                    "value8": 9,
+                    "value8": {
+                      "type": "number",
+                      "value": 9
+                    },
                     "__collapseCase9": false,
-                    "value9": 10,
+                    "value9": {
+                      "type": "number",
+                      "value": 10
+                    },
                     "__collapseCase10": false,
-                    "value10": 11,
+                    "value10": {
+                      "type": "number",
+                      "value": 11
+                    },
                     "__collapseCase11": false,
-                    "value11": 12,
+                    "value11": {
+                      "type": "number",
+                      "value": 12
+                    },
                     "__collapseCase12": false,
-                    "value12": 13,
+                    "value12": {
+                      "type": "number",
+                      "value": 13
+                    },
                     "__collapseCase13": false,
-                    "value13": 14,
+                    "value13": {
+                      "type": "number",
+                      "value": 14
+                    },
                     "__collapseCase14": false,
-                    "value14": 15,
+                    "value14": {
+                      "type": "number",
+                      "value": 15
+                    },
                     "__collapseCase15": false,
-                    "value15": 16,
+                    "value15": {
+                      "type": "number",
+                      "value": 16
+                    },
                     "__collapseElse": false,
                     "__collapse": true
                   },
@@ -566,37 +542,85 @@
               "variable": "35",
               "choices": 3,
               "__collapseCase0": false,
-              "value0": 0,
+              "value0": {
+                "type": "number",
+                "value": 0
+              },
               "__collapseCase1": false,
-              "value1": 1,
+              "value1": {
+                "type": "number",
+                "value": 1
+              },
               "__collapseCase2": false,
-              "value2": 2,
+              "value2": {
+                "type": "number",
+                "value": 2
+              },
               "__collapseCase3": false,
-              "value3": 4,
+              "value3": {
+                "type": "number",
+                "value": 4
+              },
               "__collapseCase4": false,
-              "value4": 5,
+              "value4": {
+                "type": "number",
+                "value": 5
+              },
               "__collapseCase5": false,
-              "value5": 6,
+              "value5": {
+                "type": "number",
+                "value": 6
+              },
               "__collapseCase6": false,
-              "value6": 7,
+              "value6": {
+                "type": "number",
+                "value": 7
+              },
               "__collapseCase7": false,
-              "value7": 8,
+              "value7": {
+                "type": "number",
+                "value": 8
+              },
               "__collapseCase8": false,
-              "value8": 9,
+              "value8": {
+                "type": "number",
+                "value": 9
+              },
               "__collapseCase9": false,
-              "value9": 10,
+              "value9": {
+                "type": "number",
+                "value": 10
+              },
               "__collapseCase10": false,
-              "value10": 11,
+              "value10": {
+                "type": "number",
+                "value": 11
+              },
               "__collapseCase11": false,
-              "value11": 12,
+              "value11": {
+                "type": "number",
+                "value": 12
+              },
               "__collapseCase12": false,
-              "value12": 13,
+              "value12": {
+                "type": "number",
+                "value": 13
+              },
               "__collapseCase13": false,
-              "value13": 14,
+              "value13": {
+                "type": "number",
+                "value": 14
+              },
               "__collapseCase14": false,
-              "value14": 15,
+              "value14": {
+                "type": "number",
+                "value": 15
+              },
               "__collapseCase15": false,
-              "value15": 16,
+              "value15": {
+                "type": "number",
+                "value": 16
+              },
               "__collapseElse": false,
               "__collapse": true
             },
@@ -778,153 +802,34 @@
             "value": 0
           }
         },
-        "__collapseElse": true
+        "__collapseElse": true,
+        "__collapse": false
       },
       "children": {
         "true": [
-          {
-            "command": "EVENT_ACTOR_SET_STATE",
-            "args": {
-              "actorId": "$self$",
-              "spriteStateId": "Knocked",
-              "loopAnim": false,
-              "__collapse": true
-            },
-            "id": "14e76c6e-824f-4ab7-a3d8-323e76da897c"
-          },
-          {
-            "command": "EVENT_SET_ACTOR_X_VELOCITY",
-            "args": {
-              "actorId": "$self$",
-              "xVelocity": {
-                "type": "number",
-                "value": 0
-              },
-              "__collapse": true
-            },
-            "id": "3eebb0e0-9966-4b29-8b2c-b571d277c999"
-          },
-          {
-            "command": "EVENT_SET_ACTOR_Y_VELOCITY",
-            "args": {
-              "actorId": "$self$",
-              "yVelocity": {
-                "type": "number",
-                "value": -96
-              },
-              "__collapse": true
-            },
-            "id": "4136e1ad-5436-40f6-bf58-59534b6d0770"
-          },
-          {
-            "command": "EVENT_ACTOR_COLLISIONS_DISABLE",
-            "args": {
-              "actorId": "$self$",
-              "__collapse": true
-            },
-            "id": "97a7ce12-5703-4cca-92ba-41c96fb920e1"
-          },
-          {
-            "command": "EVENT_LAUNCH_PROJECTILE",
-            "args": {
-              "spriteSheetId": "8a540f8d-26fb-41fc-b83c-ce6c4807188b",
-              "spriteStateId": "Score20",
-              "actorId": "$self$",
-              "x": 0,
-              "y": 0,
-              "directionType": "direction",
-              "otherActorId": "$self$",
-              "direction": "up",
-              "angle": 0,
-              "angleVariable": "V0",
-              "targetActorId": "$self$",
-              "initialOffset": 8,
-              "speed": 0.25,
-              "animSpeed": 127,
-              "lifeTime": 0.5,
-              "loopAnim": false,
-              "destroyOnHit": false,
-              "collisionGroup": "3",
-              "collisionMask": [
-                "1"
-              ],
-              "__section": "projectile",
-              "__collapse": true
-            },
-            "id": "15c9800b-6ca1-46c4-9070-b1993df4a472"
-          },
-          {
-            "command": "EVENT_WAIT",
-            "args": {
-              "time": 0.5,
-              "frames": 30,
-              "__collapse": true
-            },
-            "id": "eb0ffd2f-88ef-4482-9b51-de5c257df465"
-          },
-          {
-            "command": "EVENT_ACTOR_SET_STATE",
-            "args": {
-              "actorId": "0",
-              "spriteStateId": "",
-              "loopAnim": true,
-              "__collapse": true,
-              "__comment": false
-            },
-            "id": "ba8c05d7-ca51-4239-85c4-e783e3cbfea8"
-          },
-          {
-            "command": "EVENT_ACTOR_COLLISIONS_ENABLE",
-            "args": {
-              "actorId": "$self$",
-              "__collapse": true
-            },
-            "id": "9b5335b9-b10b-4f39-b7dd-e8cba828f71e"
-          },
-          {
-            "command": "EVENT_SET_ACTOR_X_VELOCITY",
-            "args": {
-              "actorId": "$self$",
-              "xVelocity": {
-                "type": "number",
-                "value": -4
-              },
-              "__comment": false,
-              "__collapse": true
-            },
-            "id": "c27c028f-6297-42fa-8846-9787a836f4d4"
-          },
           {
             "command": "EVENT_SET_ACTOR_BEHAVIOR",
             "args": {
               "actorId": "$self$",
               "behaviorId": {
                 "type": "number",
+                "value": 15
+              },
+              "__collapse": true
+            },
+            "id": "d12a9a71-d753-408c-b0e7-0764224d3847"
+          },
+          {
+            "command": "EVENT_CALL_CUSTOM_EVENT",
+            "args": {
+              "customEventId": "c99bf8d3-9942-4d5f-be4c-bdb1a43de650",
+              "$variable[V0]$": {
+                "type": "number",
                 "value": 3
               },
               "__collapse": true
             },
-            "id": "eab626f4-7b58-4e73-9961-9d9815feca6d"
-          },
-          {
-            "command": "EVENT_SET_ACTOR_STATE",
-            "args": {
-              "actorId": "$self$",
-              "stateId": {
-                "type": "number",
-                "value": 0
-              },
-              "__collapse": true
-            },
-            "id": "f95c1708-9899-4e8a-8120-b42926c637c0"
-          },
-          {
-            "command": "EVENT_ACTOR_DEACTIVATE",
-            "args": {
-              "actorId": "$self$",
-              "__collapse": true
-            },
-            "id": "7e111465-dfac-4030-8ac8-ea0d8991c145"
+            "id": "993955eb-9f03-42b9-8b11-eb87c02996c8"
           }
         ],
         "false": []

@@ -4,9 +4,9 @@
   "_index": 5,
   "type": "PLATFORM",
   "name": "1-4",
-  "symbol": "scene_11",
+  "symbol": "scene_1_4",
   "x": 96,
-  "y": 872,
+  "y": 720,
   "width": 164,
   "height": 18,
   "backgroundId": "3897af3c-f8ab-47f9-8411-009669f9b5a9",
@@ -76,18 +76,6 @@
         "__collapse": true
       },
       "id": "8d6fd1eb-96ce-44a1-a9ae-939b3884e059"
-    },
-    {
-      "command": "EVENT_SET_VALUE",
-      "args": {
-        "variable": "21",
-        "value": {
-          "type": "number",
-          "value": 1
-        },
-        "__collapse": true
-      },
-      "id": "039b2b37-9ec9-4bd9-bb40-af466457082b"
     },
     {
       "command": "EVENT_CALL_CUSTOM_EVENT",

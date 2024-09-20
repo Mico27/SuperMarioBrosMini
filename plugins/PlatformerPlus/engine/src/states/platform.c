@@ -100,13 +100,6 @@ BUGS:
 
 #define MAX_METATILE_CHANGE_CHECKS 4
 
-#define ANIM_STATE_DEFAULT 0
-#define ANIM_STATE_CROUCH 3
-#define ANIM_STATE_SKID 6
-#define ANIM_STATE_CLIMB 7
-#define ANIM_STATE_PIPETRANSITION 8
-#define ANIM_STATE_DEATH 1
-
 script_state_t state_events[20];
 
 script_state_t specific_events[6];
@@ -296,7 +289,7 @@ void platform_update(void) BANKED {
         case GROUND_INIT:
             que_state = GROUND_STATE;
 			load_animations(PLAYER.sprite.ptr, PLAYER.sprite.bank, ANIM_STATE_DEFAULT, PLAYER.animations);
-            pl_vel_y = 256;
+            //pl_vel_y = 256;
             ct_val = plat_coyote_max; 
             jump_reduction_val = 0;
 			enemy_bounce = 0;
@@ -362,6 +355,10 @@ inline void on_metatile_enter(UBYTE tile_x, UBYTE tile_y) {
 	switch(tile_id){
 		case 4://coin
 			replace_meta_tile(tile_x, tile_y, 0);
+			script_memory[VAR_FRAMECOINS]++;
+			break;
+		case 1://underwater coin
+			replace_meta_tile(tile_x, tile_y, 2);
 			script_memory[VAR_FRAMECOINS]++;
 			break;
 	}

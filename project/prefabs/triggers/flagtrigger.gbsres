@@ -64,6 +64,17 @@
       "id": "0d5689a3-6c89-403b-893d-f28c8e3dc7d0"
     },
     {
+      "command": "EVENT_CALL_CUSTOM_EVENT",
+      "args": {
+        "customEventId": "c99bf8d3-9942-4d5f-be4c-bdb1a43de650",
+        "$variable[V0]$": {
+          "type": "expression",
+          "value": "(128 - $01$) >> 4"
+        }
+      },
+      "id": "b67e01ea-2d6d-4705-aca6-84b7c77c7fc1"
+    },
+    {
       "command": "EVENT_ACTOR_SET_DIRECTION",
       "args": {
         "actorId": "$self$",

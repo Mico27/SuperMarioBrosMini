@@ -43,11 +43,12 @@
   "updateScript": [],
   "hit1Script": [
     {
-      "command": "EVENT_LAUNCH_PROJECTILE",
+      "command": "FO_EVENT_LAUNCH_LOADED_PROJECTILE",
       "args": {
-        "__section": "projectile",
         "spriteSheetId": "8dbb443a-eb83-48bb-86c9-ffd9012f45c7",
-        "spriteStateId": "FireballHit",
+        "slot": 4,
+        "source": 0,
+        "scene": "fc64aadf-1c5e-4ae1-9945-cdd4423e35df",
         "actorId": "$self$",
         "x": 0,
         "y": 0,
@@ -57,16 +58,11 @@
         "angle": 0,
         "angleVariable": "0",
         "targetActorId": "$self$",
-        "initialOffset": 0,
-        "speed": 0,
-        "animSpeed": 3,
-        "lifeTime": 0.1,
         "loopAnim": false,
         "destroyOnHit": false,
-        "collisionGroup": "3",
-        "collisionMask": []
+        "__collapse": true
       },
-      "id": "5f3a0bed-6a97-478f-ada0-b6e005d4f7ba"
+      "id": "99392acb-4f8e-4b3a-953f-727f02bd90c7"
     }
   ],
   "hit2Script": [],

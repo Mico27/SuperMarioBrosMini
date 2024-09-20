@@ -75,7 +75,7 @@
               "actorId": "$self$",
               "x": {
                 "type": "expression",
-                "value": "4 - ($14$ & 7)"
+                "value": "4 - (($14$ + 1) & 7)"
               },
               "y": {
                 "type": "number",

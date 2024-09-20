@@ -1,0 +1,25 @@
+{
+  "_resourceType": "trigger",
+  "id": "a19271ed-3626-4a6a-b4aa-0ef5fcc61d86",
+  "name": "WarpZone Trigger",
+  "prefabId": "",
+  "x": 185,
+  "y": 0,
+  "symbol": "trigger_45",
+  "prefabScriptOverrides": {},
+  "width": 7,
+  "height": 6,
+  "script": [
+    {
+      "command": "EVENT_UI_ALT_DISPLAY_TEXT",
+      "args": {
+        "text": "\\003\\022\\010WELCOME TO THE\\003\\024\\012WARP ZONE!\\003\\024\\0144\\003\\030\\0143\\003\\034\\0142",
+        "x": 0,
+        "y": 0
+      },
+      "id": "327a7128-4562-4eb7-8101-03c270e68060"
+    }
+  ],
+  "leaveScript": [],
+  "_index": 8
+}

@@ -1,7 +1,7 @@
 #pragma bank 255
 
 #include <string.h>
-
+#include <stdlib.h>
 #include <gbdk/platform.h>
 #include "system.h"
 #include "vm.h"
@@ -15,8 +15,12 @@
 #include "actor_behavior.h"
 #include "states/platform.h"
 #include "states/playerstates.h"
+#include "data/states_defines.h"
 #include "meta_tiles.h"
 #include "collision.h"
+#include "data_manager.h"
+#include "data/game_globals.h"
+
 
 #define BEHAVIOR_ACTIVATION_THRESHOLD 168
 #define BEHAVIOR_DEACTIVATION_THRESHOLD 176
@@ -32,6 +36,7 @@ WORD current_actor_x;
 point16_t tmp_point;
 const BYTE firebar_incx_lookup[] = { 0, 3, 6, 7, 8, 7, 6, 3, 0, -3, -6, -7, -8, -7, -6, -3 };
 const BYTE firebar_incy_lookup[] = { -8, -7, -6, -3, 0, 3, 6, 7, 8, 7, 6, 3, 0, -3, -6, -7 };
+const BYTE spring_bb_top_lookup[] = { -8, -4, 0, -4, -8 };
 
 void actor_behavior_init(void) BANKED {
     memset(actor_behavior_ids, 0, sizeof(actor_behavior_ids));
@@ -151,7 +156,10 @@ void actor_behavior_update(void) BANKED {
 			case 1: //Goomba
 			switch(actor_states[i]){
 				case 0: //Init
-					if ((((actor->pos.x >> 4) + 8) - draw_scroll_x) < BEHAVIOR_ACTIVATION_THRESHOLD){ actor_states[i] = 1; }
+					if ((((actor->pos.x >> 4) + 8) - draw_scroll_x) < BEHAVIOR_ACTIVATION_THRESHOLD){ 
+						actor_states[i] = 1; 
+						actor_counter_a[i] = 0;
+					}
 					break;
 				case 1: //Main state
 					current_actor_x = ((actor->pos.x >> 4) + 8) - draw_scroll_x;
@@ -170,7 +178,34 @@ void actor_behavior_update(void) BANKED {
 						actor_set_anim_idle(actor);
 					}
 					break;
+				case 2: //Squished state
+					if (actor_counter_a[i] == 0){
+						load_animations(actor->sprite.ptr, actor->sprite.bank, ANIM_STATE_DEATH, actor->animations);
+						actor_reset_anim(actor);
+						actor_vel_y[i] = 0;
+						actor_vel_x[i] = 0;
+						actor->collision_enabled = false;
+					}
+					actor_counter_a[i]++;
+					if (actor_counter_a[i] > 30){
+						actor_states[i] = 255; 
+					}
+					break;
+				case 3: //Knocked state
+					current_actor_x = ((actor->pos.x >> 4) + 8) - draw_scroll_x;
+					if ((actor->pos.y >> 7) > image_tile_height){ 
+						actor_states[i] = 255; 
+						break;
+					}
+					actor_vel_y[i] += (plat_grav >> 10);
+					actor_vel_y[i] = MIN(actor_vel_y[i], (plat_max_fall_vel >> 8));
+					//Apply velocity
+					actor->pos.y =  actor->pos.y + actor_vel_y[i];					
+					break;
 				case 255: //Deactivate
+					load_animations((void *)actor->sprite.ptr, actor->sprite.bank, ANIM_STATE_DEFAULT, actor->animations);
+					actor->collision_enabled = true;
+					actor_counter_a[i] = 0;
 					deactivate_actor(actor);
 					break;
 			}		
@@ -544,6 +579,7 @@ void actor_behavior_update(void) BANKED {
 						actor->pos.x = (actor->pos.x >> 7) << 7;
 						replace_meta_tile((actor->pos.x >> 7), (actor->pos.y >> 7) - 1, 151);
 					}
+					break;
 				case 1: //Move up state
 					current_actor_x = ((actor->pos.x >> 4) + 8) - draw_scroll_x;
 					if (current_actor_x > BEHAVIOR_DEACTIVATION_THRESHOLD || current_actor_x < BEHAVIOR_DEACTIVATION_LOWER_THRESHOLD){ 
@@ -575,12 +611,13 @@ void actor_behavior_update(void) BANKED {
 			switch(actor_states[i]){
 				case 0:
 					if ((((actor->pos.x >> 4) + 8) - draw_scroll_x) < BEHAVIOR_ACTIVATION_THRESHOLD){ actor_states[i] = 1; }
+					break;
 				case 1: //Not moving state
 					if ((((actor->pos.x >> 4) + 8) - draw_scroll_x) > BEHAVIOR_DEACTIVATION_THRESHOLD){ 
 						actor_states[i] = 255; 
 						break;
 					}	
-					if (actor_attached && last_actor == actor) {//start moving on player attach
+					if (actor_attached && last_actor == actor) {//start moving on player attach						
 						actor_states[i] = 2; 
 					}					
 					break;
@@ -588,7 +625,7 @@ void actor_behavior_update(void) BANKED {
 					if ((((actor->pos.x >> 4) + 8) - draw_scroll_x) > BEHAVIOR_DEACTIVATION_THRESHOLD){ 
 						actor_states[i] = 255; 
 						break;
-					}
+					}					
 					actor->pos.x = actor->pos.x + actor_vel_x[i];
 					actor->pos.y = actor->pos.y + actor_vel_y[i];
 					break;
@@ -597,6 +634,82 @@ void actor_behavior_update(void) BANKED {
 					deactivate_actor(actor);
 					break;
 			}
+			break;
+			case 14: //Spring
+			switch(actor_states[i]){
+				case 0:
+					if ((((actor->pos.x >> 4) + 8) - draw_scroll_x) < BEHAVIOR_ACTIVATION_THRESHOLD){ 
+						actor_states[i] = 1; 
+					}
+					break;
+				case 1: //Idle state
+					if (actor_attached && last_actor == actor) {//start springing on player attach
+						actor_counter_a[i] = 0;
+						actor_states[i] = 2; 
+					}					
+					break;
+				case 2: //Springing state
+					que_state = GROUND_STATE;
+					if (!actor_attached || last_actor != actor) {
+						actor_counter_a[i] = 0;
+						actor_states[i] = 1;
+						actor->frame = actor->frame_start;
+						break;						
+					}
+					if (!(game_time & 1)){
+						actor_counter_a[i]++;
+						if (actor_counter_a[i] > 4){
+							actor_counter_a[i] = 0;
+							actor_states[i] = 1;
+							load_animations(PLAYER.sprite.ptr, PLAYER.sprite.bank, ANIM_STATE_DEFAULT, PLAYER.animations);
+							hold_jump_val = (plat_hold_jump_max << 1); 
+							actor_attached = FALSE;
+							pl_vel_y = -(plat_jump_min << 1);
+							jb_val = 0;
+							ct_val = 0;
+							enemy_bounce = 1;
+							que_state = JUMP_STATE;
+						}
+						actor->frame = actor->frame_start + actor_counter_a[i];
+						PLAYER.pos.y = (actor->pos.y + ((actor->bounds.top + spring_bb_top_lookup[actor_counter_a[i]]) << 4));
+					}
+					break;
+				case 255:
+					actor_counter_a[i] = 0;
+					deactivate_actor(actor);
+					break;
+			}
+			break;	
+			case 15://Knocked enemy
+			switch(actor_states[i]){
+				case 0: //Init
+					if ((((actor->pos.x >> 4) + 8) - draw_scroll_x) < BEHAVIOR_ACTIVATION_THRESHOLD){ 
+						actor_states[i] = 1; 
+						load_animations(actor->sprite.ptr, actor->sprite.bank, ANIM_STATE_KNOCKED, actor->animations);
+						actor_reset_anim(actor);
+						actor_vel_y[i] = -40;
+						actor_vel_x[i] = 0;
+						actor->collision_enabled = false;
+					}
+					break;
+				case 1: //Main state
+					current_actor_x = ((actor->pos.x >> 4) + 8) - draw_scroll_x;
+					if (current_actor_x > BEHAVIOR_DEACTIVATION_THRESHOLD || current_actor_x < BEHAVIOR_DEACTIVATION_LOWER_THRESHOLD || (actor->pos.y >> 7) > image_tile_height){ 
+						actor_states[i] = 255; 
+						break;
+					}
+					actor_vel_y[i] += (plat_grav >> 10);
+					actor_vel_y[i] = MIN(actor_vel_y[i], (plat_max_fall_vel >> 8));
+					//Apply velocity
+					actor->pos.y =  actor->pos.y + actor_vel_y[i];					
+					break;
+				case 255: //Deactivate
+					actor->collision_enabled = true;
+					load_animations(actor->sprite.ptr, actor->sprite.bank, ANIM_STATE_DEFAULT, actor->animations);
+					actor_reset_anim(actor);
+					deactivate_actor(actor);
+					break;
+			}		
 			break;				
 		}			
 	}
@@ -606,6 +719,11 @@ void vm_set_actor_behavior(SCRIPT_CTX * THIS) OLDCALL BANKED {
     UBYTE actor_idx = *(uint8_t *)VM_REF_TO_PTR(FN_ARG0);
     UBYTE behavior_id = *(uint8_t *)VM_REF_TO_PTR(FN_ARG1);
     actor_behavior_ids[actor_idx] = behavior_id;
+}
+
+void vm_get_actor_behavior(SCRIPT_CTX * THIS) OLDCALL BANKED {
+    UBYTE actor_idx = *(uint8_t *)VM_REF_TO_PTR(FN_ARG0);
+	script_memory[*(int16_t*)VM_REF_TO_PTR(FN_ARG1)] = actor_behavior_ids[actor_idx];
 }
 
 void vm_set_actor_state(SCRIPT_CTX * THIS) OLDCALL BANKED {

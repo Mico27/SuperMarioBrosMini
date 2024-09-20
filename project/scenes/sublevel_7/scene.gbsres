@@ -1,0 +1,150 @@
+{
+  "_resourceType": "scene",
+  "id": "c37f9e6b-ba04-424e-ade0-90cfd9f9fd58",
+  "_index": 27,
+  "name": "SubLevel 7",
+  "backgroundId": "abeb780c-bc6b-47b1-b66f-752c996e76c2",
+  "tilesetId": "9ecbffea-374f-49ec-a07d-46fea9501295",
+  "width": 100,
+  "height": 18,
+  "type": "PLATFORM",
+  "paletteIds": [
+    "0b34ba59-4ceb-4897-bd6a-6e6458884900",
+    "a7415857-4bf3-4e79-b9fe-cd6f84b15b86",
+    "abc0af7c-6751-410a-908e-4a2aac7112cd",
+    "572f8e81-850f-4d59-aa02-98ebed8231a1",
+    "60169a40-7960-4b61-96fa-56b76cc5ad0c",
+    "16b3640d-6de5-4c1f-b66e-f4db41b8ccbe",
+    "",
+    "abc0af7c-6751-410a-908e-4a2aac7112cd"
+  ],
+  "spritePaletteIds": [
+    "",
+    "d8571d7d-2726-4d23-923c-b864acf88926",
+    "208e4138-0984-4c70-aaa1-3a3d73cc30f6",
+    "b38a1471-560c-45dc-ac6b-67484fdd459b"
+  ],
+  "collisions": "00708+",
+  "autoFadeSpeed": null,
+  "symbol": "scene_sublevel_7",
+  "x": 1880,
+  "y": 720,
+  "playerSpriteSheetId": "82297e17-ae19-4d6c-84f3-47e5fe14a6ad",
+  "script": [
+    {
+      "command": "EVENT_SET_VALUE",
+      "args": {
+        "variable": "18",
+        "value": {
+          "type": "number",
+          "value": 1
+        },
+        "__collapse": true
+      },
+      "id": "cb080e6f-c4b5-4934-b12e-c354b690b817"
+    },
+    {
+      "command": "EVENT_SET_VALUE",
+      "args": {
+        "variable": "42",
+        "value": {
+          "type": "number",
+          "value": 1
+        },
+        "__collapse": true
+      },
+      "id": "1eab12c7-8023-4d3d-b0d2-b93cb4b5e619"
+    },
+    {
+      "command": "EVENT_CALL_CUSTOM_EVENT",
+      "args": {
+        "customEventId": "32d76253-2c63-4808-a673-2c3b44b8615b",
+        "$variable[V0]$": {
+          "type": "number",
+          "value": 0
+        },
+        "$variable[V1]$": {
+          "type": "number",
+          "value": 2
+        },
+        "__collapse": true
+      },
+      "id": "c37f119c-2e49-4862-aba2-fdd116057ea3"
+    },
+    {
+      "command": "PM_EVENT_PLATMARIO_SPECIFIC_SCRIPT",
+      "args": {
+        "specific_event": "1",
+        "__scriptTabs": "scriptinput",
+        "__collapse": true
+      },
+      "children": {
+        "script": [
+          {
+            "command": "EVENT_CALL_CUSTOM_EVENT",
+            "args": {
+              "customEventId": "010dfb2c-fbd5-47e5-8b29-80af76159f1f",
+              "$variable[V0]$": {
+                "type": "variable",
+                "value": "5"
+              },
+              "$variable[V1]$": {
+                "type": "variable",
+                "value": "30"
+              },
+              "$variable[V2]$": {
+                "type": "variable",
+                "value": "27"
+              },
+              "$actor[0]$": "72a88e18-4de7-4e83-bb0a-1022c326ea17",
+              "$actor[1]$": "14947c42-67d7-4813-9c47-144cf44b55ff",
+              "__collapse": true
+            },
+            "id": "e080b651-5fe4-47cf-96e9-af62c33e71bf"
+          }
+        ]
+      },
+      "id": "3e6d117c-35ff-4b28-a460-3ccf2c2b8212"
+    },
+    {
+      "command": "EVENT_SET_INPUT_SCRIPT",
+      "args": {
+        "input": [
+          "b"
+        ],
+        "override": false,
+        "__scriptTabs": "press",
+        "__collapse": true
+      },
+      "children": {
+        "true": [
+          {
+            "command": "EVENT_CALL_CUSTOM_EVENT",
+            "args": {
+              "customEventId": "70c96f28-b99f-4a17-a885-b993c8676eb8",
+              "$actor[0]$": "3eb0fa94-a255-43a6-b639-a780abc128ca",
+              "$actor[1]$": "3c9e2d52-3882-4582-9607-ada3be6fedde",
+              "$actor[2]$": "b72085bd-6f45-48e2-b4a8-1fd9a5c92d1a",
+              "__collapse": false
+            },
+            "id": "e1727c5b-8f3f-4050-9498-a40b32c771e4"
+          }
+        ]
+      },
+      "id": "b6612dbf-8011-49eb-a38d-9f78c3e725da"
+    }
+  ],
+  "playerHit1Script": [],
+  "playerHit2Script": [],
+  "playerHit3Script": [],
+  "parallax": [
+    {
+      "height": 2,
+      "speed": 128
+    },
+    {
+      "height": 0,
+      "speed": 0
+    }
+  ]
+}

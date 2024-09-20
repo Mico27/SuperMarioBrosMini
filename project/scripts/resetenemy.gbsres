@@ -13,12 +13,17 @@
       "id": "V1",
       "name": "PosY",
       "passByReference": false
+    },
+    "V2": {
+      "id": "V2",
+      "name": "Behavior",
+      "passByReference": false
     }
   },
   "actors": {
     "0": {
       "id": "0",
-      "name": "Actor A"
+      "name": "EnemyActor"
     }
   },
   "symbol": "script_10",
@@ -38,6 +43,18 @@
         "__collapse": true
       },
       "id": "ea1c8c07-4b58-4939-8d65-6972fc5db1fe"
+    },
+    {
+      "command": "EVENT_SET_ACTOR_BEHAVIOR",
+      "args": {
+        "actorId": "0",
+        "behaviorId": {
+          "type": "variable",
+          "value": "V2"
+        },
+        "__collapse": true
+      },
+      "id": "f85f927d-8be3-471c-be99-fc9404f2c45c"
     },
     {
       "command": "EVENT_SET_ACTOR_STATE",

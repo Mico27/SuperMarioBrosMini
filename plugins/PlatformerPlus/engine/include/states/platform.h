@@ -3,6 +3,15 @@
 
 #include <gb/gb.h>
 
+#define ANIM_STATE_DEFAULT 0
+#define ANIM_STATE_DEATH 1
+#define ANIM_STATE_KNOCKED 2
+#define ANIM_STATE_CROUCH 3
+#define ANIM_STATE_SKID 6
+#define ANIM_STATE_CLIMB 7
+#define ANIM_STATE_PIPETRANSITION 8
+
+
 void platform_init(void) BANKED;
 void platform_update(void) BANKED;
 
