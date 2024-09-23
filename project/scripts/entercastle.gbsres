@@ -52,7 +52,7 @@
           "type": "expression",
           "value": "$00$ % 10"
         },
-        "__collapse": false
+        "__collapse": true
       },
       "id": "b3cbe32f-eb3c-4964-bd9a-35c627f9e13b"
     },
@@ -64,7 +64,7 @@
           "value": "($43$ != 1) && ($43$ != 3) && ($43$ != 6)"
         },
         "__collapseElse": true,
-        "__collapse": false,
+        "__collapse": true,
         "__comment": false
       },
       "children": {
@@ -179,7 +179,7 @@
             "value": 0
           }
         },
-        "__collapse": false
+        "__collapse": true
       },
       "children": {
         "true": [

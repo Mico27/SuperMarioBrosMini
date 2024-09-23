@@ -710,7 +710,32 @@ void actor_behavior_update(void) BANKED {
 					deactivate_actor(actor);
 					break;
 			}		
-			break;				
+			break;	
+			case 16: //Elevator platform
+			switch(actor_states[i]){
+				case 0:
+					if ((((actor->pos.x >> 4) + 8) - draw_scroll_x) < BEHAVIOR_ACTIVATION_THRESHOLD){ actor_states[i] = 1; }
+					break;
+				case 1: //moving state
+					if ((((actor->pos.x >> 4) + 8) - draw_scroll_x) > BEHAVIOR_DEACTIVATION_THRESHOLD){ 
+						actor_states[i] = 255; 
+						break;
+					}	
+					if (actor_vel_y[i] < 0 && actor->pos.y < 0) {
+						actor->pos.y += (image_tile_height << 7);
+						actor_attached = FALSE;
+					} else if (actor_vel_y[i] > 0 && (actor->pos.y >> 7) > image_tile_height) {
+						actor->pos.y -= (image_tile_height << 7);
+						actor_attached = FALSE;
+					}						
+					actor->pos.y = actor->pos.y + actor_vel_y[i];					
+					break;
+				case 255:
+					actor_counter_a[i] = 0;
+					deactivate_actor(actor);
+					break;
+			}
+			break;
 		}			
 	}
 }

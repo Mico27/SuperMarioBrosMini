@@ -5,8 +5,8 @@
   "type": "PLATFORM",
   "name": "SubLevel 1",
   "symbol": "scene_sublevel_1",
-  "x": 1880,
-  "y": 192,
+  "x": 1576,
+  "y": 616,
   "width": 20,
   "height": 18,
   "backgroundId": "457decbe-af59-458a-aea9-d1cb21051e83",
@@ -30,6 +30,18 @@
   "autoFadeSpeed": null,
   "playerSpriteSheetId": "82297e17-ae19-4d6c-84f3-47e5fe14a6ad",
   "script": [
+    {
+      "command": "EVENT_SET_VALUE",
+      "args": {
+        "variable": "48",
+        "value": {
+          "type": "number",
+          "value": 1
+        },
+        "__collapse": true
+      },
+      "id": "b25b675c-58af-4bf6-90ed-b74097036bf6"
+    },
     {
       "command": "EVENT_SET_VALUE",
       "args": {
@@ -62,7 +74,7 @@
       "command": "EVENT_START_SIMULATED_INPUTS",
       "args": {
         "input_cancel": [],
-        "__collapse": false
+        "__collapse": true
       },
       "children": {
         "input_sequence": [
@@ -78,28 +90,10 @@
           {
             "command": "EVENT_WAIT",
             "args": {
-              "time": 2,
+              "time": 5,
               "frames": 30
             },
             "id": "e8e3eea7-2412-42ba-b527-f024ff106eac"
-          },
-          {
-            "command": "EVENT_SET_VALUE",
-            "args": {
-              "variable": "22",
-              "value": {
-                "type": "number",
-                "value": 0
-              }
-            },
-            "id": "d319702a-d98f-4c17-9fe9-5a49ee15fd00"
-          },
-          {
-            "command": "EVENT_CALL_CUSTOM_EVENT",
-            "args": {
-              "customEventId": "1da14dfe-ad02-4e47-addd-68af4399854d"
-            },
-            "id": "69846368-c71d-4ab6-b889-4e56a14547ce"
           }
         ],
         "input_sequence_completed": []

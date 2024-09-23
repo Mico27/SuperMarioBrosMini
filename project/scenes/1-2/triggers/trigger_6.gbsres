@@ -3,7 +3,7 @@
   "id": "51b3311e-3daa-4764-b0b6-4fe15f789573",
   "name": "",
   "prefabId": "",
-  "x": 84,
+  "x": 83,
   "y": 0,
   "symbol": "trigger_20",
   "prefabScriptOverrides": {},
@@ -29,7 +29,7 @@
           "type": "number",
           "value": 15
         },
-        "$actor[0]$": "25cfc7f8-f46a-4d0c-b2b5-cb6d76be28a5",
+        "$actor[0]$": "0b939508-87d2-4d2c-a10b-6cbf7323ba5a",
         "__collapse": true,
         "$variable[V2]$": {
           "type": "number",
@@ -50,7 +50,7 @@
           "type": "number",
           "value": 15
         },
-        "$actor[0]$": "dc808294-0cf4-459f-bedf-b85451f8f876",
+        "$actor[0]$": "f61475d5-87ed-4d00-9ed4-6d5f93c73a53",
         "__collapse": true,
         "$variable[V2]$": {
           "type": "number",
@@ -71,7 +71,7 @@
           "type": "number",
           "value": 15
         },
-        "$actor[0]$": "0b939508-87d2-4d2c-a10b-6cbf7323ba5a",
+        "$actor[0]$": "d71191ba-9eca-4fbd-82b7-396c62b0775d",
         "__collapse": true,
         "$variable[V2]$": {
           "type": "number",
@@ -79,27 +79,6 @@
         }
       },
       "id": "314bb6cb-b680-4c55-990a-fe5c9a251b28"
-    },
-    {
-      "command": "EVENT_CALL_CUSTOM_EVENT",
-      "args": {
-        "customEventId": "7472c75b-28ba-4e82-9e18-5c1cc4daf097",
-        "$variable[V0]$": {
-          "type": "number",
-          "value": 112
-        },
-        "$variable[V1]$": {
-          "type": "number",
-          "value": 15
-        },
-        "$actor[0]$": "f61475d5-87ed-4d00-9ed4-6d5f93c73a53",
-        "__collapse": true,
-        "$variable[V2]$": {
-          "type": "number",
-          "value": 1
-        }
-      },
-      "id": "2d59ca74-eabd-4862-b857-abf987d9c8b0"
     }
   ],
   "leaveScript": [],

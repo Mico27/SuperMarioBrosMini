@@ -434,12 +434,13 @@ void ground_state(void) BANKED {
 
     //STATE CHANGE: Above, basic_y_col can shift to FALL_STATE.--------------------------------------------------
     
-    //GROUND -> JUMP Check
+    //GROUND -> JUMP/SWIM Check
     if (INPUT_PRESSED(INPUT_PLATFORM_JUMP) || jb_val != 0){
-        if (nocollide == 0){
+		if (script_memory[VAR_CURRENTLEVELTYPE] == 3 && PLAYER.pos.y > 768){
+			que_state = SWIM_INIT;
+		} else if (nocollide == 0){
             //Standard Jump
             que_state = JUMP_INIT;
-
         }
     }
     jb_val = 0;

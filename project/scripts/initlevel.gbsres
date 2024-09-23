@@ -58,7 +58,7 @@
       "command": "EVENT_GROUP",
       "args": {
         "__label": "Initialize Level UI",
-        "__collapse": true
+        "__collapse": false
       },
       "children": {
         "true": [
@@ -327,78 +327,25 @@
                       "type": "eq",
                       "valueA": {
                         "type": "variable",
-                        "value": "31"
+                        "value": "48"
                       },
                       "valueB": {
                         "type": "number",
                         "value": 0
                       }
                     },
-                    "__collapseElse": true,
-                    "__collapse": true
+                    "__collapseElse": true
                   },
                   "children": {
                     "true": [
                       {
-                        "command": "EVENT_SET_VALUE",
-                        "args": {
-                          "variable": "0",
-                          "value": {
-                            "type": "number",
-                            "value": 300
-                          },
-                          "__collapse": true
-                        },
-                        "id": "fa26a32c-ef04-496d-b220-479b64b2ee31"
-                      }
-                    ],
-                    "false": []
-                  },
-                  "id": "d7d58f45-b70e-4743-9f3a-91ce49cacc73"
-                },
-                {
-                  "command": "EVENT_GBVM_SCRIPT",
-                  "args": {
-                    "script": "VM_LOAD_TEXT 1 \n.dw VAR_DEATHTIMER\n.asciz \"\\003\\022\\002%D3\"\nVM_CALL_NATIVE b_ui_alt_display_text, _ui_alt_display_text",
-                    "__collapse": true
-                  },
-                  "id": "f3e18d82-7cec-4394-a2df-936bc1f33003"
-                },
-                {
-                  "command": "EVENT_SET_TIMER_SCRIPT",
-                  "args": {
-                    "timer": 1,
-                    "duration": 1,
-                    "frames": 30,
-                    "__scriptTabs": "end",
-                    "__collapse": false
-                  },
-                  "children": {
-                    "script": [
-                      {
-                        "command": "EVENT_DEC_VALUE",
-                        "args": {
-                          "variable": "0",
-                          "__collapse": true
-                        },
-                        "id": "e3296b49-e446-439c-919a-cf9e19ea68d8"
-                      },
-                      {
-                        "command": "EVENT_GBVM_SCRIPT",
-                        "args": {
-                          "script": "VM_LOAD_TEXT 1 \n.dw VAR_DEATHTIMER\n.asciz \"\\003\\022\\002%D3\"\nVM_CALL_NATIVE b_ui_alt_display_text, _ui_alt_display_text",
-                          "__collapse": true
-                        },
-                        "id": "4e69c08f-a455-431f-91fb-8c990f362c13"
-                      },
-                      {
                         "command": "EVENT_IF",
                         "args": {
                           "condition": {
-                            "type": "lte",
+                            "type": "eq",
                             "valueA": {
                               "type": "variable",
-                              "value": "0"
+                              "value": "31"
                             },
                             "valueB": {
                               "type": "number",
@@ -411,31 +358,109 @@
                         "children": {
                           "true": [
                             {
-                              "command": "EVENT_SWITCH_SCENE",
+                              "command": "EVENT_SET_VALUE",
                               "args": {
-                                "sceneId": "53939e85-7e0b-4173-9c81-6aea80c4e685",
-                                "x": {
+                                "variable": "0",
+                                "value": {
                                   "type": "number",
-                                  "value": 3
+                                  "value": 300
                                 },
-                                "y": {
-                                  "type": "number",
-                                  "value": 15
-                                },
-                                "direction": "right",
-                                "fadeSpeed": 1,
                                 "__collapse": true
                               },
-                              "id": "090d6aa4-2d25-4563-a436-1875aacaf025"
+                              "id": "fa26a32c-ef04-496d-b220-479b64b2ee31"
                             }
                           ],
                           "false": []
                         },
-                        "id": "43d982a2-a4f2-4ee3-8b91-24e0c6f455a7"
+                        "id": "d7d58f45-b70e-4743-9f3a-91ce49cacc73"
+                      },
+                      {
+                        "command": "EVENT_GBVM_SCRIPT",
+                        "args": {
+                          "script": "VM_LOAD_TEXT 1 \n.dw VAR_DEATHTIMER\n.asciz \"\\003\\022\\002%D3\"\nVM_CALL_NATIVE b_ui_alt_display_text, _ui_alt_display_text",
+                          "__collapse": true
+                        },
+                        "id": "f3e18d82-7cec-4394-a2df-936bc1f33003"
+                      },
+                      {
+                        "command": "EVENT_SET_TIMER_SCRIPT",
+                        "args": {
+                          "timer": 1,
+                          "duration": 1,
+                          "frames": 30,
+                          "__scriptTabs": "end",
+                          "__collapse": true
+                        },
+                        "children": {
+                          "script": [
+                            {
+                              "command": "EVENT_DEC_VALUE",
+                              "args": {
+                                "variable": "0",
+                                "__collapse": true
+                              },
+                              "id": "e3296b49-e446-439c-919a-cf9e19ea68d8"
+                            },
+                            {
+                              "command": "EVENT_GBVM_SCRIPT",
+                              "args": {
+                                "script": "VM_LOAD_TEXT 1 \n.dw VAR_DEATHTIMER\n.asciz \"\\003\\022\\002%D3\"\nVM_CALL_NATIVE b_ui_alt_display_text, _ui_alt_display_text",
+                                "__collapse": true
+                              },
+                              "id": "4e69c08f-a455-431f-91fb-8c990f362c13"
+                            },
+                            {
+                              "command": "EVENT_IF",
+                              "args": {
+                                "condition": {
+                                  "type": "lte",
+                                  "valueA": {
+                                    "type": "variable",
+                                    "value": "0"
+                                  },
+                                  "valueB": {
+                                    "type": "number",
+                                    "value": 0
+                                  }
+                                },
+                                "__collapseElse": true,
+                                "__collapse": false
+                              },
+                              "children": {
+                                "true": [
+                                  {
+                                    "command": "EVENT_CALL_CUSTOM_EVENT",
+                                    "args": {
+                                      "customEventId": "76fe8e78-2831-42e9-9d12-aa187baf35b8",
+                                      "__collapse": true
+                                    },
+                                    "id": "b837b9aa-d9bd-4ec7-a737-5b9cbc92ebc5"
+                                  }
+                                ],
+                                "false": []
+                              },
+                              "id": "43d982a2-a4f2-4ee3-8b91-24e0c6f455a7"
+                            }
+                          ]
+                        },
+                        "id": "830c6df4-25fd-46dc-a6a2-a6fcc1b605d9"
                       }
-                    ]
+                    ],
+                    "false": []
                   },
-                  "id": "830c6df4-25fd-46dc-a6a2-a6fcc1b605d9"
+                  "id": "5d634dcb-ace3-4507-a1c2-fe2c094d3359"
+                },
+                {
+                  "command": "EVENT_SET_VALUE",
+                  "args": {
+                    "variable": "48",
+                    "value": {
+                      "type": "number",
+                      "value": 0
+                    },
+                    "__collapse": true
+                  },
+                  "id": "a9402aa8-a2dd-4c6c-9c5f-1ae8f2070ed5"
                 }
               ]
             },
@@ -936,7 +961,8 @@
       "command": "EVENT_GROUP",
       "args": {
         "__label": "Start Menu",
-        "__collapse": true
+        "__collapse": false,
+        "__comment": false
       },
       "children": {
         "true": [
@@ -954,7 +980,8 @@
                   "value": 0
                 }
               },
-              "__collapseElse": true
+              "__collapseElse": true,
+              "__collapse": false
             },
             "children": {
               "true": [
@@ -973,7 +1000,7 @@
                       }
                     },
                     "__collapseElse": false,
-                    "__collapse": true
+                    "__collapse": false
                   },
                   "children": {
                     "true": [
@@ -1274,7 +1301,8 @@
                           "frames": 30,
                           "__scriptTabs": "end",
                           "__label": "Attach demo timeout",
-                          "__collapse": true
+                          "__collapse": true,
+                          "__comment": false
                         },
                         "children": {
                           "script": [
@@ -1340,7 +1368,8 @@
                         "command": "EVENT_CALL_CUSTOM_EVENT",
                         "args": {
                           "customEventId": "faa52240-0efd-4a4b-84e8-278b75dc24b7",
-                          "__collapse": false
+                          "__collapse": true,
+                          "__comment": false
                         },
                         "id": "0cad53d1-34bd-49f1-ba16-6fe58027b62a"
                       }
@@ -1960,7 +1989,7 @@
           "value": 16
         },
         "__collapseElse": false,
-        "__collapse": true
+        "__collapse": false
       },
       "children": {
         "true0": [

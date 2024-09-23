@@ -21,7 +21,9 @@
         "input_sequence": [
           {
             "command": "EVENT_LOOP",
-            "args": {},
+            "args": {
+              "__collapse": true
+            },
             "children": {
               "true": [
                 {
@@ -288,14 +290,16 @@
               "value": {
                 "type": "number",
                 "value": 0
-              }
+              },
+              "__comment": false
             },
             "id": "b68d3357-e988-42ed-a159-0caf1c1db01d"
           },
           {
             "command": "EVENT_CALL_CUSTOM_EVENT",
             "args": {
-              "customEventId": "1da14dfe-ad02-4e47-addd-68af4399854d"
+              "customEventId": "1da14dfe-ad02-4e47-addd-68af4399854d",
+              "__comment": false
             },
             "id": "ccfa00a4-cfe6-46eb-ae1e-adcbafdc7749"
           }

@@ -102,6 +102,21 @@
         }
       },
       "id": "5274548a-473c-45bb-b625-92f1210ddea3"
+    },
+    {
+      "command": "EVENT_ACTOR_SET_POSITION_RELATIVE",
+      "args": {
+        "actorId": "$self$",
+        "x": {
+          "type": "number",
+          "value": 0
+        },
+        "y": {
+          "type": "number",
+          "value": 4
+        }
+      },
+      "id": "3dd72d4f-4437-4e8f-b831-5ebcabe456df"
     }
   ],
   "updateScript": [],

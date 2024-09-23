@@ -6,6 +6,7 @@ void crouch_state(void) BANKED;
 void jump_state(void) BANKED;
 void climb_state(void) BANKED;
 void blank_state(void) BANKED;
+void swim_state(void) BANKED;
 
 typedef enum {              //Datatype for tracking states
     FALL_INIT = 0,
@@ -27,12 +28,16 @@ typedef enum {              //Datatype for tracking states
     CLIMB_STATE = 16,
     CLIMB_END = 17,
     BLANK_INIT = 18,
-    BLANK_STATE = 19
+    BLANK_STATE = 19,
+	BLANK_END = 20,
+	SWIM_INIT = 21,
+	SWIM_STATE = 22,
+	SWIM_END = 23
 }  pStates;
 
 extern pStates plat_state;
 extern pStates que_state;
-extern script_state_t state_events[20];
+extern script_state_t state_events[24];
        
 extern UBYTE nocollide;            
 extern WORD deltaX;
