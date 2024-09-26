@@ -106,12 +106,12 @@ UWORD check_pit(UWORD start_x, UWORD start_y, bounding_box_t *bounds, col_check_
     return start_x;
 }
 
-void inline apply_gravity(UBYTE actor_idx) {
+void apply_gravity(UBYTE actor_idx) BANKED {
 	actor_vel_y[actor_idx] += (plat_grav >> 8);
 	actor_vel_y[actor_idx] = MIN(actor_vel_y[actor_idx], (plat_max_fall_vel >> 8));
 }
 
-void inline apply_velocity(UBYTE actor_idx, actor_t * actor) {
+void apply_velocity(UBYTE actor_idx, actor_t * actor) BANKED {
 	//Apply velocity
 	WORD new_y =  actor->pos.y + actor_vel_y[actor_idx];
 	WORD new_x =  actor->pos.x + actor_vel_x[actor_idx];
@@ -128,18 +128,25 @@ void inline apply_velocity(UBYTE actor_idx, actor_t * actor) {
 	}
 }
 
-void inline apply_velocity_avoid_fall(UBYTE actor_idx, actor_t * actor) {
+void apply_velocity_avoid_fall(UBYTE actor_idx, actor_t * actor) BANKED {
 	//Apply velocity
 	WORD new_y =  actor->pos.y + actor_vel_y[actor_idx];
 	WORD new_x =  actor->pos.x + actor_vel_x[actor_idx];
 	if (actor->collision_enabled){
 		//Tile Collision
-		new_x = check_collision(new_x, actor->pos.y, &actor->bounds, ((actor->pos.x > new_x) ? CHECK_DIR_LEFT : CHECK_DIR_RIGHT));
-		actor->pos.x = check_pit(new_x, actor->pos.y, &actor->bounds, ((actor->pos.x > new_x) ? CHECK_DIR_LEFT : CHECK_DIR_RIGHT));
+		actor->pos.y = check_collision(actor->pos.x, new_y, &actor->bounds, ((actor->pos.y > new_y) ? CHECK_DIR_UP : CHECK_DIR_DOWN));
+		if (new_y != actor->pos.y){
+			actor->pos.x = check_pit(new_x, actor->pos.y, &actor->bounds, ((actor_vel_x[actor_idx] > 0) ? CHECK_DIR_RIGHT : CHECK_DIR_LEFT));
+			if (actor->pos.x != new_x){
+				actor_vel_x[actor_idx] = -actor_vel_x[actor_idx];
+				return;
+			}
+		}
+		actor->pos.x = check_collision(new_x, actor->pos.y, &actor->bounds, ((actor_vel_x[actor_idx] > 0) ? CHECK_DIR_RIGHT : CHECK_DIR_LEFT));
 		if (actor->pos.x != new_x){
 			actor_vel_x[actor_idx] = -actor_vel_x[actor_idx];
 		}
-		actor->pos.y = check_collision(actor->pos.x, new_y, &actor->bounds, ((actor->pos.y > new_y) ? CHECK_DIR_UP : CHECK_DIR_DOWN));
+		
 	} else {
 		actor->pos.x = new_x;
 		actor->pos.y = new_y;
@@ -159,6 +166,8 @@ void actor_behavior_update(void) BANKED {
 					if ((((actor->pos.x >> 4) + 8) - draw_scroll_x) < BEHAVIOR_ACTIVATION_THRESHOLD){ 
 						actor_states[i] = 1; 
 						actor_counter_a[i] = 0;
+						actor_vel_y[i] = 0;
+						actor_vel_x[i] = -4;
 					}
 					break;
 				case 1: //Main state
@@ -191,17 +200,6 @@ void actor_behavior_update(void) BANKED {
 						actor_states[i] = 255; 
 					}
 					break;
-				case 3: //Knocked state
-					current_actor_x = ((actor->pos.x >> 4) + 8) - draw_scroll_x;
-					if ((actor->pos.y >> 7) > image_tile_height){ 
-						actor_states[i] = 255; 
-						break;
-					}
-					actor_vel_y[i] += (plat_grav >> 10);
-					actor_vel_y[i] = MIN(actor_vel_y[i], (plat_max_fall_vel >> 8));
-					//Apply velocity
-					actor->pos.y =  actor->pos.y + actor_vel_y[i];					
-					break;
 				case 255: //Deactivate
 					load_animations((void *)actor->sprite.ptr, actor->sprite.bank, ANIM_STATE_DEFAULT, actor->animations);
 					actor->collision_enabled = true;
@@ -210,17 +208,21 @@ void actor_behavior_update(void) BANKED {
 					break;
 			}		
 			break;	
-			case 2: //Koopa
+			case 2: //Green Koopa
 			switch(actor_states[i]){
 				case 0:
-					if ((((actor->pos.x >> 4) + 8) - draw_scroll_x) < BEHAVIOR_ACTIVATION_THRESHOLD){ actor_states[i] = 1; }
+					if ((((actor->pos.x >> 4) + 8) - draw_scroll_x) < BEHAVIOR_ACTIVATION_THRESHOLD){ 
+						actor_states[i] = 1; 						
+						actor_vel_y[i] = 0;
+						actor_vel_x[i] = -4;
+					}
 					break;
 				case 1: //Main state
 					current_actor_x = ((actor->pos.x >> 4) + 8) - draw_scroll_x;
 					if (current_actor_x > BEHAVIOR_DEACTIVATION_THRESHOLD || current_actor_x < BEHAVIOR_DEACTIVATION_LOWER_THRESHOLD){ 
 						actor_states[i] = 255; 
 						break;
-					}
+					}					
 					apply_gravity(i);
 					apply_velocity(i, actor);
 					//Animation
@@ -237,7 +239,89 @@ void actor_behavior_update(void) BANKED {
 					break;
 			}
 			break;			
-			case 3://Bowser
+			case 3: //Red Koopa
+			switch(actor_states[i]){
+				case 0:
+					if ((((actor->pos.x >> 4) + 8) - draw_scroll_x) < BEHAVIOR_ACTIVATION_THRESHOLD){ 
+						actor_states[i] = 1; 						
+						actor_vel_y[i] = 0;
+						actor_vel_x[i] = -4;
+					}
+					break;
+				case 1: //Main state
+					current_actor_x = ((actor->pos.x >> 4) + 8) - draw_scroll_x;
+					if (current_actor_x > BEHAVIOR_DEACTIVATION_THRESHOLD || current_actor_x < BEHAVIOR_DEACTIVATION_LOWER_THRESHOLD){ 
+						actor_states[i] = 255; 
+						break;
+					}					
+					apply_gravity(i);
+					apply_velocity_avoid_fall(i, actor);
+					//Animation
+					if (actor_vel_x[i] < 0) {
+						actor_set_dir(actor, DIR_LEFT, TRUE);
+					} else if (actor_vel_x[i] > 0) {
+						actor_set_dir(actor, DIR_RIGHT, TRUE);
+					} else {
+						actor_set_anim_idle(actor);
+					}
+					break;
+				case 255:
+					deactivate_actor(actor);
+					break;
+			}
+			break;			
+			case 4: //Koopa shell
+			switch(actor_states[i]){
+				case 0:
+					if ((((actor->pos.x >> 4) + 8) - draw_scroll_x) < BEHAVIOR_ACTIVATION_THRESHOLD){ 
+						actor_counter_a[i] = 0;		
+						actor_vel_y[i] = 0;
+						actor_vel_x[i] = 0;									
+						actor_states[i] = 1;
+					}
+					break;
+				case 1: //tucked state
+					current_actor_x = ((actor->pos.x >> 4) + 8) - draw_scroll_x;
+					if (current_actor_x > BEHAVIOR_DEACTIVATION_THRESHOLD || current_actor_x < BEHAVIOR_DEACTIVATION_LOWER_THRESHOLD){ 
+						actor_states[i] = 255; 
+						break;
+					}
+					apply_gravity(i);
+					apply_velocity(i, actor);
+					break;
+				case 2: //init kicked state
+					actor_counter_a[i] = 0;		
+					actor_states[i] = 3;
+					actor->collision_group = COLLISION_GROUP_2;
+				case 3: //kicked state player iframe
+					if (actor_counter_a[i] > 15){
+						actor_states[i] = 4; 
+					} else {
+						actor_counter_a[i]++;
+					}
+				case 4: //kicked state
+					current_actor_x = ((actor->pos.x >> 4) + 8) - draw_scroll_x;
+					if (current_actor_x > BEHAVIOR_DEACTIVATION_THRESHOLD || current_actor_x < BEHAVIOR_DEACTIVATION_LOWER_THRESHOLD){ 
+						actor_states[i] = 255; 
+						break;
+					}
+					apply_gravity(i);
+					apply_velocity(i, actor);
+					//Actor Collision		
+					actor_t * hit_actor = actor_overlapping_bb(&actor->bounds, &actor->pos, actor, FALSE);
+					if (hit_actor && hit_actor->script.bank){
+						script_execute(hit_actor->script.bank, hit_actor->script.ptr, 0, 1, 2);
+						if (actor->collision_group == hit_actor->collision_group){
+							script_execute(actor->script.bank, actor->script.ptr, 0, 1, 2);
+						}
+					}
+					break;
+				case 255:
+					deactivate_actor(actor);
+					break;
+			}
+			break;
+			case 5://Bowser
 			switch(actor_states[i]){
 				case 0: //Init
 					if ((((actor->pos.x >> 4) + 8) - draw_scroll_x) < BEHAVIOR_ACTIVATION_THRESHOLD){ actor_states[i] = 1; }
@@ -279,7 +363,7 @@ void actor_behavior_update(void) BANKED {
 					break;
 			}		
 			break;	
-			case 4://Bowser fire
+			case 6://Bowser fire
 			switch(actor_states[i]){
 				case 0: //Init
 					if ((((actor->pos.x >> 4) + 8) - draw_scroll_x) < BEHAVIOR_ACTIVATION_THRESHOLD){ actor_states[i] = 1; }
@@ -297,7 +381,7 @@ void actor_behavior_update(void) BANKED {
 					break;
 			}		
 			break;			
-			case 5://Pyrahna Plant
+			case 7://Pyrahna Plant
 			switch(actor_states[i]){
 				case 0: //Init
 					if ((((actor->pos.x >> 4) + 8) - draw_scroll_x) < BEHAVIOR_ACTIVATION_THRESHOLD){ 
@@ -345,93 +429,51 @@ void actor_behavior_update(void) BANKED {
 					break;
 			}		
 			break;
-			case 6: //Red Koopa
+			case 8: //Up-down moving actor (Flying Red Koopa, platforms)
 			switch(actor_states[i]){
 				case 0:
-					if ((((actor->pos.x >> 4) + 8) - draw_scroll_x) < BEHAVIOR_ACTIVATION_THRESHOLD){ actor_states[i] = 1; }
-					break;
-				case 1: //Main state
-					current_actor_x = ((actor->pos.x >> 4) + 8) - draw_scroll_x;
-					if (current_actor_x > BEHAVIOR_DEACTIVATION_THRESHOLD || current_actor_x < BEHAVIOR_DEACTIVATION_LOWER_THRESHOLD){ 
-						actor_states[i] = 255; 
-						break;
+					if ((((actor->pos.x >> 4) + 8) - draw_scroll_x) < BEHAVIOR_ACTIVATION_THRESHOLD){ 
+						actor_states[i] = 1; 
+						actor_vel_y[i] = 8;
+						actor_counter_a[i] = 0;
 					}
-					apply_gravity(i);
-					apply_velocity_avoid_fall(i, actor);
-					//Animation
-					if (actor_vel_x[i] < 0) {
-						actor_set_dir(actor, DIR_LEFT, TRUE);
-					} else if (actor_vel_x[i] > 0) {
-						actor_set_dir(actor, DIR_RIGHT, TRUE);
-					} else {
-						actor_set_anim_idle(actor);
-					}
-					break;
-				case 255:
-					deactivate_actor(actor);
-					break;
-			}
-			break;	
-			case 7: //Flying Red Koopa
-			switch(actor_states[i]){
-				case 0:
-					if ((((actor->pos.x >> 4) + 8) - draw_scroll_x) < BEHAVIOR_ACTIVATION_THRESHOLD){ actor_states[i] = 1; }
 					break;
 				case 1: //Move up state
-					current_actor_x = ((actor->pos.x >> 4) + 8) - draw_scroll_x;
-					if (current_actor_x > BEHAVIOR_DEACTIVATION_THRESHOLD || current_actor_x < BEHAVIOR_DEACTIVATION_LOWER_THRESHOLD){ 
+					if ((((actor->pos.x >> 4) + 8) - draw_scroll_x) > BEHAVIOR_DEACTIVATION_THRESHOLD){ 
 						actor_states[i] = 255; 
 						break;
 					}
-					
-					if (actor_counter_a[i] < 120){
-						actor_counter_a[i]++;
-					} else {
-						actor_states[i] = 2;
-						actor_vel_y[i] = -actor_vel_y[i];
-						actor_vel_x[i] = -actor_vel_x[i];
-					}
-					actor->pos.y = actor->pos.y + actor_vel_y[i];		
-					actor->pos.x = actor->pos.x + actor_vel_x[i];						
-					//Animation
-					if (actor_vel_x[i] < 0) {
-						actor_set_dir(actor, DIR_LEFT, TRUE);
-					} else if (actor_vel_x[i] > 0) {
-						actor_set_dir(actor, DIR_RIGHT, TRUE);
-					} else {
-						actor_set_anim_idle(actor);
-					}
+					if (!(game_time & 7)){
+						actor_vel_y[i] = MAX(actor_vel_y[i]--, -8);						
+						if (actor_counter_a[i] <= 16){
+							actor_counter_a[i]++;
+						} else {
+							actor_states[i] = 2;
+						}
+					}					
+					actor->pos.y = actor->pos.y + actor_vel_y[i];					
 					break;
 				case 2: //Move down state
 					if ((((actor->pos.x >> 4) + 8) - draw_scroll_x) > BEHAVIOR_DEACTIVATION_THRESHOLD){ 
 						actor_states[i] = 255; 
 						break;
 					}
-					
-					if (actor_counter_a[i] > 0){
-						actor_counter_a[i]--;
-					} else {
-						actor_states[i] = 1;
-						actor_vel_y[i] = -actor_vel_y[i];
-						actor_vel_x[i] = -actor_vel_x[i];
-					}
-					actor->pos.y = actor->pos.y + actor_vel_y[i];
-					actor->pos.x = actor->pos.x + actor_vel_x[i];	
-					//Animation
-					if (actor_vel_x[i] < 0) {
-						actor_set_dir(actor, DIR_LEFT, TRUE);
-					} else if (actor_vel_x[i] > 0) {
-						actor_set_dir(actor, DIR_RIGHT, TRUE);
-					} else {
-						actor_set_anim_idle(actor);
-					}
+					if (!(game_time & 7)){
+						actor_vel_y[i] = MIN(actor_vel_y[i]++, 8);
+						if (actor_counter_a[i] > 0){
+							actor_counter_a[i]--;
+						} else {
+							actor_states[i] = 1;
+						}	
+					}					
+					actor->pos.y = actor->pos.y + actor_vel_y[i];									
 					break;
 				case 255:
 					deactivate_actor(actor);
 					break;
 			}
 			break;	
-			case 8://Fire bar
+			case 9://Fire bar
 			switch(actor_states[i]){
 				case 0: //Init
 					if ((((actor->pos.x >> 4) + 8) - draw_scroll_x) < BEHAVIOR_ACTIVATION_THRESHOLD){ actor_states[i] = 1; }
@@ -462,7 +504,7 @@ void actor_behavior_update(void) BANKED {
 					break;
 			}		
 			break;	
-			case 9://Bouncing entity
+			case 10://Bouncing entity
 			switch(actor_states[i]){
 				case 0: //Init
 					if ((((actor->pos.x >> 4) + 8) - draw_scroll_x) < BEHAVIOR_ACTIVATION_THRESHOLD){ actor_states[i] = 1; }
@@ -502,31 +544,7 @@ void actor_behavior_update(void) BANKED {
 					deactivate_actor(actor);
 					break;
 			}		
-			break;	
-			case 10: //Koopa shell
-			switch(actor_states[i]){
-				case 0:
-					if ((((actor->pos.x >> 4) + 8) - draw_scroll_x) < BEHAVIOR_ACTIVATION_THRESHOLD){ actor_states[i] = 1; }
-					break;
-				case 1: //Main state
-					current_actor_x = ((actor->pos.x >> 4) + 8) - draw_scroll_x;
-					if (current_actor_x > BEHAVIOR_DEACTIVATION_THRESHOLD || current_actor_x < BEHAVIOR_DEACTIVATION_LOWER_THRESHOLD){ 
-						actor_states[i] = 255; 
-						break;
-					}
-					apply_gravity(i);
-					apply_velocity(i, actor);
-					//Actor Collision					
-					actor_t * hit_actor = actor_overlapping_bb(&actor->bounds, &actor->pos, actor, FALSE);
-					if (hit_actor && hit_actor->script.bank){
-						script_execute(hit_actor->script.bank, hit_actor->script.ptr, 0, 1, (UWORD)(actor->collision_group));
-					}
-					break;
-				case 255:
-					deactivate_actor(actor);
-					break;
-			}
-			break;	
+			break;				
 			case 11://Fire ball
 			switch(actor_states[i]){
 				case 0: //Init
@@ -736,6 +754,61 @@ void actor_behavior_update(void) BANKED {
 					break;
 			}
 			break;
+			case 17: //Hit block bump
+			switch(actor_states[i]){
+				case 0:
+					//Actor Collision					
+					actor_t * hit_actor = actor_overlapping_bb(&actor->bounds, &actor->pos, actor, FALSE);
+					if (hit_actor && hit_actor->script.bank){
+						script_execute(hit_actor->script.bank, hit_actor->script.ptr, 0, 1, 2);
+					}
+					break;
+			}
+			break;
+			case 18: //Sideway moving actor
+			switch(actor_states[i]){
+				case 0:
+					if ((((actor->pos.x >> 4) + 8) - draw_scroll_x) < BEHAVIOR_ACTIVATION_THRESHOLD){ 
+						actor_states[i] = 1; 
+						actor_vel_x[i] = 8;
+						actor_counter_a[i] = 0;
+					}
+					break;
+				case 1: //Move left state
+					if ((((actor->pos.x >> 4) + 8) - draw_scroll_x) > BEHAVIOR_DEACTIVATION_THRESHOLD){ 
+						actor_states[i] = 255; 
+						break;
+					}
+					if (!(game_time & 7)){
+						actor_vel_x[i] = MAX(actor_vel_x[i]--, -8);						
+						if (actor_counter_a[i] <= 16){
+							actor_counter_a[i]++;
+						} else {
+							actor_states[i] = 2;
+						}
+					}					
+					actor->pos.x = actor->pos.x + actor_vel_x[i];					
+					break;
+				case 2: //Move right state
+					if ((((actor->pos.x >> 4) + 8) - draw_scroll_x) > BEHAVIOR_DEACTIVATION_THRESHOLD){ 
+						actor_states[i] = 255; 
+						break;
+					}
+					if (!(game_time & 7)){
+						actor_vel_x[i] = MIN(actor_vel_x[i]++, 8);
+						if (actor_counter_a[i] > 0){
+							actor_counter_a[i]--;
+						} else {
+							actor_states[i] = 1;
+						}	
+					}					
+					actor->pos.x = actor->pos.x + actor_vel_x[i];									
+					break;
+				case 255:
+					deactivate_actor(actor);
+					break;
+			}
+			break;	
 		}			
 	}
 }
@@ -760,6 +833,11 @@ void vm_set_actor_state(SCRIPT_CTX * THIS) OLDCALL BANKED {
 void vm_get_actor_state(SCRIPT_CTX * THIS) OLDCALL BANKED {
     UBYTE actor_idx = *(uint8_t *)VM_REF_TO_PTR(FN_ARG0);
 	script_memory[*(int16_t*)VM_REF_TO_PTR(FN_ARG1)] = actor_states[actor_idx];
+}
+
+void vm_get_actor_counter(SCRIPT_CTX * THIS) OLDCALL BANKED {
+    UBYTE actor_idx = *(uint8_t *)VM_REF_TO_PTR(FN_ARG0);
+	script_memory[*(int16_t*)VM_REF_TO_PTR(FN_ARG1)] = actor_counter_a[actor_idx];
 }
 
 void vm_set_actor_velocity_x(SCRIPT_CTX * THIS) OLDCALL BANKED {

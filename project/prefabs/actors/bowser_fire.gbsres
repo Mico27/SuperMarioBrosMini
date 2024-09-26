@@ -80,10 +80,23 @@
         "actorId": "$self$",
         "behaviorId": {
           "type": "number",
-          "value": 4
-        }
+          "value": 6
+        },
+        "__collapse": true
       },
       "id": "9f33edd3-4016-413e-9dc1-89aac13eef8f"
+    },
+    {
+      "command": "EVENT_SET_ACTOR_STATE",
+      "args": {
+        "actorId": "$self$",
+        "stateId": {
+          "type": "number",
+          "value": 0
+        },
+        "__collapse": true
+      },
+      "id": "3fb67535-7d17-4b9b-9627-9b7629673636"
     },
     {
       "command": "EVENT_SET_ACTOR_X_VELOCITY",
@@ -92,7 +105,8 @@
         "xVelocity": {
           "type": "number",
           "value": -8
-        }
+        },
+        "__collapse": true
       },
       "id": "8e34542e-333f-40b9-bf8d-b048a17bb854"
     }

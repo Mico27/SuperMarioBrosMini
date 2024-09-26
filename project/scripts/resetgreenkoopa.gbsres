@@ -1,0 +1,113 @@
+{
+  "_resourceType": "script",
+  "id": "585d4f01-1e5c-4b3b-9a01-16d21367d4ac",
+  "name": "ResetGreenKoopa",
+  "description": "",
+  "variables": {
+    "V0": {
+      "id": "V0",
+      "name": "XPos",
+      "passByReference": false
+    },
+    "V1": {
+      "id": "V1",
+      "name": "YPos",
+      "passByReference": false
+    }
+  },
+  "actors": {
+    "0": {
+      "id": "0",
+      "name": "GreenKoopa"
+    }
+  },
+  "symbol": "script_19",
+  "script": [
+    {
+      "command": "EVENT_ACTOR_SET_POSITION",
+      "args": {
+        "actorId": "0",
+        "x": {
+          "type": "variable",
+          "value": "V0"
+        },
+        "y": {
+          "type": "variable",
+          "value": "V1"
+        },
+        "__collapse": true
+      },
+      "id": "dfcfa898-90e7-458f-a27e-e125f03fbff5"
+    },
+    {
+      "command": "EVENT_ACTOR_SET_STATE",
+      "args": {
+        "actorId": "0",
+        "spriteStateId": "",
+        "loopAnim": true,
+        "__collapse": true
+      },
+      "id": "e491328a-1104-4532-a380-ccedc9d21d71",
+      "children": {}
+    },
+    {
+      "command": "EVENT_SET_ACTOR_BEHAVIOR",
+      "args": {
+        "actorId": "0",
+        "behaviorId": {
+          "type": "number",
+          "value": 2
+        },
+        "__collapse": true
+      },
+      "id": "7f679bc0-e851-4b6f-b24c-b225ee667128",
+      "children": {}
+    },
+    {
+      "command": "EVENT_SET_ACTOR_STATE",
+      "args": {
+        "actorId": "0",
+        "stateId": {
+          "type": "number",
+          "value": 0
+        },
+        "__collapse": true
+      },
+      "id": "29dee16f-5205-46f5-b4fe-c84055c01788"
+    },
+    {
+      "command": "EVENT_SET_ACTOR_X_VELOCITY",
+      "args": {
+        "actorId": "0",
+        "xVelocity": {
+          "type": "number",
+          "value": -4
+        },
+        "__collapse": true
+      },
+      "id": "65a9d5ec-2287-4da8-b75e-1792902034a2",
+      "children": {}
+    },
+    {
+      "command": "EVENT_SET_ACTOR_Y_VELOCITY",
+      "args": {
+        "actorId": "0",
+        "yVelocity": {
+          "type": "number",
+          "value": 0
+        },
+        "__collapse": true
+      },
+      "id": "c7383636-04fe-4066-8661-0299fbf2724d"
+    },
+    {
+      "command": "EVENT_ACTOR_ACTIVATE",
+      "args": {
+        "actorId": "0",
+        "__comment": false,
+        "__collapse": true
+      },
+      "id": "8b2711cb-663f-43fd-8150-d020021aef40"
+    }
+  ]
+}

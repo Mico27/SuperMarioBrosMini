@@ -1,0 +1,113 @@
+{
+  "_resourceType": "script",
+  "id": "d4c349ee-6d3a-4bba-bdbc-c5c6cb7443fe",
+  "name": "ResetFlyingGreenKoopa",
+  "description": "",
+  "variables": {
+    "V0": {
+      "id": "V0",
+      "name": "XPos",
+      "passByReference": false
+    },
+    "V1": {
+      "id": "V1",
+      "name": "YPos",
+      "passByReference": false
+    }
+  },
+  "actors": {
+    "0": {
+      "id": "0",
+      "name": "FlyingGreenKoopa"
+    }
+  },
+  "symbol": "script_18",
+  "script": [
+    {
+      "command": "EVENT_ACTOR_SET_POSITION",
+      "args": {
+        "actorId": "0",
+        "x": {
+          "type": "variable",
+          "value": "V0"
+        },
+        "y": {
+          "type": "variable",
+          "value": "V1"
+        },
+        "__collapse": true
+      },
+      "id": "d5dc0e75-5f89-4db8-9aef-182b03b87636"
+    },
+    {
+      "command": "EVENT_ACTOR_SET_STATE",
+      "args": {
+        "actorId": "0",
+        "spriteStateId": "Winged",
+        "loopAnim": true,
+        "__collapse": true
+      },
+      "id": "98495b13-a987-4210-b0a1-3c832afbe1be",
+      "children": {}
+    },
+    {
+      "command": "EVENT_SET_ACTOR_BEHAVIOR",
+      "args": {
+        "actorId": "0",
+        "behaviorId": {
+          "type": "number",
+          "value": 10
+        },
+        "__collapse": true
+      },
+      "id": "cb759653-b8d3-450b-a7d2-48ff99827e73",
+      "children": {}
+    },
+    {
+      "command": "EVENT_SET_ACTOR_STATE",
+      "args": {
+        "actorId": "0",
+        "stateId": {
+          "type": "number",
+          "value": 0
+        },
+        "__collapse": true
+      },
+      "id": "faf81b70-2863-4ecc-a9ff-711fbdf6ef79"
+    },
+    {
+      "command": "EVENT_SET_ACTOR_X_VELOCITY",
+      "args": {
+        "actorId": "0",
+        "xVelocity": {
+          "type": "number",
+          "value": -4
+        },
+        "__collapse": true
+      },
+      "id": "b278f63b-081d-4e23-aa56-57aec6d86939",
+      "children": {}
+    },
+    {
+      "command": "EVENT_SET_ACTOR_Y_VELOCITY",
+      "args": {
+        "actorId": "0",
+        "yVelocity": {
+          "type": "number",
+          "value": 0
+        },
+        "__collapse": true
+      },
+      "id": "c0d47495-3886-48fc-bdf2-821c010debce"
+    },
+    {
+      "command": "EVENT_ACTOR_ACTIVATE",
+      "args": {
+        "actorId": "0",
+        "__comment": false,
+        "__collapse": true
+      },
+      "id": "4c33dff7-e338-42e6-b64c-bd1910c76d6e"
+    }
+  ]
+}

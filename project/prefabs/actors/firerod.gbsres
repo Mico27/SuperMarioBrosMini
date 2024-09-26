@@ -79,7 +79,8 @@
     {
       "command": "EVENT_ACTOR_COLLISIONS_DISABLE",
       "args": {
-        "actorId": "$self$"
+        "actorId": "$self$",
+        "__collapse": true
       },
       "id": "9ad6bc00-cb42-43a9-b9af-5a0d812170c9"
     },
@@ -88,7 +89,8 @@
       "args": {
         "actorId": "$self$",
         "spriteStateId": "FireBar",
-        "loopAnim": true
+        "loopAnim": true,
+        "__collapse": true
       },
       "id": "db1edc56-8a5e-4cb3-b020-d1559fd0830d"
     },
@@ -98,10 +100,23 @@
         "actorId": "$self$",
         "behaviorId": {
           "type": "number",
-          "value": 8
-        }
+          "value": 9
+        },
+        "__collapse": true
       },
       "id": "5274548a-473c-45bb-b625-92f1210ddea3"
+    },
+    {
+      "command": "EVENT_SET_ACTOR_STATE",
+      "args": {
+        "actorId": "$self$",
+        "stateId": {
+          "type": "number",
+          "value": 0
+        },
+        "__collapse": true
+      },
+      "id": "ed567c74-a330-4ec2-a1f7-f1a4bf6b3dbe"
     },
     {
       "command": "EVENT_ACTOR_SET_POSITION_RELATIVE",
@@ -114,7 +129,8 @@
         "y": {
           "type": "number",
           "value": 4
-        }
+        },
+        "__collapse": true
       },
       "id": "3dd72d4f-4437-4e8f-b831-5ebcabe456df"
     }

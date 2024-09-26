@@ -1,7 +1,7 @@
 {
   "_resourceType": "actorPrefab",
-  "id": "571fa3ef-eb63-4519-8bed-96b8921f0c5b",
-  "name": "ElevatorPlatform",
+  "id": "f209fc2e-8399-4bb6-aa97-10b93251424d",
+  "name": "SidewayPlatform",
   "frame": 0,
   "animate": false,
   "spriteSheetId": "f372b635-2699-4923-9caf-067e60099a3f",
@@ -39,7 +39,7 @@
       }
     }
   },
-  "_index": 0,
+  "_index": 3,
   "script": [],
   "startScript": [
     {
@@ -48,12 +48,11 @@
         "actorId": "$self$",
         "behaviorId": {
           "type": "number",
-          "value": 16
+          "value": 18
         },
-        "__collapse": true
+        "__collapse": false
       },
-      "id": "6350b1db-f2f0-4c69-9ef7-8e54bec06df9",
-      "children": {}
+      "id": "7f3dcee4-6558-4191-a624-a51ac5652456"
     },
     {
       "command": "EVENT_SET_ACTOR_STATE",
@@ -65,19 +64,7 @@
         },
         "__collapse": true
       },
-      "id": "4f124235-5b68-4685-9282-78833c1385c5"
-    },
-    {
-      "command": "EVENT_SET_ACTOR_Y_VELOCITY",
-      "args": {
-        "actorId": "$self$",
-        "yVelocity": {
-          "type": "number",
-          "value": 0
-        },
-        "__collapse": true
-      },
-      "id": "8aa3aa3d-6c97-4941-9dda-4300dd51dbe2"
+      "id": "b0be8ead-c2b4-44cc-9f6d-3cdaa7fc6f12"
     }
   ],
   "updateScript": [],

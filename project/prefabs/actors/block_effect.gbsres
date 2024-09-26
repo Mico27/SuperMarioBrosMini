@@ -15,71 +15,23 @@
   "script": [],
   "startScript": [
     {
+      "command": "EVENT_SET_ACTOR_BEHAVIOR",
+      "args": {
+        "actorId": "$self$",
+        "behaviorId": {
+          "type": "number",
+          "value": 17
+        }
+      },
+      "id": "6582d5b7-bc8f-4286-82db-47d59336c800"
+    },
+    {
       "command": "EVENT_ACTOR_DEACTIVATE",
       "args": {
         "actorId": "$self$",
         "__collapse": true
       },
       "id": "183f98cb-507b-4c44-99e1-a58e69af58a5",
-      "children": {}
-    },
-    {
-      "command": "EVENT_LAUNCH_PROJECTILE",
-      "args": {
-        "spriteSheetId": "8a540f8d-26fb-41fc-b83c-ce6c4807188b",
-        "spriteStateId": "Score20",
-        "actorId": "$self$",
-        "x": 0,
-        "y": 0,
-        "directionType": "direction",
-        "otherActorId": "$self$",
-        "direction": "up",
-        "angle": 0,
-        "angleVariable": "V0",
-        "targetActorId": "$self$",
-        "initialOffset": 8,
-        "speed": 0.25,
-        "animSpeed": 127,
-        "lifeTime": 0.5,
-        "loopAnim": false,
-        "destroyOnHit": false,
-        "collisionGroup": "3",
-        "collisionMask": [],
-        "__collapse": true,
-        "__section": "source",
-        "__comment": true
-      },
-      "id": "a3c7110f-0ab3-4b04-a321-e172ad6357c6",
-      "children": {}
-    },
-    {
-      "command": "EVENT_LAUNCH_PROJECTILE",
-      "args": {
-        "spriteSheetId": "8dbb443a-eb83-48bb-86c9-ffd9012f45c7",
-        "spriteStateId": "BrickBreak",
-        "actorId": "$self$",
-        "x": -4,
-        "y": -32,
-        "directionType": "direction",
-        "otherActorId": "$self$",
-        "direction": "down",
-        "angle": 0,
-        "angleVariable": "V0",
-        "targetActorId": "$self$",
-        "initialOffset": 0,
-        "speed": 0.25,
-        "animSpeed": 3,
-        "lifeTime": 0.4,
-        "loopAnim": false,
-        "destroyOnHit": false,
-        "collisionGroup": "3",
-        "collisionMask": [],
-        "__collapse": true,
-        "__section": "presets",
-        "__presetId": "2c756fb6-506b-44a9-b297-cb27352c9179",
-        "__comment": true
-      },
-      "id": "4854d781-54ff-47ff-b16e-143aac74397b",
       "children": {}
     }
   ],

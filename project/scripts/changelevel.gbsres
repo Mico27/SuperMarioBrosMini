@@ -112,7 +112,7 @@
                 "value": 16
               },
               "__collapseElse": false,
-              "__collapse": false
+              "__collapse": true
             },
             "children": {
               "true0": [
@@ -585,7 +585,7 @@
                       "value": 16
                     },
                     "__collapseElse": false,
-                    "__collapse": true
+                    "__collapse": false
                   },
                   "children": {
                     "true0": [
@@ -593,7 +593,7 @@
                         "command": "EVENT_SWITCH",
                         "args": {
                           "variable": "31",
-                          "choices": 2,
+                          "choices": 1,
                           "__collapseCase0": false,
                           "value0": {
                             "type": "number",
@@ -675,7 +675,7 @@
                             "value": 16
                           },
                           "__collapseElse": false,
-                          "__collapse": true
+                          "__collapse": false
                         },
                         "children": {
                           "true0": [
@@ -697,25 +697,7 @@
                               "id": "bde44c7d-f31f-46b4-9a93-5d5633368911"
                             }
                           ],
-                          "true1": [
-                            {
-                              "command": "EVENT_SWITCH_SCENE",
-                              "args": {
-                                "sceneId": "53939e85-7e0b-4173-9c81-6aea80c4e685",
-                                "x": {
-                                  "type": "number",
-                                  "value": 111
-                                },
-                                "y": {
-                                  "type": "number",
-                                  "value": 0
-                                },
-                                "direction": "right",
-                                "fadeSpeed": 1
-                              },
-                              "id": "44e30c1f-716f-4891-8d7c-a839039f3042"
-                            }
-                          ],
+                          "true1": [],
                           "true2": [],
                           "true3": [],
                           "true4": [],

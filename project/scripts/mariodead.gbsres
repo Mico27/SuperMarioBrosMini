@@ -168,6 +168,18 @@
             "id": "25ac168f-390e-4c65-af1a-9a66fc5b063c"
           },
           {
+            "command": "EVENT_SET_VALUE",
+            "args": {
+              "variable": "31",
+              "value": {
+                "type": "number",
+                "value": 0
+              },
+              "__collapse": true
+            },
+            "id": "5b84e45c-8c3f-41d4-9c5f-de8964909897"
+          },
+          {
             "command": "EVENT_IF",
             "args": {
               "condition": {

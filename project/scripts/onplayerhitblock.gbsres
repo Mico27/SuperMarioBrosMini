@@ -299,6 +299,36 @@
                   "children": {
                     "true": [
                       {
+                        "command": "EVENT_ACTOR_ACTIVATE",
+                        "args": {
+                          "actorId": "0",
+                          "__collapse": true
+                        },
+                        "id": "b9740a30-0bf1-470c-a89c-bd60383f4a5c"
+                      },
+                      {
+                        "command": "EVENT_ACTOR_SET_FRAME",
+                        "args": {
+                          "actorId": "0",
+                          "frame": {
+                            "type": "number",
+                            "value": 0
+                          },
+                          "__collapse": true
+                        },
+                        "id": "dd4ad2ee-ccaf-48ad-913d-efd77c38b497"
+                      },
+                      {
+                        "command": "EVENT_ACTOR_SET_STATE",
+                        "args": {
+                          "actorId": "0",
+                          "spriteStateId": "",
+                          "loopAnim": false,
+                          "__collapse": true
+                        },
+                        "id": "a4cb6ea8-5591-4445-9b40-1ba81c4421f0"
+                      },
+                      {
                         "command": "EVENT_REPLACE_META_TILE",
                         "args": {
                           "x": {
@@ -316,6 +346,24 @@
                           "__collapse": true
                         },
                         "id": "4cd81dca-120f-43c7-ae9c-820d9a165f37"
+                      },
+                      {
+                        "command": "EVENT_WAIT",
+                        "args": {
+                          "time": 0.5,
+                          "frames": 2,
+                          "units": "frames",
+                          "__collapse": true
+                        },
+                        "id": "4335bef7-b84b-4221-a6da-9b341d21a16f"
+                      },
+                      {
+                        "command": "EVENT_ACTOR_DEACTIVATE",
+                        "args": {
+                          "actorId": "0",
+                          "__collapse": true
+                        },
+                        "id": "41a88d86-f19f-410b-9236-e4e22eee18a9"
                       },
                       {
                         "command": "FO_EVENT_LAUNCH_LOADED_PROJECTILE",
@@ -1173,9 +1221,9 @@
                     "actorId": "1",
                     "behaviorId": {
                       "type": "number",
-                      "value": 9
+                      "value": 10
                     },
-                    "__collapse": true
+                    "__collapse": false
                   },
                   "id": "82f0a9be-c7dc-4c25-9ec9-4c04f5ec6efe"
                 },
@@ -2158,7 +2206,7 @@
                     "actorId": "1",
                     "behaviorId": {
                       "type": "number",
-                      "value": 9
+                      "value": 10
                     },
                     "__collapse": true
                   },
@@ -3099,7 +3147,7 @@
                     "actorId": "1",
                     "behaviorId": {
                       "type": "number",
-                      "value": 9
+                      "value": 10
                     },
                     "__collapse": true
                   },
@@ -3580,7 +3628,7 @@
       "command": "EVENT_GROUP",
       "args": {
         "__label": "Check Block Above",
-        "__collapse": false
+        "__collapse": true
       },
       "children": {
         "true": [
@@ -3613,7 +3661,8 @@
                   "value": 4
                 }
               },
-              "__collapseElse": false
+              "__collapseElse": false,
+              "__collapse": true
             },
             "children": {
               "true": [

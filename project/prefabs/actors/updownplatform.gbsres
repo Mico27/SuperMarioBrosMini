@@ -1,7 +1,7 @@
 {
   "_resourceType": "actorPrefab",
-  "id": "571fa3ef-eb63-4519-8bed-96b8921f0c5b",
-  "name": "ElevatorPlatform",
+  "id": "4d4b7705-ed23-476f-a3e7-d56c54402704",
+  "name": "UpDownPlatform",
   "frame": 0,
   "animate": false,
   "spriteSheetId": "f372b635-2699-4923-9caf-067e60099a3f",
@@ -39,7 +39,7 @@
       }
     }
   },
-  "_index": 0,
+  "_index": 3,
   "script": [],
   "startScript": [
     {
@@ -48,11 +48,11 @@
         "actorId": "$self$",
         "behaviorId": {
           "type": "number",
-          "value": 16
+          "value": 8
         },
-        "__collapse": true
+        "__collapse": false
       },
-      "id": "6350b1db-f2f0-4c69-9ef7-8e54bec06df9",
+      "id": "785ca7fe-f8dd-40b2-80ff-92c2ca783696",
       "children": {}
     },
     {
@@ -65,19 +65,8 @@
         },
         "__collapse": true
       },
-      "id": "4f124235-5b68-4685-9282-78833c1385c5"
-    },
-    {
-      "command": "EVENT_SET_ACTOR_Y_VELOCITY",
-      "args": {
-        "actorId": "$self$",
-        "yVelocity": {
-          "type": "number",
-          "value": 0
-        },
-        "__collapse": true
-      },
-      "id": "8aa3aa3d-6c97-4941-9dda-4300dd51dbe2"
+      "id": "aa208c6a-56bc-41a3-8e14-d37ca72cce4e",
+      "children": {}
     }
   ],
   "updateScript": [],

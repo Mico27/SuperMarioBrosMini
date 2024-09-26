@@ -1,0 +1,54 @@
+{
+  "_resourceType": "actor",
+  "id": "992364ea-ab50-4f97-9daa-9ab1337ed3db",
+  "name": "UpDownPlatform",
+  "frame": 0,
+  "animate": false,
+  "spriteSheetId": "f372b635-2699-4923-9caf-067e60099a3f",
+  "prefabId": "4d4b7705-ed23-476f-a3e7-d56c54402704",
+  "direction": "down",
+  "moveSpeed": 0.5,
+  "animSpeed": 15,
+  "paletteId": "",
+  "isPinned": false,
+  "persistent": false,
+  "collisionGroup": "3",
+  "prefabScriptOverrides": {},
+  "symbol": "actor_41",
+  "script": [],
+  "startScript": [
+    {
+      "command": "EVENT_SET_ACTOR_BEHAVIOR",
+      "args": {
+        "actorId": "$self$",
+        "behaviorId": {
+          "type": "number",
+          "value": 8
+        },
+        "__collapse": false
+      },
+      "id": "9176e0be-dbea-420a-9b34-e9bb77a9d115",
+      "children": {}
+    },
+    {
+      "command": "EVENT_SET_ACTOR_STATE",
+      "args": {
+        "actorId": "$self$",
+        "stateId": {
+          "type": "number",
+          "value": 0
+        },
+        "__collapse": true
+      },
+      "id": "1530df25-08de-4c3b-810a-7eb4e9447c3d",
+      "children": {}
+    }
+  ],
+  "updateScript": [],
+  "hit1Script": [],
+  "hit2Script": [],
+  "hit3Script": [],
+  "x": 55,
+  "y": 12,
+  "_index": 3
+}

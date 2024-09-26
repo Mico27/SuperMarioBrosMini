@@ -205,7 +205,7 @@
           "value": 1
         },
         "__comment": false,
-        "__collapse": true
+        "__collapse": false
       },
       "id": "da20b3ce-0667-4d66-8475-b370b479ff74"
     },
@@ -217,34 +217,9 @@
           "type": "number",
           "value": 0
         },
-        "__collapse": true
+        "__collapse": false
       },
       "id": "0a15b98a-698a-44f9-843a-338d25264329"
-    },
-    {
-      "command": "EVENT_SET_ACTOR_X_VELOCITY",
-      "args": {
-        "actorId": "$self$",
-        "xVelocity": {
-          "type": "number",
-          "value": -4
-        },
-        "__comment": false,
-        "__collapse": true
-      },
-      "id": "a9be543a-d51f-4d84-8d9b-f1b51bf730b8"
-    },
-    {
-      "command": "EVENT_SET_ACTOR_Y_VELOCITY",
-      "args": {
-        "actorId": "$self$",
-        "yVelocity": {
-          "type": "number",
-          "value": 0
-        },
-        "__collapse": true
-      },
-      "id": "336f8ae9-e649-42a9-9db4-c458c100399a"
     }
   ],
   "updateScript": [],
