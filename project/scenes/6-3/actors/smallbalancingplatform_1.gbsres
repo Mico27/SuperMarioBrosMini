@@ -1,0 +1,94 @@
+{
+  "_resourceType": "actor",
+  "id": "097f1e29-a3a4-4e4a-9adf-bdc088704352",
+  "name": "SmallBalancingPlatform 1",
+  "frame": 0,
+  "animate": false,
+  "spriteSheetId": "f372b635-2699-4923-9caf-067e60099a3f",
+  "prefabId": "1fe4a974-83b5-4e68-a8aa-eecaf36d6a4b",
+  "direction": "down",
+  "moveSpeed": 0.5,
+  "animSpeed": 15,
+  "paletteId": "",
+  "isPinned": false,
+  "persistent": false,
+  "collisionGroup": "3",
+  "prefabScriptOverrides": {
+    "10bff62a-3b5a-40ce-8ee2-f8da58901698": {
+      "id": "10bff62a-3b5a-40ce-8ee2-f8da58901698",
+      "args": {
+        "linkedActorId": "fb5982e2-bbb2-4374-83c0-6cb54cc7c58c"
+      }
+    }
+  },
+  "symbol": "actor_431",
+  "script": [],
+  "startScript": [
+    {
+      "command": "EVENT_ACTOR_SET_STATE",
+      "args": {
+        "actorId": "$self$",
+        "spriteStateId": "Platform3",
+        "loopAnim": true,
+        "__collapse": true
+      },
+      "id": "107dde08-6515-4167-b83e-6f339196101c",
+      "children": {}
+    },
+    {
+      "command": "EVENT_ACTOR_SET_COLLISION_BOX",
+      "args": {
+        "actorId": "$self$",
+        "x": -4,
+        "y": 0,
+        "width": 16,
+        "height": 8,
+        "__collapse": true
+      },
+      "id": "f8c479f7-0017-4e55-b960-f9d00d3a049d"
+    },
+    {
+      "command": "EVENT_SET_ACTOR_BEHAVIOR",
+      "args": {
+        "actorId": "$self$",
+        "behaviorId": {
+          "type": "number",
+          "value": 20
+        },
+        "__collapse": true
+      },
+      "id": "93b1167c-57d4-42fc-9e70-74d8677e7bfe",
+      "children": {}
+    },
+    {
+      "command": "EVENT_SET_ACTOR_STATE",
+      "args": {
+        "actorId": "$self$",
+        "stateId": {
+          "type": "number",
+          "value": 0
+        },
+        "__collapse": true
+      },
+      "id": "68da5831-20d7-4d00-8d71-746ea613a0c8",
+      "children": {}
+    },
+    {
+      "command": "EVENT_SET_ACTOR_LINKED_ACTOR",
+      "args": {
+        "actorId": "$self$",
+        "linkedActorId": "$self$",
+        "__collapse": true
+      },
+      "id": "c2a66c0c-6e97-4a1a-a7ac-d5061c210f8d",
+      "children": {}
+    }
+  ],
+  "updateScript": [],
+  "hit1Script": [],
+  "hit2Script": [],
+  "hit3Script": [],
+  "x": 71,
+  "y": 8,
+  "_index": 7
+}

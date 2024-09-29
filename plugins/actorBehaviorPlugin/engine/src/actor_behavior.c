@@ -13,6 +13,7 @@
 #include "scroll.h"
 #include "game_time.h"
 #include "actor_behavior.h"
+#include "actor_behavior_b.h"
 #include "states/platform.h"
 #include "states/playerstates.h"
 #include "data/states_defines.h"
@@ -22,15 +23,14 @@
 #include "data/game_globals.h"
 
 
-#define BEHAVIOR_ACTIVATION_THRESHOLD 168
-#define BEHAVIOR_DEACTIVATION_THRESHOLD 176
-#define BEHAVIOR_DEACTIVATION_LOWER_THRESHOLD -8
+
 
 UBYTE actor_behavior_ids[MAX_ACTORS];
 UBYTE actor_states[MAX_ACTORS];
 WORD actor_vel_x[MAX_ACTORS];
 WORD actor_vel_y[MAX_ACTORS];
 UBYTE actor_counter_a[MAX_ACTORS];
+UBYTE actor_linked_actor_idx[MAX_ACTORS];
 
 WORD current_actor_x;
 point16_t tmp_point;
@@ -44,6 +44,7 @@ void actor_behavior_init(void) BANKED {
 	memset(actor_vel_x, 0, sizeof(actor_vel_x));
 	memset(actor_vel_y, 0, sizeof(actor_vel_y));
 	memset(actor_counter_a, 0, sizeof(actor_counter_a));
+	memset(actor_linked_actor_idx, 0, sizeof(actor_linked_actor_idx));
 }
 
 UWORD check_collision(UWORD start_x, UWORD start_y, bounding_box_t *bounds, col_check_dir_e check_dir) BANKED{
@@ -159,7 +160,9 @@ void actor_behavior_update(void) BANKED {
 		if (!actor->active){
 			continue;
 		}
-		switch(actor_behavior_ids[i]){			
+		switch(actor_behavior_ids[i]){	
+			case 0:
+			break;
 			case 1: //Goomba
 			switch(actor_states[i]){
 				case 0: //Init
@@ -189,7 +192,6 @@ void actor_behavior_update(void) BANKED {
 					break;
 				case 2: //Squished state
 					if (actor_counter_a[i] == 0){
-						load_animations(actor->sprite.ptr, actor->sprite.bank, ANIM_STATE_DEATH, actor->animations);
 						actor_reset_anim(actor);
 						actor_vel_y[i] = 0;
 						actor_vel_x[i] = 0;
@@ -201,7 +203,6 @@ void actor_behavior_update(void) BANKED {
 					}
 					break;
 				case 255: //Deactivate
-					load_animations((void *)actor->sprite.ptr, actor->sprite.bank, ANIM_STATE_DEFAULT, actor->animations);
 					actor->collision_enabled = true;
 					actor_counter_a[i] = 0;
 					deactivate_actor(actor);
@@ -363,7 +364,7 @@ void actor_behavior_update(void) BANKED {
 					break;
 			}		
 			break;	
-			case 6://Bowser fire
+			case 6://Horizontal projectile (Bowser fire, bullet bill)
 			switch(actor_states[i]){
 				case 0: //Init
 					if ((((actor->pos.x >> 4) + 8) - draw_scroll_x) < BEHAVIOR_ACTIVATION_THRESHOLD){ actor_states[i] = 1; }
@@ -703,8 +704,6 @@ void actor_behavior_update(void) BANKED {
 				case 0: //Init
 					if ((((actor->pos.x >> 4) + 8) - draw_scroll_x) < BEHAVIOR_ACTIVATION_THRESHOLD){ 
 						actor_states[i] = 1; 
-						load_animations(actor->sprite.ptr, actor->sprite.bank, ANIM_STATE_KNOCKED, actor->animations);
-						actor_reset_anim(actor);
 						actor_vel_y[i] = -40;
 						actor_vel_x[i] = 0;
 						actor->collision_enabled = false;
@@ -723,7 +722,6 @@ void actor_behavior_update(void) BANKED {
 					break;
 				case 255: //Deactivate
 					actor->collision_enabled = true;
-					load_animations(actor->sprite.ptr, actor->sprite.bank, ANIM_STATE_DEFAULT, actor->animations);
 					actor_reset_anim(actor);
 					deactivate_actor(actor);
 					break;
@@ -809,6 +807,117 @@ void actor_behavior_update(void) BANKED {
 					break;
 			}
 			break;	
+			case 19: //Falling platform (activates on player touch)
+			switch(actor_states[i]){
+				case 0:
+					if ((((actor->pos.x >> 4) + 8) - draw_scroll_x) < BEHAVIOR_ACTIVATION_THRESHOLD){ actor_states[i] = 1; }
+					break;
+				case 1: //Not falling state
+					if ((((actor->pos.x >> 4) + 8) - draw_scroll_x) > BEHAVIOR_DEACTIVATION_THRESHOLD){ 
+						actor_states[i] = 255; 
+						break;
+					}	
+					if (actor_attached && last_actor == actor) {//start moving on player attach						
+						actor_states[i] = 2; 
+					}					
+					break;
+				case 2: //falling state
+					if ((((actor->pos.x >> 4) + 8) - draw_scroll_x) > BEHAVIOR_DEACTIVATION_THRESHOLD){ 
+						actor_states[i] = 255; 
+						break;
+					}					
+					actor->pos.y = actor->pos.y + 16;
+					if (!actor_attached) {//stop moving on player dettach						
+						actor_states[i] = 1; 
+					}	
+					
+					if ((actor->pos.y >> 7) > image_tile_height) {
+						actor_states[i] = 255; 
+						actor_attached = FALSE;
+					}		
+					break;
+				case 255:
+					deactivate_actor(actor);
+					break;
+			}
+			break;
+			case 20: //Balancing platform (activates on player touch)
+			switch(actor_states[i]){
+				case 0:
+					if ((((actor->pos.x >> 4) + 8) - draw_scroll_x) < BEHAVIOR_ACTIVATION_THRESHOLD){ 
+						actor_states[i] = 1; 
+						actor_vel_y[i] = 0;
+						actor_counter_a[i] = 0;
+					}
+					break;
+				case 1: //Not moving state
+					if ((((actor->pos.x >> 4) + 8) - draw_scroll_x) > BEHAVIOR_DEACTIVATION_THRESHOLD){ 
+						actor_states[i] = 255; 
+						break;
+					}	
+					if (actor_attached && last_actor == actor) {//when player lands on platform						
+						actor_states[i] = 3; //move platform down
+						actor_states[actor_linked_actor_idx[i]] = 2; //move linked platform up
+						actor_vel_y[i] = 0;
+						actor_vel_y[actor_linked_actor_idx[i]] = 0;
+					}					
+					break;
+				case 2: //Move up state
+					if ((((actor->pos.x >> 4) + 8) - draw_scroll_x) > BEHAVIOR_DEACTIVATION_THRESHOLD){ 
+						actor_states[i] = 255; 
+						break;
+					}
+					if (!(game_time & 7)){
+						actor_vel_y[i] = MAX(actor_vel_y[i]--, -8);						
+						replace_meta_tile((actor->pos.x >> 7), (actor->pos.y >> 7), 0);
+					}					
+					actor->pos.y = actor->pos.y + actor_vel_y[i];
+					if ((actor->pos.y >> 7) < 7){
+						actor_states[i] = 4;
+						actor_states[actor_linked_actor_idx[i]] = 4;
+						actor_vel_y[i] = 0;
+					}	
+					break;
+				case 3: //Move down state
+					if ((((actor->pos.x >> 4) + 8) - draw_scroll_x) > BEHAVIOR_DEACTIVATION_THRESHOLD){ 
+						actor_states[i] = 255; 
+						break;
+					}
+					if (!(game_time & 7)){
+						actor_vel_y[i] = MIN(actor_vel_y[i]++, 8);
+						replace_meta_tile((actor->pos.x >> 7), (actor->pos.y >> 7) - 1, 19);
+					}					
+					actor->pos.y = actor->pos.y + actor_vel_y[i];	
+					if (!actor_attached) {//when player is not on platform						
+						actor_states[i] = 1; //stop moving platform
+						actor_states[actor_linked_actor_idx[i]] = 1; //stop moving linked platform
+						actor_vel_y[i] = 0;
+						actor_vel_y[actor_linked_actor_idx[i]] = 0;
+					}					
+					break;
+				case 4: //Falling apart
+					current_actor_x = ((actor->pos.x >> 4) + 8) - draw_scroll_x;
+					if (current_actor_x > BEHAVIOR_DEACTIVATION_THRESHOLD || current_actor_x < BEHAVIOR_DEACTIVATION_LOWER_THRESHOLD){ 
+						actor_states[i] = 255; 
+						break;
+					}
+					actor_vel_y[i] += (plat_grav >> 10);
+					actor_vel_y[i] = MIN(actor_vel_y[i], (plat_max_fall_vel >> 8));
+					//Apply velocity
+					actor->pos.y =  actor->pos.y + actor_vel_y[i];	
+					if ((actor->pos.y >> 7) > image_tile_height) {
+						actor_states[i] = 255; 
+						actor_attached = FALSE;
+					}					
+					break;
+				case 255:
+					deactivate_actor(actor);
+					break;
+			}
+			break;
+			default:
+				actor_behavior_update_b(i, actor);
+			break;
 		}			
 	}
 }
@@ -835,11 +944,6 @@ void vm_get_actor_state(SCRIPT_CTX * THIS) OLDCALL BANKED {
 	script_memory[*(int16_t*)VM_REF_TO_PTR(FN_ARG1)] = actor_states[actor_idx];
 }
 
-void vm_get_actor_counter(SCRIPT_CTX * THIS) OLDCALL BANKED {
-    UBYTE actor_idx = *(uint8_t *)VM_REF_TO_PTR(FN_ARG0);
-	script_memory[*(int16_t*)VM_REF_TO_PTR(FN_ARG1)] = actor_counter_a[actor_idx];
-}
-
 void vm_set_actor_velocity_x(SCRIPT_CTX * THIS) OLDCALL BANKED {
     UBYTE actor_idx = *(uint8_t *)VM_REF_TO_PTR(FN_ARG0);
     WORD vel_x = *(int16_t *)VM_REF_TO_PTR(FN_ARG1);
@@ -850,4 +954,10 @@ void vm_set_actor_velocity_y(SCRIPT_CTX * THIS) OLDCALL BANKED {
     UBYTE actor_idx = *(uint8_t *)VM_REF_TO_PTR(FN_ARG0);
     WORD vel_y = *(int16_t *)VM_REF_TO_PTR(FN_ARG1);
     actor_vel_y[actor_idx] = vel_y;
+}
+
+void vm_set_actor_linked_actor_idx(SCRIPT_CTX * THIS) OLDCALL BANKED {
+	UBYTE actor_idx = *(uint8_t *)VM_REF_TO_PTR(FN_ARG0);
+    UBYTE linked_actor_idx = *(int16_t *)VM_REF_TO_PTR(FN_ARG1);
+    actor_linked_actor_idx[actor_idx] = linked_actor_idx;
 }

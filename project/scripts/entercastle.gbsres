@@ -619,6 +619,18 @@
       "id": "26cb10fd-bd3a-4f95-a6ea-faa33b8b958a"
     },
     {
+      "command": "EVENT_SET_VALUE",
+      "args": {
+        "variable": "31",
+        "value": {
+          "type": "number",
+          "value": 0
+        },
+        "__collapse": true
+      },
+      "id": "22a90195-cb87-4c82-9980-8f13bb47b9ec"
+    },
+    {
       "command": "EVENT_IF",
       "args": {
         "condition": {
@@ -684,7 +696,8 @@
     {
       "command": "EVENT_CALL_CUSTOM_EVENT",
       "args": {
-        "customEventId": "1da14dfe-ad02-4e47-addd-68af4399854d"
+        "customEventId": "1da14dfe-ad02-4e47-addd-68af4399854d",
+        "__collapse": true
       },
       "id": "60cd207e-c3c1-47f3-80e5-085be3cbe3c7"
     }

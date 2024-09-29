@@ -63,6 +63,16 @@
             "id": "5e524f8a-4252-4993-bc8d-5f27d31c7bc5"
           },
           {
+            "command": "EVENT_ACTOR_SET_STATE",
+            "args": {
+              "actorId": "$self$",
+              "spriteStateId": "Knocked",
+              "loopAnim": true,
+              "__collapse": true
+            },
+            "id": "1880d66f-00f7-43ac-93a8-e2549246f2a1"
+          },
+          {
             "command": "EVENT_CALL_CUSTOM_EVENT",
             "args": {
               "customEventId": "c99bf8d3-9942-4d5f-be4c-bdb1a43de650",
@@ -132,6 +142,16 @@
                     "__collapse": true
                   },
                   "id": "9be7e58c-9564-4f1b-b62f-ef5dcc3116c4"
+                },
+                {
+                  "command": "EVENT_ACTOR_SET_STATE",
+                  "args": {
+                    "actorId": "$self$",
+                    "spriteStateId": "Death",
+                    "loopAnim": true,
+                    "__collapse": true
+                  },
+                  "id": "e9eba804-91f6-437d-b302-46202da452a5"
                 },
                 {
                   "command": "EVENT_CALL_CUSTOM_EVENT",
@@ -247,6 +267,16 @@
         "__collapse": true
       },
       "id": "468e5ce3-c6ca-4082-8ef9-77db85200f56"
+    },
+    {
+      "command": "EVENT_ACTOR_SET_STATE",
+      "args": {
+        "actorId": "$self$",
+        "spriteStateId": "Knocked",
+        "loopAnim": true,
+        "__collapse": true
+      },
+      "id": "63eb9649-dba9-4d59-b621-c829e7e85947"
     },
     {
       "command": "EVENT_CALL_CUSTOM_EVENT",

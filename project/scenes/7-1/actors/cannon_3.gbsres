@@ -1,0 +1,69 @@
+{
+  "_resourceType": "actor",
+  "id": "33869c2c-2cae-41c5-af46-5e146651f533",
+  "name": "Cannon 3",
+  "frame": 0,
+  "animate": false,
+  "spriteSheetId": "077dad45-eb0f-4ff3-8812-0f385dc11e5e",
+  "prefabId": "f93f68c4-cd33-41a0-a56d-676d1cafa5be",
+  "direction": "down",
+  "moveSpeed": 1,
+  "animSpeed": 15,
+  "paletteId": "",
+  "isPinned": false,
+  "persistent": false,
+  "collisionGroup": "",
+  "prefabScriptOverrides": {},
+  "symbol": "actor_457",
+  "script": [],
+  "startScript": [
+    {
+      "command": "EVENT_ACTOR_HIDE",
+      "args": {
+        "actorId": "$self$",
+        "__collapse": true
+      },
+      "id": "50c47409-3300-41dd-9e12-d9e5c03950ab"
+    },
+    {
+      "command": "EVENT_SET_ACTOR_BEHAVIOR",
+      "args": {
+        "actorId": "$self$",
+        "behaviorId": {
+          "type": "number",
+          "value": 21
+        },
+        "__collapse": true
+      },
+      "id": "3977b297-23b8-428d-af99-536b1bc67a38"
+    },
+    {
+      "command": "EVENT_SET_ACTOR_STATE",
+      "args": {
+        "actorId": "$self$",
+        "stateId": {
+          "type": "number",
+          "value": 0
+        },
+        "__collapse": true
+      },
+      "id": "b3912115-97df-489c-9703-527346a3a8f3"
+    },
+    {
+      "command": "EVENT_SET_ACTOR_LINKED_ACTOR",
+      "args": {
+        "actorId": "$self$",
+        "linkedActorId": "17d28579-ddff-44b1-9db8-d8813ac39f6a",
+        "__collapse": true
+      },
+      "id": "61a453bf-62b1-4fc9-ba08-deafa6652ee6"
+    }
+  ],
+  "updateScript": [],
+  "hit1Script": [],
+  "hit2Script": [],
+  "hit3Script": [],
+  "x": 28,
+  "y": 15,
+  "_index": 10
+}

@@ -1,0 +1,98 @@
+{
+  "_resourceType": "actorPrefab",
+  "id": "c95eccd6-fa18-4faf-88d9-009dfa5460f0",
+  "name": "SmallSidewayPlatform",
+  "frame": 0,
+  "animate": false,
+  "spriteSheetId": "f372b635-2699-4923-9caf-067e60099a3f",
+  "moveSpeed": 0.5,
+  "animSpeed": 15,
+  "paletteId": "",
+  "persistent": false,
+  "collisionGroup": "3",
+  "prefabScriptOverrides": {
+    "837f5b59-bff4-4d13-a3ea-563b8fed07b5": {
+      "id": "837f5b59-bff4-4d13-a3ea-563b8fed07b5",
+      "args": {
+        "y": {
+          "type": "number",
+          "value": 8
+        }
+      }
+    },
+    "1d23d72c-3c1c-4e50-9c58-140cc42a3118": {
+      "id": "1d23d72c-3c1c-4e50-9c58-140cc42a3118",
+      "args": {
+        "y": {
+          "type": "number",
+          "value": -18
+        }
+      }
+    },
+    "b3da2a26-3725-4f96-bc30-d3b3298ca8f7": {
+      "id": "b3da2a26-3725-4f96-bc30-d3b3298ca8f7",
+      "args": {
+        "y": {
+          "type": "number",
+          "value": 10
+        }
+      }
+    }
+  },
+  "_index": 3,
+  "script": [],
+  "startScript": [
+    {
+      "command": "EVENT_ACTOR_SET_STATE",
+      "args": {
+        "actorId": "$self$",
+        "spriteStateId": "Medium",
+        "loopAnim": true,
+        "__collapse": true
+      },
+      "id": "f75290a3-e58d-4334-85bc-f70e93b632c4"
+    },
+    {
+      "command": "EVENT_ACTOR_SET_COLLISION_BOX",
+      "args": {
+        "actorId": "$self$",
+        "x": -4,
+        "y": 0,
+        "width": 16,
+        "height": 8,
+        "__collapse": true
+      },
+      "id": "115641ef-e20a-4a18-a9a5-a592d226bb95"
+    },
+    {
+      "command": "EVENT_SET_ACTOR_BEHAVIOR",
+      "args": {
+        "actorId": "$self$",
+        "behaviorId": {
+          "type": "number",
+          "value": 18
+        },
+        "__collapse": true
+      },
+      "id": "92ccb1b4-322f-4320-8a62-70b47391848f",
+      "children": {}
+    },
+    {
+      "command": "EVENT_SET_ACTOR_STATE",
+      "args": {
+        "actorId": "$self$",
+        "stateId": {
+          "type": "number",
+          "value": 0
+        },
+        "__collapse": true
+      },
+      "id": "38667d82-0222-4f27-900d-f5c7e798f156",
+      "children": {}
+    }
+  ],
+  "updateScript": [],
+  "hit1Script": [],
+  "hit2Script": [],
+  "hit3Script": []
+}

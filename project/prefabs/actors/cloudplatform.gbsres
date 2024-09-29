@@ -1,31 +1,29 @@
 {
-  "_resourceType": "actor",
-  "id": "dcaed900-29c3-4d11-a949-9f8795d8e858",
-  "name": "",
+  "_resourceType": "actorPrefab",
+  "id": "b310e35e-f65f-4879-8767-bd897cd83af1",
+  "name": "CloudPlatform",
   "frame": 0,
   "animate": false,
   "spriteSheetId": "f372b635-2699-4923-9caf-067e60099a3f",
-  "prefabId": "",
-  "direction": "down",
   "moveSpeed": 1,
   "animSpeed": 15,
   "paletteId": "",
-  "isPinned": false,
   "persistent": false,
   "collisionGroup": "3",
   "prefabScriptOverrides": {},
-  "symbol": "actor_112",
+  "_index": 5,
   "script": [],
   "startScript": [
     {
       "command": "EVENT_ACTOR_SET_STATE",
       "args": {
         "actorId": "$self$",
-        "spriteStateId": "Platform2",
+        "spriteStateId": "CloudPlatform",
         "loopAnim": true,
-        "__collapse": true
+        "__collapse": false
       },
-      "id": "1bea0f78-8533-4e99-b4ba-0d8a53793f16"
+      "id": "306d3d09-67ae-4748-85ea-565c69e791a2",
+      "children": {}
     },
     {
       "command": "EVENT_SET_ACTOR_BEHAVIOR",
@@ -37,7 +35,8 @@
         },
         "__collapse": true
       },
-      "id": "4e8ff0e3-44a4-441c-a259-59c32e3a4305"
+      "id": "d2c500b9-f3dd-4607-a6d5-fbdf04213db4",
+      "children": {}
     },
     {
       "command": "EVENT_SET_ACTOR_X_VELOCITY",
@@ -49,14 +48,12 @@
         },
         "__collapse": true
       },
-      "id": "8a6f2864-0161-402f-863a-0fd5d8a4719f"
+      "id": "16bb36bf-fa23-4db0-b35f-77779b712748",
+      "children": {}
     }
   ],
   "updateScript": [],
   "hit1Script": [],
   "hit2Script": [],
-  "hit3Script": [],
-  "x": 16,
-  "y": 12,
-  "_index": 5
+  "hit3Script": []
 }

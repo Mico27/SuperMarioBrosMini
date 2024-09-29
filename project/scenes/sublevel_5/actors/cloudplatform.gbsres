@@ -1,0 +1,62 @@
+{
+  "_resourceType": "actor",
+  "id": "8c7605a6-4513-4d7f-b589-454e24f4870a",
+  "name": "CloudPlatform",
+  "frame": 0,
+  "animate": false,
+  "spriteSheetId": "f372b635-2699-4923-9caf-067e60099a3f",
+  "prefabId": "b310e35e-f65f-4879-8767-bd897cd83af1",
+  "direction": "down",
+  "moveSpeed": 1,
+  "animSpeed": 15,
+  "paletteId": "",
+  "isPinned": false,
+  "persistent": false,
+  "collisionGroup": "3",
+  "prefabScriptOverrides": {},
+  "symbol": "actor_432",
+  "script": [],
+  "startScript": [
+    {
+      "command": "EVENT_ACTOR_SET_STATE",
+      "args": {
+        "actorId": "$self$",
+        "spriteStateId": "Platform2",
+        "loopAnim": true,
+        "__collapse": true
+      },
+      "id": "9f6fb08a-e774-46c3-a733-1b80b24e545d"
+    },
+    {
+      "command": "EVENT_SET_ACTOR_BEHAVIOR",
+      "args": {
+        "actorId": "$self$",
+        "behaviorId": {
+          "type": "number",
+          "value": 13
+        },
+        "__collapse": true
+      },
+      "id": "c4a50416-1577-4b83-b3d0-39d49816d027"
+    },
+    {
+      "command": "EVENT_SET_ACTOR_X_VELOCITY",
+      "args": {
+        "actorId": "$self$",
+        "xVelocity": {
+          "type": "number",
+          "value": 8
+        },
+        "__collapse": true
+      },
+      "id": "bc73a580-c65f-4194-b461-9ed4a66c8de0"
+    }
+  ],
+  "updateScript": [],
+  "hit1Script": [],
+  "hit2Script": [],
+  "hit3Script": [],
+  "x": 16,
+  "y": 12,
+  "_index": 5
+}

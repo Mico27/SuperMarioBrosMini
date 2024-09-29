@@ -1,0 +1,81 @@
+{
+  "_resourceType": "trigger",
+  "id": "6acc0218-8e30-4e21-a8e2-ebb4a3bf771b",
+  "name": "",
+  "prefabId": "",
+  "x": 42,
+  "y": 0,
+  "symbol": "trigger_128",
+  "prefabScriptOverrides": {},
+  "width": 1,
+  "height": 18,
+  "script": [
+    {
+      "command": "EVENT_SCRIPT_UNLOCK",
+      "args": {
+        "__collapse": true
+      },
+      "id": "3c20948f-c139-4cbf-88c7-51d170ce22c3"
+    },
+    {
+      "command": "EVENT_CALL_CUSTOM_EVENT",
+      "args": {
+        "customEventId": "7472c75b-28ba-4e82-9e18-5c1cc4daf097",
+        "$variable[V0]$": {
+          "type": "number",
+          "value": 56
+        },
+        "$variable[V1]$": {
+          "type": "number",
+          "value": 13
+        },
+        "$actor[0]$": "706df8fb-c2f4-4487-8e8e-5a0b38beb31d",
+        "__collapse": true,
+        "$variable[V2]$": {
+          "type": "number",
+          "value": 21
+        }
+      },
+      "id": "99503821-e273-46cf-9244-fa7797db1b91"
+    },
+    {
+      "command": "EVENT_CALL_CUSTOM_EVENT",
+      "args": {
+        "customEventId": "7472c75b-28ba-4e82-9e18-5c1cc4daf097",
+        "$variable[V0]$": {
+          "type": "number",
+          "value": 56
+        },
+        "$variable[V1]$": {
+          "type": "number",
+          "value": 15
+        },
+        "$actor[0]$": "33869c2c-2cae-41c5-af46-5e146651f533",
+        "__collapse": true,
+        "$variable[V2]$": {
+          "type": "number",
+          "value": 21
+        }
+      },
+      "id": "9ffc38da-bef1-45eb-ac4e-c181f57bc22a"
+    },
+    {
+      "command": "EVENT_CALL_CUSTOM_EVENT",
+      "args": {
+        "customEventId": "d4c349ee-6d3a-4bba-bdbc-c5c6cb7443fe",
+        "$actor[0]$": "014fbb02-1109-4569-90ab-311d7b62142b",
+        "$variable[V0]$": {
+          "type": "number",
+          "value": 54
+        },
+        "$variable[V1]$": {
+          "type": "number",
+          "value": 13
+        }
+      },
+      "id": "9ecd69c2-0a79-4567-9696-4ab314fd4e3f"
+    }
+  ],
+  "leaveScript": [],
+  "_index": 4
+}

@@ -464,7 +464,7 @@ void ground_state(void) BANKED {
 
     gotoTriggerCol:
     //FUNCTION TRIGGERS
-    trigger_activate_at_intersection(&PLAYER.bounds, &PLAYER.pos, INPUT_UP_PRESSED);
+    trigger_activate_at_intersection(&PLAYER.bounds, &PLAYER.pos, 0);
 
     gotoCounters:
     //COUNTERS===============================================================
@@ -861,7 +861,7 @@ void crouch_state(void) BANKED {
 
     gotoTriggerCol:
     //FUNCTION TRIGGERS
-    trigger_activate_at_intersection(&PLAYER.bounds, &PLAYER.pos, INPUT_UP_PRESSED);
+    trigger_activate_at_intersection(&PLAYER.bounds, &PLAYER.pos, 0);
 
     gotoCounters:
     //COUNTERS===============================================================
@@ -1279,7 +1279,7 @@ void jump_state(void) BANKED {
 
     gotoTriggerCol:
     //FUNCTION TRIGGERS
-    trigger_activate_at_intersection(&PLAYER.bounds, &PLAYER.pos, INPUT_UP_PRESSED);
+    trigger_activate_at_intersection(&PLAYER.bounds, &PLAYER.pos, 0);
 
     gotoCounters:
     //COUNTERS===============================================================
@@ -1411,7 +1411,7 @@ void climb_state(void) BANKED {
 
     gotoTriggerCol:
     //FUNCTION TRIGGERS
-    trigger_activate_at_intersection(&PLAYER.bounds, &PLAYER.pos, INPUT_UP_PRESSED);
+    trigger_activate_at_intersection(&PLAYER.bounds, &PLAYER.pos, 0);
 
     gotoCounters:
     //COUNTERS===============================================================

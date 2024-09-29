@@ -903,7 +903,7 @@ void fall_state(void) BANKED {
     }
 
     //FUNCTION TRIGGERS
-    trigger_activate_at_intersection(&PLAYER.bounds, &PLAYER.pos, INPUT_UP_PRESSED);
+    trigger_activate_at_intersection(&PLAYER.bounds, &PLAYER.pos, 0);
 
     //COUNTERS===============================================================
 
@@ -1262,7 +1262,7 @@ void swim_state(void) BANKED {
     }
 
     //FUNCTION TRIGGERS
-    trigger_activate_at_intersection(&PLAYER.bounds, &PLAYER.pos, INPUT_UP_PRESSED);
+    trigger_activate_at_intersection(&PLAYER.bounds, &PLAYER.pos, 0);
 
     //COUNTERS===============================================================
 

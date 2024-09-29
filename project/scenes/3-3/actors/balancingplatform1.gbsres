@@ -1,0 +1,61 @@
+{
+  "_resourceType": "actor",
+  "id": "050280bf-192d-4120-bb6b-f8d6b85c1814",
+  "name": "BalancingPlatform1",
+  "frame": 0,
+  "animate": false,
+  "spriteSheetId": "f372b635-2699-4923-9caf-067e60099a3f",
+  "prefabId": "0fa69c17-75bf-44f8-8afc-70e77ed432bb",
+  "direction": "down",
+  "moveSpeed": 0.5,
+  "animSpeed": 15,
+  "paletteId": "",
+  "isPinned": false,
+  "persistent": false,
+  "collisionGroup": "3",
+  "prefabScriptOverrides": {
+    "6cf09789-43f7-441d-88a2-0fd07fe5e171": {
+      "id": "6cf09789-43f7-441d-88a2-0fd07fe5e171",
+      "args": {
+        "linkedActorId": "83df0ce0-3fca-4e41-bf44-f513585afc29"
+      }
+    }
+  },
+  "symbol": "actor_429",
+  "script": [],
+  "startScript": [
+    {
+      "command": "EVENT_SET_ACTOR_BEHAVIOR",
+      "args": {
+        "actorId": "$self$",
+        "behaviorId": {
+          "type": "number",
+          "value": 18
+        },
+        "__collapse": false
+      },
+      "id": "31e1603a-dc97-4398-b50d-bba5ecd34499",
+      "children": {}
+    },
+    {
+      "command": "EVENT_SET_ACTOR_STATE",
+      "args": {
+        "actorId": "$self$",
+        "stateId": {
+          "type": "number",
+          "value": 0
+        },
+        "__collapse": true
+      },
+      "id": "988de53d-137a-43c0-8e65-ad6b1f644927",
+      "children": {}
+    }
+  ],
+  "updateScript": [],
+  "hit1Script": [],
+  "hit2Script": [],
+  "hit3Script": [],
+  "x": 82,
+  "y": 9,
+  "_index": 14
+}
