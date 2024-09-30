@@ -101,28 +101,33 @@
         ],
         "false": [
           {
-            "command": "PM_EVENT_PLATPLUS_STATE_STORE",
+            "command": "EVENT_ACTOR_GET_POSITION",
             "args": {
-              "variable": "20",
-              "field": "plat_state",
+              "actorId": "player",
+              "vectorX": "14",
+              "vectorY": "1",
+              "units": "pixels",
               "__collapse": true
             },
-            "id": "d2e2c698-34be-42b6-afec-ec3cf15985ed",
-            "children": {}
+            "id": "c87601ef-394c-4fee-821f-44f3fc9ec764"
+          },
+          {
+            "command": "EVENT_ACTOR_GET_POSITION",
+            "args": {
+              "actorId": "$self$",
+              "vectorX": "26",
+              "vectorY": "28",
+              "units": "pixels",
+              "__collapse": true
+            },
+            "id": "d28e2d31-0fe5-4fcc-b53b-eccb7f17be5d"
           },
           {
             "command": "EVENT_IF",
             "args": {
               "condition": {
-                "type": "eq",
-                "valueA": {
-                  "type": "variable",
-                  "value": "20"
-                },
-                "valueB": {
-                  "type": "number",
-                  "value": 1
-                }
+                "type": "expression",
+                "value": "$01$ < ($28$ - 4)"
               },
               "__collapseElse": false,
               "__collapse": false

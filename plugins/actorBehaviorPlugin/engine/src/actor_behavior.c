@@ -30,6 +30,7 @@ UBYTE actor_states[MAX_ACTORS];
 WORD actor_vel_x[MAX_ACTORS];
 WORD actor_vel_y[MAX_ACTORS];
 UBYTE actor_counter_a[MAX_ACTORS];
+UBYTE actor_counter_b[MAX_ACTORS];
 UBYTE actor_linked_actor_idx[MAX_ACTORS];
 
 WORD current_actor_x;
@@ -325,7 +326,9 @@ void actor_behavior_update(void) BANKED {
 			case 5://Bowser
 			switch(actor_states[i]){
 				case 0: //Init
-					if ((((actor->pos.x >> 4) + 8) - draw_scroll_x) < BEHAVIOR_ACTIVATION_THRESHOLD){ actor_states[i] = 1; }
+					if ((((actor->pos.x >> 4) + 8) - draw_scroll_x) < BEHAVIOR_ACTIVATION_THRESHOLD){ 
+						actor_states[i] = 1; 
+					}
 					break;
 				case 1: //Main state
 					current_actor_x = ((actor->pos.x >> 4) + 8) - draw_scroll_x;

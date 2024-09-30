@@ -1,0 +1,158 @@
+{
+  "_resourceType": "trigger",
+  "id": "b32e6278-526d-4a69-b32f-6d1146b1dbd4",
+  "name": "",
+  "prefabId": "",
+  "x": 43,
+  "y": 0,
+  "symbol": "trigger_154",
+  "prefabScriptOverrides": {},
+  "width": 1,
+  "height": 18,
+  "script": [
+    {
+      "command": "EVENT_SCRIPT_UNLOCK",
+      "args": {
+        "__collapse": true
+      },
+      "id": "7409f1a1-0bfa-4011-9e6d-4481f7acaf05"
+    },
+    {
+      "command": "EVENT_CALL_CUSTOM_EVENT",
+      "args": {
+        "customEventId": "7472c75b-28ba-4e82-9e18-5c1cc4daf097",
+        "$variable[V0]$": {
+          "type": "number",
+          "value": 64
+        },
+        "$variable[V1]$": {
+          "type": "number",
+          "value": 11
+        },
+        "$actor[0]$": "5d743efb-9ae2-44d0-876d-779294858315",
+        "__collapse": true,
+        "$variable[V2]$": {
+          "type": "number",
+          "value": 9
+        }
+      },
+      "id": "b3139fb3-24d3-42b6-8c26-03a8c8aaffd6"
+    },
+    {
+      "command": "EVENT_ACTOR_SET_STATE",
+      "args": {
+        "actorId": "5d743efb-9ae2-44d0-876d-779294858315",
+        "spriteStateId": "FireBar",
+        "loopAnim": true,
+        "__collapse": true
+      },
+      "id": "7de626c1-1352-4dcd-87b4-486b3fc7c78d"
+    },
+    {
+      "command": "EVENT_CALL_CUSTOM_EVENT",
+      "args": {
+        "customEventId": "7472c75b-28ba-4e82-9e18-5c1cc4daf097",
+        "$variable[V0]$": {
+          "type": "number",
+          "value": 80
+        },
+        "$variable[V1]$": {
+          "type": "number",
+          "value": 11
+        },
+        "$actor[0]$": "bf7bca56-3c22-4d2a-8626-2989c5646081",
+        "__collapse": true,
+        "$variable[V2]$": {
+          "type": "number",
+          "value": 9
+        }
+      },
+      "id": "1ffe30ee-9ba8-4756-b2cc-22dbb1c3d792"
+    },
+    {
+      "command": "EVENT_ACTOR_SET_STATE",
+      "args": {
+        "actorId": "bf7bca56-3c22-4d2a-8626-2989c5646081",
+        "spriteStateId": "FireBar",
+        "loopAnim": true,
+        "__collapse": true
+      },
+      "id": "3b3a67f2-8259-403f-aeea-3b44edfa8942"
+    },
+    {
+      "command": "EVENT_CALL_CUSTOM_EVENT",
+      "args": {
+        "customEventId": "7472c75b-28ba-4e82-9e18-5c1cc4daf097",
+        "$variable[V0]$": {
+          "type": "number",
+          "value": 80
+        },
+        "$variable[V1]$": {
+          "type": "number",
+          "value": 17
+        },
+        "$actor[0]$": "95a1949f-fc33-4ee2-8a1b-bd1db95be98f",
+        "__collapse": true,
+        "$variable[V2]$": {
+          "type": "number",
+          "value": 9
+        }
+      },
+      "id": "6e79c209-d851-4ae5-8876-f307c92ad582"
+    },
+    {
+      "command": "EVENT_ACTOR_SET_STATE",
+      "args": {
+        "actorId": "95a1949f-fc33-4ee2-8a1b-bd1db95be98f",
+        "spriteStateId": "FireBar",
+        "loopAnim": true,
+        "__collapse": true
+      },
+      "id": "bf650fc2-093e-497d-adce-69eeb3851e80"
+    },
+    {
+      "command": "EVENT_CALL_CUSTOM_EVENT",
+      "args": {
+        "customEventId": "7472c75b-28ba-4e82-9e18-5c1cc4daf097",
+        "$variable[V0]$": {
+          "type": "number",
+          "value": 103
+        },
+        "$variable[V1]$": {
+          "type": "number",
+          "value": 10
+        },
+        "$actor[0]$": "b92b9369-656b-4af3-8792-3cc1ec3cebd6",
+        "__collapse": true,
+        "$variable[V2]$": {
+          "type": "number",
+          "value": 27
+        }
+      },
+      "id": "fb60f20a-e877-42fc-b58b-4fd8fea446b2"
+    },
+    {
+      "command": "EVENT_CALL_CUSTOM_EVENT",
+      "args": {
+        "customEventId": "7472c75b-28ba-4e82-9e18-5c1cc4daf097",
+        "$variable[V0]$": {
+          "type": "number",
+          "value": 109
+        },
+        "$variable[V1]$": {
+          "type": "number",
+          "value": 10
+        },
+        "$actor[0]$": "e5090596-5414-4a28-9905-138603be93f4",
+        "__collapse": true,
+        "$variable[V2]$": {
+          "type": "number",
+          "value": 27
+        }
+      },
+      "id": "8cdf1599-fcf4-4d00-a7fc-8770b220654a"
+    }
+  ],
+  "leaveScript": [],
+  "_index": 3
+}

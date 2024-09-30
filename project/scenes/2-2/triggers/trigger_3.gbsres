@@ -1,0 +1,91 @@
+{
+  "_resourceType": "trigger",
+  "id": "fea791fb-2100-4c61-ae01-2eee9b0df782",
+  "name": "",
+  "prefabId": "",
+  "x": 124,
+  "y": 0,
+  "symbol": "trigger_135",
+  "prefabScriptOverrides": {},
+  "width": 1,
+  "height": 18,
+  "script": [
+    {
+      "command": "EVENT_SCRIPT_UNLOCK",
+      "args": {
+        "__collapse": true
+      },
+      "id": "e74300dd-c56d-4cd9-a3bb-2bec6c1aa870"
+    },
+    {
+      "command": "EVENT_CALL_CUSTOM_EVENT",
+      "args": {
+        "customEventId": "7472c75b-28ba-4e82-9e18-5c1cc4daf097",
+        "$variable[V0]$": {
+          "type": "number",
+          "value": 145
+        },
+        "$variable[V1]$": {
+          "type": "number",
+          "value": 13
+        },
+        "$actor[0]$": "040991aa-b0e0-423f-a668-a84fea0bfabd",
+        "__collapse": true,
+        "$variable[V2]$": {
+          "type": "number",
+          "value": 25
+        }
+      },
+      "id": "31d91604-8549-46c3-8581-4491c679b423"
+    },
+    {
+      "command": "EVENT_SET_ACTOR_X_VELOCITY",
+      "args": {
+        "actorId": "040991aa-b0e0-423f-a668-a84fea0bfabd",
+        "xVelocity": {
+          "type": "number",
+          "value": -4
+        },
+        "__collapse": true
+      },
+      "id": "48e43a1e-71dd-439f-835d-f21c5289c5a1",
+      "children": {}
+    },
+    {
+      "command": "EVENT_CALL_CUSTOM_EVENT",
+      "args": {
+        "customEventId": "7472c75b-28ba-4e82-9e18-5c1cc4daf097",
+        "$variable[V0]$": {
+          "type": "number",
+          "value": 164
+        },
+        "$variable[V1]$": {
+          "type": "number",
+          "value": 6
+        },
+        "$actor[0]$": "a221b51b-3c5e-4e88-a842-033183a03e77",
+        "__collapse": true,
+        "$variable[V2]$": {
+          "type": "number",
+          "value": 25
+        }
+      },
+      "id": "bf74dade-27f1-46a5-b1cc-431f0f8ae0b3"
+    },
+    {
+      "command": "EVENT_SET_ACTOR_X_VELOCITY",
+      "args": {
+        "actorId": "a221b51b-3c5e-4e88-a842-033183a03e77",
+        "xVelocity": {
+          "type": "number",
+          "value": -4
+        },
+        "__collapse": true
+      },
+      "id": "b51da4c9-061e-4515-9a6d-99deb9cd7f81",
+      "children": {}
+    }
+  ],
+  "leaveScript": [],
+  "_index": 2
+}

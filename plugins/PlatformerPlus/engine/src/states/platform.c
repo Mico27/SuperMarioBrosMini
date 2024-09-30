@@ -201,6 +201,8 @@ UBYTE* hit_block_ptr;
 
 UBYTE current_vine_tile_x;
 
+UBYTE underwater_pit;
+
 void platform_init(void) BANKED {
     //Initialize Camera
     camera_offset_x = 0;
@@ -271,6 +273,7 @@ void platform_init(void) BANKED {
     hold_jump_val = plat_hold_jump_max;
     deltaX = 0;
     deltaY = 0;
+	underwater_pit = 0;
 	actor_behavior_init();
 }
 
@@ -922,24 +925,60 @@ void swim_state(void) BANKED {
 	//INITIALIZE VARS
     UBYTE tile_y = ((PLAYER.pos.y >> 4) + PLAYER.bounds.top + 1) >> 3;
     col = 0;
-    
+	WORD temp_y = PLAYER.pos.y;
 	//Vertical Movement-------------------------------------------------------------------------------------------
     //Add jump force during each jump frame
     if (hold_jump_val !=0){
         //Add the boost per frame amount.
         pl_vel_y -= (jump_per_frame >> 1);
         hold_jump_val -=1;
+		actor_attached = FALSE;
     } else {
         //Water gravity
-		pl_vel_y += plat_grav >> 2;
+		if (underwater_pit){
+			pl_vel_y += plat_grav >> 1;
+		} else {
+			pl_vel_y += plat_grav >> 2;
+		}
+    }
+    if (underwater_pit){
+		pl_vel_y = MIN(pl_vel_y,plat_max_fall_vel  >> 1);
+	} else {
+		pl_vel_y = MIN(pl_vel_y,plat_max_fall_vel  >> 2);
+	}
+	
+	if (actor_attached){
+        //If the platform has been disabled, detach the player
+        if(last_actor->disabled == TRUE){
+            actor_attached = FALSE;
+        //If the player is off the platform to the right, detach from the platform
+        } else if (PLAYER.pos.x + (PLAYER.bounds.left << 4) > last_actor->pos.x + 16 + (last_actor->bounds.right<< 4)) {
+            actor_attached = FALSE;
+        //If the player is off the platform to the left, detach
+        } else if (PLAYER.pos.x + 16 + (PLAYER.bounds.right << 4) < last_actor->pos.x + (last_actor->bounds.left << 4)){
+            actor_attached = FALSE;
+        } else{
+        //Otherwise, add any change in movement from platform
+            deltaX += (last_actor->pos.x - mp_last_x);
+            mp_last_x = last_actor->pos.x;
+        }
+
+        //If we're on a platform, zero out any other motion from gravity or other sources
+        pl_vel_y = 0;
+        
+        //Add any change from the platform we're standing on
+        deltaY += last_actor->pos.y - mp_last_y;
+
+        //We're setting these to the platform's position, rather than the actor so that if something causes the player to
+        //detach (like hitting the roof), they won't automatically get re-attached in the subsequent actor collision step.
+        mp_last_y = last_actor->pos.y;
+        temp_y = last_actor->pos.y;
     }
     
-    pl_vel_y = MIN(pl_vel_y,plat_max_fall_vel  >> 2);
-
     //Collision ---------------------------------------------------------------------------------------------------
     //Vertical Collision Checks
     deltaY += pl_vel_y >> 8;
-    WORD temp_y = PLAYER.pos.y;    
+        
 
     //Horizontal Movement----------------------------------------------------------------------------------------
 

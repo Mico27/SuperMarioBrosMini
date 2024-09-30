@@ -1,0 +1,28 @@
+{
+  "_resourceType": "triggerPrefab",
+  "id": "88f038bd-0539-4c1a-aa77-6178369b402c",
+  "name": "UnderwaterPit",
+  "prefabScriptOverrides": {},
+  "script": [
+    {
+      "command": "EVENT_GBVM_SCRIPT",
+      "args": {
+        "script": "VM_SET_CONST_UINT8 _underwater_pit, 1",
+        "__collapse": false
+      },
+      "id": "d4e14ad5-e34a-41f0-aa6b-1ccc80908277",
+      "children": {}
+    }
+  ],
+  "leaveScript": [
+    {
+      "command": "EVENT_GBVM_SCRIPT",
+      "args": {
+        "script": "VM_SET_CONST_UINT8 _underwater_pit, 0",
+        "__collapse": false
+      },
+      "id": "07f281c2-2fc1-4879-b0f2-39b95ea240ec",
+      "children": {}
+    }
+  ]
+}

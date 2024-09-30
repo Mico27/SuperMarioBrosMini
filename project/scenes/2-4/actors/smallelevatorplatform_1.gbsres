@@ -1,0 +1,77 @@
+{
+  "_resourceType": "actor",
+  "id": "8e087850-b586-4b82-89b5-122f225130ad",
+  "name": "SmallElevatorPlatform 1",
+  "frame": 0,
+  "animate": false,
+  "spriteSheetId": "f372b635-2699-4923-9caf-067e60099a3f",
+  "prefabId": "bdd0a61d-63be-4278-b54c-657224b97e92",
+  "direction": "down",
+  "moveSpeed": 0.5,
+  "animSpeed": 15,
+  "paletteId": "",
+  "isPinned": false,
+  "persistent": false,
+  "collisionGroup": "3",
+  "prefabScriptOverrides": {
+    "a08b478e-0257-41a3-9d63-5926b07a0f69": {
+      "id": "a08b478e-0257-41a3-9d63-5926b07a0f69",
+      "args": {
+        "yVelocity": {
+          "type": "number",
+          "value": -8
+        }
+      }
+    }
+  },
+  "symbol": "actor_136",
+  "script": [],
+  "startScript": [
+    {
+      "command": "EVENT_SET_ACTOR_BEHAVIOR",
+      "args": {
+        "actorId": "$self$",
+        "behaviorId": {
+          "type": "number",
+          "value": 16
+        },
+        "__collapse": true
+      },
+      "id": "867e88b8-ec26-4318-9a85-e3b1171d622d",
+      "children": {}
+    },
+    {
+      "command": "EVENT_SET_ACTOR_STATE",
+      "args": {
+        "actorId": "$self$",
+        "stateId": {
+          "type": "number",
+          "value": 0
+        },
+        "__collapse": true
+      },
+      "id": "d0f96834-7c83-4495-930f-6671d167fcb8",
+      "children": {}
+    },
+    {
+      "command": "EVENT_SET_ACTOR_Y_VELOCITY",
+      "args": {
+        "actorId": "$self$",
+        "yVelocity": {
+          "type": "number",
+          "value": 0
+        },
+        "__collapse": true
+      },
+      "id": "c55fb0e3-66ae-4041-9777-b845568d8845",
+      "children": {}
+    }
+  ],
+  "updateScript": [],
+  "hit1Script": [],
+  "hit2Script": [],
+  "hit3Script": [],
+  "x": 86,
+  "y": 4,
+  "_index": 17
+}

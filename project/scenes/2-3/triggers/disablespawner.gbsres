@@ -1,0 +1,37 @@
+{
+  "_resourceType": "trigger",
+  "id": "ffabf40c-f108-4111-9bb5-a934e4a50a2b",
+  "name": "DisableSpawner",
+  "prefabId": "",
+  "x": 193,
+  "y": 0,
+  "symbol": "trigger_151",
+  "prefabScriptOverrides": {},
+  "width": 1,
+  "height": 18,
+  "script": [
+    {
+      "command": "EVENT_ACTOR_DEACTIVATE",
+      "args": {
+        "actorId": "0d5d5cc6-207b-4bb5-a360-23f5eded110b"
+      },
+      "id": "2e4e4bed-9c35-4868-a0ea-4c5a3b6f164d"
+    },
+    {
+      "command": "EVENT_ACTOR_DEACTIVATE",
+      "args": {
+        "actorId": "5b9babd6-6dec-4d70-9e89-40880b034a55"
+      },
+      "id": "ea57b623-2ea9-42b5-a5ca-e68954401668"
+    },
+    {
+      "command": "EVENT_ACTOR_DEACTIVATE",
+      "args": {
+        "actorId": "21b1bb7b-3562-4f5d-b2c5-408cbf216392"
+      },
+      "id": "9594b16f-d6dd-47c2-8d7f-915e9dcfac64"
+    }
+  ],
+  "leaveScript": [],
+  "_index": 3
+}

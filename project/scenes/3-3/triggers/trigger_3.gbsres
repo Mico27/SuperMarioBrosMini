@@ -3,7 +3,7 @@
   "id": "0493ffca-a8aa-43b3-8fbd-12dd8ca5edce",
   "name": "",
   "prefabId": "",
-  "x": 110,
+  "x": 105,
   "y": 0,
   "symbol": "trigger_124",
   "prefabScriptOverrides": {},
@@ -39,6 +39,16 @@
       "id": "ca6825a2-a944-41af-b365-29bdee4c4e79"
     },
     {
+      "command": "EVENT_ACTOR_SET_STATE",
+      "args": {
+        "actorId": "050280bf-192d-4120-bb6b-f8d6b85c1814",
+        "spriteStateId": "BalancingPlatform",
+        "loopAnim": true,
+        "__collapse": true
+      },
+      "id": "9746260f-7dbd-4a9e-8170-6ec440f8c1ac"
+    },
+    {
       "command": "EVENT_CALL_CUSTOM_EVENT",
       "args": {
         "customEventId": "7472c75b-28ba-4e82-9e18-5c1cc4daf097",
@@ -58,6 +68,50 @@
         }
       },
       "id": "dd5bfb02-4b6c-4de2-b985-2b79f91d2293"
+    },
+    {
+      "command": "EVENT_ACTOR_SET_STATE",
+      "args": {
+        "actorId": "83df0ce0-3fca-4e41-bf44-f513585afc29",
+        "spriteStateId": "BalancingPlatform",
+        "loopAnim": true,
+        "__collapse": true
+      },
+      "id": "08036a94-7b5f-440e-b2de-9490b07ee64f"
+    },
+    {
+      "command": "EVENT_CALL_CUSTOM_EVENT",
+      "args": {
+        "customEventId": "b9f2366e-e1e1-4a58-abfc-5cb02bfcb11e",
+        "$variable[V0]$": {
+          "type": "number",
+          "value": 124
+        },
+        "$variable[V1]$": {
+          "type": "number",
+          "value": 12
+        },
+        "$actor[0]$": "c154cc10-127e-4447-8998-b13b3422847e",
+        "__collapse": true
+      },
+      "id": "aa15c4b1-c9bf-44e4-82d5-4c4bea1bb45c"
+    },
+    {
+      "command": "EVENT_CALL_CUSTOM_EVENT",
+      "args": {
+        "customEventId": "b9f2366e-e1e1-4a58-abfc-5cb02bfcb11e",
+        "$variable[V0]$": {
+          "type": "number",
+          "value": 126
+        },
+        "$variable[V1]$": {
+          "type": "number",
+          "value": 12
+        },
+        "$actor[0]$": "0c449f0b-0ae2-4fee-bdf6-ea93699f068a",
+        "__collapse": true
+      },
+      "id": "c7c08ffc-cc17-4ac2-a24f-9e8535d7fc6e"
     }
   ],
   "leaveScript": [],

@@ -112,7 +112,7 @@
                 "value": 16
               },
               "__collapseElse": false,
-              "__collapse": true
+              "__collapse": false
             },
             "children": {
               "true0": [
@@ -398,7 +398,26 @@
                   "id": "e70462d5-5490-45bc-9c1a-60506e298067"
                 }
               ],
-              "true11": [],
+              "true11": [
+                {
+                  "command": "EVENT_SWITCH_SCENE",
+                  "args": {
+                    "sceneId": "d211962c-f685-465b-8d69-b920eedadd9a",
+                    "x": {
+                      "type": "number",
+                      "value": 3
+                    },
+                    "y": {
+                      "type": "number",
+                      "value": 13
+                    },
+                    "direction": "right",
+                    "fadeSpeed": 1,
+                    "__collapse": true
+                  },
+                  "id": "4de09447-f852-4d71-80ff-e258e8bac034"
+                }
+              ],
               "true12": [],
               "true13": [],
               "true14": [],

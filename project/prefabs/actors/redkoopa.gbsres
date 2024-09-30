@@ -96,14 +96,26 @@
         ],
         "false": [
           {
-            "command": "PM_EVENT_PLATPLUS_STATE_STORE",
+            "command": "EVENT_ACTOR_GET_POSITION",
             "args": {
-              "variable": "20",
-              "field": "plat_state",
+              "actorId": "player",
+              "vectorX": "14",
+              "vectorY": "1",
+              "units": "pixels",
               "__collapse": true
             },
-            "id": "8731a0cf-240d-4391-b203-a568ca600ea9",
-            "children": {}
+            "id": "5486d20d-7156-4b49-a11b-9eb4041a03b2"
+          },
+          {
+            "command": "EVENT_ACTOR_GET_POSITION",
+            "args": {
+              "actorId": "$self$",
+              "vectorX": "26",
+              "vectorY": "28",
+              "units": "pixels",
+              "__collapse": true
+            },
+            "id": "a774c069-d7b6-4b65-926b-c89dfdb1ddcc"
           },
           {
             "command": "EVENT_GET_ACTOR_BEHAVIOR",
@@ -128,7 +140,7 @@
             "args": {
               "condition": {
                 "type": "expression",
-                "value": "$20$ == 1 || ($47$ == 4 && $40$ < 4)"
+                "value": "$01$ < ($28$ - 4) || ($47$ == 4 && $40$ < 4)"
               },
               "__collapseElse": false,
               "__collapse": false

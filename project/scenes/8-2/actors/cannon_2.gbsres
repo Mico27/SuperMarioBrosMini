@@ -1,0 +1,76 @@
+{
+  "_resourceType": "actor",
+  "id": "188904b8-2927-4534-9791-355315557ad2",
+  "name": "Cannon 2",
+  "frame": 0,
+  "animate": false,
+  "spriteSheetId": "077dad45-eb0f-4ff3-8812-0f385dc11e5e",
+  "prefabId": "f93f68c4-cd33-41a0-a56d-676d1cafa5be",
+  "direction": "down",
+  "moveSpeed": 1,
+  "animSpeed": 15,
+  "paletteId": "",
+  "isPinned": false,
+  "persistent": false,
+  "collisionGroup": "",
+  "prefabScriptOverrides": {
+    "7457bafe-7cc1-4b94-9111-bf435a5c7f29": {
+      "id": "7457bafe-7cc1-4b94-9111-bf435a5c7f29",
+      "args": {
+        "linkedActorId": "8bcade2e-5e0e-4a11-8ad8-f878eb0aa378"
+      }
+    }
+  },
+  "symbol": "actor_502",
+  "script": [],
+  "startScript": [
+    {
+      "command": "EVENT_ACTOR_HIDE",
+      "args": {
+        "actorId": "$self$",
+        "__collapse": true
+      },
+      "id": "0521525e-f2a9-43a1-9026-ef4af15a7bc0"
+    },
+    {
+      "command": "EVENT_SET_ACTOR_BEHAVIOR",
+      "args": {
+        "actorId": "$self$",
+        "behaviorId": {
+          "type": "number",
+          "value": 21
+        },
+        "__collapse": true
+      },
+      "id": "76b8e678-221f-4161-a728-778f1896fc5c"
+    },
+    {
+      "command": "EVENT_SET_ACTOR_STATE",
+      "args": {
+        "actorId": "$self$",
+        "stateId": {
+          "type": "number",
+          "value": 0
+        },
+        "__collapse": true
+      },
+      "id": "72eda8d7-ccf9-4c1f-8dbb-362e6b1b1bbf"
+    },
+    {
+      "command": "EVENT_SET_ACTOR_LINKED_ACTOR",
+      "args": {
+        "actorId": "$self$",
+        "linkedActorId": "17d28579-ddff-44b1-9db8-d8813ac39f6a",
+        "__collapse": true
+      },
+      "id": "2d5861e4-9e60-4eea-958f-c19d10c1333e"
+    }
+  ],
+  "updateScript": [],
+  "hit1Script": [],
+  "hit2Script": [],
+  "hit3Script": [],
+  "x": 93,
+  "y": 13,
+  "_index": 12
+}

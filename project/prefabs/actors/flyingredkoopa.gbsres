@@ -15,7 +15,7 @@
     {
       "command": "EVENT_GBVM_SCRIPT",
       "args": {
-        "script": "VM_SET_CONST_UINT8 _player_iframes, 0",
+        "script": "VM_SET_CONST_UINT8 _player_iframes, 5",
         "__collapse": true
       },
       "id": "824ef6c9-0973-4a7d-8d92-38171c182a40",
@@ -97,14 +97,26 @@
         ],
         "false": [
           {
-            "command": "PM_EVENT_PLATPLUS_STATE_STORE",
+            "command": "EVENT_ACTOR_GET_POSITION",
             "args": {
-              "variable": "20",
-              "field": "plat_state",
+              "actorId": "player",
+              "vectorX": "14",
+              "vectorY": "1",
+              "units": "pixels",
               "__collapse": true
             },
-            "id": "35605abc-4c4c-42e5-823d-952ae1f33cf8",
-            "children": {}
+            "id": "d0d8b3e7-b955-49d6-a047-39801dd680e6"
+          },
+          {
+            "command": "EVENT_ACTOR_GET_POSITION",
+            "args": {
+              "actorId": "$self$",
+              "vectorX": "26",
+              "vectorY": "28",
+              "units": "pixels",
+              "__collapse": true
+            },
+            "id": "30d0514d-93b2-48a9-a43f-f2d4639d09f3"
           },
           {
             "command": "EVENT_GET_ACTOR_BEHAVIOR",
@@ -129,7 +141,7 @@
             "args": {
               "condition": {
                 "type": "expression",
-                "value": "$20$ == 1 || ($47$ == 4 && $40$ < 4)"
+                "value": "$01$ < ($28$ - 4) || ($47$ == 4 && $40$ < 4)"
               },
               "__collapseElse": false,
               "__collapse": false

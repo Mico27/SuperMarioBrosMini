@@ -1,0 +1,78 @@
+{
+  "_resourceType": "actor",
+  "id": "21b1bb7b-3562-4f5d-b2c5-408cbf216392",
+  "name": "CheepCheepSpawner 3",
+  "frame": 0,
+  "animate": false,
+  "spriteSheetId": "8dbb443a-eb83-48bb-86c9-ffd9012f45c7",
+  "prefabId": "ee3ed3bb-fba4-479e-90a9-75d73ab338c6",
+  "direction": "down",
+  "moveSpeed": 1,
+  "animSpeed": 15,
+  "paletteId": "",
+  "isPinned": true,
+  "persistent": true,
+  "collisionGroup": "",
+  "prefabScriptOverrides": {
+    "4aa7fdb8-dc0b-475e-9124-96745faacbc5": {
+      "id": "4aa7fdb8-dc0b-475e-9124-96745faacbc5",
+      "args": {
+        "linkedActorId": "0a5a0bb2-7661-4bb3-b4b6-dbb5815c41f0"
+      }
+    }
+  },
+  "symbol": "actor_285",
+  "script": [],
+  "startScript": [
+    {
+      "command": "EVENT_ACTOR_HIDE",
+      "args": {
+        "actorId": "$self$",
+        "__collapse": true
+      },
+      "id": "b7350d88-2996-4066-bcdc-da196b029a3b"
+    },
+    {
+      "command": "EVENT_SET_ACTOR_BEHAVIOR",
+      "args": {
+        "actorId": "$self$",
+        "behaviorId": {
+          "type": "number",
+          "value": 26
+        },
+        "__comment": false,
+        "__collapse": true
+      },
+      "id": "874365c0-a3d5-4b76-8cf2-1847bb30b75a",
+      "children": {}
+    },
+    {
+      "command": "EVENT_SET_ACTOR_STATE",
+      "args": {
+        "actorId": "$self$",
+        "stateId": {
+          "type": "number",
+          "value": 0
+        },
+        "__collapse": true
+      },
+      "id": "aaa4f613-4308-4a6b-af1a-a314a54c5870",
+      "children": {}
+    },
+    {
+      "command": "EVENT_ACTOR_DEACTIVATE",
+      "args": {
+        "actorId": "$self$",
+        "__collapse": true
+      },
+      "id": "a2abd589-5706-4745-9384-3ef78b031cbd"
+    }
+  ],
+  "updateScript": [],
+  "hit1Script": [],
+  "hit2Script": [],
+  "hit3Script": [],
+  "x": 13,
+  "y": 0,
+  "_index": 10
+}

@@ -1,0 +1,81 @@
+{
+  "_resourceType": "trigger",
+  "id": "d0433ff3-09d5-46af-b3da-9fe6edb58617",
+  "name": "",
+  "prefabId": "",
+  "x": 61,
+  "y": 0,
+  "symbol": "trigger_173",
+  "prefabScriptOverrides": {},
+  "width": 1,
+  "height": 18,
+  "script": [
+    {
+      "command": "EVENT_SCRIPT_UNLOCK",
+      "args": {
+        "__collapse": true
+      },
+      "id": "143ab0a6-b778-45bc-9b07-ac649fb740ed"
+    },
+    {
+      "command": "EVENT_CALL_CUSTOM_EVENT",
+      "args": {
+        "customEventId": "7472c75b-28ba-4e82-9e18-5c1cc4daf097",
+        "$variable[V0]$": {
+          "type": "number",
+          "value": 81
+        },
+        "$variable[V1]$": {
+          "type": "number",
+          "value": 11
+        },
+        "$actor[0]$": "d23ae0fe-edf7-416f-a5ce-f74e81c6af61",
+        "__collapse": true,
+        "$variable[V2]$": {
+          "type": "number",
+          "value": 22
+        }
+      },
+      "id": "ef9c2358-d8b4-4d4f-9d4c-bffb78af7b2a"
+    },
+    {
+      "command": "EVENT_CALL_CUSTOM_EVENT",
+      "args": {
+        "customEventId": "7472c75b-28ba-4e82-9e18-5c1cc4daf097",
+        "$variable[V0]$": {
+          "type": "number",
+          "value": 107
+        },
+        "$variable[V1]$": {
+          "type": "number",
+          "value": 14
+        },
+        "$actor[0]$": "d23ae0fe-edf7-416f-a5ce-f74e81c6af61",
+        "__collapse": true,
+        "$variable[V2]$": {
+          "type": "number",
+          "value": 21
+        }
+      },
+      "id": "9e389cc1-2d7f-46b2-8125-b71ab644df66"
+    },
+    {
+      "command": "EVENT_CALL_CUSTOM_EVENT",
+      "args": {
+        "customEventId": "d4c349ee-6d3a-4bba-bdbc-c5c6cb7443fe",
+        "$variable[V0]$": {
+          "type": "number",
+          "value": 106
+        },
+        "$variable[V1]$": {
+          "type": "number",
+          "value": 12
+        },
+        "$actor[0]$": "67817efc-f960-4e20-92cd-e3b94c16ec05"
+      },
+      "id": "a9941891-a8b7-4e9e-aca4-080073bd70dc"
+    }
+  ],
+  "leaveScript": [],
+  "_index": 4
+}

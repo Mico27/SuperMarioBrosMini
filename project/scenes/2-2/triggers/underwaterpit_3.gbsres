@@ -1,0 +1,35 @@
+{
+  "_resourceType": "trigger",
+  "id": "f2b72edb-d4d3-4dd1-88c1-3cce592079fa",
+  "name": "UnderwaterPit 3",
+  "prefabId": "88f038bd-0539-4c1a-aa77-6178369b402c",
+  "x": 157,
+  "y": 14,
+  "symbol": "trigger_137",
+  "prefabScriptOverrides": {},
+  "width": 7,
+  "height": 4,
+  "script": [
+    {
+      "command": "EVENT_GBVM_SCRIPT",
+      "args": {
+        "script": "VM_SET_CONST_UINT8 _underwater_pit, 1",
+        "__collapse": false
+      },
+      "id": "4442164f-9885-4c34-9a0b-b5676659ab78",
+      "children": {}
+    }
+  ],
+  "leaveScript": [
+    {
+      "command": "EVENT_GBVM_SCRIPT",
+      "args": {
+        "script": "VM_SET_CONST_UINT8 _underwater_pit, 0",
+        "__collapse": false
+      },
+      "id": "8202aa57-ede4-472a-b4c2-2c241bfe6167",
+      "children": {}
+    }
+  ],
+  "_index": 6
+}
