@@ -1,0 +1,91 @@
+{
+  "_resourceType": "script",
+  "id": "ef8fedfd-2e98-4b70-ba50-4d41a57a7116",
+  "name": "IncreaseScore",
+  "description": "",
+  "variables": {
+    "V0": {
+      "id": "V0",
+      "name": "IncreasedAmount",
+      "passByReference": false
+    }
+  },
+  "actors": {},
+  "symbol": "script_22",
+  "script": [
+    {
+      "command": "EVENT_GROUP",
+      "args": {
+        "__label": "IncreaseScore"
+      },
+      "children": {
+        "true": [
+          {
+            "command": "EVENT_IF",
+            "args": {
+              "condition": {
+                "type": "expression",
+                "value": "$12$ < 999 || $57$ < 999"
+              },
+              "__collapseElse": true
+            },
+            "children": {
+              "true": [
+                {
+                  "command": "EVENT_SET_VALUE",
+                  "args": {
+                    "variable": "57",
+                    "value": {
+                      "type": "expression",
+                      "value": "$57$ + $V0$"
+                    },
+                    "__collapse": false
+                  },
+                  "id": "961c68bf-8bc0-4c81-abe0-77f3d3867ac0"
+                },
+                {
+                  "command": "EVENT_IF",
+                  "args": {
+                    "condition": {
+                      "type": "expression",
+                      "value": "$57$ > 999"
+                    },
+                    "__collapseElse": true
+                  },
+                  "children": {
+                    "true": [
+                      {
+                        "command": "EVENT_INC_VALUE",
+                        "args": {
+                          "variable": "12"
+                        },
+                        "id": "d9dd3dac-bb18-484d-ac73-baa6507b3dd3"
+                      },
+                      {
+                        "command": "EVENT_SET_VALUE",
+                        "args": {
+                          "variable": "57",
+                          "value": {
+                            "type": "expression",
+                            "value": "$57$ - 1000"
+                          },
+                          "__collapse": false
+                        },
+                        "id": "333bd6ae-8e49-4a68-8cd4-3d2ca8bf8c9d"
+                      }
+                    ],
+                    "false": []
+                  },
+                  "id": "54de1860-e5b5-4efb-8118-eebc80c63f80"
+                }
+              ],
+              "false": []
+            },
+            "id": "4f20c99f-3421-4cf2-a0d9-e42ceb2247c6"
+          }
+        ]
+      },
+      "id": "f9636db3-c83b-4f12-8b4c-c5d71d043604"
+    }
+  ]
+}

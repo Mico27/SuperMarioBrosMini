@@ -1,0 +1,171 @@
+{
+  "_resourceType": "trigger",
+  "id": "f8557f3d-4356-47d4-a111-9f701af69ac6",
+  "name": "",
+  "prefabId": "",
+  "x": 120,
+  "y": 0,
+  "symbol": "trigger_177",
+  "prefabScriptOverrides": {},
+  "width": 1,
+  "height": 18,
+  "script": [
+    {
+      "command": "EVENT_SCRIPT_UNLOCK",
+      "args": {
+        "__collapse": true
+      },
+      "id": "14a6bd88-45ea-49bd-b496-70b60e54ccc3"
+    },
+    {
+      "command": "EVENT_CALL_CUSTOM_EVENT",
+      "args": {
+        "customEventId": "7472c75b-28ba-4e82-9e18-5c1cc4daf097",
+        "$variable[V0]$": {
+          "type": "number",
+          "value": 138
+        },
+        "$variable[V1]$": {
+          "type": "number",
+          "value": 14
+        },
+        "$actor[0]$": "9f6b13be-1165-4011-8d7f-323617013957",
+        "__collapse": true,
+        "$variable[V2]$": {
+          "type": "number",
+          "value": 7
+        }
+      },
+      "id": "230b790d-fa3e-40e5-bcc8-c02827343734"
+    },
+    {
+      "command": "EVENT_CALL_CUSTOM_EVENT",
+      "args": {
+        "customEventId": "7472c75b-28ba-4e82-9e18-5c1cc4daf097",
+        "$variable[V0]$": {
+          "type": "number",
+          "value": 142
+        },
+        "$variable[V1]$": {
+          "type": "number",
+          "value": 13
+        },
+        "$actor[0]$": "dde5ed1b-6c9c-4c1b-a962-3e0a2a0b46b0",
+        "__collapse": true,
+        "$variable[V2]$": {
+          "type": "number",
+          "value": 7
+        }
+      },
+      "id": "eeed2c62-98c6-4cab-8db8-f58e98d88d64"
+    },
+    {
+      "command": "EVENT_CALL_CUSTOM_EVENT",
+      "args": {
+        "customEventId": "7472c75b-28ba-4e82-9e18-5c1cc4daf097",
+        "$variable[V0]$": {
+          "type": "number",
+          "value": 180
+        },
+        "$variable[V1]$": {
+          "type": "number",
+          "value": 10
+        },
+        "$actor[0]$": "d177a3f7-8d21-4155-aed9-711f09ec257a",
+        "__collapse": true,
+        "$variable[V2]$": {
+          "type": "number",
+          "value": 7
+        }
+      },
+      "id": "e59b1cb3-d534-455f-856f-861552871737"
+    },
+    {
+      "command": "EVENT_CALL_CUSTOM_EVENT",
+      "args": {
+        "customEventId": "585d4f01-1e5c-4b3b-9a01-16d21367d4ac",
+        "$variable[V0]$": {
+          "type": "number",
+          "value": 137
+        },
+        "$variable[V1]$": {
+          "type": "number",
+          "value": 15
+        },
+        "$actor[0]$": "6915cd10-180b-4ad9-bcf4-d31fbee52bd8",
+        "__collapse": true
+      },
+      "id": "75105a16-cd25-4b2e-a98e-a6d5b922c533"
+    },
+    {
+      "command": "EVENT_CALL_CUSTOM_EVENT",
+      "args": {
+        "customEventId": "585d4f01-1e5c-4b3b-9a01-16d21367d4ac",
+        "$variable[V0]$": {
+          "type": "number",
+          "value": 167
+        },
+        "$variable[V1]$": {
+          "type": "number",
+          "value": 15
+        },
+        "$actor[0]$": "6d9f5823-5c55-49f9-8a7e-a52d8106f9f9",
+        "__collapse": true
+      },
+      "id": "9cfa2f3c-dd36-4bf2-adf8-741d32938077"
+    },
+    {
+      "command": "EVENT_CALL_CUSTOM_EVENT",
+      "args": {
+        "customEventId": "585d4f01-1e5c-4b3b-9a01-16d21367d4ac",
+        "$variable[V0]$": {
+          "type": "number",
+          "value": 169
+        },
+        "$variable[V1]$": {
+          "type": "number",
+          "value": 15
+        },
+        "$actor[0]$": "81e8faa3-335f-4a6d-b3d8-598bbd706857",
+        "__collapse": true
+      },
+      "id": "fa4c2895-0cbc-4d19-924c-96f174706218"
+    },
+    {
+      "command": "EVENT_CALL_CUSTOM_EVENT",
+      "args": {
+        "customEventId": "585d4f01-1e5c-4b3b-9a01-16d21367d4ac",
+        "$variable[V0]$": {
+          "type": "number",
+          "value": 154
+        },
+        "$variable[V1]$": {
+          "type": "number",
+          "value": 12
+        },
+        "$actor[0]$": "bf088418-ed8d-4e15-b20f-b83bbf023571",
+        "__collapse": true
+      },
+      "id": "cb311736-e771-4dcd-b510-95fc0e9e2239"
+    },
+    {
+      "command": "EVENT_CALL_CUSTOM_EVENT",
+      "args": {
+        "customEventId": "585d4f01-1e5c-4b3b-9a01-16d21367d4ac",
+        "$variable[V0]$": {
+          "type": "number",
+          "value": 179
+        },
+        "$variable[V1]$": {
+          "type": "number",
+          "value": 15
+        },
+        "$actor[0]$": "91c48d8c-d533-4ae5-b32d-1eea01ccdfb4",
+        "__collapse": true
+      },
+      "id": "3963f581-d190-434b-ba20-9f1689b156f5"
+    }
+  ],
+  "leaveScript": [],
+  "_index": 5
+}

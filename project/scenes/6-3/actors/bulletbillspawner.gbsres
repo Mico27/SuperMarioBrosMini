@@ -1,0 +1,34 @@
+{
+  "_resourceType": "actor",
+  "id": "3e2b8c83-7643-4dc7-bd24-8d7f2c0bfd55",
+  "name": "BulletBillSpawner",
+  "frame": 0,
+  "animate": false,
+  "spriteSheetId": "32a87e20-fac0-47dd-93f6-e0736f023311",
+  "prefabId": "9af9a024-49df-4f71-8a38-bfb025b23363",
+  "direction": "down",
+  "moveSpeed": 1,
+  "animSpeed": 15,
+  "paletteId": "",
+  "isPinned": false,
+  "persistent": false,
+  "collisionGroup": "",
+  "prefabScriptOverrides": {
+    "5b801987-eef7-4b4d-9058-3b577f05963a": {
+      "id": "5b801987-eef7-4b4d-9058-3b577f05963a",
+      "args": {
+        "linkedActorId": "ce64ecea-9dd2-4e9a-bd16-4886476d55e5"
+      }
+    }
+  },
+  "symbol": "actor_627",
+  "script": [],
+  "startScript": [],
+  "updateScript": [],
+  "hit1Script": [],
+  "hit2Script": [],
+  "hit3Script": [],
+  "x": 6,
+  "y": 0,
+  "_index": 16
+}

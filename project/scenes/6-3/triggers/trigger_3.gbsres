@@ -3,7 +3,7 @@
   "id": "d446828b-bd0e-445a-bb38-25192c48bf57",
   "name": "",
   "prefabId": "",
-  "x": 109,
+  "x": 99,
   "y": 0,
   "symbol": "trigger_125",
   "prefabScriptOverrides": {},
@@ -39,6 +39,16 @@
       "id": "d5587d29-2fc4-43c5-a6b6-4d26cbbc8668"
     },
     {
+      "command": "EVENT_ACTOR_SET_STATE",
+      "args": {
+        "actorId": "097f1e29-a3a4-4e4a-9adf-bdc088704352",
+        "spriteStateId": "SmallBalancingPlatform",
+        "loopAnim": true,
+        "__collapse": true
+      },
+      "id": "98f6b359-98e0-4a07-b525-892b4f4aac2f"
+    },
+    {
       "command": "EVENT_CALL_CUSTOM_EVENT",
       "args": {
         "customEventId": "7472c75b-28ba-4e82-9e18-5c1cc4daf097",
@@ -58,6 +68,68 @@
         }
       },
       "id": "0bb5bcfa-cb61-4254-a7a4-9358f850daa8"
+    },
+    {
+      "command": "EVENT_ACTOR_SET_STATE",
+      "args": {
+        "actorId": "fb5982e2-bbb2-4374-83c0-6cb54cc7c58c",
+        "spriteStateId": "SmallBalancingPlatform",
+        "loopAnim": true,
+        "__collapse": true
+      },
+      "id": "ddc45f52-d93d-4dae-9b5e-73f65530cc3c"
+    },
+    {
+      "command": "EVENT_CALL_CUSTOM_EVENT",
+      "args": {
+        "customEventId": "7472c75b-28ba-4e82-9e18-5c1cc4daf097",
+        "$variable[V0]$": {
+          "type": "number",
+          "value": 119
+        },
+        "$variable[V1]$": {
+          "type": "number",
+          "value": 7
+        },
+        "$actor[0]$": "60be1542-afc6-4980-a28b-2d878e13ed18",
+        "__collapse": true,
+        "$variable[V2]$": {
+          "type": "number",
+          "value": 18
+        }
+      },
+      "id": "79c56a79-7e12-425a-9da3-e3131f4dce86"
+    },
+    {
+      "command": "EVENT_ACTOR_SET_STATE",
+      "args": {
+        "actorId": "60be1542-afc6-4980-a28b-2d878e13ed18",
+        "spriteStateId": "Medium",
+        "loopAnim": true,
+        "__collapse": true
+      },
+      "id": "e1fc0ed0-4e06-430a-9828-8d5a3cf5e738"
+    },
+    {
+      "command": "EVENT_CALL_CUSTOM_EVENT",
+      "args": {
+        "customEventId": "7472c75b-28ba-4e82-9e18-5c1cc4daf097",
+        "$variable[V0]$": {
+          "type": "number",
+          "value": 116
+        },
+        "$variable[V1]$": {
+          "type": "number",
+          "value": 15
+        },
+        "$actor[0]$": "e8a596ca-8f08-47e2-ab8d-99dde3095992",
+        "__collapse": true,
+        "$variable[V2]$": {
+          "type": "number",
+          "value": 14
+        }
+      },
+      "id": "fd25a255-7fe7-4373-a8f0-afebde2af4c3"
     }
   ],
   "leaveScript": [],

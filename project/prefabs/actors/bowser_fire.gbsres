@@ -109,6 +109,14 @@
         "__collapse": true
       },
       "id": "8e34542e-333f-40b9-bf8d-b048a17bb854"
+    },
+    {
+      "command": "EVENT_SET_ACTOR_LINKED_ACTOR",
+      "args": {
+        "actorId": "$self$",
+        "linkedActorId": "$self$"
+      },
+      "id": "8764858f-6f0c-47da-a4ce-6686cf99b0e6"
     }
   ],
   "updateScript": [],

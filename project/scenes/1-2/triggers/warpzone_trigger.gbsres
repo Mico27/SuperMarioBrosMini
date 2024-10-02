@@ -11,6 +11,14 @@
   "height": 6,
   "script": [
     {
+      "command": "EVENT_GBVM_SCRIPT",
+      "args": {
+        "script": "VM_SWITCH_TEXT_LAYER .TEXT_LAYER_BKG\nVM_SET_CONST_INT8 _overlay_priority, 0",
+        "__collapse": true
+      },
+      "id": "a024b517-11b3-4191-83bd-bb2cf783e871"
+    },
+    {
       "command": "EVENT_UI_ALT_DISPLAY_TEXT",
       "args": {
         "text": "\\003\\022\\010WELCOME TO THE\\003\\024\\012WARP ZONE!\\003\\024\\0144\\003\\030\\0143\\003\\034\\0142",

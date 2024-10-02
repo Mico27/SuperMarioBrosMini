@@ -388,30 +388,34 @@
                         "id": "acd6b314-5250-47d0-9b90-383a1eac19e0"
                       },
                       {
-                        "command": "EVENT_SET_VALUE",
+                        "command": "EVENT_CALL_CUSTOM_EVENT",
                         "args": {
-                          "variable": "12",
-                          "value": {
-                            "type": "expression",
-                            "value": "$12$ + 5"
+                          "customEventId": "ef8fedfd-2e98-4b70-ba50-4d41a57a7116",
+                          "$variable[V0]$": {
+                            "type": "number",
+                            "value": 5
                           },
                           "__collapse": true
                         },
-                        "id": "f77575cf-1566-4f3d-84a0-5ae8ff25d83e"
+                        "id": "d064da7f-ea5e-44c4-ab49-8c6c201fc16d"
                       },
                       {
                         "command": "EVENT_GBVM_SCRIPT",
                         "args": {
-                          "script": "VM_LOAD_TEXT 1 \n.dw VAR_SCORE\n.asciz \"\\003\\001\\002%D6\"\nVM_CALL_NATIVE b_ui_alt_display_text, _ui_alt_display_text",
+                          "script": "VM_LOAD_TEXT 2 \n.dw VAR_SCOREUPPER\n.dw VAR_SCORELOWER\n.asciz \"\\003\\001\\002%D3\\003\\004\\002%D3\"\nVM_CALL_NATIVE b_ui_alt_display_text, _ui_alt_display_text",
                           "references": [
                             {
                               "type": "variable",
                               "id": "12"
+                            },
+                            {
+                              "type": "variable",
+                              "id": "57"
                             }
                           ],
-                          "__collapse": true
+                          "__collapse": false
                         },
-                        "id": "5fcfdc5a-db63-4822-8fd2-7550dda8ac36"
+                        "id": "21f37158-5d8f-4a4f-900a-eb1271993d22"
                       }
                     ],
                     "false": [
@@ -515,7 +519,7 @@
             "command": "EVENT_GROUP",
             "args": {
               "__label": "Multi Coin Brick",
-              "__collapse": true
+              "__collapse": false
             },
             "children": {
               "true": [
@@ -713,7 +717,7 @@
             "command": "EVENT_GROUP",
             "args": {
               "__label": "Powerup Brick",
-              "__collapse": true
+              "__collapse": false
             },
             "children": {
               "true": [
@@ -740,7 +744,7 @@
                         "command": "EVENT_GROUP",
                         "args": {
                           "__label": "Mushroom Block",
-                          "__collapse": true
+                          "__collapse": false
                         },
                         "children": {
                           "true": [

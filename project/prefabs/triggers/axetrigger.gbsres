@@ -99,11 +99,15 @@
       "id": "a25ff700-a816-4eb7-8939-416e72b40271"
     },
     {
-      "command": "EVENT_ACTOR_STOP_UPDATE",
+      "command": "EVENT_SET_ACTOR_STATE",
       "args": {
-        "actorId": "$self$"
+        "actorId": "e96c53ab-21f5-4432-bc8d-844df42cfcff",
+        "stateId": {
+          "type": "number",
+          "value": 3
+        }
       },
-      "id": "82936388-0bc7-4bd9-903c-8af0d2a661f4"
+      "id": "e1609a82-dd5a-424a-84f0-c8caa69312cf"
     },
     {
       "command": "EVENT_WAIT",

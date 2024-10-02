@@ -45,6 +45,7 @@ void actor_behavior_init(void) BANKED {
 	memset(actor_vel_x, 0, sizeof(actor_vel_x));
 	memset(actor_vel_y, 0, sizeof(actor_vel_y));
 	memset(actor_counter_a, 0, sizeof(actor_counter_a));
+	memset(actor_counter_b, 0, sizeof(actor_counter_b));
 	memset(actor_linked_actor_idx, 0, sizeof(actor_linked_actor_idx));
 }
 
@@ -156,7 +157,7 @@ void apply_velocity_avoid_fall(UBYTE actor_idx, actor_t * actor) BANKED {
 }
 
 void actor_behavior_update(void) BANKED {
-	for (UBYTE i = 1; i < MAX_ACTORS; i++){
+	for (UBYTE i = 0; i < MAX_ACTORS; i++){
 		actor_t * actor = (actors + i);
 		if (!actor->active){
 			continue;
@@ -323,50 +324,6 @@ void actor_behavior_update(void) BANKED {
 					break;
 			}
 			break;
-			case 5://Bowser
-			switch(actor_states[i]){
-				case 0: //Init
-					if ((((actor->pos.x >> 4) + 8) - draw_scroll_x) < BEHAVIOR_ACTIVATION_THRESHOLD){ 
-						actor_states[i] = 1; 
-					}
-					break;
-				case 1: //Main state
-					current_actor_x = ((actor->pos.x >> 4) + 8) - draw_scroll_x;
-					if (current_actor_x > BEHAVIOR_DEACTIVATION_THRESHOLD || current_actor_x < BEHAVIOR_DEACTIVATION_LOWER_THRESHOLD){ 
-						actor_states[i] = 255; 
-						break;
-					}
-					apply_gravity(i);
-					apply_velocity(i, actor);
-					//Animation
-					if (PLAYER.pos.x < actor->pos.x) {
-						actor_set_dir(actor, DIR_LEFT, TRUE);
-					} else {
-						actor_set_dir(actor, DIR_RIGHT, TRUE);
-					}
-					break;
-				case 2: //Jump state
-					if ((((actor->pos.x >> 4) + 8) - draw_scroll_x) > BEHAVIOR_DEACTIVATION_THRESHOLD){ 
-						actor_states[i] = 255; 
-						break;
-					}
-					actor_vel_y[i] += (plat_grav >> 10);
-					apply_velocity(i, actor);
-					//Animation
-					if (PLAYER.pos.x < actor->pos.x) {
-						actor_set_anim(actor, ANIM_JUMP_LEFT);
-					} else {
-						actor_set_anim(actor, ANIM_JUMP_RIGHT);
-					}
-					if (actor_vel_y[i] > 0){
-						actor_states[i] = 1;
-					}
-					break;
-				case 255: //Deactivate
-					deactivate_actor(actor);
-					break;
-			}		
-			break;	
 			case 6://Horizontal projectile (Bowser fire, bullet bill)
 			switch(actor_states[i]){
 				case 0: //Init
@@ -488,7 +445,7 @@ void actor_behavior_update(void) BANKED {
 						actor_states[i] = 255; 
 						break;
 					}				
-					if (!(game_time & 7)){
+					if (!(game_time & 15)){
 						actor_counter_a[i] = (actor_counter_a[i] + 1) & 15;
 						actor->frame = actor->frame_start + actor_counter_a[i];
 					}
@@ -580,8 +537,8 @@ void actor_behavior_update(void) BANKED {
 					}
 					//Actor Collision					
 					actor_t * hit_actor = actor_overlapping_bb(&actor->bounds, &actor->pos, actor, FALSE);
-					if (hit_actor && hit_actor->script.bank && actor->collision_group != hit_actor->collision_group){
-						script_execute(hit_actor->script.bank, hit_actor->script.ptr, 0, 1, 2);
+					if (hit_actor && hit_actor->script.bank && actor->collision_group != hit_actor->collision_group){						
+						script_execute(hit_actor->script.bank, hit_actor->script.ptr, 0, 1, 4);
 						script_execute(actor->script.bank, actor->script.ptr, 0, 1, 2);
 						actor_states[i] = 255;
 					}

@@ -1,0 +1,37 @@
+{
+  "_resourceType": "actor",
+  "id": "11988a85-34c4-46cf-a69f-9eb4c7eb7fa3",
+  "name": "ElevatorPlatform 1",
+  "frame": 0,
+  "animate": false,
+  "spriteSheetId": "32a87e20-fac0-47dd-93f6-e0736f023311",
+  "prefabId": "571fa3ef-eb63-4519-8bed-96b8921f0c5b",
+  "direction": "down",
+  "moveSpeed": 1,
+  "animSpeed": 15,
+  "paletteId": "",
+  "isPinned": false,
+  "persistent": false,
+  "collisionGroup": "",
+  "prefabScriptOverrides": {
+    "8aa3aa3d-6c97-4941-9dda-4300dd51dbe2": {
+      "id": "8aa3aa3d-6c97-4941-9dda-4300dd51dbe2",
+      "args": {
+        "yVelocity": {
+          "type": "number",
+          "value": 8
+        }
+      }
+    }
+  },
+  "symbol": "actor_534",
+  "script": [],
+  "startScript": [],
+  "updateScript": [],
+  "hit1Script": [],
+  "hit2Script": [],
+  "hit3Script": [],
+  "x": 115,
+  "y": 7,
+  "_index": 13
+}

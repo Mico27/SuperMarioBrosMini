@@ -131,16 +131,16 @@
             "id": "dca618f7-a877-4406-8396-2fdbcc7e6de3"
           },
           {
-            "command": "EVENT_SET_VALUE",
+            "command": "EVENT_CALL_CUSTOM_EVENT",
             "args": {
-              "variable": "12",
-              "value": {
-                "type": "expression",
-                "value": "$12$ + 20"
+              "customEventId": "ef8fedfd-2e98-4b70-ba50-4d41a57a7116",
+              "$variable[V0]$": {
+                "type": "number",
+                "value": 20
               },
               "__collapse": true
             },
-            "id": "494b4e43-0792-44f6-aefd-4d8ce29f2632"
+            "id": "5ec1e258-1e99-4b46-999e-22f3dc248e55"
           }
         ],
         "true1": [
@@ -167,16 +167,16 @@
             "id": "ede48269-2f05-4ccf-861f-44df14568f81"
           },
           {
-            "command": "EVENT_SET_VALUE",
+            "command": "EVENT_CALL_CUSTOM_EVENT",
             "args": {
-              "variable": "12",
-              "value": {
-                "type": "expression",
-                "value": "$12$ + 40"
+              "customEventId": "ef8fedfd-2e98-4b70-ba50-4d41a57a7116",
+              "$variable[V0]$": {
+                "type": "number",
+                "value": 40
               },
               "__collapse": true
             },
-            "id": "c7895775-0e0c-486b-a3cb-452faf077e82"
+            "id": "1451717b-292e-457a-a6b8-55f5ef943d6a"
           }
         ],
         "true2": [
@@ -203,16 +203,16 @@
             "id": "cb877fce-f4e8-4c4e-ba8b-e61ab222900c"
           },
           {
-            "command": "EVENT_SET_VALUE",
+            "command": "EVENT_CALL_CUSTOM_EVENT",
             "args": {
-              "variable": "12",
-              "value": {
-                "type": "expression",
-                "value": "$12$ + 80"
+              "customEventId": "ef8fedfd-2e98-4b70-ba50-4d41a57a7116",
+              "$variable[V0]$": {
+                "type": "number",
+                "value": 80
               },
               "__collapse": true
             },
-            "id": "652295e1-0667-4012-a410-ef4025684478"
+            "id": "0177e05a-7ce9-4d65-aff7-83611f8029ff"
           }
         ],
         "true3": [
@@ -239,16 +239,16 @@
             "id": "99dd5e96-7496-4ef4-9677-054d5074d91f"
           },
           {
-            "command": "EVENT_SET_VALUE",
+            "command": "EVENT_CALL_CUSTOM_EVENT",
             "args": {
-              "variable": "12",
-              "value": {
-                "type": "expression",
-                "value": "$12$ + 100"
+              "customEventId": "ef8fedfd-2e98-4b70-ba50-4d41a57a7116",
+              "$variable[V0]$": {
+                "type": "number",
+                "value": 100
               },
               "__collapse": true
             },
-            "id": "e6710f4a-af51-4807-a39e-5b29fb49c50d"
+            "id": "9e9d597b-db0b-4974-8f99-cbc6789e100c"
           }
         ],
         "true4": [
@@ -275,16 +275,16 @@
             "id": "f497df75-a76a-49fa-9a34-05adc4cd97ab"
           },
           {
-            "command": "EVENT_SET_VALUE",
+            "command": "EVENT_CALL_CUSTOM_EVENT",
             "args": {
-              "variable": "12",
-              "value": {
-                "type": "expression",
-                "value": "$12$ + 200"
+              "customEventId": "ef8fedfd-2e98-4b70-ba50-4d41a57a7116",
+              "$variable[V0]$": {
+                "type": "number",
+                "value": 200
               },
               "__collapse": true
             },
-            "id": "38f41528-569c-4a1d-9fe0-29052ca13bdc"
+            "id": "de9dad4a-f6d9-4914-8dd1-a98112ca0452"
           }
         ],
         "true5": [],
@@ -328,20 +328,6 @@
               "__collapse": true
             },
             "id": "f56ac631-6308-4619-964c-6eba21258787"
-          },
-          {
-            "command": "EVENT_GBVM_SCRIPT",
-            "args": {
-              "script": "VM_LOAD_TEXT 1 \n.dw VAR_LIVES\n.asciz \"\\003\\007\\001%D2\"\nVM_CALL_NATIVE b_ui_alt_display_text, _ui_alt_display_text",
-              "references": [
-                {
-                  "type": "variable",
-                  "id": "2"
-                }
-              ],
-              "__collapse": true
-            },
-            "id": "ec489ed2-4cf9-495c-9840-f2f397fa2b9c"
           }
         ]
       },
@@ -350,16 +336,20 @@
     {
       "command": "EVENT_GBVM_SCRIPT",
       "args": {
-        "script": "VM_LOAD_TEXT 1 \n.dw VAR_SCORE\n.asciz \"\\003\\001\\002%D6\"\nVM_CALL_NATIVE b_ui_alt_display_text, _ui_alt_display_text",
+        "script": "VM_LOAD_TEXT 2 \n.dw VAR_SCOREUPPER\n.dw VAR_SCORELOWER\n.asciz \"\\003\\001\\002%D3\\003\\004\\002%D3\"\nVM_CALL_NATIVE b_ui_alt_display_text, _ui_alt_display_text",
         "references": [
           {
             "type": "variable",
             "id": "12"
+          },
+          {
+            "type": "variable",
+            "id": "57"
           }
         ],
-        "__collapse": true
+        "__collapse": false
       },
-      "id": "a5b49612-fc78-4fca-80d4-be2c6cf430b8"
+      "id": "a9580573-6abb-4340-907b-609c8ab9761f"
     }
   ]
 }

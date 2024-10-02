@@ -5,7 +5,7 @@
   "name": "8-1-2",
   "backgroundId": "e7b974d7-a9e1-4d83-b611-42cffdb16989",
   "tilesetId": "9ecbffea-374f-49ec-a07d-46fea9501295",
-  "width": 200,
+  "width": 192,
   "height": 18,
   "type": "PLATFORM",
   "paletteIds": [
@@ -28,11 +28,11 @@
     "43da72a7-de7c-4aef-87f7-ed490c978643",
     "9cd57f2b-2f5a-4821-b106-4ccfd4b1b91b"
   ],
-  "collisions": "00e10+",
+  "collisions": "",
   "autoFadeSpeed": null,
   "symbol": "scene_8_1_2",
-  "x": 3728,
-  "y": 2416,
+  "x": 3960,
+  "y": 2592,
   "parallax": [
     {
       "height": 2,
@@ -140,7 +140,7 @@
         ],
         "override": false,
         "__scriptTabs": "press",
-        "__collapse": false
+        "__collapse": true
       },
       "children": {
         "true": [

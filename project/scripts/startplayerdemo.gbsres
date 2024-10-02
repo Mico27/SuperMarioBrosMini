@@ -20,6 +20,17 @@
       "children": {
         "input_sequence": [
           {
+            "command": "EVENT_SET_VALUE",
+            "args": {
+              "variable": "52",
+              "value": {
+                "type": "number",
+                "value": 1
+              }
+            },
+            "id": "75e0d843-096e-4d58-8bcb-fa963e5ee538"
+          },
+          {
             "command": "EVENT_LOOP",
             "args": {
               "__collapse": true
@@ -294,6 +305,28 @@
               "__comment": false
             },
             "id": "b68d3357-e988-42ed-a159-0caf1c1db01d"
+          },
+          {
+            "command": "EVENT_SET_VALUE",
+            "args": {
+              "variable": "50",
+              "value": {
+                "type": "number",
+                "value": 1
+              }
+            },
+            "id": "4ebfede1-fc59-4edc-a63b-1511d914cd74"
+          },
+          {
+            "command": "EVENT_SET_VALUE",
+            "args": {
+              "variable": "52",
+              "value": {
+                "type": "number",
+                "value": 0
+              }
+            },
+            "id": "7a56556b-12ed-4c1a-9aca-ef965e23f402"
           },
           {
             "command": "EVENT_CALL_CUSTOM_EVENT",

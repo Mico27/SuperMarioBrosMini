@@ -1,0 +1,23 @@
+{
+  "_resourceType": "trigger",
+  "id": "ec7e0ccb-2c73-4e80-bb17-1bf5ae9bacbe",
+  "name": "",
+  "prefabId": "",
+  "x": 30,
+  "y": 13,
+  "symbol": "trigger_212",
+  "prefabScriptOverrides": {},
+  "width": 1,
+  "height": 3,
+  "script": [
+    {
+      "command": "EVENT_INC_VALUE",
+      "args": {
+        "variable": "54"
+      },
+      "id": "59f8f8d3-4a20-4f98-97e9-a67e16e3be5e"
+    }
+  ],
+  "leaveScript": [],
+  "_index": 0
+}

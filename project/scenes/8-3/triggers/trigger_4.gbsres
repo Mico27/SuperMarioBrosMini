@@ -1,0 +1,86 @@
+{
+  "_resourceType": "trigger",
+  "id": "2ca292f7-8cd0-45dd-ba3e-fea8c2662e58",
+  "name": "",
+  "prefabId": "",
+  "x": 150,
+  "y": 0,
+  "symbol": "trigger_236",
+  "prefabScriptOverrides": {},
+  "width": 1,
+  "height": 18,
+  "script": [
+    {
+      "command": "EVENT_SCRIPT_UNLOCK",
+      "args": {
+        "__collapse": true
+      },
+      "id": "418cec34-61f4-41c1-80a1-07f76c4caa4c"
+    },
+    {
+      "command": "EVENT_CALL_CUSTOM_EVENT",
+      "args": {
+        "customEventId": "7472c75b-28ba-4e82-9e18-5c1cc4daf097",
+        "$variable[V0]$": {
+          "type": "number",
+          "value": 178
+        },
+        "$variable[V1]$": {
+          "type": "number",
+          "value": 15
+        },
+        "$actor[0]$": "cc1b6c3d-ae99-4fcc-959c-a1f2e64ef4f0",
+        "__collapse": true,
+        "$variable[V2]$": {
+          "type": "number",
+          "value": 22
+        }
+      },
+      "id": "c6e795cf-5233-451c-8401-ca55eb5fcc56"
+    },
+    {
+      "command": "EVENT_CALL_CUSTOM_EVENT",
+      "args": {
+        "customEventId": "7472c75b-28ba-4e82-9e18-5c1cc4daf097",
+        "$variable[V0]$": {
+          "type": "number",
+          "value": 184
+        },
+        "$variable[V1]$": {
+          "type": "number",
+          "value": 15
+        },
+        "$actor[0]$": "163a5edc-889b-4da9-9ca1-32506bd793f8",
+        "__collapse": true,
+        "$variable[V2]$": {
+          "type": "number",
+          "value": 22
+        }
+      },
+      "id": "a701df75-da20-45bd-a872-e4ab27e8d291"
+    },
+    {
+      "command": "EVENT_CALL_CUSTOM_EVENT",
+      "args": {
+        "customEventId": "7472c75b-28ba-4e82-9e18-5c1cc4daf097",
+        "$variable[V0]$": {
+          "type": "number",
+          "value": 168
+        },
+        "$variable[V1]$": {
+          "type": "number",
+          "value": 14
+        },
+        "$actor[0]$": "947a1d02-845a-451e-91e0-5fd570ab0e77",
+        "__collapse": true,
+        "$variable[V2]$": {
+          "type": "number",
+          "value": 7
+        }
+      },
+      "id": "cad62660-488c-400d-8cac-db7599383e57"
+    }
+  ],
+  "leaveScript": [],
+  "_index": 3
+}

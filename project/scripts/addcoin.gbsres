@@ -25,16 +25,15 @@
       "id": "092bfa2c-0359-4edf-bf40-afba2bad05f3"
     },
     {
-      "command": "EVENT_SET_VALUE",
+      "command": "EVENT_CALL_CUSTOM_EVENT",
       "args": {
-        "variable": "12",
-        "value": {
+        "customEventId": "ef8fedfd-2e98-4b70-ba50-4d41a57a7116",
+        "$variable[V0]$": {
           "type": "expression",
-          "value": "$12$ + (20 * $V0$)"
-        },
-        "__collapse": false
+          "value": "(20 * $V0$)"
+        }
       },
-      "id": "e27a353b-3985-4e5b-9b51-9be99aa0643a"
+      "id": "2f1d68ce-29b3-4951-829c-d40681d67af5"
     },
     {
       "command": "EVENT_IF",
@@ -72,19 +71,6 @@
               "variable": "2"
             },
             "id": "6e2bf5b1-46ac-475d-972c-2e83a5ff5008"
-          },
-          {
-            "command": "EVENT_GBVM_SCRIPT",
-            "args": {
-              "script": "VM_LOAD_TEXT 1 \n.dw VAR_LIVES\n.asciz \"\\003\\007\\001%D2\"\nVM_CALL_NATIVE b_ui_alt_display_text, _ui_alt_display_text",
-              "references": [
-                {
-                  "type": "variable",
-                  "id": "2"
-                }
-              ]
-            },
-            "id": "965f13d0-1377-44c7-9e26-57b65b431a87"
           }
         ],
         "false": []
@@ -94,7 +80,7 @@
     {
       "command": "EVENT_GBVM_SCRIPT",
       "args": {
-        "script": "VM_LOAD_TEXT 2 \n.dw VAR_COINS\n.dw VAR_SCORE\n.asciz \"\\003\\012\\002%D2\\003\\001\\002%D6\"\nVM_CALL_NATIVE b_ui_alt_display_text, _ui_alt_display_text",
+        "script": "VM_LOAD_TEXT 3 \n.dw VAR_COINS\n.dw VAR_SCOREUPPER\n.dw VAR_SCORELOWER\n.asciz \"\\003\\012\\002%D2\\003\\001\\002%D3\\003\\004\\002%D3\"\nVM_CALL_NATIVE b_ui_alt_display_text, _ui_alt_display_text",
         "references": [
           {
             "type": "variable",
@@ -103,6 +89,10 @@
           {
             "type": "variable",
             "id": "12"
+          },
+          {
+            "type": "variable",
+            "id": "57"
           }
         ],
         "__collapse": false

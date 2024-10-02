@@ -85,7 +85,7 @@
           "type": "number",
           "value": 23
         },
-        "__collapse": false
+        "__collapse": true
       },
       "id": "87fc6c35-4ebe-42bd-bdc3-aaac5502188b",
       "children": {}
@@ -112,6 +112,14 @@
       },
       "id": "29dba46e-3962-4a17-bd2c-45cee6d7f0a2",
       "children": {}
+    },
+    {
+      "command": "EVENT_SET_ACTOR_LINKED_ACTOR",
+      "args": {
+        "actorId": "$self$",
+        "linkedActorId": "$self$"
+      },
+      "id": "a44ddb75-0b9e-4bd1-83b0-c2413261c4dd"
     }
   ],
   "updateScript": [],

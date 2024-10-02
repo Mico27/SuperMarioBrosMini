@@ -13,7 +13,49 @@
   "isPinned": false,
   "persistent": false,
   "collisionGroup": "",
-  "prefabScriptOverrides": {},
+  "prefabScriptOverrides": {
+    "6ee1bb07-dea9-40b1-8132-ff28660b120b": {
+      "id": "6ee1bb07-dea9-40b1-8132-ff28660b120b",
+      "args": {
+        "actorId": "0097f53f-bd49-4d8e-8698-fe906c3c52f9"
+      }
+    },
+    "d5b7e44a-8625-4822-a4a0-bcb18f113fe6": {
+      "id": "d5b7e44a-8625-4822-a4a0-bcb18f113fe6",
+      "args": {
+        "actorId": "0097f53f-bd49-4d8e-8698-fe906c3c52f9"
+      }
+    },
+    "2713a6d1-9fd7-41b9-801c-81f633f9310f": {
+      "id": "2713a6d1-9fd7-41b9-801c-81f633f9310f",
+      "args": {
+        "actorId": "0097f53f-bd49-4d8e-8698-fe906c3c52f9"
+      }
+    },
+    "c1d9b147-9969-48ef-b30f-1871059979e3": {
+      "id": "c1d9b147-9969-48ef-b30f-1871059979e3",
+      "args": {
+        "condition": {
+          "type": "lt",
+          "valueA": {
+            "type": "property",
+            "target": "0097f53f-bd49-4d8e-8698-fe906c3c52f9",
+            "property": "xpos"
+          },
+          "valueB": {
+            "type": "number",
+            "value": 124
+          }
+        }
+      }
+    },
+    "45281672-3474-4948-a35b-b6d9b3049859": {
+      "id": "45281672-3474-4948-a35b-b6d9b3049859",
+      "args": {
+        "linkedActorId": "0097f53f-bd49-4d8e-8698-fe906c3c52f9"
+      }
+    }
+  },
   "symbol": "actor_139",
   "script": [],
   "startScript": [],

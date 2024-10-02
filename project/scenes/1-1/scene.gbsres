@@ -45,6 +45,72 @@
   "playerSpriteSheetId": "82297e17-ae19-4d6c-84f3-47e5fe14a6ad",
   "script": [
     {
+      "command": "EVENT_IF",
+      "args": {
+        "condition": {
+          "type": "eq",
+          "valueA": {
+            "type": "variable",
+            "value": "53"
+          },
+          "valueB": {
+            "type": "number",
+            "value": 0
+          }
+        },
+        "__collapseElse": true,
+        "__collapse": false
+      },
+      "children": {
+        "true": [
+          {
+            "command": "EVENT_SET_VALUE",
+            "args": {
+              "variable": "53",
+              "value": {
+                "type": "number",
+                "value": 1
+              }
+            },
+            "id": "2350909c-4b7f-4037-a21e-38c5e7178608"
+          },
+          {
+            "command": "EVENT_IF_SAVED_DATA",
+            "args": {
+              "saveSlot": 0,
+              "__collapseElse": true
+            },
+            "children": {
+              "true": [
+                {
+                  "command": "EVENT_PEEK_DATA",
+                  "args": {
+                    "variableDest": "13",
+                    "variableSource": "13",
+                    "saveSlot": 0
+                  },
+                  "id": "17d1c4cc-88c3-47c4-91cb-7616e9bad051"
+                },
+                {
+                  "command": "EVENT_PEEK_DATA",
+                  "args": {
+                    "variableDest": "56",
+                    "variableSource": "56",
+                    "saveSlot": 0
+                  },
+                  "id": "2873baad-5040-4655-978f-ceecbc2e6871"
+                }
+              ],
+              "false": []
+            },
+            "id": "6840c57d-9223-4e9c-8150-d86363591dfe"
+          }
+        ],
+        "false": []
+      },
+      "id": "e957938c-a2da-40ca-b225-6685561ce8ce"
+    },
+    {
       "command": "EVENT_SET_VALUE",
       "args": {
         "variable": "9",
@@ -52,7 +118,7 @@
           "type": "number",
           "value": 1
         },
-        "__collapse": true
+        "__collapse": false
       },
       "id": "53a9a6b1-5109-421d-b266-7cb31f3ed9ac"
     },
@@ -64,7 +130,7 @@
           "type": "number",
           "value": 1
         },
-        "__collapse": true
+        "__collapse": false
       },
       "id": "be6e56ac-771f-4362-a5f5-5c70a5447b32"
     },
@@ -76,7 +142,7 @@
           "type": "number",
           "value": 1
         },
-        "__collapse": true
+        "__collapse": false
       },
       "id": "48bca3e4-2ef9-4d6f-aa31-6c28c31d1e19"
     },
@@ -88,7 +154,7 @@
           "type": "number",
           "value": 0
         },
-        "__collapse": true
+        "__collapse": false
       },
       "id": "e4fa983e-4943-47d5-a8d4-4d2ac042b8df"
     },
@@ -104,7 +170,7 @@
           "type": "number",
           "value": 1
         },
-        "__collapse": true
+        "__collapse": false
       },
       "id": "db99fd58-576d-4b21-9ab0-8bcbb18cb9e9"
     },
@@ -113,7 +179,7 @@
       "args": {
         "specific_event": "1",
         "__scriptTabs": "scriptinput",
-        "__collapse": true
+        "__collapse": false
       },
       "children": {
         "script": [
@@ -147,7 +213,7 @@
       "args": {
         "specific_event": "0",
         "__scriptTabs": "scriptinput",
-        "__collapse": true
+        "__collapse": false
       },
       "children": {
         "script": [
@@ -171,7 +237,7 @@
       "args": {
         "specific_event": "2",
         "__scriptTabs": "scriptinput",
-        "__collapse": true
+        "__collapse": false
       },
       "children": {
         "script": [
@@ -191,7 +257,7 @@
       "args": {
         "specific_event": "3",
         "__scriptTabs": "scriptinput",
-        "__collapse": true,
+        "__collapse": false,
         "__comment": false
       },
       "children": {
@@ -212,7 +278,7 @@
       "args": {
         "specific_event": "4",
         "__scriptTabs": "scriptinput",
-        "__collapse": true
+        "__collapse": false
       },
       "children": {
         "script": [
@@ -232,7 +298,7 @@
       "args": {
         "specific_event": "5",
         "__scriptTabs": "scriptinput",
-        "__collapse": true
+        "__collapse": false
       },
       "children": {
         "script": [
@@ -255,7 +321,7 @@
         ],
         "override": false,
         "__scriptTabs": "press",
-        "__collapse": true
+        "__collapse": false
       },
       "children": {
         "true": [
@@ -278,7 +344,7 @@
       "args": {
         "state": 3,
         "__scriptTabs": "scriptinput",
-        "__collapse": true
+        "__collapse": false
       },
       "children": {
         "script": [

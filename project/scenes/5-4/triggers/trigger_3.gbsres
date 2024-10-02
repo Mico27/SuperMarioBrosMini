@@ -1,0 +1,75 @@
+{
+  "_resourceType": "trigger",
+  "id": "fab9c042-7da0-4dcc-bef9-be745f720b8c",
+  "name": "",
+  "prefabId": "",
+  "x": 37,
+  "y": 0,
+  "symbol": "trigger_193",
+  "prefabScriptOverrides": {},
+  "width": 1,
+  "height": 18,
+  "script": [
+    {
+      "command": "EVENT_SCRIPT_UNLOCK",
+      "args": {
+        "__collapse": true
+      },
+      "id": "25934ec6-752b-4fdf-a7f4-d181dbd5081c"
+    },
+    {
+      "command": "EVENT_CALL_CUSTOM_EVENT",
+      "args": {
+        "customEventId": "7472c75b-28ba-4e82-9e18-5c1cc4daf097",
+        "$variable[V0]$": {
+          "type": "number",
+          "value": 67
+        },
+        "$variable[V1]$": {
+          "type": "number",
+          "value": 20
+        },
+        "$variable[V2]$": {
+          "type": "number",
+          "value": 9
+        },
+        "$actor[0]$": "2f6d6c04-bff1-4579-b04d-b4414160131c",
+        "__collapse": true
+      },
+      "id": "7dda040e-1e7a-48c0-9a06-168cd04e3485"
+    },
+    {
+      "command": "EVENT_ACTOR_SET_STATE",
+      "args": {
+        "actorId": "2f6d6c04-bff1-4579-b04d-b4414160131c",
+        "spriteStateId": "FireBar",
+        "loopAnim": true,
+        "__collapse": true
+      },
+      "id": "cecd9c78-baec-40fd-b684-a4852e706d40"
+    },
+    {
+      "command": "EVENT_CALL_CUSTOM_EVENT",
+      "args": {
+        "customEventId": "7472c75b-28ba-4e82-9e18-5c1cc4daf097",
+        "$variable[V0]$": {
+          "type": "number",
+          "value": 109
+        },
+        "$variable[V1]$": {
+          "type": "number",
+          "value": 17
+        },
+        "$variable[V2]$": {
+          "type": "number",
+          "value": 27
+        },
+        "$actor[0]$": "e20b2ef5-c82e-4c74-887a-7bb4ab4ccd37",
+        "__collapse": true
+      },
+      "id": "f31c1d0a-5229-4cdf-af37-35aa610a7d52"
+    }
+  ],
+  "leaveScript": [],
+  "_index": 3
+}

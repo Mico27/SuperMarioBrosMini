@@ -159,6 +159,30 @@
                   "children": {}
                 },
                 {
+                  "command": "EVENT_SET_VALUE",
+                  "args": {
+                    "variable": "7",
+                    "value": {
+                      "type": "number",
+                      "value": 0
+                    },
+                    "__collapse": false
+                  },
+                  "id": "e48dbb56-11ca-4621-af6c-dadb1531ac44"
+                },
+                {
+                  "command": "EVENT_SET_VALUE",
+                  "args": {
+                    "variable": "31",
+                    "value": {
+                      "type": "number",
+                      "value": 0
+                    },
+                    "__collapse": false
+                  },
+                  "id": "eb661c50-a2ba-42db-af9a-4be976a4ae6e"
+                },
+                {
                   "command": "EVENT_CALL_CUSTOM_EVENT",
                   "args": {
                     "customEventId": "1da14dfe-ad02-4e47-addd-68af4399854d"
@@ -209,7 +233,8 @@
                       "type": "expression",
                       "value": "$10$ + 1"
                     },
-                    "__comment": false
+                    "__comment": false,
+                    "__collapse": true
                   },
                   "id": "60dd3dbe-56bb-4298-9772-8328e8a11c5d",
                   "children": {}
@@ -230,7 +255,7 @@
                     },
                     "__collapseElse": true,
                     "__comment": false,
-                    "__collapse": false
+                    "__collapse": true
                   },
                   "children": {
                     "true": [
@@ -268,10 +293,23 @@
                     "value": {
                       "type": "number",
                       "value": 0
-                    }
+                    },
+                    "__collapse": true
                   },
                   "id": "4e60a754-f43f-4245-9d37-16de49b2e499",
                   "children": {}
+                },
+                {
+                  "command": "EVENT_SET_VALUE",
+                  "args": {
+                    "variable": "31",
+                    "value": {
+                      "type": "number",
+                      "value": 0
+                    },
+                    "__collapse": true
+                  },
+                  "id": "127471d6-e7e2-4ac1-9244-41c60b57ea0c"
                 },
                 {
                   "command": "EVENT_CALL_CUSTOM_EVENT",

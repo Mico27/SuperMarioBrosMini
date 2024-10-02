@@ -1,0 +1,90 @@
+{
+  "_resourceType": "actor",
+  "id": "a04c8cef-c244-4b74-88e3-8921bcb15395",
+  "name": "BulletBillSpawner",
+  "frame": 0,
+  "animate": false,
+  "spriteSheetId": "8dbb443a-eb83-48bb-86c9-ffd9012f45c7",
+  "prefabId": "9af9a024-49df-4f71-8a38-bfb025b23363",
+  "direction": "down",
+  "moveSpeed": 1,
+  "animSpeed": 15,
+  "paletteId": "",
+  "isPinned": false,
+  "persistent": true,
+  "collisionGroup": "",
+  "prefabScriptOverrides": {
+    "5b801987-eef7-4b4d-9058-3b577f05963a": {
+      "id": "5b801987-eef7-4b4d-9058-3b577f05963a",
+      "args": {
+        "linkedActorId": "cf3d1412-e541-48b4-bb8c-de2b31952d7c"
+      }
+    }
+  },
+  "symbol": "actor_279",
+  "script": [],
+  "startScript": [
+    {
+      "command": "EVENT_ACTOR_HIDE",
+      "args": {
+        "actorId": "$self$",
+        "__collapse": true
+      },
+      "id": "769faf45-7d57-42b8-a2b7-2a69abcf61a4",
+      "children": {}
+    },
+    {
+      "command": "EVENT_SET_ACTOR_BEHAVIOR",
+      "args": {
+        "actorId": "$self$",
+        "behaviorId": {
+          "type": "number",
+          "value": 31
+        },
+        "__comment": false,
+        "__collapse": true
+      },
+      "id": "df9dc8b1-1438-401e-a026-74285771ed7e",
+      "children": {}
+    },
+    {
+      "command": "EVENT_SET_ACTOR_STATE",
+      "args": {
+        "actorId": "$self$",
+        "stateId": {
+          "type": "number",
+          "value": 0
+        },
+        "__collapse": true
+      },
+      "id": "d9fd7147-b699-4f79-98a6-2781173f8c58",
+      "children": {}
+    },
+    {
+      "command": "EVENT_SET_ACTOR_LINKED_ACTOR",
+      "args": {
+        "actorId": "$self$",
+        "linkedActorId": "$self$",
+        "__collapse": false
+      },
+      "id": "f431dfd7-767c-4c03-a512-40b151a7e40d",
+      "children": {}
+    },
+    {
+      "command": "EVENT_ACTOR_DEACTIVATE",
+      "args": {
+        "actorId": "$self$",
+        "__collapse": true
+      },
+      "id": "f2eb218f-11b2-4de4-875f-21e09511c0b9",
+      "children": {}
+    }
+  ],
+  "updateScript": [],
+  "hit1Script": [],
+  "hit2Script": [],
+  "hit3Script": [],
+  "x": 6,
+  "y": 0,
+  "_index": 13
+}

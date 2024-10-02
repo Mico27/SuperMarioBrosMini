@@ -106,11 +106,11 @@ void actor_behavior_update_b(UBYTE i, actor_t * actor) BANKED {
 					break;
 				}
 				if (!(game_time & 1)){
-					if (!(actor_counter_a[i] & 255)){
+					if (!(actor_counter_a[i] & 127)){
 						actor_counter_a[i] = rand();
 						UBYTE bullet_idx = actor_linked_actor_idx[i];
-						actor_t * bullet_actor = (actors + bullet_idx);
-						if (actor_states[bullet_idx] == 0 || actor_states[bullet_idx] == 255){
+						if (bullet_idx != 0 && (actor_states[bullet_idx] == 0 || actor_states[bullet_idx] == 255)){
+							actor_t * bullet_actor = (actors + bullet_idx);
 							actor_behavior_ids[bullet_idx] = 6;
 							actor_states[bullet_idx] = 0;
 							if (!bullet_actor->active){
@@ -129,7 +129,7 @@ void actor_behavior_update_b(UBYTE i, actor_t * actor) BANKED {
 								bullet_actor->pos.x = ((actor->pos.x >> 7) + 1) << 7;	
 								actor_vel_x[bullet_idx]	= 16;
 							}
-						}
+						}						
 					}
 					actor_counter_a[i]++;
 				}
@@ -177,9 +177,9 @@ void actor_behavior_update_b(UBYTE i, actor_t * actor) BANKED {
 							actor_vel_y[i] = -60;
 						} else {
 							//throw hammer
-							UBYTE hammer_idx = actor_linked_actor_idx[i];
-							actor_t * hammer_actor = (actors + hammer_idx);
-							if (actor_states[hammer_idx] == 0 || actor_states[hammer_idx] == 255){
+							UBYTE hammer_idx = actor_linked_actor_idx[i];								
+							if (hammer_idx != 0 && (actor_states[hammer_idx] == 0 || actor_states[hammer_idx] == 255)){
+								actor_t * hammer_actor = (actors + hammer_idx);
 								actor_behavior_ids[hammer_idx] = 23;
 								actor_states[hammer_idx] = 0;
 								if (!hammer_actor->active){
@@ -197,7 +197,7 @@ void actor_behavior_update_b(UBYTE i, actor_t * actor) BANKED {
 									actor_set_dir(hammer_actor, DIR_RIGHT, FALSE);
 									actor_vel_x[hammer_idx]	= 12;
 								}
-							}
+							}							
 						}					
 					}
 					actor_counter_a[i]++;
@@ -479,7 +479,7 @@ void actor_behavior_update_b(UBYTE i, actor_t * actor) BANKED {
 				if (!(game_time & 1)){					
 					if (!(actor_counter_a[i] & 63)){	
 						actor_counter_a[i] = rand();	
-						if (actor_counter_a[i] < 64){
+						if (actor_counter_a[i] < 128){
 							actor->frame = actor->frame_start + 1;
 							actor_counter_b[i] = 32;
 						}				
@@ -499,7 +499,7 @@ void actor_behavior_update_b(UBYTE i, actor_t * actor) BANKED {
 									spiky_idx = actor_linked_actor_idx[spiky_idx];
 								}
 							}							
-							if (actor_states[spiky_idx] == 0 || actor_states[spiky_idx] == 255){
+							if (spiky_idx != 0 && (actor_states[spiky_idx] == 0 || actor_states[spiky_idx] == 255)){
 								actor_t * spiky_actor = (actors + spiky_idx);
 								actor_behavior_ids[spiky_idx] = 29;
 								actor_states[spiky_idx] = 0;
@@ -530,7 +530,7 @@ void actor_behavior_update_b(UBYTE i, actor_t * actor) BANKED {
 		}		
 		break;
 		case 29: //Spikey
-			switch(actor_states[i]){
+		switch(actor_states[i]){
 				case 0:
 					if ((((actor->pos.x >> 4) + 8) - draw_scroll_x) < BEHAVIOR_ACTIVATION_THRESHOLD){ 
 						actor_states[i] = 1; 
@@ -583,6 +583,174 @@ void actor_behavior_update_b(UBYTE i, actor_t * actor) BANKED {
 					deactivate_actor(actor);
 					break;
 			}
-			break;				
+		break;	
+		case 30://Bowser
+		switch(actor_states[i]){
+			case 0: //Init
+				if ((((actor->pos.x >> 4) + 8) - draw_scroll_x) < BEHAVIOR_ACTIVATION_THRESHOLD){ 
+					actor_states[i] = 1; 
+					actor_counter_a[i] = rand();
+					actor_counter_a[i] = 32;
+					actor_vel_x[i] = 2;
+					actor_vel_y[i] = 0;					
+				}
+				break;
+			case 1: //Main state
+				current_actor_x = ((actor->pos.x >> 4) + 8) - draw_scroll_x;
+				if (current_actor_x < BEHAVIOR_DEACTIVATION_LOWER_THRESHOLD){ 
+					actor_states[i] = 255; 
+					break;
+				}
+				apply_gravity_b(i);
+				apply_velocity_b(i, actor);
+				//Animation
+				if (PLAYER.pos.x < actor->pos.x) {
+					actor_set_dir(actor, DIR_LEFT, TRUE);
+				} else {
+					actor_set_dir(actor, DIR_RIGHT, TRUE);
+				}
+				if (!(game_time & 1)){
+					if (!(actor_counter_b[i] & 31)){
+						actor_vel_x[i] = -actor_vel_x[i];
+					}
+					if (!(actor_counter_a[i] & 63)){	
+						actor_counter_a[i] = rand();	
+						if (actor_counter_a[i] < 128){
+							//jump
+							actor_states[i] = 2;
+							actor_vel_y[i] = -40;
+						} else {
+							//breath fire							
+							UBYTE attack_idx = actor_linked_actor_idx[i];
+							if (actor_states[attack_idx] != 0 && actor_states[attack_idx] != 255){
+								//throw hammer 1
+								attack_idx = actor_linked_actor_idx[attack_idx];
+								if (actor_states[attack_idx] != 0 && actor_states[attack_idx] != 255){
+									//throw hammer 2
+									attack_idx = actor_linked_actor_idx[attack_idx];
+								}
+							}		
+							if (attack_idx != 0 && (actor_states[attack_idx] == 0 || actor_states[attack_idx] == 255)){
+								actor_t * attack_actor = (actors + attack_idx);
+								actor_states[attack_idx] = 0;
+								if (!attack_actor->active){
+									attack_actor->disabled = FALSE;
+									activate_actor(attack_actor);
+								}
+								attack_actor->collision_enabled = true;
+								attack_actor->pos.y = actor->pos.y;
+								attack_actor->pos.x = actor->pos.x;	
+								if (actor_behavior_ids[attack_idx] == 23){
+									actor_vel_y[attack_idx] = -(30 + (rand() & 7));
+								}
+								if (PLAYER.pos.x < actor->pos.x) {
+									actor_set_dir(attack_actor, DIR_LEFT, FALSE);									
+									actor_vel_x[attack_idx]	= -12;							
+								} else {
+									actor_set_dir(attack_actor, DIR_RIGHT, FALSE);
+									actor_vel_x[attack_idx]	= 12;
+								}
+							}								
+						}					
+					}
+					actor_counter_a[i]++;
+					actor_counter_b[i]++;
+				}
+				break;
+			case 2: //Jump state
+				if ((((actor->pos.x >> 4) + 8) - draw_scroll_x) > BEHAVIOR_DEACTIVATION_THRESHOLD){ 
+					actor_states[i] = 255; 
+					break;
+				}
+				actor_vel_y[i] += (plat_grav >> 10);
+				actor_vel_y[i] = MIN(actor_vel_y[i], plat_max_fall_vel >> 8);
+				//Apply velocity
+				WORD new_y =  actor->pos.y + actor_vel_y[i];
+				//Tile Collision				
+				actor->pos.y = check_collision_b(actor->pos.x, new_y, &actor->bounds, CHECK_DIR_DOWN);
+				if (actor->pos.y != new_y){
+					actor_vel_y[i] = 0;
+					actor_states[i] = 1;						
+				}
+				//Animation
+				if (PLAYER.pos.x < actor->pos.x) {
+					actor_set_anim(actor, ANIM_JUMP_LEFT);
+				} else {
+					actor_set_anim(actor, ANIM_JUMP_RIGHT);
+				}
+				break;
+			case 3: //death
+				if ((actor->pos.y >> 7) > (image_tile_height + 4)){ 
+					actor_states[i] = 255; 
+					break;
+				}
+				actor_vel_y[i] += (plat_grav >> 10);
+				actor_vel_y[i] = MIN(actor_vel_y[i], plat_max_fall_vel >> 8);
+				//Apply velocity
+				actor->pos.y =  actor->pos.y + actor_vel_y[i];
+				break;
+			case 255: //Deactivate
+				deactivate_actor(actor);
+				break;
+		}		
+		break;	
+		case 31://Bullet bill spawner
+		switch(actor_states[i]){
+			case 0: //Init
+				if ((((actor->pos.x >> 4) + 8) - draw_scroll_x) < BEHAVIOR_ACTIVATION_THRESHOLD){ 
+					actor_states[i] = 1; 
+					actor_counter_a[i] = rand();
+				}
+				break;
+			case 1: //Spawn state
+				if (!(game_time & 1)){
+					if (!(actor_counter_a[i] & 127)){
+						actor_counter_a[i] = rand();
+						//bullet 1						
+						UBYTE bullet_idx = actor_linked_actor_idx[i];
+						if (actor_states[bullet_idx] != 0 && actor_states[bullet_idx] != 255){
+							//bullet 2	
+							bullet_idx = actor_linked_actor_idx[bullet_idx];
+							if (actor_states[bullet_idx] != 0 && actor_states[bullet_idx] != 255){
+								//bullet 3	
+								bullet_idx = actor_linked_actor_idx[bullet_idx];
+							}
+						}	
+						if (bullet_idx != 0 && (actor_states[bullet_idx] == 0 || actor_states[bullet_idx] == 255)){
+							actor_t * bullet_actor = (actors + bullet_idx);
+							actor_behavior_ids[bullet_idx] = 6;
+							actor_states[bullet_idx] = 0;
+							if (!bullet_actor->active){
+								bullet_actor->disabled = FALSE;
+								activate_actor(bullet_actor);
+							}
+							bullet_actor->collision_enabled = true;
+							bullet_actor->pos.y = ((rand() & 15) + 2) << 7;
+							bullet_actor->pos.x = (draw_scroll_x + 160) << 4;
+							actor_set_dir(bullet_actor, DIR_LEFT, TRUE);
+							actor_vel_x[bullet_idx] = -16;
+						}
+					}
+					actor_counter_a[i]++;
+				}		
+				break;
+			case 255: //Deactivate
+				deactivate_actor(actor);
+				break;
+		}		
+		break;	
+		case 32://Kill flag
+			for (UBYTE j = 0; j < MAX_ACTORS; j++){
+				actor_t * other_actor = (actors + j);
+				if (!other_actor->active || actor == other_actor){
+					continue;
+				}
+				UBYTE other_behavior = actor_behavior_ids[j];
+				if ((other_behavior > 0 && other_behavior < 11) || (other_behavior > 20 && other_behavior < 32)){
+					script_execute(other_actor->script.bank, other_actor->script.ptr, 0, 1, 2);
+				}
+			}
+			actor_behavior_ids[i] = 0;		
+		break;		
 	}			
 }

@@ -272,6 +272,15 @@
         "__comment": false
       },
       "id": "25f9b3a9-5f62-406e-a0f4-9a8954a6f65b"
+    },
+    {
+      "command": "EVENT_SET_ACTOR_LINKED_ACTOR",
+      "args": {
+        "actorId": "$self$",
+        "linkedActorId": "$self$",
+        "__collapse": false
+      },
+      "id": "315117e1-4f26-4768-9462-6316e6081fde"
     }
   ],
   "updateScript": [],

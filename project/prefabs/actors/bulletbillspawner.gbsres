@@ -1,0 +1,76 @@
+{
+  "_resourceType": "actorPrefab",
+  "id": "9af9a024-49df-4f71-8a38-bfb025b23363",
+  "name": "BulletBillSpawner",
+  "frame": 0,
+  "animate": false,
+  "spriteSheetId": "8dbb443a-eb83-48bb-86c9-ffd9012f45c7",
+  "moveSpeed": 1,
+  "animSpeed": 15,
+  "paletteId": "",
+  "persistent": true,
+  "collisionGroup": "",
+  "prefabScriptOverrides": {},
+  "script": [],
+  "startScript": [
+    {
+      "command": "EVENT_ACTOR_HIDE",
+      "args": {
+        "actorId": "$self$",
+        "__collapse": true
+      },
+      "id": "43b3e0b9-3a83-49d6-9d59-527ad3b6cc10",
+      "children": {}
+    },
+    {
+      "command": "EVENT_SET_ACTOR_BEHAVIOR",
+      "args": {
+        "actorId": "$self$",
+        "behaviorId": {
+          "type": "number",
+          "value": 31
+        },
+        "__comment": false,
+        "__collapse": true
+      },
+      "id": "c12b9ede-19f2-416e-9fe7-5da43eb1f63d",
+      "children": {}
+    },
+    {
+      "command": "EVENT_SET_ACTOR_STATE",
+      "args": {
+        "actorId": "$self$",
+        "stateId": {
+          "type": "number",
+          "value": 0
+        },
+        "__collapse": true
+      },
+      "id": "68c2e11c-12d3-477e-975f-766281c7571e",
+      "children": {}
+    },
+    {
+      "command": "EVENT_SET_ACTOR_LINKED_ACTOR",
+      "args": {
+        "actorId": "$self$",
+        "linkedActorId": "$self$",
+        "__collapse": true
+      },
+      "id": "5b801987-eef7-4b4d-9058-3b577f05963a",
+      "children": {}
+    },
+    {
+      "command": "EVENT_ACTOR_DEACTIVATE",
+      "args": {
+        "actorId": "$self$",
+        "__collapse": true
+      },
+      "id": "8fe15483-67e6-42c0-93c0-c06ea59e022e",
+      "children": {}
+    }
+  ],
+  "updateScript": [],
+  "hit1Script": [],
+  "hit2Script": [],
+  "hit3Script": []
+}

@@ -106,26 +106,38 @@
           {
             "command": "EVENT_DEC_VALUE",
             "args": {
-              "variable": "0"
+              "variable": "0",
+              "__collapse": true
             },
             "id": "a39094ba-9ca1-4e6f-b4a7-7aec90f5fd48"
           },
           {
-            "command": "EVENT_SET_VALUE",
+            "command": "EVENT_CALL_CUSTOM_EVENT",
             "args": {
-              "variable": "12",
-              "value": {
-                "type": "expression",
-                "value": "$12$ + 5"
-              }
+              "customEventId": "ef8fedfd-2e98-4b70-ba50-4d41a57a7116",
+              "$variable[V0]$": {
+                "type": "number",
+                "value": 5
+              },
+              "__collapse": true
             },
-            "id": "8887d369-5511-4752-93db-a48541308e5f"
+            "id": "9ac97328-e4b2-44dd-ac90-1288f5ed1372"
           },
           {
             "command": "EVENT_GBVM_SCRIPT",
             "args": {
-              "script": "VM_LOAD_TEXT 2 \n.dw VAR_SCORE\n.dw VAR_DEATHTIMER\n.asciz \"\\003\\001\\002%D6\\003\\022\\002%D3\"\nVM_CALL_NATIVE b_ui_alt_display_text, _ui_alt_display_text",
-              "__collapse": false
+              "script": "VM_LOAD_TEXT 3 \n.dw VAR_SCOREUPPER\n.dw VAR_SCORELOWER\n.dw VAR_DEATHTIMER\n.asciz \"\\003\\001\\002%D3\\003\\004\\002%D3\\003\\022\\002%D3\"\nVM_CALL_NATIVE b_ui_alt_display_text, _ui_alt_display_text",
+              "__collapse": true,
+              "references": [
+                {
+                  "type": "variable",
+                  "id": "12"
+                },
+                {
+                  "type": "variable",
+                  "id": "57"
+                }
+              ]
             },
             "id": "7f598ecf-a39a-4409-ac95-ee47b2e8d4b4"
           },
@@ -179,7 +191,7 @@
             "value": 0
           }
         },
-        "__collapse": true
+        "__collapse": false
       },
       "children": {
         "true": [
@@ -465,25 +477,29 @@
             "id": "4ed7d66a-ab0f-448c-b5d9-67582ab8b1a2"
           },
           {
-            "command": "EVENT_SET_VALUE",
+            "command": "EVENT_CALL_CUSTOM_EVENT",
             "args": {
-              "variable": "12",
-              "value": {
-                "type": "expression",
-                "value": "$12$ + 50"
+              "customEventId": "ef8fedfd-2e98-4b70-ba50-4d41a57a7116",
+              "$variable[V0]$": {
+                "type": "number",
+                "value": 50
               },
               "__collapse": true
             },
-            "id": "17779b1d-e757-4233-9e49-6460d97c8a79"
+            "id": "92d174a2-cf80-4040-b961-c4145147c5a4"
           },
           {
             "command": "EVENT_GBVM_SCRIPT",
             "args": {
-              "script": "VM_LOAD_TEXT 1 \n.dw VAR_SCORE\n.asciz \"\\003\\001\\002%D6\"\nVM_CALL_NATIVE b_ui_alt_display_text, _ui_alt_display_text",
+              "script": "VM_LOAD_TEXT 2 \n.dw VAR_SCOREUPPER\n.dw VAR_SCORELOWER\n.asciz \"\\003\\001\\002%D3\\003\\004\\002%D3\"\nVM_CALL_NATIVE b_ui_alt_display_text, _ui_alt_display_text",
               "references": [
                 {
                   "type": "variable",
                   "id": "12"
+                },
+                {
+                  "type": "variable",
+                  "id": "57"
                 }
               ],
               "__collapse": true

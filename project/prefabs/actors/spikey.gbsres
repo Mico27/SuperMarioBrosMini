@@ -228,6 +228,57 @@
       "children": {}
     }
   ],
-  "hit2Script": [],
+  "hit2Script": [
+    {
+      "command": "EVENT_SET_ACTOR_BEHAVIOR",
+      "args": {
+        "actorId": "$self$",
+        "behaviorId": {
+          "type": "number",
+          "value": 15
+        },
+        "__collapse": true
+      },
+      "id": "8ff923de-a339-45da-905a-52bd68736b66",
+      "children": {}
+    },
+    {
+      "command": "EVENT_SET_ACTOR_STATE",
+      "args": {
+        "actorId": "$self$",
+        "stateId": {
+          "type": "number",
+          "value": 0
+        },
+        "__collapse": true
+      },
+      "id": "b12da8c0-7cae-4b92-9311-cb21f568b945",
+      "children": {}
+    },
+    {
+      "command": "EVENT_ACTOR_SET_STATE",
+      "args": {
+        "actorId": "$self$",
+        "spriteStateId": "Knocked",
+        "loopAnim": true,
+        "__collapse": true
+      },
+      "id": "129a77e5-1f3e-49dd-b73f-4fee8d32330c",
+      "children": {}
+    },
+    {
+      "command": "EVENT_CALL_CUSTOM_EVENT",
+      "args": {
+        "customEventId": "c99bf8d3-9942-4d5f-be4c-bdb1a43de650",
+        "$variable[V0]$": {
+          "type": "number",
+          "value": 0
+        },
+        "__collapse": true
+      },
+      "id": "0a767e7e-b291-469a-9a05-67833c2568ba",
+      "children": {}
+    }
+  ],
   "hit3Script": []
 }

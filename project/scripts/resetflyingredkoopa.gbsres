@@ -1,0 +1,88 @@
+{
+  "_resourceType": "script",
+  "id": "8c5f5a90-b1ee-42eb-b049-d2259478aea5",
+  "name": "ResetFlyingRedKoopa",
+  "description": "",
+  "variables": {
+    "V0": {
+      "id": "V0",
+      "name": "XPos",
+      "passByReference": false
+    },
+    "V1": {
+      "id": "V1",
+      "name": "YPos",
+      "passByReference": false
+    }
+  },
+  "actors": {
+    "0": {
+      "id": "0",
+      "name": "Flying Red Koopa"
+    }
+  },
+  "symbol": "script_21",
+  "script": [
+    {
+      "command": "EVENT_ACTOR_SET_POSITION",
+      "args": {
+        "actorId": "0",
+        "x": {
+          "type": "variable",
+          "value": "V0"
+        },
+        "y": {
+          "type": "variable",
+          "value": "V1"
+        },
+        "__collapse": true
+      },
+      "id": "3500ad7c-d021-4b21-b8b2-0737846ffbbb"
+    },
+    {
+      "command": "EVENT_ACTOR_SET_STATE",
+      "args": {
+        "actorId": "0",
+        "spriteStateId": "Red_Winged",
+        "loopAnim": true,
+        "__collapse": true
+      },
+      "id": "d0423b0b-435b-4eb9-8701-c4cea029ea15",
+      "children": {}
+    },
+    {
+      "command": "EVENT_SET_ACTOR_BEHAVIOR",
+      "args": {
+        "actorId": "0",
+        "behaviorId": {
+          "type": "number",
+          "value": 8
+        },
+        "__collapse": true
+      },
+      "id": "e45ad315-753d-4807-8581-10fa9710cb0c",
+      "children": {}
+    },
+    {
+      "command": "EVENT_SET_ACTOR_STATE",
+      "args": {
+        "actorId": "0",
+        "stateId": {
+          "type": "number",
+          "value": 0
+        },
+        "__collapse": true
+      },
+      "id": "cb61af04-ccd9-4cc7-85e9-7b7283117829"
+    },
+    {
+      "command": "EVENT_ACTOR_ACTIVATE",
+      "args": {
+        "actorId": "0",
+        "__comment": false,
+        "__collapse": true
+      },
+      "id": "4b603db2-d48b-4de7-8f6d-db54a19f54d4"
+    }
+  ]
+}
