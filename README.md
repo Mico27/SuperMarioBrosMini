@@ -1,2 +1,4 @@
-GBS project of the super mario bros demake, made to showcase the dynamic tiles/metatiles plugin
+GBS project of the super mario bros demake, made to showcase the dynamic tiles/metatiles plugin.
+WARNING: the project cant be compiled with the current released version of GBS, must be compiled with the dev branch version of GBS.
+You can download the compiled rom in the releases.
 ![image](https://github.com/user-attachments/assets/2b04e5f7-f636-45a5-9bff-d879267d718e)
