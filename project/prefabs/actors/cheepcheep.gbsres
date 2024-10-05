@@ -98,6 +98,20 @@
             },
             "id": "9c2db5d0-09b4-493a-82f1-883b671ef34c",
             "children": {}
+          },
+          {
+            "command": "EVENT_SOUND_PLAY_EFFECT",
+            "args": {
+              "type": "63693649-2ce5-421b-adb8-6cd5c384e456",
+              "priority": "medium",
+              "pitch": 4,
+              "frequency": 200,
+              "duration": 0.5,
+              "wait": true,
+              "effect": 0,
+              "__collapse": true
+            },
+            "id": "015d7be2-8a92-4a0f-ad86-111b968e3fe3"
           }
         ],
         "false": [
@@ -231,6 +245,20 @@
       },
       "id": "5f6c790c-f0d9-4230-8e17-0f78142ff35b",
       "children": {}
+    },
+    {
+      "command": "EVENT_SOUND_PLAY_EFFECT",
+      "args": {
+        "type": "63693649-2ce5-421b-adb8-6cd5c384e456",
+        "priority": "medium",
+        "pitch": 4,
+        "frequency": 200,
+        "duration": 0.5,
+        "wait": true,
+        "effect": 0,
+        "__collapse": false
+      },
+      "id": "a725c586-8fd3-4cf5-955c-eda99e4844ca"
     }
   ],
   "hit2Script": [
@@ -283,6 +311,20 @@
       },
       "id": "297d86a9-b298-41e4-9b41-596f78df1124",
       "children": {}
+    },
+    {
+      "command": "EVENT_SOUND_PLAY_EFFECT",
+      "args": {
+        "type": "63693649-2ce5-421b-adb8-6cd5c384e456",
+        "priority": "medium",
+        "pitch": 4,
+        "frequency": 200,
+        "duration": 0.5,
+        "wait": true,
+        "effect": 0,
+        "__collapse": false
+      },
+      "id": "1bdb4173-d846-4650-866b-163a2bb6fbb2"
     }
   ],
   "hit3Script": []

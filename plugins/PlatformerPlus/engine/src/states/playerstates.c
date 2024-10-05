@@ -451,8 +451,12 @@ void ground_state(void) BANKED {
 	}
 
     //Check for final frame
-    if (que_state != GROUND_STATE){
+    if (que_state != GROUND_STATE && plat_state == GROUND_STATE){
         plat_state = GROUND_END;
+    }
+	
+	if (que_state != SKID_STATE && plat_state == SKID_STATE){
+        plat_state = SKID_END;
     }
 
     //COUNTERS

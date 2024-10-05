@@ -98,6 +98,20 @@
             },
             "id": "136cf76a-d93c-4725-b77a-fda575e2513f",
             "children": {}
+          },
+          {
+            "command": "EVENT_SOUND_PLAY_EFFECT",
+            "args": {
+              "type": "63693649-2ce5-421b-adb8-6cd5c384e456",
+              "priority": "medium",
+              "pitch": 4,
+              "frequency": 200,
+              "duration": 0.5,
+              "wait": true,
+              "effect": 0,
+              "__collapse": false
+            },
+            "id": "b7e652c6-2975-475c-80d8-173710e57e20"
           }
         ],
         "false": [
@@ -205,6 +219,20 @@
                   },
                   "id": "0b47d048-98e4-43e7-9442-dbb07f71e804",
                   "children": {}
+                },
+                {
+                  "command": "EVENT_SOUND_PLAY_EFFECT",
+                  "args": {
+                    "type": "02aef5b8-1037-455f-b4a7-5f95b4e7f144",
+                    "priority": "medium",
+                    "pitch": 4,
+                    "frequency": 200,
+                    "duration": 0.5,
+                    "wait": true,
+                    "effect": 0,
+                    "__collapse": true
+                  },
+                  "id": "343f0b13-b5f4-4dd4-a457-127700c17ef6"
                 }
               ],
               "false": [
@@ -337,6 +365,20 @@
       },
       "id": "6520a94e-eae8-4d35-9a17-6bb39cb09544",
       "children": {}
+    },
+    {
+      "command": "EVENT_SOUND_PLAY_EFFECT",
+      "args": {
+        "type": "63693649-2ce5-421b-adb8-6cd5c384e456",
+        "priority": "medium",
+        "pitch": 4,
+        "frequency": 200,
+        "duration": 0.5,
+        "wait": true,
+        "effect": 0,
+        "__collapse": false
+      },
+      "id": "d0e927bf-3739-4233-aa59-bb7b2f5f6a5a"
     }
   ],
   "hit2Script": [
@@ -389,6 +431,20 @@
       },
       "id": "70c7fee5-4868-4540-b89d-7b718943188f",
       "children": {}
+    },
+    {
+      "command": "EVENT_SOUND_PLAY_EFFECT",
+      "args": {
+        "type": "63693649-2ce5-421b-adb8-6cd5c384e456",
+        "priority": "medium",
+        "pitch": 4,
+        "frequency": 200,
+        "duration": 0.5,
+        "wait": true,
+        "effect": 0,
+        "__collapse": false
+      },
+      "id": "2f379cfe-6d01-4486-bcb9-9a362b0d0e10"
     }
   ],
   "hit3Script": []

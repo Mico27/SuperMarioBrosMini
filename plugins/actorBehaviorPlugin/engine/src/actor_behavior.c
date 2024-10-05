@@ -309,7 +309,23 @@ void actor_behavior_update(void) BANKED {
 						break;
 					}
 					apply_gravity(i);
-					apply_velocity(i, actor);
+					//Apply velocity
+					WORD new_y =  actor->pos.y + actor_vel_y[i];
+					WORD new_x =  actor->pos.x + actor_vel_x[i];
+					if (actor->collision_enabled){
+						//Tile Collision
+						actor->pos.x = check_collision(new_x, actor->pos.y, &actor->bounds, ((actor->pos.x > new_x) ? CHECK_DIR_LEFT : CHECK_DIR_RIGHT));
+						if (actor->pos.x != new_x){
+							actor_vel_x[i] = -actor_vel_x[i];
+							if (actor->script.bank){
+								script_execute(actor->script.bank, actor->script.ptr, 0, 1, 8);
+							}
+						}
+						actor->pos.y = check_collision(actor->pos.x, new_y, &actor->bounds, ((actor->pos.y > new_y) ? CHECK_DIR_UP : CHECK_DIR_DOWN));
+					} else {
+						actor->pos.x = new_x;
+						actor->pos.y = new_y;
+					}
 					//Actor Collision		
 					actor_t * hit_actor = actor_overlapping_bb(&actor->bounds, &actor->pos, actor, FALSE);
 					if (hit_actor && hit_actor->script.bank){
@@ -327,7 +343,12 @@ void actor_behavior_update(void) BANKED {
 			case 6://Horizontal projectile (Bowser fire, bullet bill)
 			switch(actor_states[i]){
 				case 0: //Init
-					if ((((actor->pos.x >> 4) + 8) - draw_scroll_x) < BEHAVIOR_ACTIVATION_THRESHOLD){ actor_states[i] = 1; }
+					if ((((actor->pos.x >> 4) + 8) - draw_scroll_x) < BEHAVIOR_ACTIVATION_THRESHOLD){ 
+						actor_states[i] = 1; 
+						if (actor->script.bank){
+							script_execute(actor->script.bank, actor->script.ptr, 0, 1, 8);
+						}
+					}
 					break;
 				case 1: //Main state
 					current_actor_x = ((actor->pos.x >> 4) + 8) - draw_scroll_x;
@@ -347,7 +368,8 @@ void actor_behavior_update(void) BANKED {
 				case 0: //Init
 					if ((((actor->pos.x >> 4) + 8) - draw_scroll_x) < BEHAVIOR_ACTIVATION_THRESHOLD){ 
 						actor_states[i] = 1; 
-						actor_counter_a[i] = 60;
+						actor_counter_a[i] = 30;
+						actor_vel_y[i] = 0;
 					}
 					break;
 				case 1: //Main state

@@ -35,6 +35,13 @@
   "y": 256,
   "script": [
     {
+      "command": "EVENT_MUSIC_STOP",
+      "args": {
+        "__collapse": true
+      },
+      "id": "4c806ced-3ebd-4427-bc29-951e6b7d2dc7"
+    },
+    {
       "command": "EVENT_SET_INPUT_SCRIPT",
       "args": {
         "input": [
@@ -365,7 +372,7 @@
           "value": "($12$ > $13$) || ($12$ == $13$ && $57$ > $56$)"
         },
         "__collapseElse": true,
-        "__collapse": false
+        "__collapse": true
       },
       "children": {
         "true": [
@@ -520,7 +527,7 @@
               "text": "\\003\\007\\012GAME OVER",
               "x": 0,
               "y": 0,
-              "__collapse": false
+              "__collapse": true
             },
             "id": "88412e07-51da-4feb-b0a8-2f45b279bdd2"
           },
@@ -539,7 +546,7 @@
                 }
               },
               "__collapseElse": true,
-              "__collapse": false
+              "__collapse": true
             },
             "children": {
               "true": [
@@ -594,6 +601,14 @@
             "id": "960753d1-5fdc-47e9-92b9-d1719fb1e640"
           },
           {
+            "command": "EVENT_MUSIC_PLAY",
+            "args": {
+              "musicId": "991aebda-80c4-42fd-883e-c2fa38343a5a",
+              "__collapse": true
+            },
+            "id": "e666d7ff-d425-4c9f-9b9c-9486570f63d2"
+          },
+          {
             "command": "EVENT_WAIT",
             "args": {
               "time": 1,
@@ -613,7 +628,7 @@
               ],
               "override": true,
               "__scriptTabs": "press",
-              "__collapse": false
+              "__collapse": true
             },
             "children": {
               "true": [

@@ -4,6 +4,27 @@
   "name": "FlagTrigger",
   "script": [
     {
+      "command": "EVENT_MUSIC_STOP",
+      "args": {
+        "__collapse": true
+      },
+      "id": "073a18c5-dd01-4846-9293-fc84f20e8097"
+    },
+    {
+      "command": "EVENT_SOUND_PLAY_EFFECT",
+      "args": {
+        "type": "02aef5b8-1037-455f-b4a7-5f95b4e7f144",
+        "priority": "medium",
+        "pitch": 4,
+        "frequency": 200,
+        "duration": 0.5,
+        "wait": true,
+        "effect": 0,
+        "__collapse": true
+      },
+      "id": "5b11ed65-3a21-46f9-af6e-132e353671f0"
+    },
+    {
       "command": "EVENT_TIMER_DISABLE",
       "args": {
         "timer": 1,
@@ -19,7 +40,7 @@
           "type": "number",
           "value": 32
         },
-        "__collapse": false
+        "__collapse": true
       },
       "id": "4a28ad33-5123-4add-9e3e-8229bda9bcb5"
     },
@@ -109,11 +130,11 @@
       "command": "EVENT_WAIT",
       "args": {
         "time": 1,
-        "frames": 45,
+        "frames": 15,
         "units": "frames",
         "__collapse": true
       },
-      "id": "50d5aa6d-dede-430d-9293-fde3389576b8"
+      "id": "ddeaab2e-ee88-458d-a51a-8fd4e4f2c787"
     },
     {
       "command": "EVENT_ACTOR_SET_DIRECTION",
@@ -148,11 +169,25 @@
       "command": "EVENT_WAIT",
       "args": {
         "time": 1,
-        "frames": 15,
+        "frames": 45,
         "units": "frames",
         "__collapse": true
       },
-      "id": "ddeaab2e-ee88-458d-a51a-8fd4e4f2c787"
+      "id": "50d5aa6d-dede-430d-9293-fde3389576b8"
+    },
+    {
+      "command": "EVENT_SOUND_PLAY_EFFECT",
+      "args": {
+        "type": "d1bb62af-5ec0-424c-8c6a-1190f2d57950",
+        "priority": "medium",
+        "pitch": 4,
+        "frequency": 200,
+        "duration": 0.5,
+        "wait": true,
+        "effect": 0,
+        "__collapse": true
+      },
+      "id": "a6f05867-5555-42bf-964b-f941a1c86db3"
     },
     {
       "command": "EVENT_THREAD_START",
@@ -221,6 +256,14 @@
         "__collapse": true
       },
       "id": "cf5af40a-3838-43c4-8e13-4c51f318daf8"
+    },
+    {
+      "command": "EVENT_MUSIC_PLAY",
+      "args": {
+        "musicId": "0979f12c-416a-41ef-a977-7e0a61d610f4",
+        "__collapse": true
+      },
+      "id": "3c21acea-9b2f-4e4d-afed-03338d35807b"
     },
     {
       "command": "EVENT_ACTOR_SET_STATE",

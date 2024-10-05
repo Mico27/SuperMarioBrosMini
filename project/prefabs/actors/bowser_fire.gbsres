@@ -114,7 +114,8 @@
       "command": "EVENT_SET_ACTOR_LINKED_ACTOR",
       "args": {
         "actorId": "$self$",
-        "linkedActorId": "$self$"
+        "linkedActorId": "$self$",
+        "__collapse": true
       },
       "id": "8764858f-6f0c-47da-a4ce-6686cf99b0e6"
     }
@@ -122,5 +123,20 @@
   "updateScript": [],
   "hit1Script": [],
   "hit2Script": [],
-  "hit3Script": []
+  "hit3Script": [
+    {
+      "command": "EVENT_SOUND_PLAY_EFFECT",
+      "args": {
+        "type": "17033f44-5800-4dc8-927e-17784d4ad4e8",
+        "priority": "medium",
+        "pitch": 4,
+        "frequency": 200,
+        "duration": 0.5,
+        "wait": true,
+        "effect": 0,
+        "__collapse": false
+      },
+      "id": "1ef22efa-fd00-485d-a3a7-529ab07079d1"
+    }
+  ]
 }

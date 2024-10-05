@@ -121,6 +121,20 @@
                   "id": "8f6c5fd6-056c-4d99-9390-50493ee4c919"
                 },
                 {
+                  "command": "EVENT_SOUND_PLAY_EFFECT",
+                  "args": {
+                    "type": "fcefe58f-a18a-482f-8d79-1014c8a2f37e",
+                    "priority": "medium",
+                    "pitch": 4,
+                    "frequency": 200,
+                    "duration": 0.5,
+                    "wait": true,
+                    "effect": 0,
+                    "__collapse": true
+                  },
+                  "id": "5dd193ed-59e3-4120-b662-3a94fc530b00"
+                },
+                {
                   "command": "EVENT_ACTOR_SET_STATE",
                   "args": {
                     "actorId": "player",
@@ -234,7 +248,7 @@
             "command": "EVENT_GROUP",
             "args": {
               "__label": "Fire -> Small",
-              "__collapse": true
+              "__collapse": false
             },
             "children": {
               "true": [
@@ -244,6 +258,20 @@
                     "__collapse": true
                   },
                   "id": "4b3b49a7-75fb-435e-b412-1e7a4efa2b38"
+                },
+                {
+                  "command": "EVENT_SOUND_PLAY_EFFECT",
+                  "args": {
+                    "type": "fcefe58f-a18a-482f-8d79-1014c8a2f37e",
+                    "priority": "medium",
+                    "pitch": 4,
+                    "frequency": 200,
+                    "duration": 0.5,
+                    "wait": true,
+                    "effect": 0,
+                    "__collapse": true
+                  },
+                  "id": "8df5998d-5df9-455c-8a96-35d26491b452"
                 },
                 {
                   "command": "EVENT_PALETTE_SET_SPRITE",

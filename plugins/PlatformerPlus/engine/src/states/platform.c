@@ -6,6 +6,7 @@
 #include "camera.h"
 #include "collision.h"
 #include "data_manager.h"
+#include "music_manager.h"
 #include "game_time.h"
 #include "input.h"
 #include "math.h"

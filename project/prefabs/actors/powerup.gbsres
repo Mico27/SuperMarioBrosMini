@@ -119,6 +119,20 @@
             "children": {
               "true": [
                 {
+                  "command": "EVENT_SOUND_PLAY_EFFECT",
+                  "args": {
+                    "type": "ed4b6227-eb88-4c7c-88a2-9ae1d4b402b6",
+                    "priority": "medium",
+                    "pitch": 4,
+                    "frequency": 200,
+                    "duration": 0.5,
+                    "wait": true,
+                    "effect": 0,
+                    "__collapse": true
+                  },
+                  "id": "7b162747-8acf-4078-9d1b-dcf2a2590e88"
+                },
+                {
                   "command": "EVENT_IF",
                   "args": {
                     "condition": {
@@ -271,6 +285,20 @@
             },
             "children": {
               "true": [
+                {
+                  "command": "EVENT_SOUND_PLAY_EFFECT",
+                  "args": {
+                    "type": "ed4b6227-eb88-4c7c-88a2-9ae1d4b402b6",
+                    "priority": "medium",
+                    "pitch": 4,
+                    "frequency": 200,
+                    "duration": 0.5,
+                    "wait": true,
+                    "effect": 0,
+                    "__collapse": true
+                  },
+                  "id": "9c95b440-651a-4689-97ba-f84861a2f6a9"
+                },
                 {
                   "command": "EVENT_IF",
                   "args": {
@@ -567,6 +595,20 @@
             "children": {
               "true": [
                 {
+                  "command": "EVENT_SOUND_PLAY_EFFECT",
+                  "args": {
+                    "type": "ed4b6227-eb88-4c7c-88a2-9ae1d4b402b6",
+                    "priority": "medium",
+                    "pitch": 4,
+                    "frequency": 200,
+                    "duration": 0.5,
+                    "wait": true,
+                    "effect": 0,
+                    "__collapse": true
+                  },
+                  "id": "5c6bb034-479a-4b68-aa1d-f2d332b12691"
+                },
+                {
                   "command": "EVENT_CALL_CUSTOM_EVENT",
                   "args": {
                     "customEventId": "c99bf8d3-9942-4d5f-be4c-bdb1a43de650",
@@ -577,6 +619,14 @@
                     "__collapse": true
                   },
                   "id": "ffd14867-5e9f-46ff-8b6b-8df532af28fb"
+                },
+                {
+                  "command": "EVENT_MUSIC_PLAY",
+                  "args": {
+                    "musicId": "3e0e4198-0f2d-4713-b88c-35e5654e8aad",
+                    "__collapse": true
+                  },
+                  "id": "dfc31a0f-8de2-4a80-b3d4-332e5e985e76"
                 },
                 {
                   "command": "EVENT_THREAD_START",
@@ -735,6 +785,14 @@
                           "__collapse": true
                         },
                         "id": "d16aa2d3-6cb0-4044-9e75-cf2cbaea45df"
+                      },
+                      {
+                        "command": "EVENT_CALL_CUSTOM_EVENT",
+                        "args": {
+                          "customEventId": "67f8ee9d-9af9-40b2-906f-962bf8c36cf7",
+                          "__collapse": true
+                        },
+                        "id": "a417ca68-85d3-41ed-8355-1b6446a29570"
                       }
                     ]
                   },

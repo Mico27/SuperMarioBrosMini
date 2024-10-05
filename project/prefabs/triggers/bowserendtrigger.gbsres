@@ -52,15 +52,6 @@
       "children": {}
     },
     {
-      "command": "EVENT_WAIT",
-      "args": {
-        "time": 1,
-        "frames": 30
-      },
-      "id": "c2f9fb3e-2cc7-401b-b092-c15b4405edab",
-      "children": {}
-    },
-    {
       "command": "EVENT_IF",
       "args": {
         "condition": {
@@ -93,11 +84,22 @@
       "children": {
         "true": [
           {
+            "command": "EVENT_WAIT",
+            "args": {
+              "time": 1,
+              "frames": 30,
+              "__collapse": true
+            },
+            "id": "c2f9fb3e-2cc7-401b-b092-c15b4405edab",
+            "children": {}
+          },
+          {
             "command": "EVENT_UI_ALT_DISPLAY_TEXT",
             "args": {
               "text": "YOUR QUEST IS OVER.\nWE PRESENT YOU WITH \n   A NEW QUEST.",
               "x": 145,
-              "y": 8
+              "y": 8,
+              "__collapse": true
             },
             "id": "75d832d2-31e6-479a-8d78-8da6712a0152",
             "children": {}
@@ -117,7 +119,7 @@
               ],
               "override": true,
               "__scriptTabs": "press",
-              "__collapse": false
+              "__collapse": true
             },
             "children": {
               "true": [
@@ -161,18 +163,6 @@
                 {
                   "command": "EVENT_SET_VALUE",
                   "args": {
-                    "variable": "7",
-                    "value": {
-                      "type": "number",
-                      "value": 0
-                    },
-                    "__collapse": false
-                  },
-                  "id": "e48dbb56-11ca-4621-af6c-dadb1531ac44"
-                },
-                {
-                  "command": "EVENT_SET_VALUE",
-                  "args": {
                     "variable": "31",
                     "value": {
                       "type": "number",
@@ -197,11 +187,22 @@
         ],
         "false": [
           {
+            "command": "EVENT_WAIT",
+            "args": {
+              "time": 1,
+              "frames": 30,
+              "__collapse": true
+            },
+            "id": "ee88b2c6-daa1-4737-b405-6a9c1cd27f1b",
+            "children": {}
+          },
+          {
             "command": "EVENT_UI_ALT_DISPLAY_TEXT",
             "args": {
               "text": " BUT OUR PRINCESS \n  IS IN ANOTHER\n     CASTLE!",
               "x": 145,
-              "y": 8
+              "y": 8,
+              "__collapse": true
             },
             "id": "d885e96f-9eab-4043-b09e-086c42d0f648",
             "children": {}
@@ -221,7 +222,7 @@
               ],
               "override": true,
               "__scriptTabs": "press",
-              "__collapse": false
+              "__collapse": true
             },
             "children": {
               "true": [

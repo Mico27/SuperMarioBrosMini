@@ -93,6 +93,20 @@
               "__collapse": true
             },
             "id": "7dcd5db8-5ea7-49ce-a7fa-1934f6f3b949"
+          },
+          {
+            "command": "EVENT_SOUND_PLAY_EFFECT",
+            "args": {
+              "type": "63693649-2ce5-421b-adb8-6cd5c384e456",
+              "priority": "medium",
+              "pitch": 4,
+              "frequency": 200,
+              "duration": 0.5,
+              "wait": true,
+              "effect": 0,
+              "__collapse": true
+            },
+            "id": "f27b0e68-a24e-4fa1-a5a0-ade96f3c67d5"
           }
         ],
         "false": [
@@ -181,7 +195,8 @@
                     "value2": {
                       "type": "number",
                       "value": 10
-                    }
+                    },
+                    "__collapse": true
                   },
                   "children": {
                     "true0": [
@@ -248,6 +263,20 @@
                           "__collapse": true
                         },
                         "id": "1ad2585e-f400-4ebb-9771-47096e7b1307"
+                      },
+                      {
+                        "command": "EVENT_SOUND_PLAY_EFFECT",
+                        "args": {
+                          "type": "02aef5b8-1037-455f-b4a7-5f95b4e7f144",
+                          "priority": "medium",
+                          "pitch": 4,
+                          "frequency": 200,
+                          "duration": 0.5,
+                          "wait": true,
+                          "effect": 0,
+                          "__collapse": true
+                        },
+                        "id": "6876326a-a1ad-4dbc-9524-5edfd417a5c1"
                       }
                     ],
                     "true1": [
@@ -337,7 +366,7 @@
                             "value": 16
                           },
                           "__collapseElse": true,
-                          "__collapse": true
+                          "__collapse": false
                         },
                         "children": {
                           "true0": [
@@ -405,6 +434,20 @@
                                 ]
                               },
                               "id": "239c73d1-28df-4ef1-8ad4-28b3c86c42fc"
+                            },
+                            {
+                              "command": "EVENT_SOUND_PLAY_EFFECT",
+                              "args": {
+                                "type": "63693649-2ce5-421b-adb8-6cd5c384e456",
+                                "priority": "medium",
+                                "pitch": 4,
+                                "frequency": 200,
+                                "duration": 0.5,
+                                "wait": true,
+                                "effect": 0,
+                                "__collapse": true
+                              },
+                              "id": "20c0db72-daf6-4314-8925-32dbd5d3e063"
                             }
                           ],
                           "true1": [
@@ -449,6 +492,20 @@
                                 "__collapse": true
                               },
                               "id": "138ba304-2b87-4512-9e1a-a5b5ebcbcf70"
+                            },
+                            {
+                              "command": "EVENT_SOUND_PLAY_EFFECT",
+                              "args": {
+                                "type": "02aef5b8-1037-455f-b4a7-5f95b4e7f144",
+                                "priority": "medium",
+                                "pitch": 4,
+                                "frequency": 200,
+                                "duration": 0.5,
+                                "wait": true,
+                                "effect": 0,
+                                "__collapse": true
+                              },
+                              "id": "13bc5b72-5992-49cd-9fe6-cbb7a85cb766"
                             }
                           ],
                           "true2": [],
@@ -534,6 +591,20 @@
                           "__collapse": true
                         },
                         "id": "4f2fba59-ff2d-4aa1-9d7a-2e1628d7e6c0"
+                      },
+                      {
+                        "command": "EVENT_SOUND_PLAY_EFFECT",
+                        "args": {
+                          "type": "02aef5b8-1037-455f-b4a7-5f95b4e7f144",
+                          "priority": "medium",
+                          "pitch": 4,
+                          "frequency": 200,
+                          "duration": 0.5,
+                          "wait": true,
+                          "effect": 0,
+                          "__collapse": true
+                        },
+                        "id": "0c5efb61-c676-4b59-aa3d-a0d7e784c698"
                       }
                     ],
                     "true3": [],
@@ -695,6 +766,20 @@
         "__collapse": true
       },
       "id": "d4f1daf8-0f83-4558-b743-4cc229e58a1a"
+    },
+    {
+      "command": "EVENT_SOUND_PLAY_EFFECT",
+      "args": {
+        "type": "63693649-2ce5-421b-adb8-6cd5c384e456",
+        "priority": "medium",
+        "pitch": 4,
+        "frequency": 200,
+        "duration": 0.5,
+        "wait": true,
+        "effect": 0,
+        "__collapse": true
+      },
+      "id": "c0beff85-2c57-48af-bceb-ad241824808a"
     }
   ],
   "hit2Script": [
@@ -743,7 +828,36 @@
         "__collapse": true
       },
       "id": "1832a647-e77d-4053-a40d-bd6a8a792259"
+    },
+    {
+      "command": "EVENT_SOUND_PLAY_EFFECT",
+      "args": {
+        "type": "63693649-2ce5-421b-adb8-6cd5c384e456",
+        "priority": "medium",
+        "pitch": 4,
+        "frequency": 200,
+        "duration": 0.5,
+        "wait": true,
+        "effect": 0,
+        "__collapse": true
+      },
+      "id": "c2e91372-ff57-4a36-949d-51ba62b5b818"
     }
   ],
-  "hit3Script": []
+  "hit3Script": [
+    {
+      "command": "EVENT_SOUND_PLAY_EFFECT",
+      "args": {
+        "type": "a631d886-60d0-4abf-b53e-7673f15235d0",
+        "priority": "medium",
+        "pitch": 4,
+        "frequency": 200,
+        "duration": 0.5,
+        "wait": true,
+        "effect": 0,
+        "__collapse": false
+      },
+      "id": "232ca676-0c8a-40e3-96f6-db63075da388"
+    }
+  ]
 }

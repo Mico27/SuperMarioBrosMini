@@ -27,7 +27,7 @@
           }
         },
         "__collapseElse": true,
-        "__collapse": true
+        "__collapse": false
       },
       "children": {
         "true": [
@@ -106,7 +106,7 @@
                       "value": "right"
                     },
                     "__collapseElse": false,
-                    "__collapse": false
+                    "__collapse": true
                   },
                   "children": {
                     "true": [
@@ -180,16 +180,31 @@
                       "type": "number",
                       "value": -16
                     },
-                    "__collapse": false
+                    "__collapse": true
                   },
                   "id": "91bdc4b1-3674-4b3e-b747-ed0518f8f76a"
                 },
                 {
                   "command": "EVENT_ACTOR_ACTIVATE",
                   "args": {
-                    "actorId": "0"
+                    "actorId": "0",
+                    "__collapse": true
                   },
                   "id": "1b831217-3669-4dfb-8efd-39018698c54b"
+                },
+                {
+                  "command": "EVENT_SOUND_PLAY_EFFECT",
+                  "args": {
+                    "type": "7853fa6c-03d0-457f-a0f5-8cf2ea755478",
+                    "priority": "medium",
+                    "pitch": 4,
+                    "frequency": 200,
+                    "duration": 0.5,
+                    "wait": true,
+                    "effect": 0,
+                    "__collapse": true
+                  },
+                  "id": "6099c642-aa28-43ef-8602-307710dbd2c9"
                 }
               ],
               "false": []

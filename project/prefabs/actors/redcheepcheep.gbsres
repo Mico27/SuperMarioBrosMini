@@ -72,7 +72,7 @@
               "actorId": "$self$",
               "spriteStateId": "Red_Knocked",
               "loopAnim": true,
-              "__collapse": false
+              "__collapse": true
             },
             "id": "ec2256d2-edc1-4162-9404-d1ca75697ede",
             "children": {}
@@ -98,6 +98,20 @@
             },
             "id": "232524e7-ff98-47e0-854c-639bc1b460b2",
             "children": {}
+          },
+          {
+            "command": "EVENT_SOUND_PLAY_EFFECT",
+            "args": {
+              "type": "63693649-2ce5-421b-adb8-6cd5c384e456",
+              "priority": "medium",
+              "pitch": 4,
+              "frequency": 200,
+              "duration": 0.5,
+              "wait": true,
+              "effect": 0,
+              "__collapse": true
+            },
+            "id": "ee300f90-bf27-43e2-a8a8-24ea9161a92a"
           }
         ],
         "false": [
@@ -242,6 +256,20 @@
       },
       "id": "76ec1cff-9fdc-4c6b-b96a-67811374f77b",
       "children": {}
+    },
+    {
+      "command": "EVENT_SOUND_PLAY_EFFECT",
+      "args": {
+        "type": "63693649-2ce5-421b-adb8-6cd5c384e456",
+        "priority": "medium",
+        "pitch": 4,
+        "frequency": 200,
+        "duration": 0.5,
+        "wait": true,
+        "effect": 0,
+        "__collapse": false
+      },
+      "id": "af1cd9d5-a3d2-460a-bbd7-867e24b0233e"
     }
   ],
   "hit2Script": [
@@ -294,6 +322,20 @@
       },
       "id": "5664d733-9c5c-4c50-b0cf-d3373965b7f7",
       "children": {}
+    },
+    {
+      "command": "EVENT_SOUND_PLAY_EFFECT",
+      "args": {
+        "type": "63693649-2ce5-421b-adb8-6cd5c384e456",
+        "priority": "medium",
+        "pitch": 4,
+        "frequency": 200,
+        "duration": 0.5,
+        "wait": true,
+        "effect": 0,
+        "__collapse": false
+      },
+      "id": "e9322786-08fc-4d7f-a573-797407fa9899"
     }
   ],
   "hit3Script": []

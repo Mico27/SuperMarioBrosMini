@@ -24,6 +24,14 @@
             "id": "9e849abc-de42-4800-9e53-cee1640b9d1b"
           },
           {
+            "command": "EVENT_MUSIC_PLAY",
+            "args": {
+              "musicId": "2acec8f7-89d5-4360-bafb-540dc988b59b",
+              "__collapse": true
+            },
+            "id": "78c805d0-03d9-4a9a-ab7d-155f1bff09c4"
+          },
+          {
             "command": "EVENT_SET_VALUE",
             "args": {
               "variable": "24",
@@ -241,6 +249,16 @@
               ]
             },
             "id": "6fc402d2-4985-4303-b514-59683624463d"
+          },
+          {
+            "command": "EVENT_WAIT",
+            "args": {
+              "time": 0.5,
+              "frames": 30,
+              "units": "frames",
+              "__collapse": true
+            },
+            "id": "a7ac4ed8-6013-4add-9074-194c09919c10"
           },
           {
             "command": "EVENT_CALL_CUSTOM_EVENT",
