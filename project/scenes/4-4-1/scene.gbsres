@@ -49,61 +49,21 @@
     {
       "command": "EVENT_SET_VALUE",
       "args": {
-        "variable": "9",
-        "value": {
-          "type": "number",
-          "value": 4
-        },
-        "__collapse": true
-      },
-      "id": "414ffd41-c7fc-4df2-8de5-50835ac2fb14"
-    },
-    {
-      "command": "EVENT_SET_VALUE",
-      "args": {
-        "variable": "10",
-        "value": {
-          "type": "number",
-          "value": 4
-        },
-        "__collapse": true
-      },
-      "id": "4990f833-7896-4298-800f-a22c0f9325cc"
-    },
-    {
-      "command": "EVENT_SET_VALUE",
-      "args": {
         "variable": "18",
         "value": {
-          "type": "number",
-          "value": 4
+          "type": "constant",
+          "value": "efd06150-a4f8-4086-a0d2-5245cb88aabd"
         },
         "__collapse": true
       },
       "id": "0a04ae33-1259-4663-990e-964b82c22c6f"
     },
     {
-      "command": "EVENT_CALL_CUSTOM_EVENT",
-      "args": {
-        "customEventId": "32d76253-2c63-4808-a673-2c3b44b8615b",
-        "$variable[V0]$": {
-          "type": "number",
-          "value": 1
-        },
-        "$variable[V1]$": {
-          "type": "number",
-          "value": 2
-        },
-        "__collapse": true
-      },
-      "id": "f6372180-c3ca-4eb0-a5e0-4f11eb01f758"
-    },
-    {
       "command": "PM_EVENT_PLATMARIO_SPECIFIC_SCRIPT",
       "args": {
         "specific_event": "1",
         "__scriptTabs": "scriptinput",
-        "__collapse": false
+        "__collapse": true
       },
       "children": {
         "script": [
@@ -141,7 +101,7 @@
         ],
         "override": false,
         "__scriptTabs": "press",
-        "__collapse": false
+        "__collapse": true
       },
       "children": {
         "true": [
@@ -159,6 +119,22 @@
         ]
       },
       "id": "ae0df91c-d558-496e-b9e3-bb34fc3010fe"
+    },
+    {
+      "command": "EVENT_CALL_CUSTOM_EVENT",
+      "args": {
+        "customEventId": "32d76253-2c63-4808-a673-2c3b44b8615b",
+        "$variable[V0]$": {
+          "type": "number",
+          "value": 1
+        },
+        "$variable[V1]$": {
+          "type": "number",
+          "value": 2
+        },
+        "__collapse": true
+      },
+      "id": "f6372180-c3ca-4eb0-a5e0-4f11eb01f758"
     }
   ],
   "playerHit1Script": [],

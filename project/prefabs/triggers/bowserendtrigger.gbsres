@@ -96,10 +96,10 @@
           {
             "command": "EVENT_UI_ALT_DISPLAY_TEXT",
             "args": {
-              "text": "YOUR QUEST IS OVER.\nWE PRESENT YOU WITH \n   A NEW QUEST.",
+              "text": "YOUR QUEST IS OVER.\n\nWE PRESENT YOU WITH \n   A NEW QUEST.\n\nPRESS B ON THE MENU",
               "x": 145,
               "y": 8,
-              "__collapse": true
+              "__collapse": false
             },
             "id": "75d832d2-31e6-479a-8d78-8da6712a0152",
             "children": {}
@@ -119,7 +119,7 @@
               ],
               "override": true,
               "__scriptTabs": "press",
-              "__collapse": true
+              "__collapse": false
             },
             "children": {
               "true": [
@@ -171,6 +171,50 @@
                     "__collapse": false
                   },
                   "id": "eb661c50-a2ba-42db-af9a-4be976a4ae6e"
+                },
+                {
+                  "command": "EVENT_SET_VALUE",
+                  "args": {
+                    "variable": "7",
+                    "value": {
+                      "type": "number",
+                      "value": 0
+                    }
+                  },
+                  "id": "473d5c7e-4847-42f0-8ec5-efec3cea0605"
+                },
+                {
+                  "command": "EVENT_SET_VALUE",
+                  "args": {
+                    "variable": "58",
+                    "value": {
+                      "type": "number",
+                      "value": 0
+                    }
+                  },
+                  "id": "ed6f5284-9d92-437d-936d-cca090690fa1"
+                },
+                {
+                  "command": "EVENT_SET_VALUE",
+                  "args": {
+                    "variable": "50",
+                    "value": {
+                      "type": "number",
+                      "value": 1
+                    }
+                  },
+                  "id": "92479a5e-d33b-47ad-83fd-9d5c66930780"
+                },
+                {
+                  "command": "EVENT_SET_VALUE",
+                  "args": {
+                    "variable": "59",
+                    "value": {
+                      "type": "number",
+                      "value": 0
+                    }
+                  },
+                  "id": "78531a66-7312-4955-916b-bac7a105c70f"
                 },
                 {
                   "command": "EVENT_CALL_CUSTOM_EVENT",

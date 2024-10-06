@@ -8,6 +8,18 @@
   "symbol": "script_5",
   "script": [
     {
+      "command": "EVENT_SET_VALUE",
+      "args": {
+        "variable": "22",
+        "value": {
+          "type": "expression",
+          "value": "$22$ % 13"
+        },
+        "__collapse": true
+      },
+      "id": "a6c3cefe-f22b-4dd4-a465-c654ad6accfb"
+    },
+    {
       "command": "EVENT_IF",
       "args": {
         "condition": {
@@ -26,6 +38,35 @@
       },
       "children": {
         "true": [
+          {
+            "command": "EVENT_IF",
+            "args": {
+              "condition": {
+                "type": "expression",
+                "value": "$58$ == 1 && $22$ != 1"
+              },
+              "__collapseElse": true,
+              "__collapse": false
+            },
+            "children": {
+              "true": [
+                {
+                  "command": "EVENT_SET_VALUE",
+                  "args": {
+                    "variable": "22",
+                    "value": {
+                      "type": "expression",
+                      "value": "rnd(11) + 2"
+                    },
+                    "__collapse": false
+                  },
+                  "id": "d57fb8e6-5928-40f1-8c41-5013f992697f"
+                }
+              ],
+              "false": []
+            },
+            "id": "b367db67-c7f6-4c2d-b894-442a8d34f0ee"
+          },
           {
             "command": "EVENT_SWITCH",
             "args": {
@@ -112,7 +153,7 @@
                 "value": 16
               },
               "__collapseElse": false,
-              "__collapse": true
+              "__collapse": false
             },
             "children": {
               "true0": [
@@ -577,6 +618,45 @@
             "args": {
               "condition": {
                 "type": "expression",
+                "value": "$58$ == 1 && $50$ == 0"
+              },
+              "__collapseElse": true,
+              "__collapse": false
+            },
+            "children": {
+              "true": [
+                {
+                  "command": "EVENT_SET_VALUE",
+                  "args": {
+                    "variable": "9",
+                    "value": {
+                      "type": "expression",
+                      "value": "rnd(8) + 1"
+                    }
+                  },
+                  "id": "34746a2b-b6ce-4fac-9566-0c55cdb055e2"
+                },
+                {
+                  "command": "EVENT_SET_VALUE",
+                  "args": {
+                    "variable": "10",
+                    "value": {
+                      "type": "expression",
+                      "value": "rnd(4) + 1"
+                    }
+                  },
+                  "id": "2ed95ca5-fb60-486f-aa2b-f30a29562ccf"
+                }
+              ],
+              "false": []
+            },
+            "id": "0dd497b7-a154-447f-b4be-159487b48cf6"
+          },
+          {
+            "command": "EVENT_IF",
+            "args": {
+              "condition": {
+                "type": "expression",
                 "value": "$31$ == 0 && $50$ == 0 && $52$ == 0"
               },
               "__collapseElse": false,
@@ -645,49 +725,71 @@
             "id": "f519fc32-4b51-4f52-9abb-e643163fd2f3"
           },
           {
+            "command": "EVENT_SET_VALUE",
+            "args": {
+              "variable": "26",
+              "value": {
+                "type": "expression",
+                "value": "($09$ - 1) % 8"
+              }
+            },
+            "id": "57523e73-02f4-4c59-85ec-d28eccf2daaf"
+          },
+          {
+            "command": "EVENT_SET_VALUE",
+            "args": {
+              "variable": "28",
+              "value": {
+                "type": "expression",
+                "value": "($10$ - 1) % 4"
+              }
+            },
+            "id": "cbd2d0d7-c35a-49bf-ad71-7811de107f9e"
+          },
+          {
             "command": "EVENT_SWITCH",
             "args": {
-              "variable": "9",
+              "variable": "26",
               "choices": 8,
               "__collapseCase0": true,
               "value0": {
                 "type": "number",
-                "value": 1
+                "value": 0
               },
               "__collapseCase1": true,
               "value1": {
                 "type": "number",
-                "value": 2
+                "value": 1
               },
               "__collapseCase2": true,
               "value2": {
                 "type": "number",
-                "value": 3
+                "value": 2
               },
               "__collapseCase3": true,
               "value3": {
                 "type": "number",
-                "value": 4
+                "value": 3
               },
               "__collapseCase4": true,
               "value4": {
                 "type": "number",
-                "value": 5
+                "value": 4
               },
               "__collapseCase5": true,
               "value5": {
                 "type": "number",
-                "value": 6
+                "value": 5
               },
               "__collapseCase6": true,
               "value6": {
                 "type": "number",
-                "value": 7
+                "value": 6
               },
               "__collapseCase7": false,
               "value7": {
                 "type": "number",
-                "value": 8
+                "value": 7
               },
               "__collapseCase8": false,
               "value8": {
@@ -729,7 +831,7 @@
                 "type": "number",
                 "value": 16
               },
-              "__collapseElse": false,
+              "__collapseElse": true,
               "__collapse": false
             },
             "children": {
@@ -737,27 +839,27 @@
                 {
                   "command": "EVENT_SWITCH",
                   "args": {
-                    "variable": "10",
+                    "variable": "28",
                     "choices": 4,
                     "__collapseCase0": false,
                     "value0": {
                       "type": "number",
-                      "value": 1
+                      "value": 0
                     },
                     "__collapseCase1": false,
                     "value1": {
                       "type": "number",
-                      "value": 2
+                      "value": 1
                     },
                     "__collapseCase2": false,
                     "value2": {
                       "type": "number",
-                      "value": 3
+                      "value": 2
                     },
                     "__collapseCase3": false,
                     "value3": {
                       "type": "number",
-                      "value": 4
+                      "value": 3
                     },
                     "__collapseCase4": false,
                     "value4": {
@@ -922,7 +1024,7 @@
                             "value": 16
                           },
                           "__collapseElse": false,
-                          "__collapse": false
+                          "__collapse": true
                         },
                         "children": {
                           "true0": [
@@ -1167,7 +1269,8 @@
                             "value": 15
                           },
                           "direction": "right",
-                          "fadeSpeed": 1
+                          "fadeSpeed": 1,
+                          "__collapse": true
                         },
                         "id": "23074844-547b-43d6-a222-d2cf6188f3c8"
                       }
@@ -1198,7 +1301,8 @@
                             "value": 9
                           },
                           "direction": "right",
-                          "fadeSpeed": 1
+                          "fadeSpeed": 1,
+                          "__collapse": true
                         },
                         "id": "0b5866b5-b238-41b1-b908-7b7321bbdee6"
                       }
@@ -1224,27 +1328,27 @@
                 {
                   "command": "EVENT_SWITCH",
                   "args": {
-                    "variable": "10",
+                    "variable": "28",
                     "choices": 4,
                     "__collapseCase0": false,
                     "value0": {
                       "type": "number",
-                      "value": 1
+                      "value": 0
                     },
                     "__collapseCase1": false,
                     "value1": {
                       "type": "number",
-                      "value": 2
+                      "value": 1
                     },
                     "__collapseCase2": false,
                     "value2": {
                       "type": "number",
-                      "value": 3
+                      "value": 2
                     },
                     "__collapseCase3": false,
                     "value3": {
                       "type": "number",
-                      "value": 4
+                      "value": 3
                     },
                     "__collapseCase4": false,
                     "value4": {
@@ -1607,27 +1711,27 @@
                 {
                   "command": "EVENT_SWITCH",
                   "args": {
-                    "variable": "10",
+                    "variable": "28",
                     "choices": 4,
                     "__collapseCase0": false,
                     "value0": {
                       "type": "number",
-                      "value": 1
+                      "value": 0
                     },
                     "__collapseCase1": false,
                     "value1": {
                       "type": "number",
-                      "value": 2
+                      "value": 1
                     },
                     "__collapseCase2": false,
                     "value2": {
                       "type": "number",
-                      "value": 3
+                      "value": 2
                     },
                     "__collapseCase3": false,
                     "value3": {
                       "type": "number",
-                      "value": 4
+                      "value": 3
                     },
                     "__collapseCase4": false,
                     "value4": {
@@ -1690,7 +1794,7 @@
                       "value": 16
                     },
                     "__collapseElse": false,
-                    "__collapse": true
+                    "__collapse": false
                   },
                   "children": {
                     "true0": [
@@ -1990,27 +2094,27 @@
                 {
                   "command": "EVENT_SWITCH",
                   "args": {
-                    "variable": "10",
+                    "variable": "28",
                     "choices": 4,
                     "__collapseCase0": false,
                     "value0": {
                       "type": "number",
-                      "value": 1
+                      "value": 0
                     },
                     "__collapseCase1": false,
                     "value1": {
                       "type": "number",
-                      "value": 2
+                      "value": 1
                     },
                     "__collapseCase2": false,
                     "value2": {
                       "type": "number",
-                      "value": 3
+                      "value": 2
                     },
                     "__collapseCase3": false,
                     "value3": {
                       "type": "number",
-                      "value": 4
+                      "value": 3
                     },
                     "__collapseCase4": false,
                     "value4": {
@@ -2073,7 +2177,7 @@
                       "value": 16
                     },
                     "__collapseElse": false,
-                    "__collapse": false
+                    "__collapse": true
                   },
                   "children": {
                     "true0": [
@@ -2483,27 +2587,27 @@
                 {
                   "command": "EVENT_SWITCH",
                   "args": {
-                    "variable": "10",
+                    "variable": "28",
                     "choices": 4,
                     "__collapseCase0": false,
                     "value0": {
                       "type": "number",
-                      "value": 1
+                      "value": 0
                     },
                     "__collapseCase1": false,
                     "value1": {
                       "type": "number",
-                      "value": 2
+                      "value": 1
                     },
                     "__collapseCase2": false,
                     "value2": {
                       "type": "number",
-                      "value": 3
+                      "value": 2
                     },
                     "__collapseCase3": false,
                     "value3": {
                       "type": "number",
-                      "value": 4
+                      "value": 3
                     },
                     "__collapseCase4": false,
                     "value4": {
@@ -2566,7 +2670,7 @@
                       "value": 16
                     },
                     "__collapseElse": false,
-                    "__collapse": false
+                    "__collapse": true
                   },
                   "children": {
                     "true0": [
@@ -2995,27 +3099,27 @@
                 {
                   "command": "EVENT_SWITCH",
                   "args": {
-                    "variable": "10",
+                    "variable": "28",
                     "choices": 4,
                     "__collapseCase0": false,
                     "value0": {
                       "type": "number",
-                      "value": 1
+                      "value": 0
                     },
                     "__collapseCase1": false,
                     "value1": {
                       "type": "number",
-                      "value": 2
+                      "value": 1
                     },
                     "__collapseCase2": false,
                     "value2": {
                       "type": "number",
-                      "value": 3
+                      "value": 2
                     },
                     "__collapseCase3": false,
                     "value3": {
                       "type": "number",
-                      "value": 4
+                      "value": 3
                     },
                     "__collapseCase4": false,
                     "value4": {
@@ -3078,7 +3182,7 @@
                       "value": 16
                     },
                     "__collapseElse": false,
-                    "__collapse": false
+                    "__collapse": true
                   },
                   "children": {
                     "true0": [
@@ -3212,7 +3316,7 @@
                             "value": 16
                           },
                           "__collapseElse": false,
-                          "__collapse": false
+                          "__collapse": true
                         },
                         "children": {
                           "true0": [
@@ -3469,27 +3573,27 @@
                 {
                   "command": "EVENT_SWITCH",
                   "args": {
-                    "variable": "10",
+                    "variable": "28",
                     "choices": 4,
                     "__collapseCase0": false,
                     "value0": {
                       "type": "number",
-                      "value": 1
+                      "value": 0
                     },
                     "__collapseCase1": false,
                     "value1": {
                       "type": "number",
-                      "value": 2
+                      "value": 1
                     },
                     "__collapseCase2": false,
                     "value2": {
                       "type": "number",
-                      "value": 3
+                      "value": 2
                     },
                     "__collapseCase3": false,
                     "value3": {
                       "type": "number",
-                      "value": 4
+                      "value": 3
                     },
                     "__collapseCase4": false,
                     "value4": {
@@ -3552,7 +3656,7 @@
                       "value": 16
                     },
                     "__collapseElse": false,
-                    "__collapse": false
+                    "__collapse": true
                   },
                   "children": {
                     "true0": [
@@ -3833,27 +3937,27 @@
                 {
                   "command": "EVENT_SWITCH",
                   "args": {
-                    "variable": "10",
+                    "variable": "28",
                     "choices": 4,
                     "__collapseCase0": true,
                     "value0": {
                       "type": "number",
-                      "value": 1
+                      "value": 0
                     },
                     "__collapseCase1": true,
                     "value1": {
                       "type": "number",
-                      "value": 2
+                      "value": 1
                     },
                     "__collapseCase2": true,
                     "value2": {
                       "type": "number",
-                      "value": 3
+                      "value": 2
                     },
                     "__collapseCase3": false,
                     "value3": {
                       "type": "number",
-                      "value": 4
+                      "value": 3
                     },
                     "__collapseCase4": false,
                     "value4": {
@@ -4507,7 +4611,7 @@
                                 },
                                 "value2": {
                                   "type": "number",
-                                  "value": 12
+                                  "value": 3
                                 }
                               },
                               "children": {
@@ -4555,10 +4659,10 @@
                                   {
                                     "command": "EVENT_SWITCH_SCENE",
                                     "args": {
-                                      "sceneId": "51ec5399-1b76-4dc3-9cd3-db1c691e23c5",
+                                      "sceneId": "18e2c56e-53f3-48c4-b609-9b638c3a6fef",
                                       "x": {
                                         "type": "number",
-                                        "value": 3
+                                        "value": 19
                                       },
                                       "y": {
                                         "type": "number",
@@ -4566,9 +4670,9 @@
                                       },
                                       "direction": "right",
                                       "fadeSpeed": 1,
-                                      "__collapse": false
+                                      "__collapse": true
                                     },
-                                    "id": "b556efaf-9323-4734-98d9-f5517c9015f3"
+                                    "id": "4a71c71e-908e-4036-8ca7-244908e13bd4"
                                   }
                                 ],
                                 "true3": [],
@@ -4588,10 +4692,10 @@
                                   {
                                     "command": "EVENT_SWITCH_SCENE",
                                     "args": {
-                                      "sceneId": "18e2c56e-53f3-48c4-b609-9b638c3a6fef",
+                                      "sceneId": "51ec5399-1b76-4dc3-9cd3-db1c691e23c5",
                                       "x": {
                                         "type": "number",
-                                        "value": 19
+                                        "value": 3
                                       },
                                       "y": {
                                         "type": "number",
@@ -4599,9 +4703,9 @@
                                       },
                                       "direction": "right",
                                       "fadeSpeed": 1,
-                                      "__collapse": true
+                                      "__collapse": false
                                     },
-                                    "id": "4a71c71e-908e-4036-8ca7-244908e13bd4"
+                                    "id": "b556efaf-9323-4734-98d9-f5517c9015f3"
                                   }
                                 ]
                               },

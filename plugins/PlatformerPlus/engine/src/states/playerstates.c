@@ -451,14 +451,15 @@ void ground_state(void) BANKED {
 	}
 
     //Check for final frame
-    if (que_state != GROUND_STATE && plat_state == GROUND_STATE){
+	/*
+    if (que_state != GROUND_STATE && (plat_state == GROUND_STATE || plat_state == GROUND_INIT)){
         plat_state = GROUND_END;
     }
 	
-	if (que_state != SKID_STATE && plat_state == SKID_STATE){
+	if (que_state != SKID_STATE && (plat_state == SKID_STATE || plat_state == SKID_INIT)){
         plat_state = SKID_END;
     }
-
+*/
     //COUNTERS
     // Counting down the drop-through floor frames
     // XX Checked in Fall, Wall, Ground, and basic_y_col, set in basic_y_col

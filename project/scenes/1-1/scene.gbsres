@@ -111,36 +111,60 @@
       "id": "e957938c-a2da-40ca-b225-6685561ce8ce"
     },
     {
-      "command": "EVENT_SET_VALUE",
+      "command": "EVENT_IF",
       "args": {
-        "variable": "9",
-        "value": {
-          "type": "number",
-          "value": 1
+        "condition": {
+          "type": "eq",
+          "valueA": {
+            "type": "variable",
+            "value": "7"
+          },
+          "valueB": {
+            "type": "number",
+            "value": 0
+          }
         },
+        "__collapseElse": true,
         "__collapse": true
       },
-      "id": "53a9a6b1-5109-421d-b266-7cb31f3ed9ac"
-    },
-    {
-      "command": "EVENT_SET_VALUE",
-      "args": {
-        "variable": "10",
-        "value": {
-          "type": "number",
-          "value": 1
-        },
-        "__collapse": true
+      "children": {
+        "true": [
+          {
+            "command": "EVENT_SET_VALUE",
+            "args": {
+              "variable": "9",
+              "value": {
+                "type": "number",
+                "value": 1
+              },
+              "__collapse": true
+            },
+            "id": "53a9a6b1-5109-421d-b266-7cb31f3ed9ac"
+          },
+          {
+            "command": "EVENT_SET_VALUE",
+            "args": {
+              "variable": "10",
+              "value": {
+                "type": "number",
+                "value": 1
+              },
+              "__collapse": true
+            },
+            "id": "be6e56ac-771f-4362-a5f5-5c70a5447b32"
+          }
+        ],
+        "false": []
       },
-      "id": "be6e56ac-771f-4362-a5f5-5c70a5447b32"
+      "id": "eb068074-0873-49b3-aec7-3c13cba21c67"
     },
     {
       "command": "EVENT_SET_VALUE",
       "args": {
         "variable": "18",
         "value": {
-          "type": "number",
-          "value": 1
+          "type": "constant",
+          "value": "8efd861e-e723-4329-aa4b-a19e3226c0e0"
         },
         "__collapse": true
       },
@@ -157,22 +181,6 @@
         "__collapse": true
       },
       "id": "e4fa983e-4943-47d5-a8d4-4d2ac042b8df"
-    },
-    {
-      "command": "EVENT_CALL_CUSTOM_EVENT",
-      "args": {
-        "customEventId": "32d76253-2c63-4808-a673-2c3b44b8615b",
-        "$variable[V0]$": {
-          "type": "number",
-          "value": 1
-        },
-        "$variable[V1]$": {
-          "type": "number",
-          "value": 1
-        },
-        "__collapse": true
-      },
-      "id": "db99fd58-576d-4b21-9ab0-8bcbb18cb9e9"
     },
     {
       "command": "PM_EVENT_PLATMARIO_SPECIFIC_SCRIPT",
@@ -366,33 +374,6 @@
     {
       "command": "PM_EVENT_PLATPLUS_STATE_SCRIPT",
       "args": {
-        "state": 9,
-        "__scriptTabs": "scriptinput",
-        "__collapse": true
-      },
-      "children": {
-        "script": [
-          {
-            "command": "EVENT_SOUND_PLAY_EFFECT",
-            "args": {
-              "type": "46278d2c-ea7b-422e-acf9-6328b9324b70",
-              "priority": "medium",
-              "pitch": 4,
-              "frequency": 200,
-              "duration": 0.5,
-              "wait": true,
-              "effect": 0,
-              "__collapse": false
-            },
-            "id": "bbac667c-44c3-48f8-99b8-838f437b2a68"
-          }
-        ]
-      },
-      "id": "16a9ccc7-015a-4d17-871c-2da00d386d44"
-    },
-    {
-      "command": "PM_EVENT_PLATPLUS_STATE_SCRIPT",
-      "args": {
         "state": 12,
         "__scriptTabs": "scriptinput",
         "__collapse": true
@@ -517,6 +498,22 @@
         ]
       },
       "id": "bbbcc667-0039-4683-823e-512adfa14d9c"
+    },
+    {
+      "command": "EVENT_CALL_CUSTOM_EVENT",
+      "args": {
+        "customEventId": "32d76253-2c63-4808-a673-2c3b44b8615b",
+        "$variable[V0]$": {
+          "type": "number",
+          "value": 1
+        },
+        "$variable[V1]$": {
+          "type": "number",
+          "value": 1
+        },
+        "__collapse": true
+      },
+      "id": "db99fd58-576d-4b21-9ab0-8bcbb18cb9e9"
     }
   ],
   "playerHit1Script": [],

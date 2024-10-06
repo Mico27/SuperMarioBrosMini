@@ -99,7 +99,7 @@
             "value": 0
           }
         },
-        "__collapse": false
+        "__collapse": true
       },
       "children": {
         "true": [
@@ -126,8 +126,8 @@
           {
             "command": "EVENT_GBVM_SCRIPT",
             "args": {
-              "script": "VM_LOAD_TEXT 3 \n.dw VAR_SCOREUPPER\n.dw VAR_SCORELOWER\n.dw VAR_DEATHTIMER\n.asciz \"\\003\\001\\002%D3\\003\\004\\002%D3\\003\\022\\002%D3\"\nVM_CALL_NATIVE b_ui_alt_display_text, _ui_alt_display_text",
-              "__collapse": true,
+              "script": "VM_LOAD_TEXT 3 \n.dw VAR_SCOREUPPER\n.dw VAR_SCORELOWER\n.dw VAR_DEATHTIME\n.asciz \"\\003\\001\\002%D3\\003\\004\\002%D3\\003\\022\\002%D3\"\nVM_CALL_NATIVE b_ui_alt_display_text, _ui_alt_display_text",
+              "__collapse": false,
               "references": [
                 {
                   "type": "variable",
@@ -136,6 +136,10 @@
                 {
                   "type": "variable",
                   "id": "57"
+                },
+                {
+                  "type": "variable",
+                  "id": "0"
                 }
               ]
             },
@@ -630,7 +634,7 @@
           }
         },
         "__collapseElse": false,
-        "__collapse": true
+        "__collapse": false
       },
       "children": {
         "true": [

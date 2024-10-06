@@ -48,54 +48,14 @@
     {
       "command": "EVENT_SET_VALUE",
       "args": {
-        "variable": "9",
-        "value": {
-          "type": "number",
-          "value": 6
-        },
-        "__collapse": true
-      },
-      "id": "592fa9a9-6566-4f3e-be46-3cf1d41fc033"
-    },
-    {
-      "command": "EVENT_SET_VALUE",
-      "args": {
-        "variable": "10",
-        "value": {
-          "type": "number",
-          "value": 3
-        },
-        "__collapse": true
-      },
-      "id": "e978e730-8126-40f1-8ba5-73d52eee7b95"
-    },
-    {
-      "command": "EVENT_SET_VALUE",
-      "args": {
         "variable": "18",
         "value": {
-          "type": "number",
-          "value": 4
+          "type": "constant",
+          "value": "df2c1c64-206b-4d14-9a2a-8730dbc513a9"
         },
         "__collapse": true
       },
       "id": "0a931406-1280-413c-afc2-f774d7a1a135"
-    },
-    {
-      "command": "EVENT_CALL_CUSTOM_EVENT",
-      "args": {
-        "customEventId": "32d76253-2c63-4808-a673-2c3b44b8615b",
-        "$variable[V0]$": {
-          "type": "number",
-          "value": 1
-        },
-        "$variable[V1]$": {
-          "type": "number",
-          "value": 2
-        },
-        "__collapse": true
-      },
-      "id": "0beb61a3-a460-42a5-b8cf-2c37461f932f"
     },
     {
       "command": "PM_EVENT_PLATMARIO_SPECIFIC_SCRIPT",
@@ -156,6 +116,22 @@
         ]
       },
       "id": "1b7585b0-6d83-40be-8830-d516c8666088"
+    },
+    {
+      "command": "EVENT_CALL_CUSTOM_EVENT",
+      "args": {
+        "customEventId": "32d76253-2c63-4808-a673-2c3b44b8615b",
+        "$variable[V0]$": {
+          "type": "number",
+          "value": 1
+        },
+        "$variable[V1]$": {
+          "type": "number",
+          "value": 2
+        },
+        "__collapse": true
+      },
+      "id": "0beb61a3-a460-42a5-b8cf-2c37461f932f"
     }
   ],
   "playerHit1Script": [],

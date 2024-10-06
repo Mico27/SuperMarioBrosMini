@@ -191,8 +191,9 @@ void platform_init(void) BANKED {
     boost_val = plat_run_boost / plat_hold_jump_max;                  //Vertical boost from horizontal speed per frame in JUMP STATE
 
     //Initialize State
-    plat_state = GROUND_INIT;
-    que_state = GROUND_INIT;
+	plat_state = FALL_INIT;
+	que_state = FALL_INIT;
+	
     actor_attached = FALSE;
     nocollide = 0;
     if (PLAYER.dir == DIR_UP || PLAYER.dir == DIR_DOWN || PLAYER.dir == DIR_NONE) {
@@ -1069,6 +1070,7 @@ void swim_state(void) BANKED {
 
         UBYTE tile_start = (((PLAYER.pos.x >> 4) + PLAYER.bounds.left)  >> 3);
         UBYTE tile_end   = (((PLAYER.pos.x >> 4) + PLAYER.bounds.right) >> 3) + 1;
+		UBYTE is_leftmost = 1;
         if (deltaY > 0) {
             //Moving Downward
             WORD new_y = PLAYER.pos.y + deltaY;
@@ -1079,13 +1081,22 @@ void swim_state(void) BANKED {
                 while (tile_start < tile_end) {
                     if (tile_at(tile_start, tile_y) & COLLISION_TOP) {	
                         new_y = ((((tile_y) << 3) - PLAYER.bounds.bottom) << 4) - 1;	
-						grounded = true;
+						grounded = true;						
+						
+						if (is_leftmost == 1 && INPUT_DOWN){//check only mario's left leg for left pipe part
+							UBYTE tile_id = sram_map_data[VRAM_OFFSET(tile_start, tile_y)];
+							if (tile_id == 57 && specific_events[ENTER_DOWN_PIPE_EVENT].script_addr != 0){
+								script_execute(specific_events[ENTER_DOWN_PIPE_EVENT].script_bank, specific_events[ENTER_DOWN_PIPE_EVENT].script_addr, 0, 0);
+							}
+						}
+						
 						on_player_metatile_collision(tile_start, tile_y, DIR_DOWN);						
                         break;
                     } else {
 						reset_collision_cache(DIR_DOWN);
 					}
                     tile_start++;
+					is_leftmost = 0;
                 }
             }
             PLAYER.pos.y = new_y;

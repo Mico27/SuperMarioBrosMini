@@ -49,36 +49,12 @@
     {
       "command": "EVENT_SET_VALUE",
       "args": {
-        "variable": "9",
-        "value": {
-          "type": "number",
-          "value": 7
-        },
-        "__collapse": true
-      },
-      "id": "700d905a-88cd-4170-9b32-17155e3467db"
-    },
-    {
-      "command": "EVENT_SET_VALUE",
-      "args": {
-        "variable": "10",
-        "value": {
-          "type": "number",
-          "value": 4
-        },
-        "__collapse": true
-      },
-      "id": "b4e5b35a-e971-4c66-a2cd-9ff993b5c644"
-    },
-    {
-      "command": "EVENT_SET_VALUE",
-      "args": {
         "variable": "18",
         "value": {
-          "type": "number",
-          "value": 4
+          "type": "constant",
+          "value": "efd06150-a4f8-4086-a0d2-5245cb88aabd"
         },
-        "__collapse": true
+        "__collapse": false
       },
       "id": "1994c748-109f-4357-b7ff-20af0345e51d"
     },

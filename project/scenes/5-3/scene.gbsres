@@ -48,61 +48,21 @@
     {
       "command": "EVENT_SET_VALUE",
       "args": {
-        "variable": "9",
-        "value": {
-          "type": "number",
-          "value": 5
-        },
-        "__collapse": true
-      },
-      "id": "dbaba807-aae9-405b-9d9d-68e9d56c3742"
-    },
-    {
-      "command": "EVENT_SET_VALUE",
-      "args": {
-        "variable": "10",
-        "value": {
-          "type": "number",
-          "value": 3
-        },
-        "__collapse": true
-      },
-      "id": "88f486c6-045a-4886-99f7-f473e422ada3"
-    },
-    {
-      "command": "EVENT_SET_VALUE",
-      "args": {
         "variable": "18",
         "value": {
-          "type": "number",
-          "value": 1
+          "type": "constant",
+          "value": "8efd861e-e723-4329-aa4b-a19e3226c0e0"
         },
         "__collapse": true
       },
       "id": "5570bec0-67b8-448d-96d1-3f0d2a899b1b"
     },
     {
-      "command": "EVENT_CALL_CUSTOM_EVENT",
-      "args": {
-        "customEventId": "32d76253-2c63-4808-a673-2c3b44b8615b",
-        "$variable[V0]$": {
-          "type": "number",
-          "value": 1
-        },
-        "$variable[V1]$": {
-          "type": "number",
-          "value": 2
-        },
-        "__collapse": true
-      },
-      "id": "6e791aac-80b6-4426-8622-1dfbbeee65d5"
-    },
-    {
       "command": "PM_EVENT_PLATMARIO_SPECIFIC_SCRIPT",
       "args": {
         "specific_event": "1",
         "__scriptTabs": "scriptinput",
-        "__collapse": false
+        "__collapse": true
       },
       "children": {
         "script": [
@@ -157,6 +117,22 @@
         ]
       },
       "id": "55c81338-6ffd-4b8e-9bb5-b860afea8c13"
+    },
+    {
+      "command": "EVENT_CALL_CUSTOM_EVENT",
+      "args": {
+        "customEventId": "32d76253-2c63-4808-a673-2c3b44b8615b",
+        "$variable[V0]$": {
+          "type": "number",
+          "value": 1
+        },
+        "$variable[V1]$": {
+          "type": "number",
+          "value": 2
+        },
+        "__collapse": true
+      },
+      "id": "6e791aac-80b6-4426-8622-1dfbbeee65d5"
     }
   ],
   "playerHit1Script": [],

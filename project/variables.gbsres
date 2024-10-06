@@ -3,8 +3,8 @@
   "variables": [
     {
       "id": "0",
-      "name": "DeathTimer",
-      "symbol": "var_deathtimer"
+      "name": "DeathTime",
+      "symbol": "var_deathtime"
     },
     {
       "id": "1",
@@ -292,6 +292,16 @@
       "symbol": "var_scorelower"
     },
     {
+      "id": "58",
+      "name": "IsRandomMode",
+      "symbol": "var_israndommode"
+    },
+    {
+      "id": "59",
+      "name": "MainMenuPage",
+      "symbol": "var_mainmenupage"
+    },
+    {
       "id": "99ba378a-ca76-4655-a8b8-8bf2dbc06f01__L0",
       "name": "Local 0",
       "symbol": "var_local_0"
@@ -332,6 +342,24 @@
       "name": "LEVELTYPE_NIGHT",
       "symbol": "const_leveltype_night",
       "value": 5
+    },
+    {
+      "id": "a47f02c2-c884-452f-8a2a-35835006f608",
+      "name": "LEVELTYPE_SNOW_DAY",
+      "symbol": "const_leveltype_snow_day",
+      "value": 6
+    },
+    {
+      "id": "df2c1c64-206b-4d14-9a2a-8730dbc513a9",
+      "name": "LEVELTYPE_SNOW_NIGHT",
+      "symbol": "const_leveltype_snow_night",
+      "value": 7
+    },
+    {
+      "id": "a049da1d-af7a-4cd5-89d9-55e9e17d7042",
+      "name": "LEVELTYPE_MUSHROOM",
+      "symbol": "const_leveltype_mushroom",
+      "value": 8
     }
   ]
 }

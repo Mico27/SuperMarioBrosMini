@@ -290,7 +290,7 @@
       "command": "EVENT_START_SIMULATED_INPUTS",
       "args": {
         "input_cancel": [],
-        "__collapse": true
+        "__collapse": false
       },
       "children": {
         "input_sequence": [
@@ -306,8 +306,9 @@
           {
             "command": "EVENT_WAIT",
             "args": {
-              "time": 2,
-              "frames": 30
+              "time": 4,
+              "frames": 30,
+              "__collapse": true
             },
             "id": "18d5a72b-ac62-406f-95ec-262ff66a5884"
           }
