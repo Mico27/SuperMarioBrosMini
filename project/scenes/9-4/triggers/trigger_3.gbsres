@@ -1,0 +1,172 @@
+{
+  "_resourceType": "trigger",
+  "id": "943cae11-0a8f-4058-b848-d7f929141c9a",
+  "name": "",
+  "prefabId": "",
+  "x": 104,
+  "y": 0,
+  "symbol": "trigger_269",
+  "prefabScriptOverrides": {},
+  "width": 1,
+  "height": 18,
+  "script": [
+    {
+      "command": "EVENT_SCRIPT_UNLOCK",
+      "args": {
+        "__collapse": true
+      },
+      "id": "d73e628f-fe52-441d-b2eb-6c59ec2c6670"
+    },
+    {
+      "command": "EVENT_CALL_CUSTOM_EVENT",
+      "args": {
+        "customEventId": "b9f2366e-e1e1-4a58-abfc-5cb02bfcb11e",
+        "$variable[V0]$": {
+          "type": "number",
+          "value": 149
+        },
+        "$variable[V1]$": {
+          "type": "number",
+          "value": 13
+        },
+        "$actor[0]$": "e56f96e6-69ef-4437-b128-eb1d20fa858d",
+        "__collapse": true
+      },
+      "id": "3f5d59a7-f318-423f-8c6e-4190683cc2f7"
+    },
+    {
+      "command": "EVENT_CALL_CUSTOM_EVENT",
+      "args": {
+        "customEventId": "b9f2366e-e1e1-4a58-abfc-5cb02bfcb11e",
+        "$variable[V0]$": {
+          "type": "number",
+          "value": 169
+        },
+        "$variable[V1]$": {
+          "type": "number",
+          "value": 3
+        },
+        "$actor[0]$": "70e0834d-aae9-4064-9586-01fcf664687f",
+        "__collapse": true
+      },
+      "id": "9c33c91d-33b6-43d2-bd55-2596cdd5dd3e"
+    },
+    {
+      "command": "EVENT_CALL_CUSTOM_EVENT",
+      "args": {
+        "customEventId": "7472c75b-28ba-4e82-9e18-5c1cc4daf097",
+        "$variable[V0]$": {
+          "type": "number",
+          "value": 140
+        },
+        "$variable[V1]$": {
+          "type": "number",
+          "value": 11
+        },
+        "$actor[0]$": "88688b3f-2cba-45bd-ad91-a45cdd026093",
+        "__collapse": true,
+        "$variable[V2]$": {
+          "type": "number",
+          "value": 7
+        }
+      },
+      "id": "aa2b8a19-9cc9-4352-be95-d86ba54f1d81"
+    },
+    {
+      "command": "EVENT_CALL_CUSTOM_EVENT",
+      "args": {
+        "customEventId": "7472c75b-28ba-4e82-9e18-5c1cc4daf097",
+        "$variable[V0]$": {
+          "type": "number",
+          "value": 144
+        },
+        "$variable[V1]$": {
+          "type": "number",
+          "value": 13
+        },
+        "$actor[0]$": "9638afe9-ac8e-4d01-a0b5-f83d4a561db8",
+        "__collapse": true,
+        "$variable[V2]$": {
+          "type": "number",
+          "value": 7
+        }
+      },
+      "id": "0f7e282f-da47-4844-99b0-d0ddb65de594"
+    },
+    {
+      "command": "EVENT_CALL_CUSTOM_EVENT",
+      "args": {
+        "customEventId": "7472c75b-28ba-4e82-9e18-5c1cc4daf097",
+        "$variable[V0]$": {
+          "type": "number",
+          "value": 169
+        },
+        "$variable[V1]$": {
+          "type": "number",
+          "value": 15
+        },
+        "$actor[0]$": "ea212742-50f5-466f-ba34-5bf4288246d2",
+        "__collapse": true,
+        "$variable[V2]$": {
+          "type": "number",
+          "value": 1
+        }
+      },
+      "id": "99fde764-6d73-4650-8938-1bf9862c8296"
+    },
+    {
+      "command": "EVENT_CALL_CUSTOM_EVENT",
+      "args": {
+        "customEventId": "7472c75b-28ba-4e82-9e18-5c1cc4daf097",
+        "$variable[V0]$": {
+          "type": "number",
+          "value": 182
+        },
+        "$variable[V1]$": {
+          "type": "number",
+          "value": 17
+        },
+        "$actor[0]$": "9e63fdd0-debc-42dd-97d0-73415d5dd08a",
+        "__collapse": true,
+        "$variable[V2]$": {
+          "type": "number",
+          "value": 27
+        }
+      },
+      "id": "6ae66be7-ac12-44b1-a30b-194b7c9e4ee5"
+    },
+    {
+      "command": "EVENT_CALL_CUSTOM_EVENT",
+      "args": {
+        "customEventId": "7472c75b-28ba-4e82-9e18-5c1cc4daf097",
+        "$variable[V0]$": {
+          "type": "number",
+          "value": 125
+        },
+        "$variable[V1]$": {
+          "type": "number",
+          "value": 14
+        },
+        "$actor[0]$": "6750628c-7468-4c2f-8704-0f3079d5b9cf",
+        "__collapse": true,
+        "$variable[V2]$": {
+          "type": "number",
+          "value": 18
+        }
+      },
+      "id": "05d2adfb-5bd5-4d8f-a648-6ab961e7b8be"
+    },
+    {
+      "command": "EVENT_ACTOR_SET_STATE",
+      "args": {
+        "actorId": "6750628c-7468-4c2f-8704-0f3079d5b9cf",
+        "spriteStateId": "Medium",
+        "loopAnim": true,
+        "__collapse": true
+      },
+      "id": "b33f79cd-66f6-4706-86b3-7f8ae8192112"
+    }
+  ],
+  "leaveScript": [],
+  "_index": 3
+}

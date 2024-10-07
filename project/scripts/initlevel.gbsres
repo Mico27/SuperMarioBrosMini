@@ -494,7 +494,7 @@
                 "type": "number",
                 "value": 2
               },
-              "__collapse": true,
+              "__collapse": false,
               "__label": "Draw Top Hud"
             },
             "id": "815aa024-d43f-45d4-ab8e-086326297584"
@@ -581,7 +581,7 @@
                       }
                     },
                     "__collapseElse": false,
-                    "__collapse": true
+                    "__collapse": false
                   },
                   "children": {
                     "true": [
@@ -870,7 +870,7 @@
                                   }
                                 },
                                 "__collapseElse": false,
-                                "__collapse": true
+                                "__collapse": false
                               },
                               "children": {
                                 "true": [
@@ -1012,15 +1012,15 @@
                               "command": "EVENT_GROUP",
                               "args": {
                                 "__label": "Render world and level",
-                                "__collapse": true
+                                "__collapse": false
                               },
                               "children": {
                                 "true": [
                                   {
                                     "command": "EVENT_GBVM_SCRIPT",
                                     "args": {
-                                      "script": "VM_LOAD_TEXT 2 \n.dw VAR_CURRENTWORLD\n.dw VAR_CURRENTLEVEL\n.asciz \"\\003\\010\\012%D2\\003\\016\\012%d\"\nVM_CALL_NATIVE b_ui_alt_display_text, _ui_alt_display_text",
-                                      "__collapse": true,
+                                      "script": "VM_LOAD_TEXT 2 \n.dw VAR_CURRENTWORLD\n.dw VAR_CURRENTLEVEL\n.asciz \"\\003\\013\\012%D2\\003\\016\\012%D1\"\nVM_CALL_NATIVE b_ui_alt_display_text, _ui_alt_display_text",
+                                      "__collapse": false,
                                       "references": [
                                         {
                                           "type": "variable",
@@ -1064,7 +1064,7 @@
                       }
                     },
                     "__collapseElse": true,
-                    "__collapse": false
+                    "__collapse": true
                   },
                   "children": {
                     "true": [
@@ -1246,7 +1246,7 @@
                   "id": "57"
                 }
               ],
-              "__collapse": false,
+              "__collapse": true,
               "__label": "Write coins , lives, world, level and score"
             },
             "id": "323fe7b9-e413-4318-89a5-1797bec5e991"
@@ -1705,7 +1705,7 @@
       "command": "EVENT_GROUP",
       "args": {
         "__label": "Start Menu",
-        "__collapse": true,
+        "__collapse": false,
         "__comment": false
       },
       "children": {
@@ -1899,15 +1899,15 @@
                                     "command": "EVENT_GROUP",
                                     "args": {
                                       "__label": "Render world and level",
-                                      "__collapse": true
+                                      "__collapse": false
                                     },
                                     "children": {
                                       "true": [
                                         {
                                           "command": "EVENT_GBVM_SCRIPT",
                                           "args": {
-                                            "script": "VM_LOAD_TEXT 2 \n.dw VAR_CURRENTWORLD\n.dw VAR_CURRENTLEVEL\n.asciz \"\\003\\010\\012%D2\\003\\016\\012%d\"\nVM_CALL_NATIVE b_ui_alt_display_text, _ui_alt_display_text",
-                                            "__collapse": true,
+                                            "script": "VM_LOAD_TEXT 2 \n.dw VAR_CURRENTWORLD\n.dw VAR_CURRENTLEVEL\n.asciz \"\\003\\013\\012%D2\\003\\016\\012%D1\"\nVM_CALL_NATIVE b_ui_alt_display_text, _ui_alt_display_text",
+                                            "__collapse": false,
                                             "references": [
                                               {
                                                 "type": "variable",
@@ -1919,7 +1919,7 @@
                                               }
                                             ]
                                           },
-                                          "id": "17320c08-ff01-4f3d-bdd1-63d002f0f6fa"
+                                          "id": "3b19bfc3-cf60-4fab-b5f5-1315f4152740"
                                         }
                                       ]
                                     },
@@ -2004,7 +2004,7 @@
                                         }
                                       },
                                       "__collapseElse": true,
-                                      "__collapse": false
+                                      "__collapse": true
                                     },
                                     "children": {
                                       "true": [
@@ -2073,14 +2073,14 @@
                                     "command": "EVENT_GROUP",
                                     "args": {
                                       "__label": "Render world and level",
-                                      "__collapse": true
+                                      "__collapse": false
                                     },
                                     "children": {
                                       "true": [
                                         {
                                           "command": "EVENT_GBVM_SCRIPT",
                                           "args": {
-                                            "script": "VM_LOAD_TEXT 2 \n.dw VAR_CURRENTWORLD\n.dw VAR_CURRENTLEVEL\n.asciz \"\\003\\010\\012%D2\\003\\016\\012%d\"\nVM_CALL_NATIVE b_ui_alt_display_text, _ui_alt_display_text",
+                                            "script": "VM_LOAD_TEXT 2 \n.dw VAR_CURRENTWORLD\n.dw VAR_CURRENTLEVEL\n.asciz \"\\003\\013\\012%D2\\003\\016\\012%D1\"\nVM_CALL_NATIVE b_ui_alt_display_text, _ui_alt_display_text",
                                             "__collapse": true,
                                             "references": [
                                               {
@@ -2093,7 +2093,7 @@
                                               }
                                             ]
                                           },
-                                          "id": "69d39fdd-b306-437d-8942-19162acbbf60"
+                                          "id": "4e996c70-a779-4ad7-9ad9-7e501a54ac64"
                                         }
                                       ]
                                     },
@@ -2116,7 +2116,7 @@
                           ],
                           "override": true,
                           "__scriptTabs": "press",
-                          "__collapse": true
+                          "__collapse": false
                         },
                         "children": {
                           "true": [
@@ -2353,15 +2353,15 @@
                                     "command": "EVENT_GROUP",
                                     "args": {
                                       "__label": "Render world and level",
-                                      "__collapse": true
+                                      "__collapse": false
                                     },
                                     "children": {
                                       "true": [
                                         {
                                           "command": "EVENT_GBVM_SCRIPT",
                                           "args": {
-                                            "script": "VM_LOAD_TEXT 2 \n.dw VAR_CURRENTWORLD\n.dw VAR_CURRENTLEVEL\n.asciz \"\\003\\010\\012%D2\\003\\016\\012%d\"\nVM_CALL_NATIVE b_ui_alt_display_text, _ui_alt_display_text",
-                                            "__collapse": true,
+                                            "script": "VM_LOAD_TEXT 2 \n.dw VAR_CURRENTWORLD\n.dw VAR_CURRENTLEVEL\n.asciz \"\\003\\013\\012%D2\\003\\016\\012%D1\"\nVM_CALL_NATIVE b_ui_alt_display_text, _ui_alt_display_text",
+                                            "__collapse": false,
                                             "references": [
                                               {
                                                 "type": "variable",
@@ -2579,7 +2579,7 @@
                                     "command": "EVENT_GROUP",
                                     "args": {
                                       "__label": "Render Top SCore",
-                                      "__collapse": true
+                                      "__collapse": false
                                     },
                                     "children": {
                                       "true": [
