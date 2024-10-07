@@ -337,74 +337,74 @@ void ground_state(void) BANKED {
     {
         deltaX = 0;
         deltaY = 0;
-        actor_t *hit_actor;
-        hit_actor = actor_overlapping_player(FALSE);
-        if (hit_actor != NULL && hit_actor->collision_group) {
-            //Solid Actors
-            if (hit_actor->collision_group == plat_solid_group){
-                if(!actor_attached || hit_actor != last_actor){
-                    if (temp_y < (hit_actor->pos.y + (hit_actor->bounds.top << 4)) && pl_vel_y >= 0){
-                        //Attach to MP
-                        last_actor = hit_actor;
-                        mp_last_x = hit_actor->pos.x;
-                        mp_last_y = hit_actor->pos.y;
-                        PLAYER.pos.y = hit_actor->pos.y + (hit_actor->bounds.top << 4) - (PLAYER.bounds.bottom << 4) - 4;
-                        //Other cleanup
-                        pl_vel_y = 0;
-                        actor_attached = TRUE;                        
-                        que_state = GROUND_INIT;
-                        //PLAYER bounds top seems to be 0 and counting down...
-                    } else if (temp_y + (PLAYER.bounds.top << 4) > hit_actor->pos.y + (hit_actor->bounds.bottom<<4)){
-                        deltaY += (hit_actor->pos.y - PLAYER.pos.y) + ((-PLAYER.bounds.top + hit_actor->bounds.bottom)<<4) + 32;
-                        pl_vel_y = plat_grav;
-
-                        if(que_state == JUMP_STATE || actor_attached){
-                            que_state = FALL_INIT;
-                        }
-
-                    } else if (PLAYER.pos.x < hit_actor->pos.x){
-                        deltaX = (hit_actor->pos.x - PLAYER.pos.x) - ((PLAYER.bounds.right + -hit_actor->bounds.left)<<4);
-                        col = 1;
-                        last_wall = 1;
-                        if(!INPUT_RIGHT){
-                            pl_vel_x = 0;
-                        }
-                    } else if (PLAYER.pos.x > hit_actor->pos.x){
-                        deltaX = (hit_actor->pos.x - PLAYER.pos.x) + ((-PLAYER.bounds.left + hit_actor->bounds.right)<<4)+16;
-                        col = -1;
-                        last_wall = -1;
-                        if (!INPUT_LEFT){
-                            pl_vel_x = 0;
-                        }
-                    }
-
-                }
-            } else if (hit_actor->collision_group == plat_mp_group){
-                //Platform Actors
-                if(!actor_attached || hit_actor != last_actor){
-                    if (temp_y < hit_actor->pos.y + (hit_actor->bounds.top << 4) && pl_vel_y >= 0){
-                        //Attach to MP
-                        last_actor = hit_actor;
-                        mp_last_x = hit_actor->pos.x;
-                        mp_last_y = hit_actor->pos.y;
-                        PLAYER.pos.y = hit_actor->pos.y + (hit_actor->bounds.top << 4) - (PLAYER.bounds.bottom << 4) - 4;
-                        //Other cleanup
-                        pl_vel_y = 0;
-                        actor_attached = TRUE;                        
-                        que_state = GROUND_INIT;
-                    }
-                }
-            }
-            //All Other Collisions
-            player_register_collision_with(hit_actor);
-        } else if (INPUT_PRESSED(INPUT_PLATFORM_INTERACT)) {
-            if (!hit_actor) {
-                hit_actor = actor_in_front_of_player(8, TRUE);
-            }
-            if (hit_actor && !hit_actor->collision_group && hit_actor->script.bank) {
-                script_execute(hit_actor->script.bank, hit_actor->script.ptr, 0, 1, 0);
-            }
-        }
+        actor_t *hit_actor = PLAYER.prev;
+		while (hit_actor) {
+			if (!hit_actor->collision_enabled || (actor_attached && last_actor == hit_actor)) {
+				hit_actor = hit_actor->prev;
+				continue;
+			};		
+			if (bb_intersects(&PLAYER.bounds, &PLAYER.pos, &hit_actor->bounds, &hit_actor->pos)) {	
+				//Solid Actors
+				if (hit_actor->collision_group == plat_solid_group){
+					if(!actor_attached || hit_actor != last_actor){
+						if (temp_y < (hit_actor->pos.y + (hit_actor->bounds.top << 4)) && pl_vel_y >= 0){
+							//Attach to MP
+							last_actor = hit_actor;
+							mp_last_x = hit_actor->pos.x;
+							mp_last_y = hit_actor->pos.y;
+							PLAYER.pos.y = hit_actor->pos.y + (hit_actor->bounds.top << 4) - (PLAYER.bounds.bottom << 4) - 4;
+							//Other cleanup
+							pl_vel_y = 0;
+							actor_attached = TRUE;                        
+							que_state = GROUND_INIT;
+							//PLAYER bounds top seems to be 0 and counting down...
+						} else if (temp_y + (PLAYER.bounds.top << 4) > hit_actor->pos.y + (hit_actor->bounds.bottom<<4)){
+							deltaY += (hit_actor->pos.y - PLAYER.pos.y) + ((-PLAYER.bounds.top + hit_actor->bounds.bottom)<<4) + 32;
+							pl_vel_y = plat_grav;
+	
+							if(que_state == JUMP_STATE || actor_attached){
+								que_state = FALL_INIT;
+							}
+	
+						} else if (PLAYER.pos.x < hit_actor->pos.x){
+							deltaX = (hit_actor->pos.x - PLAYER.pos.x) - ((PLAYER.bounds.right + -hit_actor->bounds.left)<<4);
+							col = 1;
+							last_wall = 1;
+							if(!INPUT_RIGHT){
+								pl_vel_x = 0;
+							}
+						} else if (PLAYER.pos.x > hit_actor->pos.x){
+							deltaX = (hit_actor->pos.x - PLAYER.pos.x) + ((-PLAYER.bounds.left + hit_actor->bounds.right)<<4)+16;
+							col = -1;
+							last_wall = -1;
+							if (!INPUT_LEFT){
+								pl_vel_x = 0;
+							}
+						}
+	
+					}
+				} else if (hit_actor->collision_group == plat_mp_group){
+					//Platform Actors
+					if(!actor_attached || hit_actor != last_actor){
+						if (temp_y < hit_actor->pos.y + (hit_actor->bounds.top << 4) && pl_vel_y >= 0){
+							//Attach to MP
+							last_actor = hit_actor;
+							mp_last_x = hit_actor->pos.x;
+							mp_last_y = hit_actor->pos.y;
+							PLAYER.pos.y = hit_actor->pos.y + (hit_actor->bounds.top << 4) - (PLAYER.bounds.bottom << 4) - 4;
+							//Other cleanup
+							pl_vel_y = 0;
+							actor_attached = TRUE;                        
+							que_state = GROUND_INIT;
+						}
+					}
+				}
+				//All Other Collisions
+				player_register_collision_with(hit_actor);
+				break;					
+			}		
+			hit_actor = hit_actor->prev;
+        } 
     }
     
     //ANIMATION---------------------------------------------------------------------------------------------------
@@ -451,7 +451,6 @@ void ground_state(void) BANKED {
 	}
 
     //Check for final frame
-	/*
     if (que_state != GROUND_STATE && (plat_state == GROUND_STATE || plat_state == GROUND_INIT)){
         plat_state = GROUND_END;
     }
@@ -459,7 +458,7 @@ void ground_state(void) BANKED {
 	if (que_state != SKID_STATE && (plat_state == SKID_STATE || plat_state == SKID_INIT)){
         plat_state = SKID_END;
     }
-*/
+
     //COUNTERS
     // Counting down the drop-through floor frames
     // XX Checked in Fall, Wall, Ground, and basic_y_col, set in basic_y_col
@@ -747,77 +746,80 @@ void crouch_state(void) BANKED {
     }
 
     //Actor Collisions
-    gotoActorCol:
+    gotoActorColCrouch:
     {
         deltaX = 0;
         deltaY = 0;
-        actor_t *hit_actor;
-        hit_actor = actor_overlapping_player(FALSE);
-        if (hit_actor != NULL && hit_actor->collision_group) {
-            //Solid Actors
-            if (hit_actor->collision_group == plat_solid_group){
-                if(!actor_attached || hit_actor != last_actor){
-                    if (temp_y < (hit_actor->pos.y + (hit_actor->bounds.top << 4)) && pl_vel_y >= 0){
-                        //Attach to MP
-                        last_actor = hit_actor;
-                        mp_last_x = hit_actor->pos.x;
-                        mp_last_y = hit_actor->pos.y;
-                        PLAYER.pos.y = hit_actor->pos.y + (hit_actor->bounds.top << 4) - (PLAYER.bounds.bottom << 4) - 4;
-                        //Other cleanup
-                        pl_vel_y = 0;
-                        actor_attached = TRUE;                        
-                        que_state = CROUCH_INIT;
-                        //PLAYER bounds top seems to be 0 and counting down...
-                    } else if (temp_y + (PLAYER.bounds.top << 4) > hit_actor->pos.y + (hit_actor->bounds.bottom<<4)){
-                        deltaY += (hit_actor->pos.y - PLAYER.pos.y) + ((-PLAYER.bounds.top + hit_actor->bounds.bottom)<<4) + 32;
-                        pl_vel_y = plat_grav;
-
-                        if(que_state == JUMP_STATE || actor_attached){
-                            que_state = FALL_INIT;
-                        }
-
-                    } else if (PLAYER.pos.x < hit_actor->pos.x){
-                        deltaX = (hit_actor->pos.x - PLAYER.pos.x) - ((PLAYER.bounds.right + -hit_actor->bounds.left)<<4);
-                        col = 1;
-                        last_wall = 1;
-                        if(!INPUT_RIGHT){
-                            pl_vel_x = 0;
-                        }
-                    } else if (PLAYER.pos.x > hit_actor->pos.x){
-                        deltaX = (hit_actor->pos.x - PLAYER.pos.x) + ((-PLAYER.bounds.left + hit_actor->bounds.right)<<4)+16;
-                        col = -1;
-                        last_wall = -1;
-                        if (!INPUT_LEFT){
-                            pl_vel_x = 0;
-                        }
-                    }
-
-                }
-            } else if (hit_actor->collision_group == plat_mp_group){
-                //Platform Actors
-                if(!actor_attached || hit_actor != last_actor){
-                    if (temp_y < hit_actor->pos.y + (hit_actor->bounds.top << 4) && pl_vel_y >= 0){
-                        //Attach to MP
-                        last_actor = hit_actor;
-                        mp_last_x = hit_actor->pos.x;
-                        mp_last_y = hit_actor->pos.y;
-                        PLAYER.pos.y = hit_actor->pos.y + (hit_actor->bounds.top << 4) - (PLAYER.bounds.bottom << 4) - 4;
-                        //Other cleanup
-                        pl_vel_y = 0;
-                        actor_attached = TRUE;                        
-                        que_state = CROUCH_INIT;
-                    }
-                }
-            }
-            //All Other Collisions
-            player_register_collision_with(hit_actor);
-        } else if (INPUT_PRESSED(INPUT_PLATFORM_INTERACT)) {
-            if (!hit_actor) {
-                hit_actor = actor_in_front_of_player(8, TRUE);
-            }
-            if (hit_actor && !hit_actor->collision_group && hit_actor->script.bank) {
-                script_execute(hit_actor->script.bank, hit_actor->script.ptr, 0, 1, 0);
-            }
+		
+        actor_t *hit_actor = PLAYER.prev;
+		while (hit_actor) {
+			if (!hit_actor->collision_enabled || (actor_attached && last_actor == hit_actor)) {
+				hit_actor = hit_actor->prev;
+				continue;
+			};		
+			if (bb_intersects(&PLAYER.bounds, &PLAYER.pos, &hit_actor->bounds, &hit_actor->pos)) {				
+				//Solid Actors				
+				if (hit_actor->collision_group == plat_solid_group){
+					if(!actor_attached || hit_actor != last_actor){
+						if (temp_y < (hit_actor->pos.y + (hit_actor->bounds.top << 4)) && pl_vel_y >= 0){
+							//Attach to MP
+							last_actor = hit_actor;
+							mp_last_x = hit_actor->pos.x;
+							mp_last_y = hit_actor->pos.y;
+							PLAYER.pos.y = hit_actor->pos.y + (hit_actor->bounds.top << 4) - (PLAYER.bounds.bottom << 4) - 4;
+							//Other cleanup
+							pl_vel_y = 0;
+							actor_attached = TRUE;                        
+							que_state = CROUCH_INIT;
+							//PLAYER bounds top seems to be 0 and counting down...
+						} else if (temp_y + (PLAYER.bounds.top << 4) > hit_actor->pos.y + (hit_actor->bounds.bottom<<4)){
+							deltaY += (hit_actor->pos.y - PLAYER.pos.y) + ((-PLAYER.bounds.top + hit_actor->bounds.bottom)<<4) + 32;
+							pl_vel_y = plat_grav;
+	
+							if(que_state == JUMP_STATE || actor_attached){
+								que_state = FALL_INIT;
+							}
+	
+						} else if (PLAYER.pos.x < hit_actor->pos.x){
+							deltaX = (hit_actor->pos.x - PLAYER.pos.x) - ((PLAYER.bounds.right + -hit_actor->bounds.left)<<4);
+							col = 1;
+							last_wall = 1;
+							if(!INPUT_RIGHT){
+								pl_vel_x = 0;
+							}
+						} else if (PLAYER.pos.x > hit_actor->pos.x){
+							deltaX = (hit_actor->pos.x - PLAYER.pos.x) + ((-PLAYER.bounds.left + hit_actor->bounds.right)<<4)+16;
+							col = -1;
+							last_wall = -1;
+							if (!INPUT_LEFT){
+								pl_vel_x = 0;
+							}
+						}
+	
+					}
+				} else if (hit_actor->collision_group == plat_mp_group){
+					//Platform Actors					
+					if(!actor_attached || hit_actor != last_actor){
+						if (temp_y < hit_actor->pos.y + (hit_actor->bounds.top << 4) && pl_vel_y >= 0){
+							//Attach to MP
+							last_actor = hit_actor;
+							mp_last_x = hit_actor->pos.x;
+							mp_last_y = hit_actor->pos.y;
+							PLAYER.pos.y = hit_actor->pos.y + (hit_actor->bounds.top << 4) - (PLAYER.bounds.bottom << 4) - 4;
+							//Other cleanup
+							pl_vel_y = 0;
+							actor_attached = TRUE;                        
+							que_state = CROUCH_INIT;
+						}
+					}
+				}
+				
+				//All Other Collisions
+				player_register_collision_with(hit_actor);
+				break;	
+				
+			}		
+			hit_actor = hit_actor->prev;
         }
     }
     
@@ -1182,73 +1184,72 @@ void jump_state(void) BANKED {
     {
         deltaX = 0;
         deltaY = 0;
-        actor_t *hit_actor;
-        hit_actor = actor_overlapping_player(FALSE);
-        if (hit_actor != NULL && hit_actor->collision_group) {
-            //Solid Actors
-            if (hit_actor->collision_group == plat_solid_group){
-                if(!actor_attached || hit_actor != last_actor){
-                    if (temp_y < (hit_actor->pos.y + (hit_actor->bounds.top << 4)) && pl_vel_y >= 0){
-                        //Attach to MP
-                        last_actor = hit_actor;
-                        mp_last_x = hit_actor->pos.x;
-                        mp_last_y = hit_actor->pos.y;
-                        PLAYER.pos.y = hit_actor->pos.y + (hit_actor->bounds.top << 4) - (PLAYER.bounds.bottom << 4) - 4;
-                        //Other cleanup
-                        pl_vel_y = 0;
-                        actor_attached = TRUE;                        
-                        que_state = GROUND_INIT;
-                        //PLAYER bounds top seems to be 0 and counting down...
-                    } else if (temp_y + (PLAYER.bounds.top << 4) > hit_actor->pos.y + (hit_actor->bounds.bottom<<4)){
-                        deltaY += (hit_actor->pos.y - PLAYER.pos.y) + ((-PLAYER.bounds.top + hit_actor->bounds.bottom)<<4) + 32;
-                        pl_vel_y = plat_grav;
-
-                        if(que_state == JUMP_STATE || actor_attached){
-                            que_state = FALL_INIT;
-                        }
-
-                    } else if (PLAYER.pos.x < hit_actor->pos.x){
-                        deltaX = (hit_actor->pos.x - PLAYER.pos.x) - ((PLAYER.bounds.right + -hit_actor->bounds.left)<<4);
-                        col = 1;
-                        last_wall = 1;
-                        if(!INPUT_RIGHT){
-                            pl_vel_x = 0;
-                        }
-                    } else if (PLAYER.pos.x > hit_actor->pos.x){
-                        deltaX = (hit_actor->pos.x - PLAYER.pos.x) + ((-PLAYER.bounds.left + hit_actor->bounds.right)<<4)+16;
-                        col = -1;
-                        last_wall = -1;
-                        if (!INPUT_LEFT){
-                            pl_vel_x = 0;
-                        }
-                    }
-
-                }
-            } else if (hit_actor->collision_group == plat_mp_group){
-                //Platform Actors
-                if(!actor_attached || hit_actor != last_actor){
-                    if (temp_y < hit_actor->pos.y + (hit_actor->bounds.top << 4) && pl_vel_y >= 0){
-                        //Attach to MP
-                        last_actor = hit_actor;
-                        mp_last_x = hit_actor->pos.x;
-                        mp_last_y = hit_actor->pos.y;
-                        PLAYER.pos.y = hit_actor->pos.y + (hit_actor->bounds.top << 4) - (PLAYER.bounds.bottom << 4) - 4;
-                        //Other cleanup
-                        pl_vel_y = 0;
-                        actor_attached = TRUE;                        
-                        que_state = GROUND_INIT;
-                    }
-                }
-            }
-            //All Other Collisions
-            player_register_collision_with(hit_actor);
-        } else if (INPUT_PRESSED(INPUT_PLATFORM_INTERACT)) {
-            if (!hit_actor) {
-                hit_actor = actor_in_front_of_player(8, TRUE);
-            }
-            if (hit_actor && !hit_actor->collision_group && hit_actor->script.bank) {
-                script_execute(hit_actor->script.bank, hit_actor->script.ptr, 0, 1, 0);
-            }
+        actor_t *hit_actor = PLAYER.prev;
+		while (hit_actor) {
+			if (!hit_actor->collision_enabled || (actor_attached && last_actor == hit_actor)) {
+				hit_actor = hit_actor->prev;
+				continue;
+			};		
+			if (bb_intersects(&PLAYER.bounds, &PLAYER.pos, &hit_actor->bounds, &hit_actor->pos)) {	
+				//Solid Actors
+				if (hit_actor->collision_group == plat_solid_group){
+					if(!actor_attached || hit_actor != last_actor){
+						if (temp_y < (hit_actor->pos.y + (hit_actor->bounds.top << 4)) && pl_vel_y >= 0){
+							//Attach to MP
+							last_actor = hit_actor;
+							mp_last_x = hit_actor->pos.x;
+							mp_last_y = hit_actor->pos.y;
+							PLAYER.pos.y = hit_actor->pos.y + (hit_actor->bounds.top << 4) - (PLAYER.bounds.bottom << 4) - 4;
+							//Other cleanup
+							pl_vel_y = 0;
+							actor_attached = TRUE;                        
+							que_state = GROUND_INIT;
+							//PLAYER bounds top seems to be 0 and counting down...
+						} else if (temp_y + (PLAYER.bounds.top << 4) > hit_actor->pos.y + (hit_actor->bounds.bottom<<4)){
+							deltaY += (hit_actor->pos.y - PLAYER.pos.y) + ((-PLAYER.bounds.top + hit_actor->bounds.bottom)<<4) + 32;
+							pl_vel_y = plat_grav;
+	
+							if(que_state == JUMP_STATE || actor_attached){
+								que_state = FALL_INIT;
+							}
+	
+						} else if (PLAYER.pos.x < hit_actor->pos.x){
+							deltaX = (hit_actor->pos.x - PLAYER.pos.x) - ((PLAYER.bounds.right + -hit_actor->bounds.left)<<4);
+							col = 1;
+							last_wall = 1;
+							if(!INPUT_RIGHT){
+								pl_vel_x = 0;
+							}
+						} else if (PLAYER.pos.x > hit_actor->pos.x){
+							deltaX = (hit_actor->pos.x - PLAYER.pos.x) + ((-PLAYER.bounds.left + hit_actor->bounds.right)<<4)+16;
+							col = -1;
+							last_wall = -1;
+							if (!INPUT_LEFT){
+								pl_vel_x = 0;
+							}
+						}	
+					}
+				} else if (hit_actor->collision_group == plat_mp_group){
+					//Platform Actors
+					if(!actor_attached || hit_actor != last_actor){
+						if (temp_y < hit_actor->pos.y + (hit_actor->bounds.top << 4) && pl_vel_y >= 0){
+							//Attach to MP
+							last_actor = hit_actor;
+							mp_last_x = hit_actor->pos.x;
+							mp_last_y = hit_actor->pos.y;
+							PLAYER.pos.y = hit_actor->pos.y + (hit_actor->bounds.top << 4) - (PLAYER.bounds.bottom << 4) - 4;
+							//Other cleanup
+							pl_vel_y = 0;
+							actor_attached = TRUE;                        
+							que_state = GROUND_INIT;
+						}
+					}
+				}
+				//All Other Collisions
+				player_register_collision_with(hit_actor);
+				break;					
+			}		
+			hit_actor = hit_actor->prev;
         }
     }
    
@@ -1366,7 +1367,7 @@ void climb_state(void) BANKED {
     }
 
     //Actor Collisions
-    gotoActorCol:
+    gotoActorColClimb:
     {
         deltaX = 0;
         deltaY = 0;

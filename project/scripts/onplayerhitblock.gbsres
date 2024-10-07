@@ -142,7 +142,7 @@
             "command": "EVENT_GROUP",
             "args": {
               "__label": "Coin Block",
-              "__collapse": false
+              "__collapse": true
             },
             "children": {
               "true": [
@@ -290,7 +290,7 @@
             "command": "EVENT_GROUP",
             "args": {
               "__label": "Brick Block",
-              "__collapse": true
+              "__collapse": false
             },
             "children": {
               "true": [
@@ -298,15 +298,8 @@
                   "command": "EVENT_IF",
                   "args": {
                     "condition": {
-                      "type": "gt",
-                      "valueA": {
-                        "type": "variable",
-                        "value": "24"
-                      },
-                      "valueB": {
-                        "type": "number",
-                        "value": 0
-                      }
+                      "type": "expression",
+                      "value": "$24$ > 0 || $60$ != 0"
                     },
                     "__collapseElse": false,
                     "__collapse": false
@@ -410,9 +403,9 @@
                           "angle": 0,
                           "angleVariable": "V0",
                           "targetActorId": "$self$",
-                          "loopAnim": false,
+                          "loopAnim": true,
                           "destroyOnHit": false,
-                          "__collapse": true
+                          "__collapse": false
                         },
                         "id": "acd6b314-5250-47d0-9b90-383a1eac19e0"
                       },

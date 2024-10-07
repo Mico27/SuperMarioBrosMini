@@ -24,38 +24,37 @@
 #include "data/game_globals.h"
 
 UWORD check_collision_b(UWORD start_x, UWORD start_y, bounding_box_t *bounds, col_check_dir_e check_dir) BANKED{
-    WORD tx, ty;
     switch (check_dir) {
         case CHECK_DIR_LEFT:  // Check left (bottom left)
-            tx = (((start_x >> 4) + bounds->left) >> 3);
-            ty = (((start_y >> 4) + bounds->bottom) >> 3);
-            if (tile_at(tx, ty) & COLLISION_RIGHT) {
-                return ((tx + 1) << 7) - (bounds->left << 4);
+            col_tx = (((start_x >> 4) + bounds->left) >> 3);
+            col_ty = (((start_y >> 4) + bounds->bottom) >> 3);
+            if (tile_at(col_tx, col_ty) & COLLISION_RIGHT) {
+                return ((col_tx + 1) << 7) - (bounds->left << 4);
             }
             return start_x;
         case CHECK_DIR_RIGHT:  // Check right (bottom right)
-            tx = (((start_x >> 4) + bounds->right) >> 3);
-            ty = (((start_y >> 4) + bounds->bottom) >> 3);
-            if (tile_at(tx, ty) & COLLISION_LEFT) {
-                return (tx << 7) - ((bounds->right + 1) << 4);
+            col_tx = (((start_x >> 4) + bounds->right) >> 3);
+            col_ty = (((start_y >> 4) + bounds->bottom) >> 3);
+            if (tile_at(col_tx, col_ty) & COLLISION_LEFT) {
+                return (col_tx << 7) - ((bounds->right + 1) << 4);
             }
             return start_x;
         case CHECK_DIR_UP:  // Check up (middle up)
-            ty = (((start_y >> 4) + bounds->top) >> 3);
-            tx = (((start_x >> 4) + ((bounds->left + bounds->right) >> 1)) >> 3);
-            if (tile_at(tx, ty) & COLLISION_BOTTOM) {
-                return ((ty + 1) << 7) - ((bounds->top) << 4);
+            col_ty = (((start_y >> 4) + bounds->top) >> 3);
+            col_tx = (((start_x >> 4) + ((bounds->left + bounds->right) >> 1)) >> 3);
+            if (tile_at(col_tx, col_ty) & COLLISION_BOTTOM) {
+                return ((col_ty + 1) << 7) - ((bounds->top) << 4);
             }
             return start_y;
         case CHECK_DIR_DOWN:  // Check down (right bottom and left bottom)
-            ty = (((start_y >> 4) + bounds->bottom) >> 3);
-            tx = (((start_x >> 4) + bounds->left) >> 3);
-            if (tile_at(tx, ty) & COLLISION_TOP) {
-                return ((ty) << 7) - ((bounds->bottom + 1) << 4);
+            col_ty = (((start_y >> 4) + bounds->bottom) >> 3);
+            col_tx = (((start_x >> 4) + bounds->left) >> 3);
+            if (tile_at(col_tx, col_ty) & COLLISION_TOP) {
+                return ((col_ty) << 7) - ((bounds->bottom + 1) << 4);
             }			
-			tx = (((start_x >> 4) + bounds->right) >> 3);
-			if (tile_at(tx, ty) & COLLISION_TOP) {
-                return ((ty) << 7) - ((bounds->bottom + 1) << 4);
+			col_tx = (((start_x >> 4) + bounds->right) >> 3);
+			if (tile_at(col_tx, col_ty) & COLLISION_TOP) {
+                return ((col_ty) << 7) - ((bounds->bottom + 1) << 4);
             }
             return start_y;
     }

@@ -1,0 +1,49 @@
+{
+  "_resourceType": "actor",
+  "id": "7f16c4f5-32ad-4026-aeb3-3f0df963ee97",
+  "name": "ElevatorPlatform",
+  "frame": 0,
+  "animate": false,
+  "spriteSheetId": "f372b635-2699-4923-9caf-067e60099a3f",
+  "prefabId": "571fa3ef-eb63-4519-8bed-96b8921f0c5b",
+  "direction": "down",
+  "moveSpeed": 0.5,
+  "animSpeed": 15,
+  "paletteId": "",
+  "isPinned": false,
+  "persistent": false,
+  "collisionGroup": "3",
+  "prefabScriptOverrides": {
+    "8aa3aa3d-6c97-4941-9dda-4300dd51dbe2": {
+      "id": "8aa3aa3d-6c97-4941-9dda-4300dd51dbe2",
+      "args": {
+        "yVelocity": {
+          "type": "number",
+          "value": 8
+        }
+      }
+    }
+  },
+  "symbol": "actor_726",
+  "script": [],
+  "startScript": [
+    {
+      "command": "EVENT_SET_ACTOR_BEHAVIOR",
+      "args": {
+        "actorId": "$self$",
+        "behaviorId": {
+          "type": "number",
+          "value": 13
+        }
+      },
+      "id": "2e2c4174-6f5d-4a72-a081-3b5fbe63cdee"
+    }
+  ],
+  "updateScript": [],
+  "hit1Script": [],
+  "hit2Script": [],
+  "hit3Script": [],
+  "x": 46,
+  "y": 7,
+  "_index": 0
+}

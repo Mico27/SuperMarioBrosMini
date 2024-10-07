@@ -101,7 +101,7 @@
       "command": "EVENT_GROUP",
       "args": {
         "__label": "ConfigurePallettes",
-        "__collapse": false
+        "__collapse": true
       },
       "children": {
         "true": [
@@ -1223,7 +1223,7 @@
           {
             "command": "EVENT_GBVM_SCRIPT",
             "args": {
-              "script": "VM_LOAD_TEXT 5 \n.dw VAR_COINS\n.dw VAR_CURRENTWORLD\n.dw VAR_CURRENTLEVEL\n.dw VAR_SCOREUPPER\n.dw VAR_SCORELOWER\n.asciz \"\\003\\012\\002%D2\\003\\015\\002%D1\\003\\017\\002%D1\\003\\001\\002%D3\\003\\004\\002%D3\"\nVM_CALL_NATIVE b_ui_alt_display_text, _ui_alt_display_text",
+              "script": "VM_LOAD_TEXT 5 \n.dw VAR_COINS\n.dw VAR_CURRENTWORLD\n.dw VAR_CURRENTLEVEL\n.dw VAR_SCOREUPPER\n.dw VAR_SCORELOWER\n.asciz \"\\003\\012\\002%D2\\003\\015\\002%d\\003\\017\\002%d\\003\\001\\002%D3\\003\\004\\002%D3\"\nVM_CALL_NATIVE b_ui_alt_display_text, _ui_alt_display_text",
               "references": [
                 {
                   "type": "variable",
@@ -1246,7 +1246,7 @@
                   "id": "57"
                 }
               ],
-              "__collapse": true,
+              "__collapse": false,
               "__label": "Write coins , lives, world, level and score"
             },
             "id": "323fe7b9-e413-4318-89a5-1797bec5e991"
@@ -1705,7 +1705,7 @@
       "command": "EVENT_GROUP",
       "args": {
         "__label": "Start Menu",
-        "__collapse": false,
+        "__collapse": true,
         "__comment": false
       },
       "children": {
@@ -1768,7 +1768,7 @@
                           ],
                           "override": true,
                           "__scriptTabs": "press",
-                          "__collapse": true
+                          "__collapse": false
                         },
                         "children": {
                           "true": [
@@ -1803,7 +1803,7 @@
                                   }
                                 },
                                 "__collapseElse": true,
-                                "__collapse": true
+                                "__collapse": false
                               },
                               "children": {
                                 "true": [
@@ -1830,7 +1830,7 @@
                                         }
                                       },
                                       "__collapseElse": true,
-                                      "__collapse": true
+                                      "__collapse": false
                                     },
                                     "children": {
                                       "true": [
@@ -1869,7 +1869,7 @@
                                               }
                                             },
                                             "__collapseElse": true,
-                                            "__collapse": true
+                                            "__collapse": false
                                           },
                                           "children": {
                                             "true": [
@@ -1879,7 +1879,7 @@
                                                   "variable": "9",
                                                   "value": {
                                                     "type": "number",
-                                                    "value": 8
+                                                    "value": 16
                                                   },
                                                   "__collapse": true
                                                 },
@@ -1942,7 +1942,7 @@
                           ],
                           "override": true,
                           "__scriptTabs": "press",
-                          "__collapse": true
+                          "__collapse": false
                         },
                         "children": {
                           "true": [
@@ -1977,7 +1977,7 @@
                                   }
                                 },
                                 "__collapseElse": false,
-                                "__collapse": true
+                                "__collapse": false
                               },
                               "children": {
                                 "true": [
@@ -2004,7 +2004,7 @@
                                         }
                                       },
                                       "__collapseElse": true,
-                                      "__collapse": true
+                                      "__collapse": false
                                     },
                                     "children": {
                                       "true": [
@@ -2039,7 +2039,7 @@
                                               },
                                               "valueB": {
                                                 "type": "number",
-                                                "value": 8
+                                                "value": 16
                                               }
                                             },
                                             "__collapseElse": true,
@@ -2116,7 +2116,7 @@
                           ],
                           "override": true,
                           "__scriptTabs": "press",
-                          "__collapse": false
+                          "__collapse": true
                         },
                         "children": {
                           "true": [
@@ -2623,7 +2623,7 @@
                           ],
                           "override": true,
                           "__scriptTabs": "press",
-                          "__collapse": false
+                          "__collapse": true
                         },
                         "children": {
                           "true": [

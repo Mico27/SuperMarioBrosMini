@@ -12,7 +12,7 @@
 #define ON_8PX_GRID(A)        ( MOD_8((A).x >> 4) == 0 &&  MOD_8((A).y >> 4) == 0)
 #define ON_16PX_GRID(A)       (MOD_16((A).x >> 4) == 0 && MOD_16((A).y >> 4) == 8)
 
-#define PLAYER_HURT_IFRAMES   20
+#define PLAYER_HURT_IFRAMES   5
 
 #define ANIM_JUMP_LEFT        0
 #define ANIM_JUMP_RIGHT       2

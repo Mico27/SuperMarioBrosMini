@@ -1,0 +1,85 @@
+{
+  "_resourceType": "trigger",
+  "id": "f5f09d6b-dcd6-4bd2-9b8e-efa6def36f20",
+  "name": "",
+  "prefabId": "",
+  "x": 67,
+  "y": 0,
+  "symbol": "trigger_243",
+  "prefabScriptOverrides": {},
+  "width": 1,
+  "height": 18,
+  "script": [
+    {
+      "command": "EVENT_SCRIPT_UNLOCK",
+      "args": {
+        "__collapse": true
+      },
+      "id": "30b75ed0-1622-4b71-b053-35d33f1eb314"
+    },
+    {
+      "command": "EVENT_CALL_CUSTOM_EVENT",
+      "args": {
+        "customEventId": "7472c75b-28ba-4e82-9e18-5c1cc4daf097",
+        "$variable[V0]$": {
+          "type": "number",
+          "value": 86
+        },
+        "$variable[V1]$": {
+          "type": "number",
+          "value": 8
+        },
+        "$actor[0]$": "e4694388-8f56-4796-84a0-bd2f17b26e1f",
+        "__collapse": true,
+        "$variable[V2]$": {
+          "type": "number",
+          "value": 20
+        }
+      },
+      "id": "a0a7cfe1-49cd-4c32-a5dc-71769b15b0d9"
+    },
+    {
+      "command": "EVENT_ACTOR_SET_STATE",
+      "args": {
+        "actorId": "e4694388-8f56-4796-84a0-bd2f17b26e1f",
+        "spriteStateId": "BalancingPlatform",
+        "loopAnim": true,
+        "__collapse": true
+      },
+      "id": "891204d2-8a77-467d-a0fd-f3a641f1d3f1"
+    },
+    {
+      "command": "EVENT_CALL_CUSTOM_EVENT",
+      "args": {
+        "customEventId": "7472c75b-28ba-4e82-9e18-5c1cc4daf097",
+        "$variable[V0]$": {
+          "type": "number",
+          "value": 94
+        },
+        "$variable[V1]$": {
+          "type": "number",
+          "value": 11
+        },
+        "$actor[0]$": "2813c3ca-ad9a-4475-87f4-bf527f296527",
+        "__collapse": true,
+        "$variable[V2]$": {
+          "type": "number",
+          "value": 20
+        }
+      },
+      "id": "11538f3a-25d1-4e72-91ae-775575b681af"
+    },
+    {
+      "command": "EVENT_ACTOR_SET_STATE",
+      "args": {
+        "actorId": "2813c3ca-ad9a-4475-87f4-bf527f296527",
+        "spriteStateId": "BalancingPlatform",
+        "loopAnim": true,
+        "__collapse": true
+      },
+      "id": "e9d46e01-e2ff-4a0b-af41-a4f746af1c7c"
+    }
+  ],
+  "leaveScript": [],
+  "_index": 2
+}

@@ -33,6 +33,8 @@ UBYTE actor_counter_a[MAX_ACTORS];
 UBYTE actor_counter_b[MAX_ACTORS];
 UBYTE actor_linked_actor_idx[MAX_ACTORS];
 
+WORD col_tx;
+WORD col_ty;
 WORD current_actor_x;
 point16_t tmp_point;
 const BYTE firebar_incx_lookup[] = { 0, 3, 6, 7, 8, 7, 6, 3, 0, -3, -6, -7, -8, -7, -6, -3 };
@@ -49,39 +51,38 @@ void actor_behavior_init(void) BANKED {
 	memset(actor_linked_actor_idx, 0, sizeof(actor_linked_actor_idx));
 }
 
-UWORD check_collision(UWORD start_x, UWORD start_y, bounding_box_t *bounds, col_check_dir_e check_dir) BANKED{
-    WORD tx, ty;
+UWORD check_collision(UWORD start_x, UWORD start_y, bounding_box_t *bounds, col_check_dir_e check_dir) BANKED{    
     switch (check_dir) {
         case CHECK_DIR_LEFT:  // Check left (bottom left)
-            tx = (((start_x >> 4) + bounds->left) >> 3);
-            ty = (((start_y >> 4) + bounds->bottom) >> 3);
-            if (tile_at(tx, ty) & COLLISION_RIGHT) {
-                return ((tx + 1) << 7) - (bounds->left << 4);
+            col_tx = (((start_x >> 4) + bounds->left) >> 3);
+            col_ty = (((start_y >> 4) + bounds->bottom) >> 3);
+            if (tile_at(col_tx, col_ty) & COLLISION_RIGHT) {
+                return ((col_tx + 1) << 7) - (bounds->left << 4);
             }
             return start_x;
         case CHECK_DIR_RIGHT:  // Check right (bottom right)
-            tx = (((start_x >> 4) + bounds->right) >> 3);
-            ty = (((start_y >> 4) + bounds->bottom) >> 3);
-            if (tile_at(tx, ty) & COLLISION_LEFT) {
-                return (tx << 7) - ((bounds->right + 1) << 4);
+            col_tx = (((start_x >> 4) + bounds->right) >> 3);
+            col_ty = (((start_y >> 4) + bounds->bottom) >> 3);
+            if (tile_at(col_tx, col_ty) & COLLISION_LEFT) {
+                return (col_tx << 7) - ((bounds->right + 1) << 4);
             }
             return start_x;
         case CHECK_DIR_UP:  // Check up (middle up)
-            ty = (((start_y >> 4) + bounds->top) >> 3);
-            tx = (((start_x >> 4) + ((bounds->left + bounds->right) >> 1)) >> 3);
-            if (tile_at(tx, ty) & COLLISION_BOTTOM) {
-                return ((ty + 1) << 7) - ((bounds->top) << 4);
+            col_ty = (((start_y >> 4) + bounds->top) >> 3);
+            col_tx = (((start_x >> 4) + ((bounds->left + bounds->right) >> 1)) >> 3);
+            if (tile_at(col_tx, col_ty) & COLLISION_BOTTOM) {
+                return ((col_ty + 1) << 7) - ((bounds->top) << 4);
             }
             return start_y;
         case CHECK_DIR_DOWN:  // Check down (right bottom and left bottom)
-            ty = (((start_y >> 4) + bounds->bottom) >> 3);
-            tx = (((start_x >> 4) + bounds->left) >> 3);
-            if (tile_at(tx, ty) & COLLISION_TOP) {
-                return ((ty) << 7) - ((bounds->bottom + 1) << 4);
+            col_ty = (((start_y >> 4) + bounds->bottom) >> 3);
+            col_tx = (((start_x >> 4) + bounds->left) >> 3);
+            if (tile_at(col_tx, col_ty) & COLLISION_TOP) {
+                return ((col_ty) << 7) - ((bounds->bottom + 1) << 4);
             }			
-			tx = (((start_x >> 4) + bounds->right) >> 3);
-			if (tile_at(tx, ty) & COLLISION_TOP) {
-                return ((ty) << 7) - ((bounds->bottom + 1) << 4);
+			col_tx = (((start_x >> 4) + bounds->right) >> 3);
+			if (tile_at(col_tx, col_ty) & COLLISION_TOP) {
+                return ((col_ty) << 7) - ((bounds->bottom + 1) << 4);
             }
             return start_y;
     }
@@ -295,7 +296,6 @@ void actor_behavior_update(void) BANKED {
 				case 2: //init kicked state
 					actor_counter_a[i] = 0;		
 					actor_states[i] = 3;
-					actor->collision_group = COLLISION_GROUP_2;
 				case 3: //kicked state player iframe
 					if (actor_counter_a[i] > 15){
 						actor_states[i] = 4; 
@@ -316,9 +316,33 @@ void actor_behavior_update(void) BANKED {
 						//Tile Collision
 						actor->pos.x = check_collision(new_x, actor->pos.y, &actor->bounds, ((actor->pos.x > new_x) ? CHECK_DIR_LEFT : CHECK_DIR_RIGHT));
 						if (actor->pos.x != new_x){
-							actor_vel_x[i] = -actor_vel_x[i];
-							if (actor->script.bank){
-								script_execute(actor->script.bank, actor->script.ptr, 0, 1, 8);
+							actor_vel_x[i] = -actor_vel_x[i];							
+							UBYTE tile_id = sram_map_data[VRAM_OFFSET(col_tx, col_ty)];	
+							switch(tile_id){
+								case 5://coin block
+								case 7://brick	
+								case 152://multi coin brick
+								case 153://powerup brick
+								case 154://star brick
+								case 155://1up brick
+								case 156://powerup block	
+								case 157://beanstalk block
+								case 158://star block
+								case 159://1up block
+								case 169://beanstalk brick
+								if(specific_events[HIT_BLOCK_EVENT].script_addr != 0){
+									script_memory[VAR_HITBLOCKID] = tile_id;
+									script_memory[VAR_HITBLOCKX] = col_tx;
+									script_memory[VAR_HITBLOCKY] = col_ty;
+									script_memory[VAR_HITBLOCKSOURCE] = i;
+									script_execute(specific_events[HIT_BLOCK_EVENT].script_bank, specific_events[HIT_BLOCK_EVENT].script_addr, 0, 0);
+								}
+								break;
+								default:
+								if (actor->script.bank){
+									script_execute(actor->script.bank, actor->script.ptr, 0, 1, 8);
+								}
+								break;
 							}
 						}
 						actor->pos.y = check_collision(actor->pos.x, new_y, &actor->bounds, ((actor->pos.y > new_y) ? CHECK_DIR_UP : CHECK_DIR_DOWN));
@@ -330,9 +354,6 @@ void actor_behavior_update(void) BANKED {
 					actor_t * hit_actor = actor_overlapping_bb(&actor->bounds, &actor->pos, actor, FALSE);
 					if (hit_actor && hit_actor->script.bank){
 						script_execute(hit_actor->script.bank, hit_actor->script.ptr, 0, 1, 2);
-						if (actor->collision_group == hit_actor->collision_group){
-							script_execute(actor->script.bank, actor->script.ptr, 0, 1, 2);
-						}
 					}
 					break;
 				case 255:

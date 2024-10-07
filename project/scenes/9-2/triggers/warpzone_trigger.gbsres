@@ -1,0 +1,33 @@
+{
+  "_resourceType": "trigger",
+  "id": "a5c2902a-9f25-48df-84d2-8d110b1da511",
+  "name": "WarpZone Trigger",
+  "prefabId": "",
+  "x": 214,
+  "y": 0,
+  "symbol": "trigger_255",
+  "prefabScriptOverrides": {},
+  "width": 7,
+  "height": 6,
+  "script": [
+    {
+      "command": "EVENT_GBVM_SCRIPT",
+      "args": {
+        "script": "VM_SWITCH_TEXT_LAYER .TEXT_LAYER_BKG\nVM_SET_CONST_INT8 _overlay_priority, 0",
+        "__collapse": true
+      },
+      "id": "2542eee1-73fd-419b-8f3d-67b13d3881b0"
+    },
+    {
+      "command": "EVENT_UI_ALT_DISPLAY_TEXT",
+      "args": {
+        "text": "\\003\\017\\010WELCOME TO THE\\003\\021\\012WARP ZONE!\\003\\021\\01412\\003\\025\\01411\\003\\031\\01410",
+        "x": 0,
+        "y": 0
+      },
+      "id": "540c9bed-5521-47aa-b8c1-94a92f0f9e33"
+    }
+  ],
+  "leaveScript": [],
+  "_index": 6
+}

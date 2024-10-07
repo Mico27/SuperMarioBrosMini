@@ -39,6 +39,16 @@
       "id": "c9fdbf70-0639-4005-9b8d-70ef728f3f70"
     },
     {
+      "command": "EVENT_ACTOR_SET_STATE",
+      "args": {
+        "actorId": "1e8b4960-27b0-42c6-b704-be64191b1158",
+        "spriteStateId": "BalancingPlatform",
+        "loopAnim": true,
+        "__collapse": true
+      },
+      "id": "d13d72e6-d81e-4e78-870c-ebdd251aad8a"
+    },
+    {
       "command": "EVENT_CALL_CUSTOM_EVENT",
       "args": {
         "customEventId": "7472c75b-28ba-4e82-9e18-5c1cc4daf097",
@@ -58,6 +68,16 @@
         }
       },
       "id": "cb823411-3335-4f9f-a7e2-5a6ef5d83551"
+    },
+    {
+      "command": "EVENT_ACTOR_SET_STATE",
+      "args": {
+        "actorId": "ec4daabe-464d-40e7-bb80-dabf32721da2",
+        "spriteStateId": "BalancingPlatform",
+        "loopAnim": true,
+        "__collapse": true
+      },
+      "id": "5e5efa90-f50f-47fd-adfa-e8f7eaace101"
     }
   ],
   "leaveScript": [],

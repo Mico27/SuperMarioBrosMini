@@ -744,5 +744,20 @@
       "id": "e877a7f8-2754-42e4-98c4-229f26265817"
     }
   ],
-  "hit3Script": []
+  "hit3Script": [
+    {
+      "command": "EVENT_SOUND_PLAY_EFFECT",
+      "args": {
+        "type": "a631d886-60d0-4abf-b53e-7673f15235d0",
+        "priority": "medium",
+        "pitch": 4,
+        "frequency": 200,
+        "duration": 0.5,
+        "wait": true,
+        "effect": 0,
+        "__collapse": false
+      },
+      "id": "25ca2ac5-171d-4899-b9ee-89debc1b86ec"
+    }
+  ]
 }
