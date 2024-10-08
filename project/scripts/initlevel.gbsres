@@ -327,7 +327,7 @@
                     "palette6": "43da72a7-de7c-4aef-87f7-ed490c978643",
                     "palette7": "9cd57f2b-2f5a-4821-b106-4ccfd4b1b91b",
                     "commit": false,
-                    "__collapse": true
+                    "__collapse": false
                   },
                   "id": "6d17d1d7-d223-43ea-bacc-f909ac736747"
                 }
@@ -395,7 +395,7 @@
                     "palette6": "43da72a7-de7c-4aef-87f7-ed490c978643",
                     "palette7": "9cd57f2b-2f5a-4821-b106-4ccfd4b1b91b",
                     "commit": false,
-                    "__collapse": true
+                    "__collapse": false
                   },
                   "id": "9056d98e-5d91-4e1a-851a-7888cb9f3e92"
                 }
@@ -1064,7 +1064,7 @@
                       }
                     },
                     "__collapseElse": true,
-                    "__collapse": true
+                    "__collapse": false
                   },
                   "children": {
                     "true": [
@@ -1123,9 +1123,10 @@
                         "args": {
                           "timer": 1,
                           "duration": 1,
-                          "frames": 30,
+                          "frames": 32,
                           "__scriptTabs": "end",
-                          "__collapse": false
+                          "__collapse": false,
+                          "units": "frames"
                         },
                         "children": {
                           "script": [

@@ -3,7 +3,7 @@
   "id": "c7df928f-c01b-46a7-b8ed-30a902beaa54",
   "name": "",
   "prefabId": "",
-  "x": 31,
+  "x": 30,
   "y": 0,
   "symbol": "trigger_118",
   "prefabScriptOverrides": {},
@@ -17,6 +17,21 @@
         "__comment": true
       },
       "id": "6f9e1fc6-5efd-4d9c-bcde-da13f0720971"
+    },
+    {
+      "command": "EVENT_PALETTE_SET_SPRITE",
+      "args": {
+        "palette0": "keep",
+        "palette1": "d8571d7d-2726-4d23-923c-b864acf88926",
+        "palette2": "keep",
+        "palette3": "keep",
+        "palette4": "keep",
+        "palette5": "keep",
+        "palette6": "keep",
+        "palette7": "keep",
+        "__collapse": true
+      },
+      "id": "923fa6d5-01bb-4b47-9801-a1de1332b645"
     },
     {
       "command": "EVENT_THREAD_START",

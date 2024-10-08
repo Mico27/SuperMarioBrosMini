@@ -433,7 +433,7 @@
                         "command": "EVENT_SOUND_PLAY_EFFECT",
                         "args": {
                           "type": "a5d8cd75-4a3c-4fb4-9a4f-33a7d1726bcc",
-                          "priority": "medium",
+                          "priority": "low",
                           "pitch": 4,
                           "frequency": 200,
                           "duration": 0.5,
@@ -449,7 +449,7 @@
                         "command": "EVENT_SOUND_PLAY_EFFECT",
                         "args": {
                           "type": "87c8c8b7-bfa9-45a3-93a8-f3cc47c5167c",
-                          "priority": "medium",
+                          "priority": "low",
                           "pitch": 4,
                           "frequency": 200,
                           "duration": 0.5,
@@ -485,13 +485,13 @@
             "command": "EVENT_SOUND_PLAY_EFFECT",
             "args": {
               "type": "02aef5b8-1037-455f-b4a7-5f95b4e7f144",
-              "priority": "medium",
+              "priority": "low",
               "pitch": 4,
               "frequency": 200,
               "duration": 0.5,
               "wait": true,
               "effect": 0,
-              "__collapse": false
+              "__collapse": true
             },
             "id": "333f8971-111b-47c4-ad4a-3bf58c053be7"
           }

@@ -660,7 +660,7 @@ void fall_state(void) BANKED {
         deltaY = 0;
 		actor_t *hit_actor = PLAYER.prev;
 		while (hit_actor) {
-			if (!hit_actor->collision_enabled || (actor_attached && last_actor == hit_actor)) {
+			if (!hit_actor->collision_enabled || (actor_attached && last_actor == hit_actor) || hit_actor->collision_group == 0) {
 				hit_actor = hit_actor->prev;
 				continue;
 			};		
@@ -1095,7 +1095,7 @@ void swim_state(void) BANKED {
         deltaY = 0;
         actor_t *hit_actor = PLAYER.prev;
 		while (hit_actor) {
-			if (!hit_actor->collision_enabled || (actor_attached && last_actor == hit_actor)) {
+			if (!hit_actor->collision_enabled || (actor_attached && last_actor == hit_actor) || hit_actor->collision_group == 0) {
 				hit_actor = hit_actor->prev;
 				continue;
 			};		
