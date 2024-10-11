@@ -588,7 +588,6 @@ void actor_behavior_update_b(UBYTE i, actor_t * actor) BANKED {
 			case 0: //Init
 				if ((((actor->pos.x >> 4) + 8) - draw_scroll_x) < BEHAVIOR_ACTIVATION_THRESHOLD){ 
 					actor_states[i] = 1; 
-					actor_counter_a[i] = rand();
 					actor_counter_a[i] = 32;
 					actor_vel_x[i] = 2;
 					actor_vel_y[i] = 0;					
@@ -750,6 +749,118 @@ void actor_behavior_update_b(UBYTE i, actor_t * actor) BANKED {
 				}
 			}
 			actor_behavior_ids[i] = 0;		
-		break;		
+		break;	
+		case 33://Totomesu
+		switch(actor_states[i]){
+			case 0: //Init
+				if ((((actor->pos.x >> 4) + 8) - draw_scroll_x) < BEHAVIOR_ACTIVATION_THRESHOLD){ 
+					actor_states[i] = 1; 
+					actor_counter_a[i] = 32;
+					actor_vel_x[i] = 2;
+					actor_vel_y[i] = 0;					
+				}
+				break;
+			case 1: //Main state
+				current_actor_x = ((actor->pos.x >> 4) + 8) - draw_scroll_x;
+				if (current_actor_x < BEHAVIOR_DEACTIVATION_LOWER_THRESHOLD){ 
+					actor_states[i] = 255; 
+					break;
+				}
+				apply_gravity_b(i);
+				apply_velocity_b(i, actor);
+				//Animation
+				if (PLAYER.pos.x < actor->pos.x) {
+					actor_set_dir(actor, DIR_LEFT, actor_vel_x[i]);
+				} else {
+					actor_set_dir(actor, DIR_RIGHT, actor_vel_x[i]);
+				}
+				if (!(game_time & 1)){
+					if (!(actor_counter_b[i] & 31)){
+						if (actor_vel_x[i] == 0){
+							actor_vel_x[i] = (rand() & 7) - 4;
+						} else {
+							actor_vel_x[i] = 0;
+						}						
+					}
+					if (!(actor_counter_a[i] & 63)){	
+						actor_counter_a[i] = rand();	
+						if (actor_counter_a[i] < 64){
+							//jump
+							actor_states[i] = 2;
+							actor_vel_y[i] = -32;
+						} else {
+							//breath fire							
+							UBYTE attack_idx = actor_linked_actor_idx[i];
+							if (actor_states[attack_idx] != 0 && actor_states[attack_idx] != 255){
+								//breath fire
+								attack_idx = actor_linked_actor_idx[attack_idx];
+								if (actor_states[attack_idx] != 0 && actor_states[attack_idx] != 255){
+									//breath fire
+									attack_idx = actor_linked_actor_idx[attack_idx];
+								}
+							}		
+							if (attack_idx != 0 && (actor_states[attack_idx] == 0 || actor_states[attack_idx] == 255)){
+								actor_t * attack_actor = (actors + attack_idx);
+								actor_states[attack_idx] = 0;
+								if (!attack_actor->active){
+									attack_actor->disabled = FALSE;
+									activate_actor(attack_actor);
+								}
+								attack_actor->collision_enabled = true;
+								attack_actor->pos.y = actor->pos.y - (actor_counter_a[i] - 128);
+								
+								if (PLAYER.pos.x < actor->pos.x) {
+									actor_set_dir(attack_actor, DIR_LEFT, FALSE);	
+									attack_actor->pos.x = actor->pos.x - 128;										
+									actor_vel_x[attack_idx]	= -12;							
+								} else {
+									actor_set_dir(attack_actor, DIR_RIGHT, FALSE);
+									attack_actor->pos.x = actor->pos.x + 128;
+									actor_vel_x[attack_idx]	= 12;
+								}
+							}								
+						}					
+					}
+					actor_counter_a[i]++;
+					actor_counter_b[i]++;
+				}
+				break;
+			case 2: //Jump state
+				if ((((actor->pos.x >> 4) + 8) - draw_scroll_x) > BEHAVIOR_DEACTIVATION_THRESHOLD){ 
+					actor_states[i] = 255; 
+					break;
+				}
+				actor_vel_y[i] += (plat_grav >> 11);
+				actor_vel_y[i] = MIN(actor_vel_y[i], plat_max_fall_vel >> 9);
+				//Apply velocity
+				WORD new_y =  actor->pos.y + actor_vel_y[i];
+				//Tile Collision				
+				actor->pos.y = check_collision_b(actor->pos.x, new_y, &actor->bounds, CHECK_DIR_DOWN);
+				if (actor->pos.y != new_y){
+					actor_vel_y[i] = 0;
+					actor_states[i] = 1;						
+				}
+				//Animation
+				if (PLAYER.pos.x < actor->pos.x) {
+					actor_set_anim(actor, ANIM_JUMP_LEFT);
+				} else {
+					actor_set_anim(actor, ANIM_JUMP_RIGHT);
+				}
+				break;
+			case 3: //death
+				if ((actor->pos.y >> 7) > (image_tile_height + 4)){ 
+					actor_states[i] = 255; 
+					break;
+				}
+				actor_vel_y[i] += (plat_grav >> 10);
+				actor_vel_y[i] = MIN(actor_vel_y[i], plat_max_fall_vel >> 8);
+				//Apply velocity
+				actor->pos.y =  actor->pos.y + actor_vel_y[i];
+				break;
+			case 255: //Deactivate
+				deactivate_actor(actor);
+				break;
+		}		
+		break;			
 	}			
 }

@@ -1,0 +1,205 @@
+{
+  "_resourceType": "trigger",
+  "id": "67ef36b1-be6e-4925-b6b8-90908ac6622c",
+  "name": "BowserEndTrigger",
+  "prefabId": "ee96e9a9-609c-412c-a92d-f8fed5b89f71",
+  "x": 52,
+  "y": 15,
+  "symbol": "trigger_281",
+  "prefabScriptOverrides": {
+    "3bca367e-4e75-4e57-9ad3-dcb0b23d2555": {
+      "id": "3bca367e-4e75-4e57-9ad3-dcb0b23d2555",
+      "args": {
+        "x": 45
+      }
+    },
+    "75d832d2-31e6-479a-8d78-8da6712a0152": {
+      "id": "75d832d2-31e6-479a-8d78-8da6712a0152",
+      "args": {
+        "x": 44
+      }
+    },
+    "d885e96f-9eab-4043-b09e-086c42d0f648": {
+      "id": "d885e96f-9eab-4043-b09e-086c42d0f648",
+      "args": {
+        "x": 44
+      }
+    }
+  },
+  "width": 1,
+  "height": 1,
+  "script": [
+    {
+      "command": "EVENT_SCRIPT_UNLOCK",
+      "args": {},
+      "id": "6271f618-1662-4c20-9855-e76e189aa133"
+    },
+    {
+      "command": "EVENT_SET_INPUT_SCRIPT",
+      "args": {
+        "input": [
+          "b",
+          "left",
+          "up",
+          "down",
+          "right",
+          "a",
+          "start",
+          "select"
+        ],
+        "override": true,
+        "__scriptTabs": "press"
+      },
+      "children": {
+        "true": []
+      },
+      "id": "d908d1d2-ebaf-4153-869a-0bc08fe1a6d0"
+    },
+    {
+      "command": "EVENT_WAIT",
+      "args": {
+        "time": 2,
+        "frames": 30
+      },
+      "id": "4bdab7bd-cdd9-4e84-a7ef-c8921786b12c"
+    },
+    {
+      "command": "EVENT_UI_ALT_DISPLAY_TEXT",
+      "args": {
+        "text": "THANK YOU MARIO!",
+        "x": 146,
+        "y": 6
+      },
+      "id": "8a22360e-ab3c-4ae5-b3d1-040a73fa66b9"
+    },
+    {
+      "command": "EVENT_WAIT",
+      "args": {
+        "time": 1,
+        "frames": 30
+      },
+      "id": "c38b924e-e65e-49bb-b236-33ddd43ba354"
+    },
+    {
+      "command": "EVENT_IF",
+      "args": {
+        "condition": {
+          "type": "and",
+          "valueA": {
+            "type": "eq",
+            "valueA": {
+              "type": "expression",
+              "value": "$09$ & 7"
+            },
+            "valueB": {
+              "type": "number",
+              "value": 0
+            }
+          },
+          "valueB": {
+            "type": "eq",
+            "valueA": {
+              "type": "expression",
+              "value": "$10$ & 3"
+            },
+            "valueB": {
+              "type": "number",
+              "value": 0
+            }
+          }
+        },
+        "__collapseElse": false
+      },
+      "children": {
+        "true": [
+          {
+            "command": "EVENT_UI_ALT_DISPLAY_TEXT",
+            "args": {
+              "text": "YOUR QUEST IS OVER.\nWE PRESENT YOU WITH \n   A NEW QUEST.",
+              "x": 145,
+              "y": 8
+            },
+            "id": "1f33bb98-5b7a-4a8d-ac79-80a50fa1d351"
+          }
+        ],
+        "false": [
+          {
+            "command": "EVENT_UI_ALT_DISPLAY_TEXT",
+            "args": {
+              "text": " BUT OUR PRINCESS \n  IS IN ANOTHER\n     CASTLE!",
+              "x": 145,
+              "y": 8
+            },
+            "id": "31d2f53d-6473-4752-a9fc-7f6ec796aa17"
+          }
+        ]
+      },
+      "id": "f6f426ae-927b-4de4-aaf6-2388870bf043"
+    },
+    {
+      "command": "EVENT_SET_INPUT_SCRIPT",
+      "args": {
+        "input": [
+          "b",
+          "a",
+          "left",
+          "up",
+          "down",
+          "right",
+          "start",
+          "select"
+        ],
+        "override": true,
+        "__scriptTabs": "press"
+      },
+      "children": {
+        "true": [
+          {
+            "command": "EVENT_SET_VALUE",
+            "args": {
+              "variable": "9",
+              "value": {
+                "type": "expression",
+                "value": "$09$ + 1"
+              },
+              "__comment": false
+            },
+            "id": "a18ac843-d6f3-4b5b-9d1a-cb7008de3276"
+          },
+          {
+            "command": "EVENT_SET_VALUE",
+            "args": {
+              "variable": "10",
+              "value": {
+                "type": "number",
+                "value": 1
+              }
+            },
+            "id": "391c5f9d-1edf-4f00-8acb-bb9f242c82ff"
+          },
+          {
+            "command": "EVENT_SET_VALUE",
+            "args": {
+              "variable": "22",
+              "value": {
+                "type": "number",
+                "value": 0
+              }
+            },
+            "id": "597ebb43-0515-46c2-b847-addbe0232288"
+          },
+          {
+            "command": "EVENT_CALL_CUSTOM_EVENT",
+            "args": {
+              "customEventId": "1da14dfe-ad02-4e47-addd-68af4399854d"
+            },
+            "id": "04348b32-0c46-4025-bd0b-bfa7ef978031"
+          }
+        ]
+      },
+      "id": "022fad8a-257f-4d8e-8190-7af5404312fc"
+    }
+  ],
+  "leaveScript": [],
+  "_index": 2
+}

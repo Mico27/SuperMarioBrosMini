@@ -285,39 +285,91 @@
       "id": "37ed176f-c870-4740-88e2-85d9d78d259b"
     },
     {
-      "command": "EVENT_GBVM_SCRIPT",
+      "command": "EVENT_IF",
       "args": {
-        "script": "VM_LOAD_TEXT 5 \n.dw VAR_COINS\n.dw VAR_CURRENTWORLD\n.dw VAR_CURRENTLEVEL\n.dw VAR_SCOREUPPER\n.dw VAR_SCORELOWER\n.asciz \"\\003\\012\\002%D2\\003\\015\\002%D1\\003\\017\\002%D1\\003\\001\\002%D3\\003\\004\\002%D3\"\nVM_CALL_NATIVE b_ui_alt_display_text, _ui_alt_display_text",
-        "references": [
-          {
+        "condition": {
+          "type": "gt",
+          "valueA": {
             "type": "variable",
-            "id": "6"
+            "value": "9"
           },
+          "valueB": {
+            "type": "number",
+            "value": 9
+          }
+        },
+        "__collapseElse": false,
+        "__collapse": true
+      },
+      "children": {
+        "true": [
           {
-            "type": "variable",
-            "id": "2"
-          },
-          {
-            "type": "variable",
-            "id": "9"
-          },
-          {
-            "type": "variable",
-            "id": "10"
-          },
-          {
-            "type": "variable",
-            "id": "12"
-          },
-          {
-            "type": "variable",
-            "id": "57"
+            "command": "EVENT_GBVM_SCRIPT",
+            "args": {
+              "script": "VM_LOAD_TEXT 5 \n.dw VAR_COINS\n.dw VAR_CURRENTWORLD\n.dw VAR_CURRENTLEVEL\n.dw VAR_SCOREUPPER\n.dw VAR_SCORELOWER\n.asciz \"\\003\\012\\002%D2\\003\\014\\002%d\\003\\017\\002%d\\003\\001\\002%D3\\003\\004\\002%D3\"\nVM_CALL_NATIVE b_ui_alt_display_text, _ui_alt_display_text",
+              "references": [
+                {
+                  "type": "variable",
+                  "id": "6"
+                },
+                {
+                  "type": "variable",
+                  "id": "9"
+                },
+                {
+                  "type": "variable",
+                  "id": "10"
+                },
+                {
+                  "type": "variable",
+                  "id": "12"
+                },
+                {
+                  "type": "variable",
+                  "id": "57"
+                }
+              ],
+              "__collapse": false,
+              "__label": "Write coins , lives, world, level and score"
+            },
+            "id": "4572820c-69d7-4944-9bc8-abe808a487f5"
           }
         ],
-        "__collapse": true,
-        "__label": "Write coins , lives, world, level and score"
+        "false": [
+          {
+            "command": "EVENT_GBVM_SCRIPT",
+            "args": {
+              "script": "VM_LOAD_TEXT 5 \n.dw VAR_COINS\n.dw VAR_CURRENTWORLD\n.dw VAR_CURRENTLEVEL\n.dw VAR_SCOREUPPER\n.dw VAR_SCORELOWER\n.asciz \"\\003\\012\\002%D2\\003\\015\\002%d\\003\\017\\002%d\\003\\001\\002%D3\\003\\004\\002%D3\"\nVM_CALL_NATIVE b_ui_alt_display_text, _ui_alt_display_text",
+              "references": [
+                {
+                  "type": "variable",
+                  "id": "6"
+                },
+                {
+                  "type": "variable",
+                  "id": "9"
+                },
+                {
+                  "type": "variable",
+                  "id": "10"
+                },
+                {
+                  "type": "variable",
+                  "id": "12"
+                },
+                {
+                  "type": "variable",
+                  "id": "57"
+                }
+              ],
+              "__collapse": true,
+              "__label": "Write coins , lives, world, level and score"
+            },
+            "id": "4bd8671a-fb1e-4977-8235-470775490bc6"
+          }
+        ]
       },
-      "id": "3bf644fb-feef-425d-9ae2-220bbf0a7d6c"
+      "id": "66f96af7-d6cd-4117-90bb-64eb13130c00"
     },
     {
       "command": "EVENT_IF",
