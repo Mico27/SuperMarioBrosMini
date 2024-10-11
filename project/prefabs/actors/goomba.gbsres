@@ -131,11 +131,20 @@
             "id": "f10799c5-7fd6-4ebe-b095-2edd442d8422"
           },
           {
+            "command": "PM_EVENT_PLATPLUS_STATE_STORE",
+            "args": {
+              "variable": "20",
+              "field": "plat_state",
+              "__collapse": true
+            },
+            "id": "f8fa9552-ad87-4c83-baa1-0239c8faa21f"
+          },
+          {
             "command": "EVENT_IF",
             "args": {
               "condition": {
                 "type": "expression",
-                "value": "$01$ < ($28$ - 4)"
+                "value": "$20$ == 1 || $01$ < ($28$ - 4)"
               },
               "__collapseElse": false,
               "__collapse": false

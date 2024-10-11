@@ -132,6 +132,7 @@ UBYTE* hit_block_ptr;
 UBYTE current_vine_tile_x;
 
 UBYTE underwater_pit;
+UBYTE crouched;
 
 void platform_init(void) BANKED {
     //Initialize Camera
@@ -205,6 +206,7 @@ void platform_init(void) BANKED {
     deltaX = 0;
     deltaY = 0;
 	underwater_pit = 0;
+	crouched = 0;
 	actor_behavior_init();
 }
 
@@ -217,6 +219,7 @@ void platform_update(void) BANKED {
         case FALL_INIT:
             que_state = FALL_STATE;
 			load_animations(PLAYER.sprite.ptr, PLAYER.sprite.bank, ANIM_STATE_DEFAULT, PLAYER.animations);
+			crouched = 0;
         case FALL_STATE:
             fall_state();
             break;
@@ -227,6 +230,7 @@ void platform_update(void) BANKED {
             ct_val = plat_coyote_max; 
             jump_reduction_val = 0;
 			enemy_bounce = 0;
+			crouched = 0;
         case GROUND_STATE:
             ground_state();
             break;
@@ -234,6 +238,7 @@ void platform_update(void) BANKED {
 			que_state = CROUCH_STATE;
 			load_animations(PLAYER.sprite.ptr, PLAYER.sprite.bank, ANIM_STATE_CROUCH, PLAYER.animations);
 			PLAYER.bounds.top = 1;
+			crouched = 1;
 			//pl_vel_y = 256;
 		case CROUCH_STATE:
 			crouch_state();
@@ -252,6 +257,7 @@ void platform_update(void) BANKED {
             pl_vel_y = -plat_jump_min;
             jb_val = 0;
             ct_val = 0;
+			crouched = 0;
         case JUMP_STATE:
             jump_state();
             break;
@@ -424,7 +430,18 @@ void fall_state(void) BANKED {
     col = 0;
     
     //A. INPUT CHECK=================================================================================================
-      
+      //Crouched
+	if (INPUT_DOWN && !crouched){
+		load_animations(PLAYER.sprite.ptr, PLAYER.sprite.bank, ANIM_STATE_CROUCH, PLAYER.animations);
+		PLAYER.bounds.top = 1;
+		crouched = 1;
+	} else if (!INPUT_DOWN && crouched){
+		load_animations(PLAYER.sprite.ptr, PLAYER.sprite.bank, ANIM_STATE_DEFAULT, PLAYER.animations);
+		if (script_memory[VAR_MARIOSTATUS_0] > 0){
+			PLAYER.bounds.top = -7;
+		}
+		crouched = 0;
+	}
 
     //B. STATE SPECIFIC LOGIC
     //Vertical Movement--------------------------------------------------------------------------------------------
@@ -623,6 +640,7 @@ void fall_state(void) BANKED {
                 }
             }
             PLAYER.pos.y = new_y;
+			reset_collision_cache(DIR_UP);
 
         } else if (deltaY < 0) {
             //Moving Upward
@@ -650,6 +668,7 @@ void fall_state(void) BANKED {
                 tile_start++;
             }
             PLAYER.pos.y = new_y;
+			reset_collision_cache(DIR_DOWN);
         }
     }
 
@@ -1059,6 +1078,7 @@ void swim_state(void) BANKED {
                 }
             }
             PLAYER.pos.y = new_y;
+			reset_collision_cache(DIR_UP);
 
         } else if (deltaY < 0) {
             //Moving Upward
@@ -1085,6 +1105,7 @@ void swim_state(void) BANKED {
                 tile_start++;
             }
             PLAYER.pos.y = new_y;
+			reset_collision_cache(DIR_DOWN);
         }
     }
 

@@ -42,7 +42,19 @@ void ground_state(void) BANKED {
     col = 0;                  
     
     //A. INPUT CHECK=================================================================================================
-        
+    //Crouched
+	if (INPUT_DOWN && !crouched){
+		load_animations(PLAYER.sprite.ptr, PLAYER.sprite.bank, ANIM_STATE_CROUCH, PLAYER.animations);
+		PLAYER.bounds.top = 1;
+		crouched = 1;
+	} else if (!INPUT_DOWN && crouched){
+		load_animations(PLAYER.sprite.ptr, PLAYER.sprite.bank, ANIM_STATE_DEFAULT, PLAYER.animations);
+		if (script_memory[VAR_MARIOSTATUS_0] > 0){
+			PLAYER.bounds.top = -7;
+		}
+		crouched = 0;
+	}
+	
     UBYTE drop_press =  FALSE;
     switch(plat_drop_through){
         case 1:
@@ -301,6 +313,7 @@ void ground_state(void) BANKED {
                 }
             }
             PLAYER.pos.y = new_y;
+			reset_collision_cache(DIR_UP);
 
         } else if (deltaY < 0) {
             //Moving Upward
@@ -329,6 +342,7 @@ void ground_state(void) BANKED {
                 tile_start++;
             }
             PLAYER.pos.y = new_y;
+			reset_collision_cache(DIR_DOWN);
         }
     }
 
@@ -714,6 +728,7 @@ void crouch_state(void) BANKED {
                 }
             }
             PLAYER.pos.y = new_y;
+			reset_collision_cache(DIR_UP);
 
         } else if (deltaY < 0) {
             //Moving Upward
@@ -742,6 +757,7 @@ void crouch_state(void) BANKED {
                 tile_start++;
             }
             PLAYER.pos.y = new_y;
+			reset_collision_cache(DIR_DOWN);
         }
     }
 
@@ -856,6 +872,7 @@ void crouch_state(void) BANKED {
 		if (script_memory[VAR_MARIOSTATUS_0] > 0){
 			PLAYER.bounds.top = -7;
 		}		
+		crouched = 0;
         plat_state = CROUCH_END;
     }
 
@@ -893,7 +910,18 @@ void jump_state(void) BANKED {
     col = 0;
     
     //A. INPUT CHECK=================================================================================================
-    
+	//Crouched
+	if (INPUT_DOWN && !crouched){
+		load_animations(PLAYER.sprite.ptr, PLAYER.sprite.bank, ANIM_STATE_CROUCH, PLAYER.animations);
+		PLAYER.bounds.top = 1;
+		crouched = 1;
+	} else if (!INPUT_DOWN && crouched){
+		load_animations(PLAYER.sprite.ptr, PLAYER.sprite.bank, ANIM_STATE_DEFAULT, PLAYER.animations);
+		if (script_memory[VAR_MARIOSTATUS_0] > 0){
+			PLAYER.bounds.top = -7;
+		}
+		crouched = 0;
+	}
    
     UBYTE drop_press =  FALSE;
     switch(plat_drop_through){
@@ -1150,6 +1178,7 @@ void jump_state(void) BANKED {
                 }
             }
             PLAYER.pos.y = new_y;
+			reset_collision_cache(DIR_UP);
 
         } else if (deltaY < 0) {
             //Moving Upward
@@ -1175,6 +1204,7 @@ void jump_state(void) BANKED {
 				reset_collision_cache(DIR_UP);
 			}
             PLAYER.pos.y = new_y;
+			reset_collision_cache(DIR_DOWN);
         }
     }
 
@@ -1346,6 +1376,7 @@ void climb_state(void) BANKED {
                 }
             }
             PLAYER.pos.y = new_y;
+			reset_collision_cache(DIR_UP);
 
         } else if (deltaY < 0) {
             //Moving Upward

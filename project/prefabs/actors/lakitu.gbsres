@@ -140,11 +140,20 @@
             "children": {}
           },
           {
+            "command": "PM_EVENT_PLATPLUS_STATE_STORE",
+            "args": {
+              "variable": "20",
+              "field": "plat_state",
+              "__collapse": true
+            },
+            "id": "724084d0-1b6c-44f3-a411-be86c960d7dd"
+          },
+          {
             "command": "EVENT_IF",
             "args": {
               "condition": {
                 "type": "expression",
-                "value": "$01$ < ($28$ - 4)"
+                "value": "$20$ == 1 || $01$ < ($28$ - 4)"
               },
               "__collapseElse": false,
               "__collapse": false

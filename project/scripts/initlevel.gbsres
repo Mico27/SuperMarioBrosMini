@@ -3,7 +3,13 @@
   "id": "32d76253-2c63-4808-a673-2c3b44b8615b",
   "name": "InitLevel",
   "description": "",
-  "variables": {},
+  "variables": {
+    "V0": {
+      "id": "V0",
+      "name": "Variable A",
+      "passByReference": true
+    }
+  },
   "actors": {},
   "symbol": "script_6",
   "script": [
@@ -22,7 +28,7 @@
           }
         },
         "__collapseElse": true,
-        "__collapse": true
+        "__collapse": false
       },
       "children": {
         "true": [
@@ -32,8 +38,9 @@
               "variable": "18",
               "value": {
                 "type": "expression",
-                "value": "rnd(8)+1"
-              }
+                "value": "rnd(9)+1"
+              },
+              "__collapse": true
             },
             "id": "027cf9a0-c4ff-47aa-9902-44779e31af8d"
           }
@@ -109,7 +116,7 @@
             "command": "EVENT_SWITCH",
             "args": {
               "variable": "18",
-              "choices": 8,
+              "choices": 9,
               "__collapseCase0": false,
               "__collapseCase1": false,
               "__collapseCase2": false,
@@ -159,7 +166,11 @@
                 "type": "constant",
                 "value": "a049da1d-af7a-4cd5-89d9-55e9e17d7042"
               },
-              "__collapse": false
+              "__collapse": false,
+              "value8": {
+                "type": "constant",
+                "value": "b0413565-b215-4ffb-9b0d-286ffaac34c2"
+              }
             },
             "children": {
               "true0": [
@@ -327,7 +338,7 @@
                     "palette6": "43da72a7-de7c-4aef-87f7-ed490c978643",
                     "palette7": "9cd57f2b-2f5a-4821-b106-4ccfd4b1b91b",
                     "commit": false,
-                    "__collapse": false
+                    "__collapse": true
                   },
                   "id": "6d17d1d7-d223-43ea-bacc-f909ac736747"
                 }
@@ -395,7 +406,7 @@
                     "palette6": "43da72a7-de7c-4aef-87f7-ed490c978643",
                     "palette7": "9cd57f2b-2f5a-4821-b106-4ccfd4b1b91b",
                     "commit": false,
-                    "__collapse": false
+                    "__collapse": true
                   },
                   "id": "9056d98e-5d91-4e1a-851a-7888cb9f3e92"
                 }
@@ -429,12 +440,45 @@
                     "palette6": "43da72a7-de7c-4aef-87f7-ed490c978643",
                     "palette7": "9cd57f2b-2f5a-4821-b106-4ccfd4b1b91b",
                     "commit": false,
-                    "__collapse": false
+                    "__collapse": true
                   },
                   "id": "7237f4c3-b5e1-4b81-bdf0-63b4dc3bca2d"
                 }
               ],
-              "true8": [],
+              "true8": [
+                {
+                  "command": "EVENT_PALETTE_SET_BACKGROUND_EX",
+                  "args": {
+                    "palette0": "5a9a5378-68d8-4803-86f7-53e52c29acb8",
+                    "palette1": "77fb6508-e586-4ff4-9dac-a3af5a9d9ab0",
+                    "palette2": "abc0af7c-6751-410a-908e-4a2aac7112cd",
+                    "palette3": "572f8e81-850f-4d59-aa02-98ebed8231a1",
+                    "palette4": "60169a40-7960-4b61-96fa-56b76cc5ad0c",
+                    "palette5": "keep",
+                    "palette6": "keep",
+                    "palette7": "abc0af7c-6751-410a-908e-4a2aac7112cd",
+                    "commit": false,
+                    "__collapse": true
+                  },
+                  "id": "bb9f576c-184f-4e71-97b8-536198d9d578"
+                },
+                {
+                  "command": "EVENT_PALETTE_SET_SPRITE_EX",
+                  "args": {
+                    "palette0": "keep",
+                    "palette1": "d8571d7d-2726-4d23-923c-b864acf88926",
+                    "palette2": "208e4138-0984-4c70-aaa1-3a3d73cc30f6",
+                    "palette3": "b38a1471-560c-45dc-ac6b-67484fdd459b",
+                    "palette4": "8a3b4e5e-018e-4499-8e12-2a220bc349dd",
+                    "palette5": "faa089d0-a8fb-4001-884e-e973b47fdb80",
+                    "palette6": "43da72a7-de7c-4aef-87f7-ed490c978643",
+                    "palette7": "9cd57f2b-2f5a-4821-b106-4ccfd4b1b91b",
+                    "commit": false,
+                    "__collapse": true
+                  },
+                  "id": "4494de01-6ba2-42d2-9d19-7a2bbdd7f77c"
+                }
+              ],
               "true9": [],
               "true10": [],
               "true11": [],
@@ -494,7 +538,7 @@
                 "type": "number",
                 "value": 2
               },
-              "__collapse": false,
+              "__collapse": true,
               "__label": "Draw Top Hud"
             },
             "id": "815aa024-d43f-45d4-ab8e-086326297584"
@@ -514,7 +558,7 @@
                 }
               },
               "__collapseElse": false,
-              "__collapse": false
+              "__collapse": true
             },
             "children": {
               "true": [
@@ -1222,6 +1266,28 @@
             "id": "a026c892-c897-42a3-81fc-ac14cb07a7f8"
           },
           {
+            "command": "EVENT_IF",
+            "args": {
+              "condition": {
+                "type": "eq",
+                "valueA": {
+                  "type": "variable",
+                  "value": "V0"
+                },
+                "valueB": {
+                  "type": "number",
+                  "value": 1
+                }
+              },
+              "__collapseElse": true
+            },
+            "children": {
+              "true": [],
+              "false": []
+            },
+            "id": "8317b450-f875-45ac-ba9f-3291cbd22ca3"
+          },
+          {
             "command": "EVENT_GBVM_SCRIPT",
             "args": {
               "script": "VM_LOAD_TEXT 5 \n.dw VAR_COINS\n.dw VAR_CURRENTWORLD\n.dw VAR_CURRENTLEVEL\n.dw VAR_SCOREUPPER\n.dw VAR_SCORELOWER\n.asciz \"\\003\\012\\002%D2\\003\\015\\002%d\\003\\017\\002%d\\003\\001\\002%D3\\003\\004\\002%D3\"\nVM_CALL_NATIVE b_ui_alt_display_text, _ui_alt_display_text",
@@ -1247,7 +1313,7 @@
                   "id": "57"
                 }
               ],
-              "__collapse": true,
+              "__collapse": false,
               "__label": "Write coins , lives, world, level and score"
             },
             "id": "323fe7b9-e413-4318-89a5-1797bec5e991"
@@ -1706,7 +1772,7 @@
       "command": "EVENT_GROUP",
       "args": {
         "__label": "Start Menu",
-        "__collapse": false,
+        "__collapse": true,
         "__comment": false
       },
       "children": {

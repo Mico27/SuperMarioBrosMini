@@ -2,12 +2,15 @@
   "_resourceType": "scene",
   "id": "1d5ad7a0-366c-44b2-b8c1-2a1d7e36e627",
   "_index": 21,
+  "type": "TOPDOWN",
   "name": "Projectile_Fireworks",
-  "backgroundId": "c33582d5-40e4-468e-82e5-5876fde4b51b",
-  "tilesetId": "9ecbffea-374f-49ec-a07d-46fea9501295",
+  "symbol": "projectile_fireworks",
+  "x": 976,
+  "y": 208,
   "width": 20,
   "height": 2,
-  "type": "TOPDOWN",
+  "backgroundId": "c33582d5-40e4-468e-82e5-5876fde4b51b",
+  "tilesetId": "9ecbffea-374f-49ec-a07d-46fea9501295",
   "paletteIds": [
     "0b34ba59-4ceb-4897-bd6a-6e6458884900",
     "a7415857-4bf3-4e79-b9fe-cd6f84b15b86",
@@ -15,15 +18,11 @@
     "572f8e81-850f-4d59-aa02-98ebed8231a1",
     "60169a40-7960-4b61-96fa-56b76cc5ad0c",
     "dmg",
-    null,
+    "",
     "abc0af7c-6751-410a-908e-4a2aac7112cd"
   ],
   "spritePaletteIds": [],
-  "collisions": "0028+",
   "autoFadeSpeed": 1,
-  "symbol": "projectile_fireworks",
-  "x": 976,
-  "y": 208,
   "script": [
     {
       "command": "EVENT_LAUNCH_PROJECTILE",
@@ -55,5 +54,6 @@
   ],
   "playerHit1Script": [],
   "playerHit2Script": [],
-  "playerHit3Script": []
+  "playerHit3Script": [],
+  "collisions": "0028+"
 }

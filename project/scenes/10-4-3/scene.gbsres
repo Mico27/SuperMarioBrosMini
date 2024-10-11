@@ -1,0 +1,143 @@
+{
+  "_resourceType": "scene",
+  "id": "69596be0-8562-4738-adbe-af7f6e365fd8",
+  "_index": 74,
+  "name": "10-4-3",
+  "backgroundId": "5b8c55c5-f1ed-45cf-8245-cae0c21a14a1",
+  "tilesetId": "9ecbffea-374f-49ec-a07d-46fea9501295",
+  "width": 63,
+  "height": 18,
+  "type": "PLATFORM",
+  "paletteIds": [
+    "4a2f7b55-5a64-49fb-94cc-c0a6f328c1f4",
+    "88bee577-1654-40e5-8f95-5d5a3f6f232d",
+    "12564426-0b2f-4d75-a666-b2c514264d4a",
+    "c17b2e55-98ea-46de-a86c-165f3ee4a88e",
+    "f0ead0ec-57e9-4de7-9a11-28f4b824c9b8",
+    "731587f8-34fd-46ff-9e08-477610e8a66e",
+    "",
+    "12564426-0b2f-4d75-a666-b2c514264d4a"
+  ],
+  "spritePaletteIds": [
+    "",
+    "d8571d7d-2726-4d23-923c-b864acf88926",
+    "d3159686-6b4e-4511-97e2-c2ffbcdd8eb9",
+    "88d3151c-6b8f-4111-8b97-505d819f7247",
+    "88d3151c-6b8f-4111-8b97-505d819f7247",
+    "88d3151c-6b8f-4111-8b97-505d819f7247",
+    "486ec3d4-d40b-4ad8-84a2-5d0f1444d77d",
+    "e738a2c9-495a-40ed-96c1-8f5f690a4349"
+  ],
+  "collisions": "0046e+",
+  "autoFadeSpeed": null,
+  "symbol": "scene_10_4_3",
+  "x": 1344,
+  "y": 4624,
+  "autoFadeEventCollapse": true,
+  "parallax": [
+    {
+      "height": 2,
+      "speed": 128
+    },
+    {
+      "height": 0,
+      "speed": 0
+    }
+  ],
+  "playerSpriteSheetId": "82297e17-ae19-4d6c-84f3-47e5fe14a6ad",
+  "script": [
+    {
+      "command": "EVENT_SET_VALUE",
+      "args": {
+        "variable": "18",
+        "value": {
+          "type": "constant",
+          "value": "efd06150-a4f8-4086-a0d2-5245cb88aabd"
+        },
+        "__collapse": true
+      },
+      "id": "12365b9e-64bc-4d23-bb32-474da8afff1d"
+    },
+    {
+      "command": "PM_EVENT_PLATMARIO_SPECIFIC_SCRIPT",
+      "args": {
+        "specific_event": "1",
+        "__scriptTabs": "scriptinput",
+        "__collapse": false
+      },
+      "children": {
+        "script": [
+          {
+            "command": "EVENT_CALL_CUSTOM_EVENT",
+            "args": {
+              "customEventId": "010dfb2c-fbd5-47e5-8b29-80af76159f1f",
+              "$variable[V0]$": {
+                "type": "variable",
+                "value": "5"
+              },
+              "$variable[V1]$": {
+                "type": "variable",
+                "value": "30"
+              },
+              "$variable[V2]$": {
+                "type": "variable",
+                "value": "27"
+              },
+              "$actor[0]$": "618f0e2a-6329-494e-91d3-85ee70317fe3",
+              "$actor[1]$": "6cb1fbda-97b8-414f-943a-30816dc47af0",
+              "__collapse": true
+            },
+            "id": "2d497605-8aba-4468-aef0-aaed0c06d7c8"
+          }
+        ]
+      },
+      "id": "c9a3995d-57e0-4162-8e51-487c51b7f64e"
+    },
+    {
+      "command": "EVENT_SET_INPUT_SCRIPT",
+      "args": {
+        "input": [
+          "b"
+        ],
+        "override": false,
+        "__scriptTabs": "press",
+        "__collapse": false
+      },
+      "children": {
+        "true": [
+          {
+            "command": "EVENT_CALL_CUSTOM_EVENT",
+            "args": {
+              "customEventId": "70c96f28-b99f-4a17-a885-b993c8676eb8",
+              "$actor[0]$": "8496695e-d987-4d0b-ae39-78969074118d",
+              "$actor[1]$": "64a7eb33-787a-45c1-b9d7-fd9fa08ffc88",
+              "$actor[2]$": "69211368-11d4-4c5e-a0ee-59d0fe963344",
+              "__collapse": true
+            },
+            "id": "2e530366-a334-42b1-875e-0ce0ac748d67"
+          }
+        ]
+      },
+      "id": "01b451af-4685-463f-9efe-a9933037ba17"
+    },
+    {
+      "command": "EVENT_CALL_CUSTOM_EVENT",
+      "args": {
+        "customEventId": "32d76253-2c63-4808-a673-2c3b44b8615b",
+        "$variable[V0]$": {
+          "type": "number",
+          "value": 1
+        },
+        "$variable[V1]$": {
+          "type": "number",
+          "value": 2
+        },
+        "__collapse": false
+      },
+      "id": "1e066aa6-fd6d-47a6-9ce3-3cb3e73008b9"
+    }
+  ],
+  "playerHit1Script": [],
+  "playerHit2Script": [],
+  "playerHit3Script": []
+}

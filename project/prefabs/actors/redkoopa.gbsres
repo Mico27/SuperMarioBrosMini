@@ -150,11 +150,20 @@
             "id": "bd9fa8a1-d45d-4c85-9e4b-3d0ef5e3ab43"
           },
           {
+            "command": "PM_EVENT_PLATPLUS_STATE_STORE",
+            "args": {
+              "variable": "20",
+              "field": "plat_state",
+              "__collapse": true
+            },
+            "id": "406cce54-a64e-42df-9a91-4cc941951200"
+          },
+          {
             "command": "EVENT_IF",
             "args": {
               "condition": {
                 "type": "expression",
-                "value": "$01$ < ($28$ - 4) || ($47$ == 4 && $40$ < 4)"
+                "value": "$20$ == 1 || $01$ < ($28$ - 4) || ($47$ == 4 && $40$ < 4)"
               },
               "__collapseElse": false,
               "__collapse": false

@@ -1,0 +1,143 @@
+{
+  "_resourceType": "scene",
+  "id": "ae9cf77b-ac00-456a-bf2f-e9a1a855ac26",
+  "_index": 71,
+  "name": "10-3",
+  "backgroundId": "39162de0-aa29-4111-ba11-aa69d2f0b5fc",
+  "tilesetId": "9ecbffea-374f-49ec-a07d-46fea9501295",
+  "width": 216,
+  "height": 18,
+  "type": "PLATFORM",
+  "paletteIds": [
+    "5a9a5378-68d8-4803-86f7-53e52c29acb8",
+    "77fb6508-e586-4ff4-9dac-a3af5a9d9ab0",
+    "abc0af7c-6751-410a-908e-4a2aac7112cd",
+    "572f8e81-850f-4d59-aa02-98ebed8231a1",
+    "60169a40-7960-4b61-96fa-56b76cc5ad0c",
+    "dmg",
+    "dmg",
+    "abc0af7c-6751-410a-908e-4a2aac7112cd"
+  ],
+  "spritePaletteIds": [
+    "e3b4697e-c57b-4ada-bc32-8e8cf3d244e4",
+    "d8571d7d-2726-4d23-923c-b864acf88926",
+    "208e4138-0984-4c70-aaa1-3a3d73cc30f6",
+    "b38a1471-560c-45dc-ac6b-67484fdd459b",
+    "8a3b4e5e-018e-4499-8e12-2a220bc349dd",
+    "faa089d0-a8fb-4001-884e-e973b47fdb80",
+    "43da72a7-de7c-4aef-87f7-ed490c978643",
+    "9cd57f2b-2f5a-4821-b106-4ccfd4b1b91b"
+  ],
+  "collisions": "00f30+",
+  "autoFadeSpeed": null,
+  "symbol": "scene_10_3",
+  "x": 224,
+  "y": 4448,
+  "script": [
+    {
+      "command": "EVENT_SET_VALUE",
+      "args": {
+        "variable": "18",
+        "value": {
+          "type": "constant",
+          "value": "b0413565-b215-4ffb-9b0d-286ffaac34c2"
+        },
+        "__collapse": false
+      },
+      "id": "773fc01c-6e93-402a-8926-ecb0d5b0576e"
+    },
+    {
+      "command": "PM_EVENT_PLATMARIO_SPECIFIC_SCRIPT",
+      "args": {
+        "specific_event": "1",
+        "__scriptTabs": "scriptinput",
+        "__collapse": true
+      },
+      "children": {
+        "script": [
+          {
+            "command": "EVENT_CALL_CUSTOM_EVENT",
+            "args": {
+              "customEventId": "010dfb2c-fbd5-47e5-8b29-80af76159f1f",
+              "$variable[V0]$": {
+                "type": "variable",
+                "value": "5"
+              },
+              "$variable[V1]$": {
+                "type": "variable",
+                "value": "30"
+              },
+              "$variable[V2]$": {
+                "type": "variable",
+                "value": "27"
+              },
+              "$actor[0]$": "20900866-3ba0-4995-9878-35436119256a",
+              "$actor[1]$": "3f09a33f-051e-4681-a271-3f4f0df4ddfe",
+              "__collapse": true
+            },
+            "id": "9351a9e1-4169-4c23-96db-0b770b605019"
+          }
+        ]
+      },
+      "id": "1bf580ff-5460-4080-8f85-911f6695e7f9"
+    },
+    {
+      "command": "EVENT_SET_INPUT_SCRIPT",
+      "args": {
+        "input": [
+          "b"
+        ],
+        "override": false,
+        "__scriptTabs": "press",
+        "__collapse": true
+      },
+      "children": {
+        "true": [
+          {
+            "command": "EVENT_CALL_CUSTOM_EVENT",
+            "args": {
+              "customEventId": "70c96f28-b99f-4a17-a885-b993c8676eb8",
+              "$actor[0]$": "fc9f2578-57c1-482a-b4be-7dfa39999bad",
+              "$actor[1]$": "afa63dee-33d8-42c2-b789-1aa46487b22d",
+              "$actor[2]$": "5d110c75-5799-44fc-b454-714c2af522ff",
+              "__collapse": false
+            },
+            "id": "f952ce66-1776-490b-a380-8d4afa5d0fc9"
+          }
+        ]
+      },
+      "id": "4ebcb271-5d1d-44d3-a4d7-7afa6a873f19"
+    },
+    {
+      "command": "EVENT_CALL_CUSTOM_EVENT",
+      "args": {
+        "customEventId": "32d76253-2c63-4808-a673-2c3b44b8615b",
+        "$variable[V0]$": {
+          "type": "number",
+          "value": 1
+        },
+        "$variable[V1]$": {
+          "type": "number",
+          "value": 2
+        },
+        "__collapse": true
+      },
+      "id": "59b3a532-c7d8-4595-a4b2-c33f3909e8a3"
+    }
+  ],
+  "playerHit1Script": [],
+  "playerHit2Script": [],
+  "playerHit3Script": [],
+  "autoFadeEventCollapse": true,
+  "parallax": [
+    {
+      "height": 2,
+      "speed": 128
+    },
+    {
+      "height": 0,
+      "speed": 0
+    }
+  ],
+  "playerSpriteSheetId": "82297e17-ae19-4d6c-84f3-47e5fe14a6ad"
+}

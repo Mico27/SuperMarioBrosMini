@@ -73,3 +73,5 @@ extern UBYTE plat_drop_through;
 extern BYTE run_stage;
 extern BYTE last_wall;
 extern BYTE col;
+
+extern UBYTE crouched;
