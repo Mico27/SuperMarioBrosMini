@@ -754,19 +754,7 @@ void actor_behavior_update(void) BANKED {
 					deactivate_actor(actor);
 					break;
 			}
-			break;
-			case 17: //Hit block bump
-			switch(actor_states[i]){
-				case 0:
-					//Actor Collision					
-					actor_t * hit_actor = actor_overlapping_bb(&actor->bounds, &actor->pos, actor, FALSE);
-					if (hit_actor && hit_actor->script.bank){
-						script_execute(hit_actor->script.bank, hit_actor->script.ptr, 0, 1, 2);
-						actor_states[i] = 255;
-					}
-					break;
-			}
-			break;
+			break;			
 			case 18: //Sideway moving actor
 			switch(actor_states[i]){
 				case 0:

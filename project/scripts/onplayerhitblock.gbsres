@@ -44,9 +44,21 @@
           "type": "variable",
           "value": "V2"
         },
-        "__collapse": false
+        "__collapse": true
       },
       "id": "3832563f-f6fc-489d-95b3-3f925853429b"
+    },
+    {
+      "command": "EVENT_SET_ACTOR_STATE",
+      "args": {
+        "actorId": "0",
+        "stateId": {
+          "type": "number",
+          "value": 0
+        },
+        "__collapse": true
+      },
+      "id": "6238f900-c988-4499-b7ce-b55d8440bd46"
     },
     {
       "command": "EVENT_SWITCH",
@@ -405,7 +417,7 @@
                           "targetActorId": "$self$",
                           "loopAnim": true,
                           "destroyOnHit": false,
-                          "__collapse": false
+                          "__collapse": true
                         },
                         "id": "acd6b314-5250-47d0-9b90-383a1eac19e0"
                       },
@@ -3907,7 +3919,8 @@
                 "type": "expression",
                 "value": "$V2$ - 1"
               },
-              "output": "5"
+              "output": "5",
+              "__collapse": true
             },
             "id": "f2541d86-a6d7-4fbe-b4e5-72f640f9c26b"
           },

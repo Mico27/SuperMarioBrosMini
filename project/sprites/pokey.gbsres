@@ -5,7 +5,7 @@
   "symbol": "sprite_pokey",
   "numFrames": 1,
   "filename": "pokey.png",
-  "checksum": "606dddaf33f905ab4a00e9cf38298f7f1c9aef66",
+  "checksum": "ea13765430e779ea09269c19a5857f7f13c7354e",
   "width": 16,
   "height": 16,
   "states": [
@@ -1740,6 +1740,118 @@
       ],
       "animationType": "multi",
       "flipLeft": false
+    },
+    {
+      "id": "4a5f8693-fb31-4db0-ac17-60a15c699912",
+      "name": "Knocked",
+      "animations": [
+        {
+          "id": "4b8a9e39-532c-4b81-a19a-597389ce582b",
+          "frames": [
+            {
+              "id": "8fae4f8a-8072-4f72-95a4-c9eb1e4ddd5f",
+              "tiles": [
+                {
+                  "id": "1fe96a6e-27d9-4897-9f30-c99f57c2bcc5",
+                  "x": 4,
+                  "y": 0,
+                  "sliceX": 0,
+                  "sliceY": 0,
+                  "palette": 0,
+                  "flipX": false,
+                  "flipY": false,
+                  "objPalette": "OBP0",
+                  "paletteIndex": 1,
+                  "priority": false
+                }
+              ]
+            },
+            {
+              "id": "4b951eaa-9013-49ae-be80-ee1239ee28c6",
+              "tiles": [
+                {
+                  "id": "20983ff6-2a55-4224-99ec-b2d0d31df12a",
+                  "x": 4,
+                  "y": 0,
+                  "sliceX": 0,
+                  "sliceY": 0,
+                  "palette": 0,
+                  "flipX": true,
+                  "flipY": false,
+                  "objPalette": "OBP0",
+                  "paletteIndex": 1,
+                  "priority": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "8e172eb0-3635-4cdc-aab7-ea32e6d735b0",
+          "frames": [
+            {
+              "id": "142b13ac-b560-4066-a1ba-ea3b71bfd698",
+              "tiles": []
+            }
+          ]
+        },
+        {
+          "id": "bd61762f-6569-4540-ba9a-fcec4c04528a",
+          "frames": [
+            {
+              "id": "299d16fc-d10e-4736-aff2-7ac0212704fa",
+              "tiles": []
+            }
+          ]
+        },
+        {
+          "id": "1b39b2da-6c46-459b-922a-a68b7a63b9a9",
+          "frames": [
+            {
+              "id": "cf3fb6b4-bfb4-410b-82fc-83aface09fda",
+              "tiles": []
+            }
+          ]
+        },
+        {
+          "id": "91d19f30-77ae-4ff0-980c-4746166a6cdd",
+          "frames": [
+            {
+              "id": "c444689c-e87e-4c0b-921b-7a5f5674c409",
+              "tiles": []
+            }
+          ]
+        },
+        {
+          "id": "92e4995f-a16c-4a33-831c-333e96c3c47f",
+          "frames": [
+            {
+              "id": "e2d48da6-38b8-4f8a-aab5-1004f2771f39",
+              "tiles": []
+            }
+          ]
+        },
+        {
+          "id": "ee215ded-a8d5-4ef0-8c6c-08fc44b6fcea",
+          "frames": [
+            {
+              "id": "d54f94f9-e8c9-4bb4-ab8a-fa025b9dc8f8",
+              "tiles": []
+            }
+          ]
+        },
+        {
+          "id": "d67cdb83-8d9e-4c46-be12-f4e4b00c47d9",
+          "frames": [
+            {
+              "id": "c91b3744-98b5-4290-9585-27488d0fa498",
+              "tiles": []
+            }
+          ]
+        }
+      ],
+      "animationType": "fixed",
+      "flipLeft": true
     }
   ],
   "numTiles": 2,

@@ -1,0 +1,113 @@
+{
+  "_resourceType": "actor",
+  "id": "42dbf2c5-8343-4e32-9064-73bdc5b64bf0",
+  "name": "PokeyBit",
+  "frame": 0,
+  "animate": false,
+  "spriteSheetId": "d35d1d9c-8256-455d-a6e9-114a7d0d3e5c",
+  "prefabId": "",
+  "direction": "left",
+  "moveSpeed": 1,
+  "animSpeed": 3,
+  "paletteId": "",
+  "isPinned": false,
+  "persistent": false,
+  "collisionGroup": "2",
+  "prefabScriptOverrides": {},
+  "symbol": "actor_854",
+  "script": [],
+  "startScript": [
+    {
+      "command": "EVENT_ACTOR_SET_STATE",
+      "args": {
+        "actorId": "$self$",
+        "spriteStateId": "Knocked",
+        "loopAnim": true,
+        "__collapse": true
+      },
+      "id": "284e6f29-352f-49d3-8109-2814d71f2a5e",
+      "children": {}
+    },
+    {
+      "command": "EVENT_SET_ACTOR_BEHAVIOR",
+      "args": {
+        "actorId": "$self$",
+        "behaviorId": {
+          "type": "number",
+          "value": 15
+        },
+        "__collapse": true
+      },
+      "id": "df3f73d1-36e6-4928-a886-6c1960de1b19",
+      "children": {}
+    },
+    {
+      "command": "EVENT_SET_ACTOR_STATE",
+      "args": {
+        "actorId": "$self$",
+        "stateId": {
+          "type": "number",
+          "value": 0
+        },
+        "__collapse": true
+      },
+      "id": "0d56850f-1250-4fc8-bd84-185cc2350831",
+      "children": {}
+    },
+    {
+      "command": "EVENT_ACTOR_DEACTIVATE",
+      "args": {
+        "actorId": "$self$",
+        "__collapse": true
+      },
+      "id": "2a99be50-ed6f-484d-83dd-29bc9262d7b9",
+      "children": {}
+    }
+  ],
+  "updateScript": [],
+  "hit1Script": [
+    {
+      "command": "FO_EVENT_LAUNCH_LOADED_PROJECTILE",
+      "args": {
+        "spriteSheetId": "8dbb443a-eb83-48bb-86c9-ffd9012f45c7",
+        "slot": 4,
+        "source": 0,
+        "scene": "fc64aadf-1c5e-4ae1-9945-cdd4423e35df",
+        "actorId": "$self$",
+        "x": 0,
+        "y": 0,
+        "directionType": "direction",
+        "otherActorId": "$self$",
+        "direction": "right",
+        "angle": 0,
+        "angleVariable": "0",
+        "targetActorId": "$self$",
+        "loopAnim": false,
+        "destroyOnHit": false,
+        "__collapse": true
+      },
+      "id": "09799b61-0f37-4bd6-8f31-913d3b065772",
+      "children": {}
+    },
+    {
+      "command": "EVENT_SOUND_PLAY_EFFECT",
+      "args": {
+        "type": "a631d886-60d0-4abf-b53e-7673f15235d0",
+        "priority": "medium",
+        "pitch": 4,
+        "frequency": 200,
+        "duration": 0.5,
+        "wait": true,
+        "effect": 0,
+        "__collapse": true
+      },
+      "id": "09e382d6-ca5b-40b9-8141-87a7c45ac696",
+      "children": {}
+    }
+  ],
+  "hit2Script": [],
+  "hit3Script": [],
+  "x": 6,
+  "y": 0,
+  "_index": 5
+}
