@@ -1,0 +1,155 @@
+{
+  "_resourceType": "scene",
+  "id": "4d2a5bd9-b0ca-4963-bc07-8b9766771011",
+  "_index": 83,
+  "name": "12-3",
+  "backgroundId": "344d2de1-c015-437d-b723-4304731c276a",
+  "tilesetId": "9ecbffea-374f-49ec-a07d-46fea9501295",
+  "width": 20,
+  "height": 192,
+  "type": "PLATFORM",
+  "paletteIds": [
+    "63fa9cd1-68c8-4ba0-a273-2259664e550b",
+    "16602aa2-2c7d-4f74-a1bb-5d5bcf9b7741",
+    "553590c9-0a42-4823-8e32-347826d15d8f",
+    "7832734a-100f-42e5-9588-8440033756ca",
+    "c15b4347-cfc4-4d31-aabc-927e1ab00414",
+    "dmg",
+    "dmg",
+    "553590c9-0a42-4823-8e32-347826d15d8f"
+  ],
+  "spritePaletteIds": [
+    "e3b4697e-c57b-4ada-bc32-8e8cf3d244e4",
+    "d8571d7d-2726-4d23-923c-b864acf88926",
+    "208e4138-0984-4c70-aaa1-3a3d73cc30f6",
+    "b38a1471-560c-45dc-ac6b-67484fdd459b",
+    "0b14eb86-24d3-4c8a-911f-3feaf79b40b1",
+    "faa089d0-a8fb-4001-884e-e973b47fdb80",
+    "43da72a7-de7c-4aef-87f7-ed490c978643",
+    "9cd57f2b-2f5a-4821-b106-4ccfd4b1b91b"
+  ],
+  "collisions": "",
+  "autoFadeSpeed": null,
+  "symbol": "scene_12_3",
+  "x": 2400,
+  "y": 3368,
+  "script": [
+    {
+      "command": "EVENT_SET_VALUE",
+      "args": {
+        "variable": "18",
+        "value": {
+          "type": "constant",
+          "value": "da3b6e79-95cd-4db0-ac6c-5f4ffc6fbbf5"
+        },
+        "__collapse": true
+      },
+      "id": "3891951d-259f-403d-939c-cdb9354a41ae"
+    },
+    {
+      "command": "PM_EVENT_PLATMARIO_SPECIFIC_SCRIPT",
+      "args": {
+        "specific_event": "1",
+        "__scriptTabs": "scriptinput",
+        "__collapse": true
+      },
+      "children": {
+        "script": [
+          {
+            "command": "EVENT_CALL_CUSTOM_EVENT",
+            "args": {
+              "customEventId": "010dfb2c-fbd5-47e5-8b29-80af76159f1f",
+              "$variable[V0]$": {
+                "type": "variable",
+                "value": "5"
+              },
+              "$variable[V1]$": {
+                "type": "variable",
+                "value": "30"
+              },
+              "$variable[V2]$": {
+                "type": "variable",
+                "value": "27"
+              },
+              "$actor[0]$": "8dd0ba63-32f9-446b-929d-b10be291a917",
+              "$actor[1]$": "72f02ebe-d485-463f-a3a6-f106330cdff0",
+              "__collapse": false
+            },
+            "id": "55e3d421-da78-449c-ab9e-cd20f442c5e5"
+          }
+        ]
+      },
+      "id": "4270dcc2-1b6c-44ba-a5e4-e7a088728ba9"
+    },
+    {
+      "command": "EVENT_SET_INPUT_SCRIPT",
+      "args": {
+        "input": [
+          "b"
+        ],
+        "override": false,
+        "__scriptTabs": "press",
+        "__collapse": true
+      },
+      "children": {
+        "true": [
+          {
+            "command": "EVENT_CALL_CUSTOM_EVENT",
+            "args": {
+              "customEventId": "70c96f28-b99f-4a17-a885-b993c8676eb8",
+              "$actor[0]$": "9230e959-152c-40c1-ab7f-5b6b5ffa8325",
+              "$actor[1]$": "fe7f9329-854a-4dc0-b874-14d3b5040651",
+              "$actor[2]$": "c94ddd6d-b4e8-4c64-8720-31e8f9b22980",
+              "__collapse": true
+            },
+            "id": "abdf8ece-9347-4bf7-8d5f-b6d4886cfd58"
+          }
+        ]
+      },
+      "id": "a14b83f0-524f-4546-bfb8-dc4e45bb3920"
+    },
+    {
+      "command": "EVENT_CALL_CUSTOM_EVENT",
+      "args": {
+        "customEventId": "32d76253-2c63-4808-a673-2c3b44b8615b",
+        "$variable[V0]$": {
+          "type": "number",
+          "value": 1
+        },
+        "$variable[V1]$": {
+          "type": "number",
+          "value": 2
+        },
+        "__collapse": true
+      },
+      "id": "773ddda0-046e-4ea3-9cec-1f9b39f2bd38"
+    },
+    {
+      "command": "EVENT_ENGINE_FIELD_SET",
+      "args": {
+        "engineFieldKey": "plat_camera_block",
+        "value": {
+          "type": "expression",
+          "value": "7"
+        },
+        "__collapse": true
+      },
+      "id": "9839a8d4-f925-4120-a11f-f29e27b40409"
+    }
+  ],
+  "playerHit1Script": [],
+  "playerHit2Script": [],
+  "playerHit3Script": [],
+  "autoFadeEventCollapse": true,
+  "parallax": [
+    {
+      "height": 2,
+      "speed": 128
+    },
+    {
+      "height": 0,
+      "speed": 0
+    }
+  ],
+  "playerSpriteSheetId": "82297e17-ae19-4d6c-84f3-47e5fe14a6ad"
+}

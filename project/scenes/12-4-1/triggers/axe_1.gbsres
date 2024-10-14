@@ -1,0 +1,144 @@
+{
+  "_resourceType": "trigger",
+  "id": "fea5a635-346e-4523-9594-7925428b85ef",
+  "name": "Axe 1",
+  "prefabId": "",
+  "x": 14,
+  "y": 61,
+  "symbol": "trigger_353",
+  "prefabScriptOverrides": {},
+  "width": 1,
+  "height": 1,
+  "script": [
+    {
+      "command": "EVENT_GET_META_TILE_AT_POS",
+      "args": {
+        "x": {
+          "type": "number",
+          "value": 14
+        },
+        "y": {
+          "type": "number",
+          "value": 61
+        },
+        "output": "26"
+      },
+      "id": "e13d5089-0099-4ce6-be63-f37a644122c8"
+    },
+    {
+      "command": "EVENT_IF",
+      "args": {
+        "condition": {
+          "type": "eq",
+          "valueA": {
+            "type": "variable",
+            "value": "26"
+          },
+          "valueB": {
+            "type": "number",
+            "value": 15
+          }
+        },
+        "__collapseElse": true
+      },
+      "children": {
+        "true": [
+          {
+            "command": "EVENT_REPLACE_META_TILE",
+            "args": {
+              "x": {
+                "type": "number",
+                "value": 14
+              },
+              "y": {
+                "type": "number",
+                "value": 61
+              },
+              "metatile_id": {
+                "type": "number",
+                "value": 0
+              },
+              "__collapse": true
+            },
+            "id": "504cdc43-252c-4a91-9e96-837ee602b307",
+            "children": {}
+          },
+          {
+            "command": "EVENT_LOOP_FOR",
+            "args": {
+              "variable": "34",
+              "from": {
+                "type": "number",
+                "value": 8
+              },
+              "comparison": ">",
+              "to": {
+                "type": "number",
+                "value": 0
+              },
+              "operation": "-=",
+              "value": {
+                "type": "number",
+                "value": 1
+              },
+              "__collapse": false
+            },
+            "children": {
+              "true": [
+                {
+                  "command": "EVENT_REPLACE_META_TILE",
+                  "args": {
+                    "x": {
+                      "type": "expression",
+                      "value": "$34$"
+                    },
+                    "y": {
+                      "type": "number",
+                      "value": 58
+                    },
+                    "metatile_id": {
+                      "type": "number",
+                      "value": 0
+                    }
+                  },
+                  "id": "7ef9836b-748e-4463-a399-96bb0cef8091",
+                  "children": {}
+                },
+                {
+                  "command": "EVENT_SOUND_PLAY_EFFECT",
+                  "args": {
+                    "type": "26cd7074-745e-4a0a-89e5-613430aaee0d",
+                    "priority": "medium",
+                    "pitch": 4,
+                    "frequency": 200,
+                    "duration": 0.5,
+                    "wait": true,
+                    "effect": 0,
+                    "__collapse": false
+                  },
+                  "id": "5efc5e76-0534-4c3c-acf4-c9013d42418b",
+                  "children": {}
+                },
+                {
+                  "command": "EVENT_WAIT",
+                  "args": {
+                    "time": 0.5,
+                    "frames": 4,
+                    "units": "frames"
+                  },
+                  "id": "cbea6a1e-7344-4a59-bb16-a021ffa2832c",
+                  "children": {}
+                }
+              ]
+            },
+            "id": "5b561d96-d164-487c-a434-c51f366bc5e0"
+          }
+        ],
+        "false": []
+      },
+      "id": "636d1faa-2697-4038-85c8-0cce3e1cdf31"
+    }
+  ],
+  "leaveScript": [],
+  "_index": 0
+}

@@ -302,7 +302,7 @@
             "command": "EVENT_GROUP",
             "args": {
               "__label": "Brick Block",
-              "__collapse": false
+              "__collapse": true
             },
             "children": {
               "true": [
@@ -779,7 +779,7 @@
             "command": "EVENT_GROUP",
             "args": {
               "__label": "Powerup Brick",
-              "__collapse": true
+              "__collapse": false
             },
             "children": {
               "true": [
@@ -1160,7 +1160,7 @@
                               "args": {
                                 "actorId": "1",
                                 "spriteStateId": "Flower",
-                                "loopAnim": false,
+                                "loopAnim": true,
                                 "__collapse": true
                               },
                               "id": "27ae5e77-00e5-489c-9004-32386d0511f3"
@@ -1222,7 +1222,7 @@
             "command": "EVENT_GROUP",
             "args": {
               "__label": "Star Brick",
-              "__collapse": true
+              "__collapse": false
             },
             "children": {
               "true": [
@@ -1353,7 +1353,7 @@
                     "actorId": "1",
                     "yVelocity": {
                       "type": "number",
-                      "value": -48
+                      "value": -20
                     },
                     "__collapse": true
                   },
@@ -1384,7 +1384,7 @@
                   "args": {
                     "actorId": "1",
                     "spriteStateId": "Star",
-                    "loopAnim": false,
+                    "loopAnim": true,
                     "__collapse": true
                   },
                   "id": "56516169-4022-4f9c-b7ec-4be11c076dde"
@@ -1642,7 +1642,7 @@
             "command": "EVENT_GROUP",
             "args": {
               "__label": "Powerup Block",
-              "__collapse": true
+              "__collapse": false
             },
             "children": {
               "true": [
@@ -2023,7 +2023,7 @@
                               "args": {
                                 "actorId": "1",
                                 "spriteStateId": "Flower",
-                                "loopAnim": false,
+                                "loopAnim": true,
                                 "__collapse": true
                               },
                               "id": "fb0b4ece-19a6-4d04-936c-0d1f128c6820"
@@ -2277,7 +2277,7 @@
             "command": "EVENT_GROUP",
             "args": {
               "__label": "Star Block",
-              "__collapse": true
+              "__collapse": false
             },
             "children": {
               "true": [
@@ -2408,7 +2408,7 @@
                     "actorId": "1",
                     "yVelocity": {
                       "type": "number",
-                      "value": -48
+                      "value": -20
                     },
                     "__collapse": true
                   },
@@ -2439,7 +2439,7 @@
                   "args": {
                     "actorId": "1",
                     "spriteStateId": "Star",
-                    "loopAnim": false,
+                    "loopAnim": true,
                     "__collapse": true
                   },
                   "id": "e61535c8-36d0-462a-afc1-19c6ee0f289d"
@@ -2845,7 +2845,7 @@
             "command": "EVENT_GROUP",
             "args": {
               "__label": "Invis Powerup Block",
-              "__collapse": true
+              "__collapse": false
             },
             "children": {
               "true": [
@@ -3226,7 +3226,7 @@
                               "args": {
                                 "actorId": "1",
                                 "spriteStateId": "Flower",
-                                "loopAnim": false,
+                                "loopAnim": true,
                                 "__collapse": true
                               },
                               "id": "ddfb1ff2-1226-4d97-8f58-e54034e25154"
@@ -3419,7 +3419,7 @@
                     "actorId": "1",
                     "yVelocity": {
                       "type": "number",
-                      "value": -48
+                      "value": -20
                     },
                     "__collapse": true
                   },
@@ -3450,7 +3450,7 @@
                   "args": {
                     "actorId": "1",
                     "spriteStateId": "Star",
-                    "loopAnim": false,
+                    "loopAnim": true,
                     "__collapse": true
                   },
                   "id": "4b0cfb0c-7d59-4a4d-927a-78d54a390136"
@@ -3939,7 +3939,7 @@
                 }
               },
               "__collapseElse": false,
-              "__collapse": false
+              "__collapse": true
             },
             "children": {
               "true": [

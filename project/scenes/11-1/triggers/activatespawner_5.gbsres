@@ -1,0 +1,84 @@
+{
+  "_resourceType": "trigger",
+  "id": "1aa6a6df-f415-4c52-b784-64000e2535d4",
+  "name": "ActivateSpawner",
+  "prefabId": "",
+  "x": 167,
+  "y": 0,
+  "symbol": "trigger_317",
+  "prefabScriptOverrides": {},
+  "width": 1,
+  "height": 18,
+  "script": [
+    {
+      "command": "EVENT_SCRIPT_UNLOCK",
+      "args": {},
+      "id": "128eba4c-ad18-44a5-bbbc-548798fceb54"
+    },
+    {
+      "command": "EVENT_CALL_CUSTOM_EVENT",
+      "args": {
+        "customEventId": "7472c75b-28ba-4e82-9e18-5c1cc4daf097",
+        "$variable[V0]$": {
+          "type": "number",
+          "value": 178
+        },
+        "$variable[V1]$": {
+          "type": "number",
+          "value": 12
+        },
+        "$variable[V2]$": {
+          "type": "number",
+          "value": 21
+        },
+        "$actor[0]$": "3a1d1b21-bd2a-4fd3-bd6d-771528bb5e35",
+        "__collapse": true
+      },
+      "id": "362db206-bb64-442f-9bb3-f245ae38e5c8"
+    },
+    {
+      "command": "EVENT_CALL_CUSTOM_EVENT",
+      "args": {
+        "customEventId": "7472c75b-28ba-4e82-9e18-5c1cc4daf097",
+        "$variable[V0]$": {
+          "type": "number",
+          "value": 172
+        },
+        "$variable[V1]$": {
+          "type": "number",
+          "value": 8
+        },
+        "$variable[V2]$": {
+          "type": "number",
+          "value": 21
+        },
+        "$actor[0]$": "e0d35a8b-8fbc-4fa6-b00b-360950ff650c",
+        "__collapse": true
+      },
+      "id": "83b6aeea-6527-4493-9216-da39fa0368fb"
+    },
+    {
+      "command": "EVENT_CALL_CUSTOM_EVENT",
+      "args": {
+        "customEventId": "7472c75b-28ba-4e82-9e18-5c1cc4daf097",
+        "$variable[V0]$": {
+          "type": "number",
+          "value": 172
+        },
+        "$variable[V1]$": {
+          "type": "number",
+          "value": 13
+        },
+        "$variable[V2]$": {
+          "type": "number",
+          "value": 21
+        },
+        "$actor[0]$": "992ab68a-f2c9-40dc-aaeb-18529a7a4471",
+        "__collapse": true
+      },
+      "id": "82e1cf56-26d6-4374-9cb4-7b8f1f9fe48f"
+    }
+  ],
+  "leaveScript": [],
+  "_index": 7
+}

@@ -22,7 +22,7 @@
           }
         },
         "__collapseElse": true,
-        "__collapse": false
+        "__collapse": true
       },
       "children": {
         "true": [
@@ -83,10 +83,10 @@
       "args": {
         "engineFieldKey": "plat_camera_block",
         "value": {
-          "type": "number",
-          "value": 3
+          "type": "expression",
+          "value": "3"
         },
-        "__collapse": true
+        "__collapse": false
       },
       "id": "d79023f3-1503-4360-8067-0752b2d1435e"
     },
@@ -101,7 +101,7 @@
     {
       "command": "EVENT_GROUP",
       "args": {
-        "__label": "ConfigurePallettes",
+        "__label": "ConfigureLevelType",
         "__collapse": true
       },
       "children": {
@@ -110,7 +110,7 @@
             "command": "EVENT_SWITCH",
             "args": {
               "variable": "18",
-              "choices": 9,
+              "choices": 10,
               "__collapseCase0": false,
               "__collapseCase1": false,
               "__collapseCase2": false,
@@ -164,6 +164,10 @@
               "value8": {
                 "type": "constant",
                 "value": "b0413565-b215-4ffb-9b0d-286ffaac34c2"
+              },
+              "value9": {
+                "type": "constant",
+                "value": "9fe73cd3-ebfc-43f8-8b06-c8460c1c2f4e"
               }
             },
             "children": {
@@ -199,6 +203,18 @@
                     "__collapse": true
                   },
                   "id": "c3c4bd7e-f745-4a95-8d43-82d464dac41d"
+                },
+                {
+                  "command": "EVENT_SET_VALUE",
+                  "args": {
+                    "variable": "62",
+                    "value": {
+                      "type": "number",
+                      "value": 0
+                    },
+                    "__collapse": true
+                  },
+                  "id": "69a7a3f9-f433-4c74-a42d-fd6360cae48a"
                 }
               ],
               "true1": [
@@ -233,6 +249,18 @@
                     "__collapse": true
                   },
                   "id": "a1072a23-ae49-467b-9c07-f89315a1f233"
+                },
+                {
+                  "command": "EVENT_SET_VALUE",
+                  "args": {
+                    "variable": "62",
+                    "value": {
+                      "type": "number",
+                      "value": 0
+                    },
+                    "__collapse": true
+                  },
+                  "id": "9ec8f96a-b74b-4580-b0e4-d596dcc8ab88"
                 }
               ],
               "true2": [
@@ -267,6 +295,18 @@
                     "__collapse": true
                   },
                   "id": "ac30109f-84d1-4014-8dd6-48ff190f1a90"
+                },
+                {
+                  "command": "EVENT_SET_VALUE",
+                  "args": {
+                    "variable": "62",
+                    "value": {
+                      "type": "number",
+                      "value": 1
+                    },
+                    "__collapse": true
+                  },
+                  "id": "2274e6ba-de99-450f-9125-63be3fdfd9bf"
                 }
               ],
               "true3": [
@@ -301,6 +341,18 @@
                     "__collapse": true
                   },
                   "id": "95edc0dc-3256-4642-b62f-b10ccfb2ce52"
+                },
+                {
+                  "command": "EVENT_SET_VALUE",
+                  "args": {
+                    "variable": "62",
+                    "value": {
+                      "type": "number",
+                      "value": 0
+                    },
+                    "__collapse": true
+                  },
+                  "id": "cdf1c18d-1273-4624-8d43-469142dd552d"
                 }
               ],
               "true4": [
@@ -335,6 +387,18 @@
                     "__collapse": true
                   },
                   "id": "6d17d1d7-d223-43ea-bacc-f909ac736747"
+                },
+                {
+                  "command": "EVENT_SET_VALUE",
+                  "args": {
+                    "variable": "62",
+                    "value": {
+                      "type": "number",
+                      "value": 0
+                    },
+                    "__collapse": true
+                  },
+                  "id": "ec9196fd-f75f-424a-b123-16a74603886f"
                 }
               ],
               "true5": [
@@ -369,6 +433,18 @@
                     "__collapse": true
                   },
                   "id": "6ab4dc8a-b0d2-4b64-b3ad-6dafd2beae73"
+                },
+                {
+                  "command": "EVENT_SET_VALUE",
+                  "args": {
+                    "variable": "62",
+                    "value": {
+                      "type": "number",
+                      "value": 0
+                    },
+                    "__collapse": true
+                  },
+                  "id": "fd0e7a71-2ab1-4871-bf4e-a6d9002e4d3e"
                 }
               ],
               "true6": [
@@ -403,6 +479,18 @@
                     "__collapse": true
                   },
                   "id": "9056d98e-5d91-4e1a-851a-7888cb9f3e92"
+                },
+                {
+                  "command": "EVENT_SET_VALUE",
+                  "args": {
+                    "variable": "62",
+                    "value": {
+                      "type": "number",
+                      "value": 0
+                    },
+                    "__collapse": true
+                  },
+                  "id": "717efa75-a9bc-40c8-8673-821ca2131333"
                 }
               ],
               "true7": [
@@ -437,6 +525,18 @@
                     "__collapse": true
                   },
                   "id": "7237f4c3-b5e1-4b81-bdf0-63b4dc3bca2d"
+                },
+                {
+                  "command": "EVENT_SET_VALUE",
+                  "args": {
+                    "variable": "62",
+                    "value": {
+                      "type": "number",
+                      "value": 0
+                    },
+                    "__collapse": true
+                  },
+                  "id": "253f48fc-2123-4eb2-84f4-4c648dc9032d"
                 }
               ],
               "true8": [
@@ -471,9 +571,66 @@
                     "__collapse": true
                   },
                   "id": "4494de01-6ba2-42d2-9d19-7a2bbdd7f77c"
+                },
+                {
+                  "command": "EVENT_SET_VALUE",
+                  "args": {
+                    "variable": "62",
+                    "value": {
+                      "type": "number",
+                      "value": 0
+                    },
+                    "__collapse": true
+                  },
+                  "id": "751d0f2c-9ee2-483f-9e40-eefc94ecdbde"
                 }
               ],
-              "true9": [],
+              "true9": [
+                {
+                  "command": "EVENT_PALETTE_SET_BACKGROUND_EX",
+                  "args": {
+                    "palette0": "99220635-88ea-4347-bb39-c7ecd27d4e1e",
+                    "palette1": "c3ef69bc-82cb-4474-b468-bfec1e2db8d5",
+                    "palette2": "2f4fccde-17ce-4376-a562-7866249ae63b",
+                    "palette3": "02f8dd4e-e91b-4b16-83be-8457d0ea2491",
+                    "palette4": "cfcdd20c-c8ee-44bb-8f1a-13f3490da63b",
+                    "palette5": "keep",
+                    "palette6": "keep",
+                    "palette7": "2f4fccde-17ce-4376-a562-7866249ae63b",
+                    "commit": false,
+                    "__collapse": true
+                  },
+                  "id": "cae2e181-f34d-4abf-b0ab-69c66d49dd54"
+                },
+                {
+                  "command": "EVENT_PALETTE_SET_SPRITE_EX",
+                  "args": {
+                    "palette0": "keep",
+                    "palette1": "c0e96ecc-aa94-4f82-9b82-a1a1e612e80d",
+                    "palette2": "7f282202-2d94-4af4-be1d-7c5b84eb500b",
+                    "palette3": "248228a5-dd6d-4d3f-981d-6c739186e027",
+                    "palette4": "ded596d1-3b3c-4a4b-8006-136b4244fd78",
+                    "palette5": "12f9476b-58b9-4ff6-9c8b-3dd0424735fe",
+                    "palette6": "11eb3d3a-1853-4557-9ece-623e57052bb3",
+                    "palette7": "ec9a8eee-b9f4-4423-a611-b4ee60600527",
+                    "commit": false,
+                    "__collapse": true
+                  },
+                  "id": "74b32008-94cc-4fad-972a-77652243b07a"
+                },
+                {
+                  "command": "EVENT_SET_VALUE",
+                  "args": {
+                    "variable": "62",
+                    "value": {
+                      "type": "number",
+                      "value": 1
+                    },
+                    "__collapse": true
+                  },
+                  "id": "9f62d1fb-e478-4fdc-8992-1301424c5520"
+                }
+              ],
               "true10": [],
               "true11": [],
               "true12": [],
@@ -499,28 +656,29 @@
           {
             "command": "EVENT_GBVM_SCRIPT",
             "args": {
-              "script": "VM_SWITCH_TEXT_LAYER .TEXT_LAYER_BKG\nVM_SET_CONST_INT8 _overlay_priority, 0",
-              "__collapse": true
+              "script": "VM_SWITCH_TEXT_LAYER .TEXT_LAYER_WIN\nVM_SET_CONST_INT8 _overlay_priority, 0\nVM_OVERLAY_SETPOS 0, 0\nVM_SET_CONST_INT8 _overlay_cut_scanline, 15\nVM_SET_CONST_INT8 _show_actors_on_overlay, 255",
+              "__collapse": false,
+              "__comment": false
             },
             "id": "d3d98d54-3bce-4f5e-b9e2-2b0d9aff4621"
           },
           {
-            "command": "EVENT_COPY_BKG_SUBMAP_TO_BKG",
+            "command": "EVENT_COPY_BKG_SUBMAP_TO_WIN",
             "args": {
               "sceneId": "07fe74b2-17b0-4eea-b5b6-3b11e1119890",
-              "source_x": {
+              "bkg_x": {
                 "type": "number",
                 "value": 0
               },
-              "source_y": {
+              "bkg_y": {
                 "type": "number",
                 "value": 0
               },
-              "dest_x": {
+              "win_x": {
                 "type": "number",
                 "value": 0
               },
-              "dest_y": {
+              "win_y": {
                 "type": "number",
                 "value": 0
               },
@@ -532,10 +690,9 @@
                 "type": "number",
                 "value": 2
               },
-              "__collapse": true,
-              "__label": "Draw Top Hud"
+              "__collapse": true
             },
-            "id": "815aa024-d43f-45d4-ab8e-086326297584"
+            "id": "179d530d-a7b4-4a6b-b0b5-58023705b05c"
           },
           {
             "command": "EVENT_IF",
@@ -552,7 +709,7 @@
                 }
               },
               "__collapseElse": false,
-              "__collapse": true
+              "__collapse": false
             },
             "children": {
               "true": [
@@ -690,7 +847,7 @@
                                   }
                                 },
                                 "__collapseElse": false,
-                                "__collapse": true
+                                "__collapse": false
                               },
                               "children": {
                                 "true": [
@@ -832,14 +989,14 @@
                               "command": "EVENT_GROUP",
                               "args": {
                                 "__label": "Render Top SCore",
-                                "__collapse": true
+                                "__collapse": false
                               },
                               "children": {
                                 "true": [
                                   {
                                     "command": "EVENT_GBVM_SCRIPT",
                                     "args": {
-                                      "script": "VM_LOAD_TEXT 2 \n.dw VAR_TOPSCOREUPPER\n.dw VAR_TOPSCORELOWER\n.asciz \"\\003\\012\\016%D3\\003\\015\\016%D3\"\nVM_CALL_NATIVE b_ui_alt_display_text, _ui_alt_display_text",
+                                      "script": "VM_SWITCH_TEXT_LAYER .TEXT_LAYER_BKG\nVM_LOAD_TEXT 2 \n.dw VAR_TOPSCOREUPPER\n.dw VAR_TOPSCORELOWER\n.asciz \"\\003\\012\\016%D3\\003\\015\\016%D3\"\nVM_CALL_NATIVE b_ui_alt_display_text, _ui_alt_display_text \nVM_SWITCH_TEXT_LAYER .TEXT_LAYER_WIN",
                                       "__collapse": false,
                                       "references": [
                                         {
@@ -908,7 +1065,7 @@
                                   }
                                 },
                                 "__collapseElse": false,
-                                "__collapse": false
+                                "__collapse": true
                               },
                               "children": {
                                 "true": [
@@ -1057,7 +1214,7 @@
                                   {
                                     "command": "EVENT_GBVM_SCRIPT",
                                     "args": {
-                                      "script": "VM_LOAD_TEXT 2 \n.dw VAR_CURRENTWORLD\n.dw VAR_CURRENTLEVEL\n.asciz \"\\003\\013\\012%D2\\003\\016\\012%D1\"\nVM_CALL_NATIVE b_ui_alt_display_text, _ui_alt_display_text",
+                                      "script": "VM_SWITCH_TEXT_LAYER .TEXT_LAYER_BKG\nVM_LOAD_TEXT 2 \n.dw VAR_CURRENTWORLD\n.dw VAR_CURRENTLEVEL\n.asciz \"\\003\\013\\012%D2\\003\\016\\012%D1\"\nVM_CALL_NATIVE b_ui_alt_display_text, _ui_alt_display_text",
                                       "__collapse": false,
                                       "references": [
                                         {
@@ -1145,7 +1302,7 @@
                       {
                         "command": "EVENT_GBVM_SCRIPT",
                         "args": {
-                          "script": "VM_LOAD_TEXT 1 \n.dw VAR_DEATHTIME\n.asciz \"\\003\\022\\002%D3\"\nVM_CALL_NATIVE b_ui_alt_display_text, _ui_alt_display_text",
+                          "script": "VM_SWITCH_TEXT_LAYER .TEXT_LAYER_WIN\nVM_LOAD_TEXT 1 \n.dw VAR_DEATHTIME\n.asciz \"\\003\\022\\002%D3\"\nVM_CALL_NATIVE b_ui_alt_display_text, _ui_alt_display_text",
                           "__collapse": true,
                           "references": [
                             {
@@ -1179,7 +1336,7 @@
                             {
                               "command": "EVENT_GBVM_SCRIPT",
                               "args": {
-                                "script": "VM_LOAD_TEXT 1 \n.dw VAR_DEATHTIME\n.asciz \"\\003\\022\\002%D3\"\nVM_CALL_NATIVE b_ui_alt_display_text, _ui_alt_display_text",
+                                "script": "VM_SWITCH_TEXT_LAYER .TEXT_LAYER_WIN\nVM_LOAD_TEXT 1 \n.dw VAR_DEATHTIME\n.asciz \"\\003\\022\\002%D3\"\nVM_CALL_NATIVE b_ui_alt_display_text, _ui_alt_display_text",
                                 "__collapse": true,
                                 "references": [
                                   {
@@ -1281,7 +1438,7 @@
                 {
                   "command": "EVENT_GBVM_SCRIPT",
                   "args": {
-                    "script": "VM_LOAD_TEXT 5 \n.dw VAR_COINS\n.dw VAR_CURRENTWORLD\n.dw VAR_CURRENTLEVEL\n.dw VAR_SCOREUPPER\n.dw VAR_SCORELOWER\n.asciz \"\\003\\012\\002%D2\\003\\015\\002%d-\\003\\020\\002%d\\003\\001\\002%D3\\003\\004\\002%D3\"\nVM_CALL_NATIVE b_ui_alt_display_text, _ui_alt_display_text",
+                    "script": "VM_SWITCH_TEXT_LAYER .TEXT_LAYER_WIN\nVM_LOAD_TEXT 5 \n.dw VAR_COINS\n.dw VAR_CURRENTWORLD\n.dw VAR_CURRENTLEVEL\n.dw VAR_SCOREUPPER\n.dw VAR_SCORELOWER\n.asciz \"\\003\\012\\002%D2\\003\\015\\002%d-\\003\\020\\002%d\\003\\001\\002%D3\\003\\004\\002%D3\"\nVM_CALL_NATIVE b_ui_alt_display_text, _ui_alt_display_text",
                     "references": [
                       {
                         "type": "variable",
@@ -1314,7 +1471,7 @@
                 {
                   "command": "EVENT_GBVM_SCRIPT",
                   "args": {
-                    "script": "VM_LOAD_TEXT 5 \n.dw VAR_COINS\n.dw VAR_CURRENTWORLD\n.dw VAR_CURRENTLEVEL\n.dw VAR_SCOREUPPER\n.dw VAR_SCORELOWER\n.asciz \"\\003\\012\\002%D2\\003\\015\\002%d\\003\\017\\002%d\\003\\001\\002%D3\\003\\004\\002%D3\"\nVM_CALL_NATIVE b_ui_alt_display_text, _ui_alt_display_text",
+                    "script": "VM_SWITCH_TEXT_LAYER .TEXT_LAYER_WIN\nVM_LOAD_TEXT 5 \n.dw VAR_COINS\n.dw VAR_CURRENTWORLD\n.dw VAR_CURRENTLEVEL\n.dw VAR_SCOREUPPER\n.dw VAR_SCORELOWER\n.asciz \"\\003\\012\\002%D2\\003\\015\\002%d\\003\\017\\002%d\\003\\001\\002%D3\\003\\004\\002%D3\"\nVM_CALL_NATIVE b_ui_alt_display_text, _ui_alt_display_text",
                     "references": [
                       {
                         "type": "variable",
@@ -1337,7 +1494,7 @@
                         "id": "57"
                       }
                     ],
-                    "__collapse": true,
+                    "__collapse": false,
                     "__label": "Write coins , lives, world, level and score"
                   },
                   "id": "e0f46a7f-bae9-4ae2-a607-fa56755bafc4"
@@ -1361,7 +1518,7 @@
                 }
               },
               "__collapseElse": false,
-              "__collapse": true
+              "__collapse": false
             },
             "children": {
               "true": [
@@ -1370,7 +1527,7 @@
                   "args": {
                     "script": "VM_LOAD_TEXT 0 \n.asciz \"MARIO\"\nVM_CALL_NATIVE b_ui_alt_display_text, _ui_alt_display_text",
                     "references": [],
-                    "__collapse": true,
+                    "__collapse": false,
                     "__label": "Write MARIO"
                   },
                   "id": "144d5ce8-51cc-4017-b1d7-f2a1a2831c25"
@@ -1800,7 +1957,7 @@
       "command": "EVENT_GROUP",
       "args": {
         "__label": "Start Menu",
-        "__collapse": true,
+        "__collapse": false,
         "__comment": false
       },
       "children": {
@@ -1897,7 +2054,7 @@
                                     "value": 1
                                   }
                                 },
-                                "__collapseElse": true,
+                                "__collapseElse": false,
                                 "__collapse": false
                               },
                               "children": {
@@ -2001,7 +2158,7 @@
                                         {
                                           "command": "EVENT_GBVM_SCRIPT",
                                           "args": {
-                                            "script": "VM_LOAD_TEXT 2 \n.dw VAR_CURRENTWORLD\n.dw VAR_CURRENTLEVEL\n.asciz \"\\003\\013\\012%D2\\003\\016\\012%D1\"\nVM_CALL_NATIVE b_ui_alt_display_text, _ui_alt_display_text",
+                                            "script": "VM_SWITCH_TEXT_LAYER .TEXT_LAYER_BKG\nVM_LOAD_TEXT 2 \n.dw VAR_CURRENTWORLD\n.dw VAR_CURRENTLEVEL\n.asciz \"\\003\\013\\012%D2\\003\\016\\012%D1\"\nVM_CALL_NATIVE b_ui_alt_display_text, _ui_alt_display_text",
                                             "__collapse": false,
                                             "references": [
                                               {
@@ -2175,8 +2332,8 @@
                                         {
                                           "command": "EVENT_GBVM_SCRIPT",
                                           "args": {
-                                            "script": "VM_LOAD_TEXT 2 \n.dw VAR_CURRENTWORLD\n.dw VAR_CURRENTLEVEL\n.asciz \"\\003\\013\\012%D2\\003\\016\\012%D1\"\nVM_CALL_NATIVE b_ui_alt_display_text, _ui_alt_display_text",
-                                            "__collapse": true,
+                                            "script": "VM_SWITCH_TEXT_LAYER .TEXT_LAYER_BKG\nVM_LOAD_TEXT 2 \n.dw VAR_CURRENTWORLD\n.dw VAR_CURRENTLEVEL\n.asciz \"\\003\\013\\012%D2\\003\\016\\012%D1\"\nVM_CALL_NATIVE b_ui_alt_display_text, _ui_alt_display_text",
+                                            "__collapse": false,
                                             "references": [
                                               {
                                                 "type": "variable",
@@ -2455,7 +2612,7 @@
                                         {
                                           "command": "EVENT_GBVM_SCRIPT",
                                           "args": {
-                                            "script": "VM_LOAD_TEXT 2 \n.dw VAR_CURRENTWORLD\n.dw VAR_CURRENTLEVEL\n.asciz \"\\003\\013\\012%D2\\003\\016\\012%D1\"\nVM_CALL_NATIVE b_ui_alt_display_text, _ui_alt_display_text",
+                                            "script": "VM_SWITCH_TEXT_LAYER .TEXT_LAYER_BKG\nVM_LOAD_TEXT 2 \n.dw VAR_CURRENTWORLD\n.dw VAR_CURRENTLEVEL\n.asciz \"\\003\\013\\012%D2\\003\\016\\012%D1\"\nVM_CALL_NATIVE b_ui_alt_display_text, _ui_alt_display_text",
                                             "__collapse": false,
                                             "references": [
                                               {
@@ -2681,7 +2838,7 @@
                                         {
                                           "command": "EVENT_GBVM_SCRIPT",
                                           "args": {
-                                            "script": "VM_LOAD_TEXT 2 \n.dw VAR_TOPSCOREUPPER\n.dw VAR_TOPSCORELOWER\n.asciz \"\\003\\012\\016%D3\\003\\015\\016%D3\"\nVM_CALL_NATIVE b_ui_alt_display_text, _ui_alt_display_text",
+                                            "script": "VM_SWITCH_TEXT_LAYER .TEXT_LAYER_BKG\nVM_LOAD_TEXT 2 \n.dw VAR_TOPSCOREUPPER\n.dw VAR_TOPSCORELOWER\n.asciz \"\\003\\012\\016%D3\\003\\015\\016%D3\"\nVM_CALL_NATIVE b_ui_alt_display_text, _ui_alt_display_text \nVM_SWITCH_TEXT_LAYER .TEXT_LAYER_WIN",
                                             "__collapse": false,
                                             "references": [
                                               {
@@ -2718,7 +2875,7 @@
                           ],
                           "override": true,
                           "__scriptTabs": "press",
-                          "__collapse": true
+                          "__collapse": false
                         },
                         "children": {
                           "true": [
@@ -3130,7 +3287,7 @@
                           ],
                           "override": true,
                           "__scriptTabs": "press",
-                          "__collapse": true
+                          "__collapse": false
                         },
                         "children": {
                           "true": [
@@ -3359,7 +3516,7 @@
                 "value": 16
               },
               "__collapseElse": false,
-              "__collapse": false
+              "__collapse": true
             },
             "children": {
               "true0": [
@@ -3367,36 +3524,36 @@
                   "command": "EVENT_SWITCH",
                   "args": {
                     "variable": "18",
-                    "choices": 8,
+                    "choices": 6,
                     "__collapseCase0": false,
                     "value0": {
                       "type": "constant",
-                      "value": "8efd861e-e723-4329-aa4b-a19e3226c0e0"
+                      "value": "c0c8d35e-766a-4e65-be62-513c79e73dda"
                     },
                     "__collapseCase1": false,
                     "value1": {
                       "type": "constant",
-                      "value": "c0c8d35e-766a-4e65-be62-513c79e73dda"
+                      "value": "1005aacf-a3e3-460d-bf15-42a24ca06e93"
                     },
                     "__collapseCase2": false,
                     "value2": {
                       "type": "constant",
-                      "value": "1005aacf-a3e3-460d-bf15-42a24ca06e93"
+                      "value": "efd06150-a4f8-4086-a0d2-5245cb88aabd"
                     },
                     "__collapseCase3": false,
                     "value3": {
                       "type": "constant",
-                      "value": "efd06150-a4f8-4086-a0d2-5245cb88aabd"
+                      "value": "da3b6e79-95cd-4db0-ac6c-5f4ffc6fbbf5"
                     },
                     "__collapseCase4": false,
                     "value4": {
                       "type": "constant",
-                      "value": "da3b6e79-95cd-4db0-ac6c-5f4ffc6fbbf5"
+                      "value": "df2c1c64-206b-4d14-9a2a-8730dbc513a9"
                     },
                     "__collapseCase5": false,
                     "value5": {
                       "type": "constant",
-                      "value": "a47f02c2-c884-452f-8a2a-35835006f608"
+                      "value": "9fe73cd3-ebfc-43f8-8b06-c8460c1c2f4e"
                     },
                     "__collapseCase6": false,
                     "value6": {
@@ -3410,13 +3567,13 @@
                     },
                     "__collapseCase8": false,
                     "value8": {
-                      "type": "number",
-                      "value": 9
+                      "type": "constant",
+                      "value": "b0413565-b215-4ffb-9b0d-286ffaac34c2"
                     },
                     "__collapseCase9": false,
                     "value9": {
-                      "type": "number",
-                      "value": 10
+                      "type": "constant",
+                      "value": "9fe73cd3-ebfc-43f8-8b06-c8460c1c2f4e"
                     },
                     "__collapseCase10": false,
                     "value10": {
@@ -3459,23 +3616,6 @@
                           "palette0": "keep",
                           "palette1": "keep",
                           "palette2": "keep",
-                          "palette3": "60169a40-7960-4b61-96fa-56b76cc5ad0c",
-                          "palette4": "keep",
-                          "palette5": "keep",
-                          "palette6": "keep",
-                          "palette7": "keep",
-                          "__collapse": true
-                        },
-                        "id": "6f5c64cb-3ce9-4ffb-9945-d1b4ebe2f078"
-                      }
-                    ],
-                    "true1": [
-                      {
-                        "command": "EVENT_PALETTE_SET_BACKGROUND",
-                        "args": {
-                          "palette0": "keep",
-                          "palette1": "keep",
-                          "palette2": "keep",
                           "palette3": "b4380954-1b2e-4ab0-9cdd-b588bb37f807",
                           "palette4": "keep",
                           "palette5": "keep",
@@ -3483,10 +3623,10 @@
                           "palette7": "keep",
                           "__collapse": true
                         },
-                        "id": "637b6333-fb29-4d25-8a0c-470526dae371"
+                        "id": "9a3d3249-0f37-4abb-b9c6-1ceb8d87ded0"
                       }
                     ],
-                    "true2": [
+                    "true1": [
                       {
                         "command": "EVENT_PALETTE_SET_BACKGROUND",
                         "args": {
@@ -3500,10 +3640,10 @@
                           "palette7": "keep",
                           "__collapse": true
                         },
-                        "id": "9151bfb8-1cf4-47e6-864c-6994d9a6eac6"
+                        "id": "fdfec40f-e496-4afe-af41-258be666f2b5"
                       }
                     ],
-                    "true3": [
+                    "true2": [
                       {
                         "command": "EVENT_PALETTE_SET_BACKGROUND",
                         "args": {
@@ -3517,7 +3657,24 @@
                           "palette7": "keep",
                           "__collapse": true
                         },
-                        "id": "e136dd18-0cd5-4fb6-962c-e3bd126cbb2a"
+                        "id": "2ae4e98c-0916-4ac8-966a-789fde8bbfff"
+                      }
+                    ],
+                    "true3": [
+                      {
+                        "command": "EVENT_PALETTE_SET_BACKGROUND",
+                        "args": {
+                          "palette0": "keep",
+                          "palette1": "keep",
+                          "palette2": "keep",
+                          "palette3": "c15b4347-cfc4-4d31-aabc-927e1ab00414",
+                          "palette4": "keep",
+                          "palette5": "keep",
+                          "palette6": "keep",
+                          "palette7": "keep",
+                          "__collapse": true
+                        },
+                        "id": "a01d8b6b-d240-437e-b0f0-b12a54d70633"
                       }
                     ],
                     "true4": [
@@ -3534,7 +3691,7 @@
                           "palette7": "keep",
                           "__collapse": true
                         },
-                        "id": "3cb394da-06df-4bd4-8bde-69a090aeaf5b"
+                        "id": "c51fdd08-5f22-493b-b2b8-e398327655c4"
                       }
                     ],
                     "true5": [
@@ -3544,50 +3701,18 @@
                           "palette0": "keep",
                           "palette1": "keep",
                           "palette2": "keep",
-                          "palette3": "60169a40-7960-4b61-96fa-56b76cc5ad0c",
+                          "palette3": "cfcdd20c-c8ee-44bb-8f1a-13f3490da63b",
                           "palette4": "keep",
                           "palette5": "keep",
                           "palette6": "keep",
                           "palette7": "keep",
                           "__collapse": true
                         },
-                        "id": "62636174-8c9d-43c5-9f8d-be246f948ea9"
+                        "id": "30bb99f8-941c-4eb6-96ec-2e5b42895d56"
                       }
                     ],
-                    "true6": [
-                      {
-                        "command": "EVENT_PALETTE_SET_BACKGROUND",
-                        "args": {
-                          "palette0": "keep",
-                          "palette1": "keep",
-                          "palette2": "keep",
-                          "palette3": "c15b4347-cfc4-4d31-aabc-927e1ab00414",
-                          "palette4": "keep",
-                          "palette5": "keep",
-                          "palette6": "keep",
-                          "palette7": "keep",
-                          "__collapse": true
-                        },
-                        "id": "acbe108d-458f-424d-a854-656e5beb69d7"
-                      }
-                    ],
-                    "true7": [
-                      {
-                        "command": "EVENT_PALETTE_SET_BACKGROUND",
-                        "args": {
-                          "palette0": "keep",
-                          "palette1": "keep",
-                          "palette2": "keep",
-                          "palette3": "60169a40-7960-4b61-96fa-56b76cc5ad0c",
-                          "palette4": "keep",
-                          "palette5": "keep",
-                          "palette6": "keep",
-                          "palette7": "keep",
-                          "__collapse": true
-                        },
-                        "id": "b7de4d0f-76cf-400c-a56c-1fc349d95de5"
-                      }
-                    ],
+                    "true6": [],
+                    "true7": [],
                     "true8": [],
                     "true9": [],
                     "true10": [],
@@ -3596,9 +3721,25 @@
                     "true13": [],
                     "true14": [],
                     "true15": [],
-                    "false": []
+                    "false": [
+                      {
+                        "command": "EVENT_PALETTE_SET_BACKGROUND",
+                        "args": {
+                          "palette0": "keep",
+                          "palette1": "keep",
+                          "palette2": "keep",
+                          "palette3": "60169a40-7960-4b61-96fa-56b76cc5ad0c",
+                          "palette4": "keep",
+                          "palette5": "keep",
+                          "palette6": "keep",
+                          "palette7": "keep",
+                          "__collapse": true
+                        },
+                        "id": "fd21a248-eeef-4566-90a9-d224b8206263"
+                      }
+                    ]
                   },
-                  "id": "d9ba8e7b-72db-42d5-b6b6-d2852fed27f0"
+                  "id": "04c6c2f0-7720-47a1-8421-ea22218551f6"
                 }
               ],
               "true1": [
@@ -3606,36 +3747,36 @@
                   "command": "EVENT_SWITCH",
                   "args": {
                     "variable": "18",
-                    "choices": 8,
+                    "choices": 6,
                     "__collapseCase0": false,
                     "value0": {
                       "type": "constant",
-                      "value": "8efd861e-e723-4329-aa4b-a19e3226c0e0"
+                      "value": "c0c8d35e-766a-4e65-be62-513c79e73dda"
                     },
                     "__collapseCase1": false,
                     "value1": {
                       "type": "constant",
-                      "value": "c0c8d35e-766a-4e65-be62-513c79e73dda"
+                      "value": "1005aacf-a3e3-460d-bf15-42a24ca06e93"
                     },
                     "__collapseCase2": false,
                     "value2": {
                       "type": "constant",
-                      "value": "1005aacf-a3e3-460d-bf15-42a24ca06e93"
+                      "value": "efd06150-a4f8-4086-a0d2-5245cb88aabd"
                     },
                     "__collapseCase3": false,
                     "value3": {
                       "type": "constant",
-                      "value": "efd06150-a4f8-4086-a0d2-5245cb88aabd"
+                      "value": "da3b6e79-95cd-4db0-ac6c-5f4ffc6fbbf5"
                     },
                     "__collapseCase4": false,
                     "value4": {
                       "type": "constant",
-                      "value": "da3b6e79-95cd-4db0-ac6c-5f4ffc6fbbf5"
+                      "value": "df2c1c64-206b-4d14-9a2a-8730dbc513a9"
                     },
                     "__collapseCase5": false,
                     "value5": {
                       "type": "constant",
-                      "value": "a47f02c2-c884-452f-8a2a-35835006f608"
+                      "value": "9fe73cd3-ebfc-43f8-8b06-c8460c1c2f4e"
                     },
                     "__collapseCase6": false,
                     "value6": {
@@ -3649,13 +3790,13 @@
                     },
                     "__collapseCase8": false,
                     "value8": {
-                      "type": "number",
-                      "value": 9
+                      "type": "constant",
+                      "value": "b0413565-b215-4ffb-9b0d-286ffaac34c2"
                     },
                     "__collapseCase9": false,
                     "value9": {
-                      "type": "number",
-                      "value": 10
+                      "type": "constant",
+                      "value": "9fe73cd3-ebfc-43f8-8b06-c8460c1c2f4e"
                     },
                     "__collapseCase10": false,
                     "value10": {
@@ -3692,23 +3833,6 @@
                   },
                   "children": {
                     "true0": [
-                      {
-                        "command": "EVENT_PALETTE_SET_BACKGROUND",
-                        "args": {
-                          "palette0": "keep",
-                          "palette1": "keep",
-                          "palette2": "keep",
-                          "palette3": "572f8e81-850f-4d59-aa02-98ebed8231a1",
-                          "palette4": "keep",
-                          "palette5": "keep",
-                          "palette6": "keep",
-                          "palette7": "keep",
-                          "__collapse": true
-                        },
-                        "id": "80527065-5914-4c45-89ba-02950884c68d"
-                      }
-                    ],
-                    "true1": [
                       {
                         "command": "EVENT_PALETTE_SET_BACKGROUND",
                         "args": {
@@ -3725,7 +3849,7 @@
                         "id": "24653496-83f9-4e4f-a084-492a33c95c12"
                       }
                     ],
-                    "true2": [
+                    "true1": [
                       {
                         "command": "EVENT_PALETTE_SET_BACKGROUND",
                         "args": {
@@ -3742,7 +3866,7 @@
                         "id": "c296d039-a5b3-4517-9afd-57e58f7aed26"
                       }
                     ],
-                    "true3": [
+                    "true2": [
                       {
                         "command": "EVENT_PALETTE_SET_BACKGROUND",
                         "args": {
@@ -3759,7 +3883,7 @@
                         "id": "c9c31a0d-fe6a-4a54-9e7f-667d408bc541"
                       }
                     ],
-                    "true4": [
+                    "true3": [
                       {
                         "command": "EVENT_PALETTE_SET_BACKGROUND",
                         "args": {
@@ -3776,24 +3900,7 @@
                         "id": "4a444f01-6b9e-41b0-b27a-324527b7309c"
                       }
                     ],
-                    "true5": [
-                      {
-                        "command": "EVENT_PALETTE_SET_BACKGROUND",
-                        "args": {
-                          "palette0": "keep",
-                          "palette1": "keep",
-                          "palette2": "keep",
-                          "palette3": "572f8e81-850f-4d59-aa02-98ebed8231a1",
-                          "palette4": "keep",
-                          "palette5": "keep",
-                          "palette6": "keep",
-                          "palette7": "keep",
-                          "__collapse": true
-                        },
-                        "id": "b821d450-f9bb-4fbe-a520-f36f49600fdf"
-                      }
-                    ],
-                    "true6": [
+                    "true4": [
                       {
                         "command": "EVENT_PALETTE_SET_BACKGROUND",
                         "args": {
@@ -3810,7 +3917,34 @@
                         "id": "81d18f0a-08e8-41ca-9972-13bfa252a9c5"
                       }
                     ],
-                    "true7": [
+                    "true5": [
+                      {
+                        "command": "EVENT_PALETTE_SET_BACKGROUND",
+                        "args": {
+                          "palette0": "keep",
+                          "palette1": "keep",
+                          "palette2": "keep",
+                          "palette3": "02f8dd4e-e91b-4b16-83be-8457d0ea2491",
+                          "palette4": "keep",
+                          "palette5": "keep",
+                          "palette6": "keep",
+                          "palette7": "keep",
+                          "__collapse": true
+                        },
+                        "id": "54fd9aa9-08d0-4fbe-abcb-25cb02397a60"
+                      }
+                    ],
+                    "true6": [],
+                    "true7": [],
+                    "true8": [],
+                    "true9": [],
+                    "true10": [],
+                    "true11": [],
+                    "true12": [],
+                    "true13": [],
+                    "true14": [],
+                    "true15": [],
+                    "false": [
                       {
                         "command": "EVENT_PALETTE_SET_BACKGROUND",
                         "args": {
@@ -3824,18 +3958,9 @@
                           "palette7": "keep",
                           "__collapse": true
                         },
-                        "id": "c2e4003a-a69e-4747-a0d4-4084f4ea150d"
+                        "id": "80527065-5914-4c45-89ba-02950884c68d"
                       }
-                    ],
-                    "true8": [],
-                    "true9": [],
-                    "true10": [],
-                    "true11": [],
-                    "true12": [],
-                    "true13": [],
-                    "true14": [],
-                    "true15": [],
-                    "false": []
+                    ]
                   },
                   "id": "63258439-aa2a-437a-80c0-1e419ff4467a"
                 }

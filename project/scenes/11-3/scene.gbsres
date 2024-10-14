@@ -123,85 +123,11 @@
         "__collapse": true
       },
       "id": "71e7442e-e75a-4d9c-9f34-775d7c9aed80"
-    },
-    {
-      "command": "EVENT_IF",
-      "args": {
-        "condition": {
-          "type": "eq",
-          "valueA": {
-            "type": "variable",
-            "value": "18"
-          },
-          "valueB": {
-            "type": "constant",
-            "value": "1005aacf-a3e3-460d-bf15-42a24ca06e93"
-          }
-        },
-        "__collapseElse": true,
-        "__collapse": false
-      },
-      "children": {
-        "true": [
-          {
-            "command": "EVENT_SET_ACTOR_BEHAVIOR",
-            "args": {
-              "actorId": "b89b2cd2-ebf8-47f0-ad07-4e02ab11eed1",
-              "behaviorId": {
-                "type": "number",
-                "value": 0
-              },
-              "__collapse": true
-            },
-            "id": "4fdfc99c-11ff-40fa-8462-0a486efcabc7"
-          },
-          {
-            "command": "EVENT_ACTOR_DEACTIVATE",
-            "args": {
-              "actorId": "b89b2cd2-ebf8-47f0-ad07-4e02ab11eed1",
-              "__collapse": true
-            },
-            "id": "87fa5c84-6409-487a-aea4-3100cf127091"
-          },
-          {
-            "command": "EVENT_SET_ACTOR_BEHAVIOR",
-            "args": {
-              "actorId": "04575b70-bdfa-4a3b-bc8e-da9f79710388",
-              "behaviorId": {
-                "type": "number",
-                "value": 0
-              },
-              "__collapse": true
-            },
-            "id": "99a37802-b234-4f2e-b479-3b26f348cbd1"
-          },
-          {
-            "command": "EVENT_ACTOR_DEACTIVATE",
-            "args": {
-              "actorId": "04575b70-bdfa-4a3b-bc8e-da9f79710388",
-              "__collapse": true
-            },
-            "id": "67c3e980-7e8b-4c36-a024-ff2280bae73c"
-          }
-        ],
-        "false": []
-      },
-      "id": "166fc042-f643-48d6-9a4c-90c63728eae5"
     }
   ],
   "playerHit1Script": [],
   "playerHit2Script": [],
   "playerHit3Script": [],
   "autoFadeEventCollapse": true,
-  "parallax": [
-    {
-      "height": 2,
-      "speed": 128
-    },
-    {
-      "height": 0,
-      "speed": 0
-    }
-  ],
   "playerSpriteSheetId": "82297e17-ae19-4d6c-84f3-47e5fe14a6ad"
 }

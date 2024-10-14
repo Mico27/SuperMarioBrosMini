@@ -15,6 +15,7 @@
 #include "game_time.h"
 #include "actor_behavior.h"
 #include "actor_behavior_b.h"
+#include "actor_behavior_c.h"
 #include "states/platform.h"
 #include "states/playerstates.h"
 #include "data/states_defines.h"
@@ -117,7 +118,7 @@ void actor_behavior_update_b(UBYTE i, actor_t * actor) BANKED {
 								activate_actor(bullet_actor);
 							}
 							bullet_actor->collision_enabled = true;
-							load_animations(bullet_actor->sprite.ptr, bullet_actor->sprite.bank, ANIM_STATE_DEFAULT, bullet_actor->animations);
+							load_animations(bullet_actor->sprite.ptr, bullet_actor->sprite.bank, STATE_DEFAULT, bullet_actor->animations);
 							bullet_actor->pos.y = actor->pos.y;
 							if (PLAYER.pos.x < actor->pos.x) {
 								actor_set_dir(bullet_actor, DIR_LEFT, FALSE);
@@ -385,7 +386,7 @@ void actor_behavior_update_b(UBYTE i, actor_t * actor) BANKED {
 								activate_actor(cheepcheep_actor);
 							}
 							cheepcheep_actor->collision_enabled = true;
-							load_animations(cheepcheep_actor->sprite.ptr, cheepcheep_actor->sprite.bank, ANIM_STATE_RED, cheepcheep_actor->animations);
+							load_animations(cheepcheep_actor->sprite.ptr, cheepcheep_actor->sprite.bank, STATE_RED, cheepcheep_actor->animations);
 							cheepcheep_actor->pos.y = image_tile_height << 7;
 							cheepcheep_actor->pos.x = PLAYER.pos.x + (((rand() & 127) - 50) << 4);
 							actor_vel_y[cheepcheep_idx] = -(40 + (rand() & 15));
@@ -502,7 +503,7 @@ void actor_behavior_update_b(UBYTE i, actor_t * actor) BANKED {
 								actor_t * spiky_actor = (actors + spiky_idx);
 								actor_behavior_ids[spiky_idx] = 29;
 								actor_states[spiky_idx] = 0;
-								load_animations(spiky_actor->sprite.ptr, spiky_actor->sprite.bank, ANIM_STATE_TUCKED, spiky_actor->animations);
+								load_animations(spiky_actor->sprite.ptr, spiky_actor->sprite.bank, STATE_TUCKED, spiky_actor->animations);
 								if (!spiky_actor->active){
 									spiky_actor->disabled = FALSE;
 									activate_actor(spiky_actor);
@@ -553,7 +554,7 @@ void actor_behavior_update_b(UBYTE i, actor_t * actor) BANKED {
 					}
 					actor->pos.y = check_collision_b(actor->pos.x, new_y, &actor->bounds, ((actor->pos.y > new_y) ? CHECK_DIR_UP : CHECK_DIR_DOWN));
 					if (actor->pos.y != new_y){
-						load_animations(actor->sprite.ptr, actor->sprite.bank, ANIM_STATE_DEFAULT, actor->animations);
+						load_animations(actor->sprite.ptr, actor->sprite.bank, STATE_DEFAULT, actor->animations);
 						actor_states[i] = 2; 
 						actor_vel_y[i] = 0;
 						if (PLAYER.pos.x < actor->pos.x) {									
@@ -611,7 +612,7 @@ void actor_behavior_update_b(UBYTE i, actor_t * actor) BANKED {
 					if (!(actor_counter_b[i] & 31)){
 						actor_vel_x[i] = -actor_vel_x[i];
 					}
-					if (!(actor_counter_a[i] & 63)){	
+					if (!(actor_counter_a[i] & 63) && (PLAYER.pos.x < actor->pos.x)){	
 						actor_counter_a[i] = rand();	
 						if (actor_counter_a[i] < 128){
 							//jump
@@ -641,13 +642,8 @@ void actor_behavior_update_b(UBYTE i, actor_t * actor) BANKED {
 								if (actor_behavior_ids[attack_idx] == 23){
 									actor_vel_y[attack_idx] = -(30 + (rand() & 7));
 								}
-								if (PLAYER.pos.x < actor->pos.x) {
-									actor_set_dir(attack_actor, DIR_LEFT, FALSE);									
-									actor_vel_x[attack_idx]	= -12;							
-								} else {
-									actor_set_dir(attack_actor, DIR_RIGHT, FALSE);
-									actor_vel_x[attack_idx]	= 12;
-								}
+								actor_set_dir(attack_actor, DIR_LEFT, FALSE);									
+								actor_vel_x[attack_idx]	= -12;	
 							}								
 						}					
 					}
@@ -776,7 +772,7 @@ void actor_behavior_update_b(UBYTE i, actor_t * actor) BANKED {
 					actor_set_dir(actor, DIR_RIGHT, actor_counter_b[i]);
 				}
 				if (!(game_time & 1)){
-					if (!(actor_counter_a[i] & 63)){	
+					if (!(actor_counter_a[i] & 63) && (PLAYER.pos.x < actor->pos.x)){	
 						actor_counter_a[i] = rand();	
 						if (actor_counter_a[i] < 64){
 							//jump
@@ -805,15 +801,9 @@ void actor_behavior_update_b(UBYTE i, actor_t * actor) BANKED {
 								attack_actor->collision_enabled = true;
 								attack_actor->pos.y = actor->pos.y - (actor_counter_a[i] - 128);
 								actor_counter_b[i] = 15;
-								if (PLAYER.pos.x < actor->pos.x) {
-									actor_set_dir(attack_actor, DIR_LEFT, FALSE);	
-									attack_actor->pos.x = actor->pos.x - 128;	
-									actor_vel_x[attack_idx]	= -12;											
-								} else {
-									actor_set_dir(attack_actor, DIR_RIGHT, FALSE);
-									attack_actor->pos.x = actor->pos.x + 128;
-									actor_vel_x[attack_idx]	= 12;		
-								}
+								actor_set_dir(attack_actor, DIR_LEFT, FALSE);	
+								attack_actor->pos.x = actor->pos.x - 128;	
+								actor_vel_x[attack_idx]	= -12;	
 							}								
 						}					
 					}
@@ -925,6 +915,9 @@ void actor_behavior_update_b(UBYTE i, actor_t * actor) BANKED {
 				actor_states[i] = 255;
 				break;
 		}
-		break;		
+		break;	
+		default:
+			actor_behavior_update_c(i, actor);
+		break;	
 	}			
 }

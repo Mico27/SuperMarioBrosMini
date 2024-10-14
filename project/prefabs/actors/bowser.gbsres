@@ -329,6 +329,15 @@
             "id": "1f43630d-3cce-47f8-9f74-4128f8e518d6"
           },
           {
+            "command": "EVENT_ACTOR_SET_SPRITE",
+            "args": {
+              "actorId": "$self$",
+              "spriteSheetId": "b813e282-a12e-40a3-b937-78f3e633ffd2",
+              "__collapse": true
+            },
+            "id": "5db60a51-67ab-4be3-ba25-8b2c051e4e80"
+          },
+          {
             "command": "EVENT_ACTOR_SET_STATE",
             "args": {
               "actorId": "$self$",

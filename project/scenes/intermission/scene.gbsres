@@ -35,6 +35,13 @@
   "y": 256,
   "script": [
     {
+      "command": "EVENT_OVERLAY_HIDE",
+      "args": {
+        "__collapse": true
+      },
+      "id": "da4bf7c8-d634-4db7-a6c3-5ae14e063018"
+    },
+    {
       "command": "EVENT_MUSIC_STOP",
       "args": {
         "__collapse": true
@@ -299,7 +306,7 @@
           }
         },
         "__collapseElse": false,
-        "__collapse": false
+        "__collapse": true
       },
       "children": {
         "true": [
@@ -362,7 +369,7 @@
                   "id": "57"
                 }
               ],
-              "__collapse": true,
+              "__collapse": false,
               "__label": "Write coins , lives, world, level and score"
             },
             "id": "4bd8671a-fb1e-4977-8235-470775490bc6"

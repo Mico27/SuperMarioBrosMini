@@ -44,11 +44,11 @@ void ground_state(void) BANKED {
     //A. INPUT CHECK=================================================================================================
     //Crouched
 	if (INPUT_DOWN && !crouched){
-		load_animations(PLAYER.sprite.ptr, PLAYER.sprite.bank, ANIM_STATE_CROUCH, PLAYER.animations);
+		load_animations(PLAYER.sprite.ptr, PLAYER.sprite.bank, STATE_CROUCH, PLAYER.animations);
 		PLAYER.bounds.top = 1;
 		crouched = 1;
 	} else if (!INPUT_DOWN && crouched){
-		load_animations(PLAYER.sprite.ptr, PLAYER.sprite.bank, ANIM_STATE_DEFAULT, PLAYER.animations);
+		load_animations(PLAYER.sprite.ptr, PLAYER.sprite.bank, STATE_DEFAULT, PLAYER.animations);
 		if (script_memory[VAR_MARIOSTATUS_0] > 0){
 			PLAYER.bounds.top = -7;
 		}
@@ -244,6 +244,14 @@ void ground_state(void) BANKED {
                     pl_vel_x = 0;
                     col = -1;
                     last_wall = -1;
+					switch(sram_map_data[VRAM_OFFSET(tile_x, tile_start)]){
+						case 61: //top part of LEFT pipe
+						case 62: //bottom part of LEFT pipe
+							if (specific_events[ENTER_LEFT_PIPE_EVENT].script_addr != 0){
+								script_execute(specific_events[ENTER_LEFT_PIPE_EVENT].script_bank, specific_events[ENTER_LEFT_PIPE_EVENT].script_addr, 0, 0);
+							}
+							break;
+					}
 					on_player_metatile_collision(tile_x, tile_start, DIR_LEFT); 
                     break;
                 } else {
@@ -318,6 +326,7 @@ void ground_state(void) BANKED {
         } else if (deltaY < 0) {
             //Moving Upward
             WORD new_y = PLAYER.pos.y + deltaY;
+			
             UBYTE tile_y = (((new_y >> 4) + PLAYER.bounds.top) >> 3);
             while (tile_start < tile_end) {
                 if (tile_at(tile_start, tile_y) & COLLISION_BOTTOM) {					
@@ -450,7 +459,7 @@ void ground_state(void) BANKED {
     
     //GROUND -> JUMP/SWIM Check
     if (INPUT_PRESSED(INPUT_PLATFORM_JUMP) || jb_val != 0){
-		if (script_memory[VAR_CURRENTLEVELTYPE] == 3 && PLAYER.pos.y > 768){
+		if (script_memory[VAR_CANSWIM] != 0 && PLAYER.pos.y > 768){
 			que_state = SWIM_INIT;
 		} else if (nocollide == 0){
             //Standard Jump
@@ -733,6 +742,7 @@ void crouch_state(void) BANKED {
         } else if (deltaY < 0) {
             //Moving Upward
             WORD new_y = PLAYER.pos.y + deltaY;
+			
             UBYTE tile_y = (((new_y >> 4) + PLAYER.bounds.top) >> 3);
             while (tile_start < tile_end) {
                 if (tile_at(tile_start, tile_y) & COLLISION_BOTTOM) {					
@@ -912,11 +922,11 @@ void jump_state(void) BANKED {
     //A. INPUT CHECK=================================================================================================
 	//Crouched
 	if (INPUT_DOWN && !crouched){
-		load_animations(PLAYER.sprite.ptr, PLAYER.sprite.bank, ANIM_STATE_CROUCH, PLAYER.animations);
+		load_animations(PLAYER.sprite.ptr, PLAYER.sprite.bank, STATE_CROUCH, PLAYER.animations);
 		PLAYER.bounds.top = 1;
 		crouched = 1;
 	} else if (!INPUT_DOWN && crouched){
-		load_animations(PLAYER.sprite.ptr, PLAYER.sprite.bank, ANIM_STATE_DEFAULT, PLAYER.animations);
+		load_animations(PLAYER.sprite.ptr, PLAYER.sprite.bank, STATE_DEFAULT, PLAYER.animations);
 		if (script_memory[VAR_MARIOSTATUS_0] > 0){
 			PLAYER.bounds.top = -7;
 		}
@@ -1076,7 +1086,7 @@ void jump_state(void) BANKED {
         tile_x = ((new_x >> 4) + PLAYER.bounds.right) >> 3;
 		
 		if (pl_vel_x > 0) {
-			switch(sram_map_data[VRAM_OFFSET(tile_x, tile_end - 1)]){
+			switch(sram_map_data[VRAM_OFFSET(tile_x, tile_start)]){
 				case 151: //beanstalk tile
 					que_state = CLIMB_INIT; 
 					current_vine_tile_x = tile_x;
@@ -1103,7 +1113,7 @@ void jump_state(void) BANKED {
         tile_x = ((new_x >> 4) + PLAYER.bounds.left) >> 3;     
 
 		if (pl_vel_x < 0) {
-			switch(sram_map_data[VRAM_OFFSET(tile_x, tile_end - 1)]){
+			switch(sram_map_data[VRAM_OFFSET(tile_x, tile_start)]){
 				case 151: //beanstalk tile
 					que_state = CLIMB_INIT; 
 					current_vine_tile_x = tile_x;
@@ -1184,6 +1194,7 @@ void jump_state(void) BANKED {
             //Moving Upward
 			tile_start = (((PLAYER.pos.x >> 4) + ((PLAYER.bounds.left + PLAYER.bounds.right) >> 1))  >> 3);
             WORD new_y = PLAYER.pos.y + deltaY;
+			
             UBYTE tile_y = (((new_y >> 4) + PLAYER.bounds.top) >> 3);
             if (tile_at(tile_start, tile_y) & COLLISION_BOTTOM) {
                 new_y = ((((UBYTE)(tile_y + 1) << 3) - PLAYER.bounds.top) << 4) + 1;
@@ -1361,12 +1372,10 @@ void climb_state(void) BANKED {
             //Moving Downward
             WORD new_y = PLAYER.pos.y + deltaY;
             tile_y = ((new_y >> 4) + PLAYER.bounds.bottom) >> 3;
-
-
             if (nocollide == 0){
                 //Check collisions from left to right with the bottom of the player
                 while (tile_start < tile_end) {
-                    if (tile_at(tile_start, tile_y) & COLLISION_TOP) {	
+                    if (sram_map_data[VRAM_OFFSET(current_vine_tile_x, tile_y - 1)] != 151 || tile_at(tile_start, tile_y) & COLLISION_TOP) {	
                         new_y = ((((tile_y) << 3) - PLAYER.bounds.bottom) << 4) - 1;
                         actor_attached = FALSE; //Detach when MP moves through a solid tile.
                         //The distinction here is used so that we can check the velocity when the player hits the ground.
@@ -1383,7 +1392,7 @@ void climb_state(void) BANKED {
             WORD new_y = PLAYER.pos.y + deltaY;
             UBYTE tile_y = (((new_y >> 4) + PLAYER.bounds.top) >> 3);
             while (tile_start < tile_end) {
-                if (tile_at(tile_start, tile_y) & COLLISION_BOTTOM) {					
+                if (sram_map_data[VRAM_OFFSET(current_vine_tile_x, tile_y)] != 151 || tile_at(tile_start, tile_y) & COLLISION_BOTTOM) {					
                     new_y = ((((UBYTE)(tile_y + 1) << 3) - PLAYER.bounds.top) << 4) + 1;
                     actor_attached = FALSE;
 					on_player_metatile_collision(tile_start, tile_y, DIR_UP); 
@@ -1429,7 +1438,7 @@ void climb_state(void) BANKED {
         if (nocollide == 0){
             //Standard Jump
             que_state = JUMP_INIT;
-
+			pl_vel_x = ((PLAYER.dir == DIR_LEFT)? -1024: 1024);
         }
     }
     jb_val = 0;

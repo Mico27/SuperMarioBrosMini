@@ -187,6 +187,15 @@
         "linkedActorId": "$self$"
       },
       "id": "64990f66-dd1b-4670-8b0b-eaaaef7668b3"
+    },
+    {
+      "command": "EVENT_ACTOR_DEACTIVATE",
+      "args": {
+        "actorId": "$self$",
+        "__collapse": true
+      },
+      "id": "8da9990f-14ed-450a-9101-484f2d1cb439",
+      "children": {}
     }
   ],
   "updateScript": [],

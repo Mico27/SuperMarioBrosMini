@@ -63,7 +63,7 @@
                       }
                     },
                     "__collapseElse": false,
-                    "__collapse": true
+                    "__collapse": false
                   },
                   "children": {
                     "true": [
@@ -81,7 +81,7 @@
                         "command": "EVENT_SWITCH",
                         "args": {
                           "variable": "18",
-                          "choices": 3,
+                          "choices": 4,
                           "__collapseCase0": false,
                           "__collapseCase1": false,
                           "__collapseCase2": false,
@@ -113,13 +113,13 @@
                           },
                           "value3": {
                             "type": "constant",
-                            "value": "efd06150-a4f8-4086-a0d2-5245cb88aabd"
+                            "value": "9fe73cd3-ebfc-43f8-8b06-c8460c1c2f4e"
                           },
                           "value4": {
                             "type": "number",
                             "value": 0
                           },
-                          "__collapse": true
+                          "__collapse": false
                         },
                         "children": {
                           "true0": [
@@ -144,12 +144,22 @@
                             {
                               "command": "EVENT_MUSIC_PLAY",
                               "args": {
-                                "musicId": "c154fd10-a4a3-487e-ace1-8b6b871f0487"
+                                "musicId": "c154fd10-a4a3-487e-ace1-8b6b871f0487",
+                                "__collapse": true
                               },
                               "id": "64b6c9d0-7dfe-46c3-8274-f3730cd01d07"
                             }
                           ],
-                          "true3": [],
+                          "true3": [
+                            {
+                              "command": "EVENT_MUSIC_PLAY",
+                              "args": {
+                                "musicId": "c154fd10-a4a3-487e-ace1-8b6b871f0487",
+                                "__collapse": true
+                              },
+                              "id": "8ecd3a2c-bf4f-45dc-b005-e266b79bdb0f"
+                            }
+                          ],
                           "true4": [],
                           "true5": [],
                           "true6": [],

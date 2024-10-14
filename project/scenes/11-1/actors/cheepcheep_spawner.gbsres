@@ -1,0 +1,34 @@
+{
+  "_resourceType": "actor",
+  "id": "b7b48db1-5d0d-4c84-99d1-b3cd91cf3e96",
+  "name": "Cheepcheep spawner",
+  "frame": 0,
+  "animate": false,
+  "spriteSheetId": "32a87e20-fac0-47dd-93f6-e0736f023311",
+  "prefabId": "ee3ed3bb-fba4-479e-90a9-75d73ab338c6",
+  "direction": "down",
+  "moveSpeed": 1,
+  "animSpeed": 15,
+  "paletteId": "",
+  "isPinned": false,
+  "persistent": false,
+  "collisionGroup": "",
+  "prefabScriptOverrides": {
+    "4aa7fdb8-dc0b-475e-9124-96745faacbc5": {
+      "id": "4aa7fdb8-dc0b-475e-9124-96745faacbc5",
+      "args": {
+        "linkedActorId": "840bd64f-b1a2-4aa0-a259-905bd3e98996"
+      }
+    }
+  },
+  "symbol": "actor_883",
+  "script": [],
+  "startScript": [],
+  "updateScript": [],
+  "hit1Script": [],
+  "hit2Script": [],
+  "hit3Script": [],
+  "x": 6,
+  "y": 0,
+  "_index": 5
+}

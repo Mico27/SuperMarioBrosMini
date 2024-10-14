@@ -1,0 +1,55 @@
+{
+  "_resourceType": "trigger",
+  "id": "bb43122d-2a74-4673-a386-150ff9d6e147",
+  "name": "Respawn",
+  "prefabId": "",
+  "x": 130,
+  "y": 0,
+  "symbol": "trigger_323",
+  "prefabScriptOverrides": {},
+  "width": 1,
+  "height": 18,
+  "script": [
+    {
+      "command": "EVENT_SCRIPT_UNLOCK",
+      "args": {
+        "__collapse": true
+      },
+      "id": "1f002034-4533-4492-8f9b-8e3350f43eaa"
+    },
+    {
+      "command": "EVENT_CALL_CUSTOM_EVENT",
+      "args": {
+        "customEventId": "7472c75b-28ba-4e82-9e18-5c1cc4daf097",
+        "$variable[V0]$": {
+          "type": "number",
+          "value": 187
+        },
+        "$variable[V1]$": {
+          "type": "number",
+          "value": 9
+        },
+        "$actor[0]$": "7b2fb4be-ee3a-458b-bf52-7dd9c668bcf4",
+        "__collapse": true,
+        "$variable[V2]$": {
+          "type": "number",
+          "value": 9
+        }
+      },
+      "id": "b23d367b-5143-4b8a-9a1f-ae05682efa28"
+    },
+    {
+      "command": "EVENT_ACTOR_SET_STATE",
+      "args": {
+        "actorId": "7b2fb4be-ee3a-458b-bf52-7dd9c668bcf4",
+        "spriteStateId": "FireBar",
+        "loopAnim": true,
+        "__collapse": true
+      },
+      "id": "1e7456e1-12b4-4fff-8c33-b7c7a1fdf6b5",
+      "children": {}
+    }
+  ],
+  "leaveScript": [],
+  "_index": 10
+}

@@ -15,6 +15,7 @@ const fields = [
 		  ["3", "Enter right pipe"],
 		  ["4", "Beanstalk transition"],
 		  ["5", "Fell in pit"],
+		  ["6", "Enter left pipe"],
         ],
     },
     {

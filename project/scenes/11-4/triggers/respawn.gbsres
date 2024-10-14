@@ -1,0 +1,76 @@
+{
+  "_resourceType": "trigger",
+  "id": "43cc3bfd-fa6d-4738-951b-059525439adf",
+  "name": "Respawn",
+  "prefabId": "",
+  "x": 41,
+  "y": 0,
+  "symbol": "trigger_320",
+  "prefabScriptOverrides": {},
+  "width": 1,
+  "height": 18,
+  "script": [
+    {
+      "command": "EVENT_SCRIPT_UNLOCK",
+      "args": {
+        "__collapse": true
+      },
+      "id": "0c22ac33-e14c-4be6-a74e-39519ec3b268"
+    },
+    {
+      "command": "EVENT_CALL_CUSTOM_EVENT",
+      "args": {
+        "customEventId": "7472c75b-28ba-4e82-9e18-5c1cc4daf097",
+        "$variable[V0]$": {
+          "type": "number",
+          "value": 54
+        },
+        "$variable[V1]$": {
+          "type": "number",
+          "value": 16
+        },
+        "$actor[0]$": "d44237f8-b228-42f7-a5d1-49f5045c46a7",
+        "__collapse": true,
+        "$variable[V2]$": {
+          "type": "number",
+          "value": 7
+        }
+      },
+      "id": "d45c891d-ad9d-4be2-afaa-dab0d4aa29ce"
+    },
+    {
+      "command": "EVENT_CALL_CUSTOM_EVENT",
+      "args": {
+        "customEventId": "7472c75b-28ba-4e82-9e18-5c1cc4daf097",
+        "$variable[V0]$": {
+          "type": "number",
+          "value": 54
+        },
+        "$variable[V1]$": {
+          "type": "number",
+          "value": 12
+        },
+        "$actor[0]$": "bd79d368-276f-48bb-a4f4-5c02a04b822d",
+        "__collapse": false,
+        "$variable[V2]$": {
+          "type": "number",
+          "value": 7
+        }
+      },
+      "id": "e57f737d-5002-4d31-96fb-29ef0e111bf9"
+    },
+    {
+      "command": "EVENT_ACTOR_SET_STATE",
+      "args": {
+        "actorId": "bd79d368-276f-48bb-a4f4-5c02a04b822d",
+        "spriteStateId": "Red",
+        "loopAnim": true,
+        "__collapse": true
+      },
+      "id": "86497a1b-b8d5-46aa-bece-a37dfd6f0a20",
+      "children": {}
+    }
+  ],
+  "leaveScript": [],
+  "_index": 7
+}

@@ -6,7 +6,7 @@
   "animate": false,
   "spriteSheetId": "8dbb443a-eb83-48bb-86c9-ffd9012f45c7",
   "moveSpeed": 1,
-  "animSpeed": 15,
+  "animSpeed": 1,
   "paletteId": "",
   "persistent": false,
   "collisionGroup": "1",
@@ -868,7 +868,8 @@
     {
       "command": "EVENT_ACTOR_DEACTIVATE",
       "args": {
-        "actorId": "$self$"
+        "actorId": "$self$",
+        "__collapse": true
       },
       "id": "7fe15b0c-1f6a-456a-951d-e1e05f4e1cc4",
       "children": {}

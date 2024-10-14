@@ -1,0 +1,215 @@
+{
+  "_resourceType": "trigger",
+  "id": "07351944-4d7d-49c2-85db-5acbd707308f",
+  "name": "Axe 3",
+  "prefabId": "",
+  "x": 13,
+  "y": 13,
+  "symbol": "trigger_356",
+  "prefabScriptOverrides": {},
+  "width": 1,
+  "height": 1,
+  "script": [
+    {
+      "command": "EVENT_GET_META_TILE_AT_POS",
+      "args": {
+        "x": {
+          "type": "number",
+          "value": 13
+        },
+        "y": {
+          "type": "number",
+          "value": 13
+        },
+        "output": "26"
+      },
+      "id": "cd7764ee-5155-4849-980d-b7e72e2b926d"
+    },
+    {
+      "command": "EVENT_IF",
+      "args": {
+        "condition": {
+          "type": "eq",
+          "valueA": {
+            "type": "variable",
+            "value": "26"
+          },
+          "valueB": {
+            "type": "number",
+            "value": 15
+          }
+        },
+        "__collapseElse": true
+      },
+      "children": {
+        "true": [
+          {
+            "command": "EVENT_REPLACE_META_TILE",
+            "args": {
+              "x": {
+                "type": "number",
+                "value": 13
+              },
+              "y": {
+                "type": "number",
+                "value": 13
+              },
+              "metatile_id": {
+                "type": "number",
+                "value": 0
+              },
+              "__collapse": false
+            },
+            "id": "4589d121-25d8-4913-a598-e0562756ab12",
+            "children": {}
+          },
+          {
+            "command": "EVENT_LOOP_FOR",
+            "args": {
+              "variable": "34",
+              "from": {
+                "type": "number",
+                "value": 5
+              },
+              "comparison": ">",
+              "to": {
+                "type": "number",
+                "value": 0
+              },
+              "operation": "-=",
+              "value": {
+                "type": "number",
+                "value": 1
+              },
+              "__collapse": true
+            },
+            "children": {
+              "true": [
+                {
+                  "command": "EVENT_REPLACE_META_TILE",
+                  "args": {
+                    "x": {
+                      "type": "expression",
+                      "value": "$34$"
+                    },
+                    "y": {
+                      "type": "number",
+                      "value": 14
+                    },
+                    "metatile_id": {
+                      "type": "number",
+                      "value": 0
+                    },
+                    "__collapse": true
+                  },
+                  "id": "6b67bf38-bb4c-49a3-9f0a-28af70c1429c",
+                  "children": {}
+                },
+                {
+                  "command": "EVENT_SOUND_PLAY_EFFECT",
+                  "args": {
+                    "type": "26cd7074-745e-4a0a-89e5-613430aaee0d",
+                    "priority": "medium",
+                    "pitch": 4,
+                    "frequency": 200,
+                    "duration": 0.5,
+                    "wait": true,
+                    "effect": 0,
+                    "__collapse": false
+                  },
+                  "id": "03b90cb3-832f-42c9-a485-7687bf478f91",
+                  "children": {}
+                },
+                {
+                  "command": "EVENT_WAIT",
+                  "args": {
+                    "time": 0.5,
+                    "frames": 4,
+                    "units": "frames"
+                  },
+                  "id": "d21fc821-5511-46fd-9826-98d060b1a334",
+                  "children": {}
+                }
+              ]
+            },
+            "id": "506f3c0c-f95b-437c-919d-3738af7b64d8"
+          },
+          {
+            "command": "EVENT_LOOP_FOR",
+            "args": {
+              "variable": "34",
+              "from": {
+                "type": "number",
+                "value": 2
+              },
+              "comparison": ">",
+              "to": {
+                "type": "number",
+                "value": 0
+              },
+              "operation": "-=",
+              "value": {
+                "type": "number",
+                "value": 1
+              },
+              "__collapse": true
+            },
+            "children": {
+              "true": [
+                {
+                  "command": "EVENT_REPLACE_META_TILE",
+                  "args": {
+                    "x": {
+                      "type": "expression",
+                      "value": "$34$ + 16"
+                    },
+                    "y": {
+                      "type": "number",
+                      "value": 14
+                    },
+                    "metatile_id": {
+                      "type": "number",
+                      "value": 0
+                    }
+                  },
+                  "id": "a2eb3a2a-6d41-416c-bcad-b9cb563719c2",
+                  "children": {}
+                },
+                {
+                  "command": "EVENT_SOUND_PLAY_EFFECT",
+                  "args": {
+                    "type": "26cd7074-745e-4a0a-89e5-613430aaee0d",
+                    "priority": "medium",
+                    "pitch": 4,
+                    "frequency": 200,
+                    "duration": 0.5,
+                    "wait": true,
+                    "effect": 0,
+                    "__collapse": false
+                  },
+                  "id": "ead5673d-9e2a-4031-a279-f7340e0feb69",
+                  "children": {}
+                },
+                {
+                  "command": "EVENT_WAIT",
+                  "args": {
+                    "time": 0.5,
+                    "frames": 4,
+                    "units": "frames"
+                  },
+                  "id": "92290f11-76d5-4327-b190-cd63731ea1c9",
+                  "children": {}
+                }
+              ]
+            },
+            "id": "7321788d-a286-4bb0-95f2-804d30965fe2"
+          }
+        ],
+        "false": []
+      },
+      "id": "c9866ed0-b8b0-4bcb-8d53-09eeb581faf0"
+    }
+  ],
+  "leaveScript": [],
+  "_index": 2
+}

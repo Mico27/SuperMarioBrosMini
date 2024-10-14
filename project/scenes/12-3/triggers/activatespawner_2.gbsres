@@ -1,0 +1,23 @@
+{
+  "_resourceType": "trigger",
+  "id": "0dc32680-2263-4600-ac3c-b1ea59479438",
+  "name": "ActivateSpawner",
+  "prefabId": "",
+  "x": 0,
+  "y": 17,
+  "symbol": "trigger_349",
+  "prefabScriptOverrides": {},
+  "width": 20,
+  "height": 1,
+  "script": [
+    {
+      "command": "EVENT_ACTOR_DEACTIVATE",
+      "args": {
+        "actorId": "d660e574-9409-4d03-8aba-d02af206f899"
+      },
+      "id": "4ae182a7-c0a1-414c-99b7-abd02d78637b"
+    }
+  ],
+  "leaveScript": [],
+  "_index": 3
+}

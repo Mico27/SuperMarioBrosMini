@@ -1,0 +1,143 @@
+{
+  "_resourceType": "scene",
+  "id": "41749eda-4dd9-446d-8fba-abd2f01336f4",
+  "_index": 79,
+  "name": "12-1-1",
+  "backgroundId": "7ced45b4-0502-44c8-beb1-5b2ee0a0d17e",
+  "tilesetId": "9ecbffea-374f-49ec-a07d-46fea9501295",
+  "width": 20,
+  "height": 18,
+  "type": "PLATFORM",
+  "paletteIds": [
+    "99220635-88ea-4347-bb39-c7ecd27d4e1e",
+    "c3ef69bc-82cb-4474-b468-bfec1e2db8d5",
+    "df0a3e09-eaf6-4967-91f6-5f64d214613f",
+    "733f1479-667b-4399-983b-846101189677",
+    "2ce22ce6-97d9-4dee-8cf4-a961c5ae078d",
+    "dmg",
+    "dmg",
+    "df0a3e09-eaf6-4967-91f6-5f64d214613f"
+  ],
+  "spritePaletteIds": [
+    "e3b4697e-c57b-4ada-bc32-8e8cf3d244e4",
+    "c0e96ecc-aa94-4f82-9b82-a1a1e612e80d",
+    "5fbe9f6e-8881-472f-975e-6cfbcdabf537",
+    "248228a5-dd6d-4d3f-981d-6c739186e027",
+    "ded596d1-3b3c-4a4b-8006-136b4244fd78",
+    "12f9476b-58b9-4ff6-9c8b-3dd0424735fe",
+    "11eb3d3a-1853-4557-9ece-623e57052bb3",
+    "ec9a8eee-b9f4-4423-a611-b4ee60600527"
+  ],
+  "collisions": "00168+",
+  "autoFadeSpeed": null,
+  "symbol": "scene_12_1_1",
+  "x": 2048,
+  "y": 3368,
+  "script": [
+    {
+      "command": "EVENT_SET_VALUE",
+      "args": {
+        "variable": "18",
+        "value": {
+          "type": "constant",
+          "value": "1005aacf-a3e3-460d-bf15-42a24ca06e93"
+        },
+        "__collapse": true
+      },
+      "id": "2050772f-0478-47c2-8966-5d30ad2b68de"
+    },
+    {
+      "command": "PM_EVENT_PLATMARIO_SPECIFIC_SCRIPT",
+      "args": {
+        "specific_event": "1",
+        "__scriptTabs": "scriptinput",
+        "__collapse": true
+      },
+      "children": {
+        "script": [
+          {
+            "command": "EVENT_CALL_CUSTOM_EVENT",
+            "args": {
+              "customEventId": "010dfb2c-fbd5-47e5-8b29-80af76159f1f",
+              "$variable[V0]$": {
+                "type": "variable",
+                "value": "5"
+              },
+              "$variable[V1]$": {
+                "type": "variable",
+                "value": "30"
+              },
+              "$variable[V2]$": {
+                "type": "variable",
+                "value": "27"
+              },
+              "$actor[0]$": "d1781b9a-8805-48ff-bb6f-59524541d2f5",
+              "$actor[1]$": "264574b8-2ff6-4d63-9432-968bbc3d88c6",
+              "__collapse": true
+            },
+            "id": "b1ad6710-7ca5-4423-95e1-93d51e74936f"
+          }
+        ]
+      },
+      "id": "8d43b449-3cfa-444a-a4db-b7766160a1f8"
+    },
+    {
+      "command": "EVENT_SET_INPUT_SCRIPT",
+      "args": {
+        "input": [
+          "b"
+        ],
+        "override": false,
+        "__scriptTabs": "press",
+        "__collapse": true
+      },
+      "children": {
+        "true": [
+          {
+            "command": "EVENT_CALL_CUSTOM_EVENT",
+            "args": {
+              "customEventId": "70c96f28-b99f-4a17-a885-b993c8676eb8",
+              "$actor[0]$": "3b87f7b6-f289-430d-8a63-2f012ba2b247",
+              "$actor[1]$": "fe7f9329-854a-4dc0-b874-14d3b5040651",
+              "$actor[2]$": "c94ddd6d-b4e8-4c64-8720-31e8f9b22980",
+              "__collapse": true
+            },
+            "id": "205a08b9-1b95-4143-857b-c49fbc145d96"
+          }
+        ]
+      },
+      "id": "bbbe4bf8-b995-43a1-81fb-0d6379c36098"
+    },
+    {
+      "command": "EVENT_CALL_CUSTOM_EVENT",
+      "args": {
+        "customEventId": "32d76253-2c63-4808-a673-2c3b44b8615b",
+        "$variable[V0]$": {
+          "type": "number",
+          "value": 1
+        },
+        "$variable[V1]$": {
+          "type": "number",
+          "value": 2
+        },
+        "__collapse": true
+      },
+      "id": "4069ba7d-af87-4f02-b4e6-80c14c2e9ed0"
+    }
+  ],
+  "playerHit1Script": [],
+  "playerHit2Script": [],
+  "playerHit3Script": [],
+  "autoFadeEventCollapse": true,
+  "parallax": [
+    {
+      "height": 2,
+      "speed": 128
+    },
+    {
+      "height": 0,
+      "speed": 0
+    }
+  ],
+  "playerSpriteSheetId": "82297e17-ae19-4d6c-84f3-47e5fe14a6ad"
+}

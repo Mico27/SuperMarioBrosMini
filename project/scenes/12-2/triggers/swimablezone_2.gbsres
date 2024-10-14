@@ -1,0 +1,39 @@
+{
+  "_resourceType": "trigger",
+  "id": "5eea7244-2b70-4c98-8384-398d54ea0118",
+  "name": "SwimableZone",
+  "prefabId": "e76b549a-a204-43cd-a61b-b49d6a51e5cb",
+  "x": 1,
+  "y": 31,
+  "symbol": "trigger_341",
+  "prefabScriptOverrides": {},
+  "width": 8,
+  "height": 12,
+  "script": [
+    {
+      "command": "EVENT_SET_VALUE",
+      "args": {
+        "variable": "62",
+        "value": {
+          "type": "number",
+          "value": 1
+        }
+      },
+      "id": "4f68014f-224c-44df-8c23-f8ae04afadd8"
+    }
+  ],
+  "leaveScript": [
+    {
+      "command": "EVENT_SET_VALUE",
+      "args": {
+        "variable": "62",
+        "value": {
+          "type": "number",
+          "value": 0
+        }
+      },
+      "id": "a0f155c0-1ae1-44ea-b4a3-9189e8779a8b"
+    }
+  ],
+  "_index": 1
+}

@@ -1,0 +1,24 @@
+{
+  "_resourceType": "triggerPrefab",
+  "id": "e76b549a-a204-43cd-a61b-b49d6a51e5cb",
+  "name": "SwimableZone",
+  "prefabScriptOverrides": {},
+  "script": [
+    {
+      "command": "EVENT_INC_VALUE",
+      "args": {
+        "variable": "62"
+      },
+      "id": "e3947de4-ef62-4fe2-8869-be8b44a7c4e3"
+    }
+  ],
+  "leaveScript": [
+    {
+      "command": "EVENT_DEC_VALUE",
+      "args": {
+        "variable": "62"
+      },
+      "id": "b8c76870-0948-4513-b5d9-77ad5bd9d76c"
+    }
+  ]
+}
