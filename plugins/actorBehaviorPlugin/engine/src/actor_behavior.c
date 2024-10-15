@@ -327,6 +327,8 @@ void actor_behavior_update(void) BANKED {
 								case 158://star block
 								case 159://1up block
 								case 169://beanstalk brick
+								case 171://egg brick
+								case 172://egg block
 								if(specific_events[HIT_BLOCK_EVENT].script_addr != 0){
 									script_memory[VAR_HITBLOCKID] = tile_id;
 									script_memory[VAR_HITBLOCKX] = col_tx;

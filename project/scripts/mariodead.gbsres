@@ -44,6 +44,18 @@
             "id": "b2a48e1b-73fc-4860-babe-48b30cbcb139"
           },
           {
+            "command": "EVENT_SET_VALUE",
+            "args": {
+              "variable": "63",
+              "value": {
+                "type": "number",
+                "value": 0
+              },
+              "__collapse": true
+            },
+            "id": "fa17bca2-99ed-44ed-b8ca-40ededff2e87"
+          },
+          {
             "command": "EVENT_PLAYER_SET_SPRITE",
             "args": {
               "spriteSheetId": "f6e3773c-ecfd-4844-8c6e-0facf92edfe0",

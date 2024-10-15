@@ -75,3 +75,5 @@ extern BYTE last_wall;
 extern BYTE col;
 
 extern UBYTE crouched;
+extern UBYTE que_attacking;
+extern UBYTE stat_attacking;

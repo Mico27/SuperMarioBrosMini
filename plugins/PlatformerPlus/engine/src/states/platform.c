@@ -76,6 +76,7 @@ WORD deltaY;
 //COUNTER variables
 UBYTE ct_val;               //Coyote Time Variable
 UBYTE jb_val;               //Jump Buffer Variable
+UBYTE dj_val;               //Current double jump
 UBYTE hold_jump_val;        //Jump input hold variable
 
 //WALL variables 
@@ -133,6 +134,8 @@ UBYTE current_vine_tile_x;
 
 UBYTE underwater_pit;
 UBYTE crouched;
+UBYTE que_attacking;
+UBYTE stat_attacking;
 
 void platform_init(void) BANKED {
     //Initialize Camera
@@ -204,6 +207,7 @@ void platform_init(void) BANKED {
     hold_jump_val = 0;//plat_hold_jump_max;
     deltaX = 0;
     deltaY = 0;
+	dj_val = 0;
 	underwater_pit = 0;
 	crouched = 0;
 	actor_behavior_init();
@@ -214,19 +218,21 @@ void platform_update(void) BANKED {
 	actor_behavior_update();
     plat_state = que_state;
 	script_memory[VAR_FRAMECOINS] = 0;
+	PLAYER.anim_tick = 7;
     switch(plat_state){
         case FALL_INIT:
             que_state = FALL_STATE;
-			load_animations(PLAYER.sprite.ptr, PLAYER.sprite.bank, STATE_DEFAULT, PLAYER.animations);
+			load_animations(PLAYER.sprite.ptr, PLAYER.sprite.bank, (que_attacking != 0) ? STATE_ATTACK: STATE_DEFAULT, PLAYER.animations);
 			crouched = 0;
         case FALL_STATE:
             fall_state();
             break;
         case GROUND_INIT:
             que_state = GROUND_STATE;
-			load_animations(PLAYER.sprite.ptr, PLAYER.sprite.bank, STATE_DEFAULT, PLAYER.animations);
+			load_animations(PLAYER.sprite.ptr, PLAYER.sprite.bank, (que_attacking != 0) ? STATE_ATTACK: STATE_DEFAULT, PLAYER.animations);
             //pl_vel_y = 256;
             ct_val = plat_coyote_max; 
+			dj_val = 1;
             jump_reduction_val = 0;
 			enemy_bounce = 0;
 			crouched = 0;
@@ -235,7 +241,7 @@ void platform_update(void) BANKED {
             break;
 		case CROUCH_INIT:
 			que_state = CROUCH_STATE;
-			load_animations(PLAYER.sprite.ptr, PLAYER.sprite.bank, STATE_CROUCH, PLAYER.animations);
+			load_animations(PLAYER.sprite.ptr, PLAYER.sprite.bank, (que_attacking != 0) ? STATE_CROUCHATTACK: STATE_CROUCH , PLAYER.animations);
 			PLAYER.bounds.top = 1;
 			crouched = 1;
 			//pl_vel_y = 256;
@@ -250,7 +256,7 @@ void platform_update(void) BANKED {
 			break;
         case JUMP_INIT:
             que_state = JUMP_STATE;
-			load_animations(PLAYER.sprite.ptr, PLAYER.sprite.bank, STATE_DEFAULT, PLAYER.animations);
+			load_animations(PLAYER.sprite.ptr, PLAYER.sprite.bank, (que_attacking != 0) ? STATE_ATTACK: STATE_DEFAULT, PLAYER.animations);
             hold_jump_val = plat_hold_jump_max; 
             actor_attached = FALSE;
             pl_vel_y = -plat_jump_min;
@@ -280,7 +286,7 @@ void platform_update(void) BANKED {
             break;
 		case SWIM_INIT:
 			que_state = SWIM_STATE;
-			load_animations(PLAYER.sprite.ptr, PLAYER.sprite.bank, STATE_SWIM, PLAYER.animations);
+			load_animations(PLAYER.sprite.ptr, PLAYER.sprite.bank, (que_attacking != 0) ? STATE_ATTACK: STATE_SWIM, PLAYER.animations);
 			actor_attached = FALSE;
 			pl_vel_y = -plat_jump_min;
 		case SWIM_STATE:
@@ -399,6 +405,9 @@ void on_player_metatile_collision(UBYTE tile_x, UBYTE tile_y, UBYTE direction) B
 					case 162://invis star block
 					case 163://invis 1up block	
 					case 169://beanstalk brick
+					case 171://egg brick
+					case 172://egg block
+					case 173://invis egg block
 						if(specific_events[HIT_BLOCK_EVENT].script_addr != 0){
 							script_memory[VAR_HITBLOCKID] = tile_id;
 							script_memory[VAR_HITBLOCKX] = tile_x;
@@ -426,19 +435,21 @@ void fall_state(void) BANKED {
     UBYTE tile_x_mid = ((PLAYER.pos.x >> 4) + PLAYER.bounds.left + p_half_width) >> 3; 
     UBYTE tile_y = ((PLAYER.pos.y >> 4) + PLAYER.bounds.top + 1) >> 3;
     col = 0;
-    
     //A. INPUT CHECK=================================================================================================
       //Crouched
 	if (INPUT_DOWN && !crouched){
-		load_animations(PLAYER.sprite.ptr, PLAYER.sprite.bank, STATE_CROUCH, PLAYER.animations);
+		load_animations(PLAYER.sprite.ptr, PLAYER.sprite.bank, (que_attacking != 0) ? STATE_CROUCHATTACK : STATE_CROUCH, PLAYER.animations);
 		PLAYER.bounds.top = 1;
 		crouched = 1;
 	} else if (!INPUT_DOWN && crouched){
-		load_animations(PLAYER.sprite.ptr, PLAYER.sprite.bank, STATE_DEFAULT, PLAYER.animations);
+		load_animations(PLAYER.sprite.ptr, PLAYER.sprite.bank, (que_attacking != 0) ? STATE_ATTACK : STATE_DEFAULT, PLAYER.animations);
 		if (script_memory[VAR_MARIOSTATUS_0] > 0){
 			PLAYER.bounds.top = -7;
 		}
 		crouched = 0;
+	} else if (que_attacking != stat_attacking){
+		stat_attacking = que_attacking;		
+		load_animations(PLAYER.sprite.ptr, PLAYER.sprite.bank, (que_attacking != 0) ? STATE_ATTACK : STATE_DEFAULT, PLAYER.animations);
 	}
 
     //B. STATE SPECIFIC LOGIC
@@ -683,46 +694,7 @@ void fall_state(void) BANKED {
 				continue;
 			};		
 			if (bb_intersects(&PLAYER.bounds, &PLAYER.pos, &hit_actor->bounds, &hit_actor->pos)) {				
-				//Solid Actors
-				if (hit_actor->collision_group == plat_solid_group){
-					if(!actor_attached || hit_actor != last_actor){
-						if (temp_y < (hit_actor->pos.y + (hit_actor->bounds.top << 4)) && pl_vel_y >= 0){
-							//Attach to MP
-							last_actor = hit_actor;
-							mp_last_x = hit_actor->pos.x;
-							mp_last_y = hit_actor->pos.y;
-							PLAYER.pos.y = hit_actor->pos.y + (hit_actor->bounds.top << 4) - (PLAYER.bounds.bottom << 4) - 4;
-							//Other cleanup
-							pl_vel_y = 0;
-							actor_attached = TRUE;                        
-							que_state = GROUND_INIT;
-							//PLAYER bounds top seems to be 0 and counting down...
-						} else if (temp_y + (PLAYER.bounds.top << 4) > hit_actor->pos.y + (hit_actor->bounds.bottom<<4)){
-							deltaY += (hit_actor->pos.y - PLAYER.pos.y) + ((-PLAYER.bounds.top + hit_actor->bounds.bottom)<<4) + 32;
-							pl_vel_y = plat_grav;
-	
-							if(que_state == JUMP_STATE || actor_attached){
-								que_state = FALL_INIT;
-							}
-	
-						} else if (PLAYER.pos.x < hit_actor->pos.x){
-							deltaX = (hit_actor->pos.x - PLAYER.pos.x) - ((PLAYER.bounds.right + -hit_actor->bounds.left)<<4);
-							col = 1;
-							last_wall = 1;
-							if(!INPUT_RIGHT){
-								pl_vel_x = 0;
-							}
-						} else if (PLAYER.pos.x > hit_actor->pos.x){
-							deltaX = (hit_actor->pos.x - PLAYER.pos.x) + ((-PLAYER.bounds.left + hit_actor->bounds.right)<<4)+16;
-							col = -1;
-							last_wall = -1;
-							if (!INPUT_LEFT){
-								pl_vel_x = 0;
-							}
-						}
-	
-					}
-				} else if (hit_actor->collision_group == plat_mp_group){
+				if (hit_actor->collision_group == plat_mp_group){
 					//Platform Actors
 					if(!actor_attached || hit_actor != last_actor){
 						if (temp_y < hit_actor->pos.y + (hit_actor->bounds.top << 4) && pl_vel_y >= 0){
@@ -781,6 +753,11 @@ void fall_state(void) BANKED {
         if (ct_val != 0){
         //Coyote Time Jump
             que_state = JUMP_INIT;
+        } else if (script_memory[VAR_HASYOSHI] != 0 && dj_val != 0){
+        //Double Jump
+            dj_val = 0;
+            jump_reduction_val += jump_reduction;
+            que_state = JUMP_INIT;
         } else {
         // Setting the Jump Buffer when jump is pressed while not on the ground
         jb_val = plat_buffer_max; 
@@ -837,6 +814,12 @@ void swim_state(void) BANKED {
     UBYTE tile_y = ((PLAYER.pos.y >> 4) + PLAYER.bounds.top + 1) >> 3;
     col = 0;
 	WORD temp_y = PLAYER.pos.y;
+	
+	if (que_attacking != stat_attacking){
+		stat_attacking = que_attacking;
+		load_animations(PLAYER.sprite.ptr, PLAYER.sprite.bank, (que_attacking != 0) ? STATE_ATTACK: STATE_SWIM, PLAYER.animations);
+	}
+	
 	//Vertical Movement-------------------------------------------------------------------------------------------
     //Add jump force during each jump frame
     if (hold_jump_val !=0){
@@ -1131,41 +1114,7 @@ void swim_state(void) BANKED {
 				continue;
 			};		
 			if (bb_intersects(&PLAYER.bounds, &PLAYER.pos, &hit_actor->bounds, &hit_actor->pos)) {
-				//Solid Actors
-				if (hit_actor->collision_group == plat_solid_group){
-					if(!actor_attached || hit_actor != last_actor){
-						if (temp_y < (hit_actor->pos.y + (hit_actor->bounds.top << 4)) && pl_vel_y >= 0){
-							//Attach to MP
-							last_actor = hit_actor;
-							mp_last_x = hit_actor->pos.x;
-							mp_last_y = hit_actor->pos.y;
-							PLAYER.pos.y = hit_actor->pos.y + (hit_actor->bounds.top << 4) - (PLAYER.bounds.bottom << 4) - 4;
-							//Other cleanup
-							pl_vel_y = 0;
-							actor_attached = TRUE;   
-							//PLAYER bounds top seems to be 0 and counting down...
-						} else if (temp_y + (PLAYER.bounds.top << 4) > hit_actor->pos.y + (hit_actor->bounds.bottom<<4)){
-							deltaY += (hit_actor->pos.y - PLAYER.pos.y) + ((-PLAYER.bounds.top + hit_actor->bounds.bottom)<<4) + 32;
-							pl_vel_y = plat_grav;
-	
-						} else if (PLAYER.pos.x < hit_actor->pos.x){
-							deltaX = (hit_actor->pos.x - PLAYER.pos.x) - ((PLAYER.bounds.right + -hit_actor->bounds.left)<<4);
-							col = 1;
-							last_wall = 1;
-							if(!INPUT_RIGHT){
-								pl_vel_x = 0;
-							}
-						} else if (PLAYER.pos.x > hit_actor->pos.x){
-							deltaX = (hit_actor->pos.x - PLAYER.pos.x) + ((-PLAYER.bounds.left + hit_actor->bounds.right)<<4)+16;
-							col = -1;
-							last_wall = -1;
-							if (!INPUT_LEFT){
-								pl_vel_x = 0;
-							}
-						}
-	
-					}
-				} else if (hit_actor->collision_group == plat_mp_group){
+				if (hit_actor->collision_group == plat_mp_group){
 					//Platform Actors
 					if(!actor_attached || hit_actor != last_actor){
 						if (temp_y < hit_actor->pos.y + (hit_actor->bounds.top << 4) && pl_vel_y >= 0){
@@ -1287,4 +1236,29 @@ void clear_specific_script(SCRIPT_CTX * THIS) OLDCALL BANKED {
     UWORD *slot = VM_REF_TO_PTR(FN_ARG0);
     specific_events[*slot].script_bank = NULL;
     specific_events[*slot].script_addr = NULL;
+}
+
+void vm_do_yoshi_swallow_attack(SCRIPT_CTX * THIS) OLDCALL BANKED {
+	THIS;
+	point16_t tongue_offset;
+	bounding_box_t yoshi_tongue_boundingbox;
+	tongue_offset.y = PLAYER.pos.y + ((crouched)? 32: -64);
+	tongue_offset.x = PLAYER.pos.x + ((PLAYER.dir == DIR_LEFT)? -320: 64);
+	yoshi_tongue_boundingbox.right = 23;
+	yoshi_tongue_boundingbox.left = 0;
+	yoshi_tongue_boundingbox.top = 0;
+	yoshi_tongue_boundingbox.bottom = 7;	
+	
+	for (UBYTE i = 1; i < MAX_ACTORS; i++){
+		actor_t * hit_actor = (actors + i);
+		if (!hit_actor->active || !hit_actor->collision_enabled){
+			continue;
+		}
+		if (bb_intersects(&yoshi_tongue_boundingbox, &tongue_offset, &hit_actor->bounds, &hit_actor->pos)) {
+			if (hit_actor->script.bank){
+				script_execute(hit_actor->script.bank, hit_actor->script.ptr, 0, 1, 2);
+			}
+		}
+	}
+	
 }
