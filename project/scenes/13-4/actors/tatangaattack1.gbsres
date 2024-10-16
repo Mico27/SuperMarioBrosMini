@@ -1,0 +1,165 @@
+{
+  "_resourceType": "actor",
+  "id": "54636805-2b0c-43d1-a3a9-a5627b0742d6",
+  "name": "TatangaAttack1",
+  "frame": 0,
+  "animate": false,
+  "spriteSheetId": "3b232ae3-f713-4b50-b4cf-3274b205fba6",
+  "prefabId": "",
+  "direction": "left",
+  "moveSpeed": 1,
+  "animSpeed": 1,
+  "paletteId": "",
+  "isPinned": false,
+  "persistent": false,
+  "collisionGroup": "2",
+  "prefabScriptOverrides": {},
+  "symbol": "actor_1084",
+  "script": [
+    {
+      "command": "EVENT_GBVM_SCRIPT",
+      "args": {
+        "script": "VM_SET_CONST_UINT8 _player_iframes, 0"
+      },
+      "id": "762b9fe8-264f-4460-9df8-88998f1cf549",
+      "children": {}
+    },
+    {
+      "command": "EVENT_IF",
+      "args": {
+        "condition": {
+          "type": "lte",
+          "valueA": {
+            "type": "variable",
+            "value": "38"
+          },
+          "valueB": {
+            "type": "number",
+            "value": 0
+          }
+        },
+        "__collapseElse": true
+      },
+      "children": {
+        "true": [
+          {
+            "command": "EVENT_IF",
+            "args": {
+              "condition": {
+                "type": "eq",
+                "valueA": {
+                  "type": "variable",
+                  "value": "23"
+                },
+                "valueB": {
+                  "type": "number",
+                  "value": 0
+                }
+              },
+              "__collapseElse": true
+            },
+            "children": {
+              "true": [
+                {
+                  "command": "EVENT_CALL_CUSTOM_EVENT",
+                  "args": {
+                    "customEventId": "7cc914c2-6df4-4f26-a46f-72d7e3165f2c",
+                    "__comment": false
+                  },
+                  "id": "f9419f3f-3ccf-4b6d-a225-5eac64bd8a1c",
+                  "children": {}
+                }
+              ],
+              "false": []
+            },
+            "id": "4d453519-1b24-4c96-b351-187f9e168bed"
+          }
+        ],
+        "false": []
+      },
+      "id": "de685872-e2b6-4247-a219-2fd1a1beb064"
+    }
+  ],
+  "startScript": [
+    {
+      "command": "EVENT_SET_ACTOR_BEHAVIOR",
+      "args": {
+        "actorId": "$self$",
+        "behaviorId": {
+          "type": "number",
+          "value": 6
+        },
+        "__collapse": true
+      },
+      "id": "c5f237b5-f752-47fa-a7a7-0c430877071e",
+      "children": {}
+    },
+    {
+      "command": "EVENT_SET_ACTOR_STATE",
+      "args": {
+        "actorId": "$self$",
+        "stateId": {
+          "type": "number",
+          "value": 0
+        },
+        "__collapse": true
+      },
+      "id": "ef31a119-b746-432e-b520-dc1e7f7ecc9a",
+      "children": {}
+    },
+    {
+      "command": "EVENT_SET_ACTOR_X_VELOCITY",
+      "args": {
+        "actorId": "$self$",
+        "xVelocity": {
+          "type": "number",
+          "value": -8
+        },
+        "__collapse": true
+      },
+      "id": "97a6cd81-a16a-48bd-a8e1-2054a41e6881",
+      "children": {}
+    },
+    {
+      "command": "EVENT_SET_ACTOR_LINKED_ACTOR",
+      "args": {
+        "actorId": "$self$",
+        "linkedActorId": "a8d6a176-4031-46ef-9118-89cf8c224f3c",
+        "__collapse": false
+      },
+      "id": "90ff3501-79e6-4eda-9612-64be7a4aca08",
+      "children": {}
+    },
+    {
+      "command": "EVENT_ACTOR_DEACTIVATE",
+      "args": {
+        "actorId": "$self$",
+        "__collapse": true
+      },
+      "id": "21616416-e232-4c32-8655-220123c9fb6a"
+    }
+  ],
+  "updateScript": [],
+  "hit1Script": [],
+  "hit2Script": [],
+  "hit3Script": [
+    {
+      "command": "EVENT_SOUND_PLAY_EFFECT",
+      "args": {
+        "type": "17033f44-5800-4dc8-927e-17784d4ad4e8",
+        "priority": "medium",
+        "pitch": 4,
+        "frequency": 200,
+        "duration": 0.5,
+        "wait": true,
+        "effect": 0,
+        "__collapse": false
+      },
+      "id": "3022ca72-0cbc-4787-a6c8-120fb094539f",
+      "children": {}
+    }
+  ],
+  "x": 6,
+  "y": 2,
+  "_index": 5
+}

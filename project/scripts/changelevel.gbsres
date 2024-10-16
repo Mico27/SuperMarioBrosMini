@@ -846,22 +846,22 @@
                 "type": "number",
                 "value": 11
               },
-              "__collapseCase12": false,
+              "__collapseCase12": true,
               "value12": {
                 "type": "number",
                 "value": 12
               },
-              "__collapseCase13": false,
+              "__collapseCase13": true,
               "value13": {
                 "type": "number",
                 "value": 13
               },
-              "__collapseCase14": false,
+              "__collapseCase14": true,
               "value14": {
                 "type": "number",
                 "value": 14
               },
-              "__collapseCase15": false,
+              "__collapseCase15": true,
               "value15": {
                 "type": "number",
                 "value": 15
@@ -7533,7 +7533,7 @@
                             "value": 16
                           },
                           "__collapseElse": false,
-                          "__collapse": false
+                          "__collapse": true
                         },
                         "children": {
                           "true0": [
@@ -7660,151 +7660,22 @@
                         "id": "818c97cc-dba0-4ca0-a992-cd4451cc0061"
                       },
                       {
-                        "command": "EVENT_SWITCH",
+                        "command": "EVENT_SWITCH_SCENE",
                         "args": {
-                          "variable": "31",
-                          "choices": 1,
-                          "__collapseCase0": false,
-                          "value0": {
+                          "sceneId": "e558d549-8832-4d6d-a39c-a405a7172091",
+                          "x": {
                             "type": "number",
                             "value": 3
                           },
-                          "__collapseCase1": false,
-                          "value1": {
-                            "type": "number",
-                            "value": 3
-                          },
-                          "__collapseCase2": false,
-                          "value2": {
-                            "type": "number",
-                            "value": 3
-                          },
-                          "__collapseCase3": false,
-                          "value3": {
-                            "type": "number",
-                            "value": 4
-                          },
-                          "__collapseCase4": false,
-                          "value4": {
-                            "type": "number",
-                            "value": 5
-                          },
-                          "__collapseCase5": false,
-                          "value5": {
-                            "type": "number",
-                            "value": 6
-                          },
-                          "__collapseCase6": false,
-                          "value6": {
-                            "type": "number",
-                            "value": 7
-                          },
-                          "__collapseCase7": false,
-                          "value7": {
-                            "type": "number",
-                            "value": 8
-                          },
-                          "__collapseCase8": false,
-                          "value8": {
-                            "type": "number",
-                            "value": 9
-                          },
-                          "__collapseCase9": false,
-                          "value9": {
-                            "type": "number",
-                            "value": 10
-                          },
-                          "__collapseCase10": false,
-                          "value10": {
-                            "type": "number",
-                            "value": 11
-                          },
-                          "__collapseCase11": false,
-                          "value11": {
-                            "type": "number",
-                            "value": 12
-                          },
-                          "__collapseCase12": false,
-                          "value12": {
-                            "type": "number",
-                            "value": 13
-                          },
-                          "__collapseCase13": false,
-                          "value13": {
-                            "type": "number",
-                            "value": 14
-                          },
-                          "__collapseCase14": false,
-                          "value14": {
+                          "y": {
                             "type": "number",
                             "value": 15
                           },
-                          "__collapseCase15": false,
-                          "value15": {
-                            "type": "number",
-                            "value": 16
-                          },
-                          "__collapseElse": false,
+                          "direction": "right",
+                          "fadeSpeed": 1,
                           "__collapse": true
                         },
-                        "children": {
-                          "true0": [
-                            {
-                              "command": "EVENT_SWITCH_SCENE",
-                              "args": {
-                                "sceneId": "0d70bd5c-cc99-4a99-b25b-2ec9e71f0446",
-                                "x": {
-                                  "type": "number",
-                                  "value": 151
-                                },
-                                "y": {
-                                  "type": "number",
-                                  "value": 0
-                                },
-                                "direction": "right",
-                                "fadeSpeed": 1,
-                                "__collapse": false
-                              },
-                              "id": "a37764b9-20f8-41f6-ab95-0820a039be9d"
-                            }
-                          ],
-                          "true1": [],
-                          "true2": [],
-                          "true3": [],
-                          "true4": [],
-                          "true5": [],
-                          "true6": [],
-                          "true7": [],
-                          "true8": [],
-                          "true9": [],
-                          "true10": [],
-                          "true11": [],
-                          "true12": [],
-                          "true13": [],
-                          "true14": [],
-                          "true15": [],
-                          "false": [
-                            {
-                              "command": "EVENT_SWITCH_SCENE",
-                              "args": {
-                                "sceneId": "0d70bd5c-cc99-4a99-b25b-2ec9e71f0446",
-                                "x": {
-                                  "type": "number",
-                                  "value": 3
-                                },
-                                "y": {
-                                  "type": "number",
-                                  "value": 15
-                                },
-                                "direction": "right",
-                                "fadeSpeed": 1,
-                                "__collapse": false
-                              },
-                              "id": "10749c50-5e9e-4548-9f19-375e8c47f3ad"
-                            }
-                          ]
-                        },
-                        "id": "552d7d48-8249-467a-8ca7-bc8f786cf584"
+                        "id": "efe7cf99-cc5d-43db-8535-1115e648c7e4"
                       }
                     ],
                     "true3": [
@@ -7823,7 +7694,7 @@
                       {
                         "command": "EVENT_SWITCH_SCENE",
                         "args": {
-                          "sceneId": "19b50458-3f94-44c3-ab81-fe6b22b32a4e",
+                          "sceneId": "edd725b0-6e79-4125-8fb2-fe5ed84c9685",
                           "x": {
                             "type": "number",
                             "value": 1
