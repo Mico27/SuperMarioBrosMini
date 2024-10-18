@@ -23,6 +23,8 @@
 #include "data_manager.h"
 #include "data/game_globals.h"
 
+const BYTE spring_bb_top_lookup[] = { -8, -4, 0, -4, -8 };
+
 UWORD check_collision_c(UWORD start_x, UWORD start_y, bounding_box_t *bounds, col_check_dir_e check_dir) BANKED{    
     switch (check_dir) {
         case CHECK_DIR_LEFT:  // Check left (bottom left)
@@ -234,6 +236,9 @@ void actor_behavior_update_c(UBYTE i, actor_t * actor) BANKED {
 				actor->pos.y = check_collision_c(actor->pos.x, new_y, &actor->bounds, ((actor->pos.y > new_y) ? CHECK_DIR_UP : CHECK_DIR_DOWN));
 				if (actor->pos.y < new_y){
 					actor_vel_y[i] = -20;
+					if (actor_vel_x[i] == 0){
+						actor_vel_x[i] = -8;
+					}
 				} else if (actor->pos.y > new_y){
 					actor_vel_y[i] = 0;
 				}
@@ -360,7 +365,10 @@ void actor_behavior_update_c(UBYTE i, actor_t * actor) BANKED {
 					} else {
 						actor_set_dir(actor, DIR_RIGHT, TRUE);
 					}
-					if ((actor->pos.x >> 4) > draw_scroll_x + 128){
+					if ((actor->pos.x >> 4) > draw_scroll_x + ((script_memory[VAR_BOWSER_COUNTER] == 1)? 144: 128)){
+						if (actor_vel_x[i] > 16){
+							actor_vel_x[i] = 0;
+						}
 						if (actor_vel_x[i] > -16){
 							actor_vel_x[i]--;
 						}
@@ -370,9 +378,13 @@ void actor_behavior_update_c(UBYTE i, actor_t * actor) BANKED {
 						}
 					}
 				}
+				if ((script_memory[VAR_BOWSER_COUNTER] == 1) && (actor->pos.x >> 4) < draw_scroll_x + 120){
+					actor_vel_x[i] = 24;
+				}
 				actor->pos.x =  actor->pos.x + actor_vel_x[i];
+				
 				if (!(game_time & 1)){
-					if (!(actor_counter_a[i] & 127)){	
+					if (!(actor_counter_a[i] & 63)){	
 						actor_counter_a[i] = rand();	
 						if (actor_counter_a[i] < 128 && (PLAYER.pos.x < actor->pos.x)){
 							//Attack 1							
@@ -392,7 +404,7 @@ void actor_behavior_update_c(UBYTE i, actor_t * actor) BANKED {
 								attack_actor->pos.x = actor->pos.x;
 								attack_actor->pos.y = actor->pos.y;
 								actor_set_dir(attack_actor, DIR_LEFT, FALSE);	
-								actor_vel_x[attack_idx]	= -16;	
+								actor_vel_x[attack_idx]	= 0;	
 							}								
 						}					
 					}
@@ -414,5 +426,178 @@ void actor_behavior_update_c(UBYTE i, actor_t * actor) BANKED {
 				break;
 		}		
 		break;
+		case 40: //Wario
+		switch(actor_states[i]){
+			case 0:
+				if ((((actor->pos.x >> 4) + 8) - draw_scroll_x) < BEHAVIOR_ACTIVATION_THRESHOLD){ 
+					actor_states[i] = 1; 
+					actor_vel_y[i] = 0;
+					actor_vel_x[i] = 0;
+					actor_counter_a[i] = rand();
+				}
+				break;
+			case 1: //Grounded
+				actor_vel_y[i] += (plat_grav >> 8);
+				actor_vel_y[i] = MIN(actor_vel_y[i], (plat_max_fall_vel >> 8));	
+				actor_states[i] = 4;
+				//animation
+				if (actor_vel_x[i] > 0){
+					actor_set_dir(actor, DIR_RIGHT, TRUE);
+				} else if (actor_vel_x[i] < 0){
+					actor_set_dir(actor, DIR_LEFT, TRUE);
+				} else if (actor->pos.x < PLAYER.pos.x){
+					actor_set_dir(actor, DIR_RIGHT, FALSE);
+				} else {
+					actor_set_dir(actor, DIR_LEFT, FALSE);
+				}			
+				if (!(game_time & 3) && script_memory[VAR_BOWSER_COUNTER] == 2){
+					if (!(actor_counter_a[i] & 31)){
+						if (rand() < 200){
+							actor_states[i] = 2;
+							break;
+						} else {
+							actor_vel_x[i] = -actor_vel_x[i];
+							actor_counter_a[i] = rand();
+						}
+					}
+					actor_counter_a[i]++;
+				}
+				goto wario_mainstate;
+			case 2: //init jump
+				actor->anim_noloop = TRUE;
+				actor_vel_y[i] = -30;
+				actor_counter_a[i] = 10;
+				actor_states[i] = 3;
+				if (actor_vel_x[i] > 0){
+					actor_set_anim(actor, ANIM_JUMP_RIGHT);
+				} else {
+					actor_set_anim(actor, ANIM_JUMP_LEFT);
+				}
+			case 3: //Jump				
+				if (actor_counter_a[i] !=0){
+					actor_vel_y[i] -= 1;
+					actor_counter_a[i] -=1;
+				} else if (actor_vel_y[i] < 0){
+					actor_vel_y[i] += (plat_hold_grav >> 8);
+				} else if (actor_vel_y[i] >= 0){
+					actor->anim_noloop = FALSE;
+					actor_states[i] = 4;
+					actor_counter_a[i] = 0;
+					actor_vel_y[i] += (plat_grav >> 8);
+				} else {
+					actor_vel_y[i] += (plat_grav >> 8);
+				}
+				goto wario_mainstate;
+			case 4: //Falling
+				actor_vel_y[i] += (plat_grav >> 8);
+				actor_vel_y[i] = MIN(actor_vel_y[i], (plat_max_fall_vel >> 8));	
+			wario_mainstate: //Main state				
+				//Apply velocity
+				WORD new_y =  actor->pos.y + actor_vel_y[i];
+				WORD new_x =  actor->pos.x + actor_vel_x[i];
+				//Tile Collision
+				actor->pos.x = check_collision_c(new_x, actor->pos.y, &actor->bounds, ((actor->pos.x > new_x) ? CHECK_DIR_LEFT : CHECK_DIR_RIGHT));
+				if (script_memory[VAR_BOWSER_COUNTER] == 2 && (actor->pos.x != new_x || (actor->pos.x >> 4) < draw_scroll_x || (actor->pos.x >> 4) > draw_scroll_x + 144)){
+					actor_vel_x[i] = -actor_vel_x[i];
+				}
+				actor->pos.y = check_collision_c(actor->pos.x, new_y, &actor->bounds, ((actor->pos.y > new_y) ? CHECK_DIR_UP : CHECK_DIR_DOWN));
+				if (actor->pos.y < new_y && actor_states[i] != 1){ //grounded
+					actor_states[i] = 1;
+					actor_counter_a[i] = rand();
+				} else if (actor->pos.y > new_y){
+					actor_vel_y[i] = 0;
+					UBYTE tile_id = sram_map_data[VRAM_OFFSET(col_tx, col_ty)];	
+					switch(tile_id){
+						case 5://coin block
+						case 7://brick	
+						case 152://multi coin brick
+						case 153://powerup brick
+						case 154://star brick
+						case 155://1up brick
+						case 156://powerup block	
+						case 157://beanstalk block
+						case 158://star block
+						case 159://1up block
+						case 169://beanstalk brick
+						case 171://egg brick
+						case 172://egg block
+						if(specific_events[HIT_BLOCK_EVENT].script_addr != 0){
+							script_memory[VAR_HITBLOCKID] = tile_id;
+							script_memory[VAR_HITBLOCKX] = col_tx;
+							script_memory[VAR_HITBLOCKY] = col_ty;
+							script_memory[VAR_HITBLOCKSOURCE] = i;
+							script_execute(specific_events[HIT_BLOCK_EVENT].script_bank, specific_events[HIT_BLOCK_EVENT].script_addr, 0, 0);
+						}
+						break;
+						default:
+						if (actor->script.bank){
+							script_execute(actor->script.bank, actor->script.ptr, 0, 1, 8);
+						}
+						break;
+					}
+				}
+				break;
+			case 5: //static
+				break;
+			case 6: //death
+				if ((actor->pos.y >> 7) > (image_tile_height + 4)){ 
+					actor_states[i] = 255; 
+					break;
+				}
+				actor_vel_y[i] += (plat_grav >> 10);
+				actor_vel_y[i] = MIN(actor_vel_y[i], plat_max_fall_vel >> 8);
+				//Apply velocity
+				actor->pos.y =  actor->pos.y + actor_vel_y[i];
+				break;
+			case 255: //Deactivate
+				deactivate_actor(actor);
+				break;
+		}		
+		break;
+		case 14: //Spring
+		switch(actor_states[i]){
+			case 0:
+				if ((((actor->pos.x >> 4) + 8) - draw_scroll_x) < BEHAVIOR_ACTIVATION_THRESHOLD){ 
+					actor_states[i] = 1; 
+				}
+				break;
+			case 1: //Idle state
+				if (actor_attached && last_actor == actor) {//start springing on player attach
+					actor_counter_a[i] = 0;
+					actor_states[i] = 2; 
+				}					
+				break;
+			case 2: //Springing state
+				que_state = GROUND_STATE;
+				if (!actor_attached || last_actor != actor) {
+					actor_counter_a[i] = 0;
+					actor_states[i] = 1;
+					actor->frame = actor->frame_start;
+					break;						
+				}
+				if (!(game_time & 1)){
+					actor_counter_a[i]++;
+					if (actor_counter_a[i] > 4){
+						actor_counter_a[i] = 0;
+						actor_states[i] = 1;
+						load_animations(PLAYER.sprite.ptr, PLAYER.sprite.bank, STATE_DEFAULT, PLAYER.animations);
+						hold_jump_val = (plat_hold_jump_max << 1); 
+						actor_attached = FALSE;
+						pl_vel_y = -(plat_jump_min << 1);
+						jb_val = 0;
+						ct_val = 0;
+						enemy_bounce = 1;
+						que_state = JUMP_STATE;
+					}
+					actor->frame = actor->frame_start + actor_counter_a[i];
+					PLAYER.pos.y = (actor->pos.y + ((actor->bounds.top + spring_bb_top_lookup[actor_counter_a[i]]) << 4));
+				}
+				break;
+			case 255:
+				actor_counter_a[i] = 0;
+				deactivate_actor(actor);
+				break;
+		}
+		break;	
 	}			
 }

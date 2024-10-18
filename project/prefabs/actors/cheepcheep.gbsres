@@ -13,15 +13,6 @@
   "prefabScriptOverrides": {},
   "script": [
     {
-      "command": "EVENT_GBVM_SCRIPT",
-      "args": {
-        "script": "VM_SET_CONST_UINT8 _player_iframes, 0",
-        "__collapse": false
-      },
-      "id": "04af1753-d796-4865-afb9-628046ac546c",
-      "children": {}
-    },
-    {
       "command": "EVENT_IF",
       "args": {
         "condition": {

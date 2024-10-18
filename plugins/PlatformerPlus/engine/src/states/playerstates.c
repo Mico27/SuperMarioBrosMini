@@ -1268,7 +1268,7 @@ void climb_state(void) BANKED {
             if (nocollide == 0){
                 //Check collisions from left to right with the bottom of the player
                 while (tile_start < tile_end) {
-                    if (sram_map_data[VRAM_OFFSET(current_vine_tile_x, tile_y - 1)] != 151 || tile_at(tile_start, tile_y) & COLLISION_TOP) {	
+                    if (sram_map_data[VRAM_OFFSET(current_vine_tile_x, tile_y)] != 151 || tile_at(tile_start, tile_y) & COLLISION_TOP) {	
                         new_y = ((((tile_y) << 3) - PLAYER.bounds.bottom) << 4) - 1;
                         actor_attached = FALSE; //Detach when MP moves through a solid tile.
                         //The distinction here is used so that we can check the velocity when the player hits the ground.

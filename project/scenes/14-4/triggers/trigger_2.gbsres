@@ -1,0 +1,93 @@
+{
+  "_resourceType": "trigger",
+  "id": "b826445f-ca7f-4fd4-b3d6-42dec70ff70a",
+  "name": "",
+  "prefabId": "",
+  "x": 138,
+  "y": 9,
+  "symbol": "trigger_411",
+  "prefabScriptOverrides": {},
+  "width": 1,
+  "height": 3,
+  "script": [
+    {
+      "command": "EVENT_THREAD_START",
+      "args": {
+        "variable": "25",
+        "__scriptTabs": "true",
+        "__collapse": false
+      },
+      "children": {
+        "true": [
+          {
+            "command": "EVENT_CAMERA_MOVE_TO",
+            "args": {
+              "x": {
+                "type": "number",
+                "value": 140
+              },
+              "y": {
+                "type": "number",
+                "value": 0
+              },
+              "speed": 1
+            },
+            "id": "0bde834b-d768-498d-bb4e-33a233a3607e",
+            "children": {}
+          },
+          {
+            "command": "EVENT_SET_VALUE",
+            "args": {
+              "variable": "35",
+              "value": {
+                "type": "number",
+                "value": 2
+              },
+              "__collapse": true
+            },
+            "id": "56120cf3-7484-4f6a-ab8c-b39c0bd800f1"
+          },
+          {
+            "command": "EVENT_SET_ACTOR_X_VELOCITY",
+            "args": {
+              "actorId": "45251f1f-ef58-4a00-adef-4fc4e0e3176c",
+              "xVelocity": {
+                "type": "number",
+                "value": -16
+              },
+              "__collapse": true
+            },
+            "id": "99fd3edc-e73d-49d6-b477-fdf8637084a2"
+          },
+          {
+            "command": "EVENT_SET_ACTOR_STATE",
+            "args": {
+              "actorId": "45251f1f-ef58-4a00-adef-4fc4e0e3176c",
+              "stateId": {
+                "type": "number",
+                "value": 1
+              },
+              "__collapse": true
+            },
+            "id": "5ce7ab55-c098-4b0c-91bd-e9958da761a7"
+          },
+          {
+            "command": "EVENT_SET_VALUE",
+            "args": {
+              "variable": "35",
+              "value": {
+                "type": "number",
+                "value": 2
+              },
+              "__collapse": true
+            },
+            "id": "e92493f1-f217-45d9-8403-0855192a7b0e"
+          }
+        ]
+      },
+      "id": "d9cdaed8-9974-4c78-8957-46eed5cf665f"
+    }
+  ],
+  "leaveScript": [],
+  "_index": 2
+}

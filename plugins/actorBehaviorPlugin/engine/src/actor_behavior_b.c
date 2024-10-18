@@ -74,18 +74,18 @@ void apply_water_gravity_b(UBYTE actor_idx) BANKED {
 
 void apply_velocity_b(UBYTE actor_idx, actor_t * actor) BANKED {
 	//Apply velocity
-	WORD new_y =  actor->pos.y + actor_vel_y[actor_idx];
-	WORD new_x =  actor->pos.x + actor_vel_x[actor_idx];
+	new_actor_y =  actor->pos.y + actor_vel_y[actor_idx];
+	new_actor_x =  actor->pos.x + actor_vel_x[actor_idx];
 	if (actor->collision_enabled){
 		//Tile Collision
-		actor->pos.x = check_collision_b(new_x, actor->pos.y, &actor->bounds, ((actor->pos.x > new_x) ? CHECK_DIR_LEFT : CHECK_DIR_RIGHT));
-		if (actor->pos.x != new_x){
+		actor->pos.x = check_collision_b(new_actor_x, actor->pos.y, &actor->bounds, ((actor->pos.x > new_actor_x) ? CHECK_DIR_LEFT : CHECK_DIR_RIGHT));
+		if (actor->pos.x != new_actor_x){
 			actor_vel_x[actor_idx] = -actor_vel_x[actor_idx];
 		}
-		actor->pos.y = check_collision_b(actor->pos.x, new_y, &actor->bounds, ((actor->pos.y > new_y) ? CHECK_DIR_UP : CHECK_DIR_DOWN));
+		actor->pos.y = check_collision_b(actor->pos.x, new_actor_y, &actor->bounds, ((actor->pos.y > new_actor_y) ? CHECK_DIR_UP : CHECK_DIR_DOWN));
 	} else {
-		actor->pos.x = new_x;
-		actor->pos.y = new_y;
+		actor->pos.x = new_actor_x;
+		actor->pos.y = new_actor_y;
 	}
 }
 
@@ -229,7 +229,7 @@ void actor_behavior_update_b(UBYTE i, actor_t * actor) BANKED {
 				} else {
 					actor_set_anim(actor, ANIM_JUMP_RIGHT);
 				}
-				break;
+				break;				
 			case 255: //Deactivate
 				deactivate_actor(actor);
 				break;
@@ -558,13 +558,35 @@ void actor_behavior_update_b(UBYTE i, actor_t * actor) BANKED {
 						actor_states[i] = 2; 
 						actor_vel_y[i] = 0;
 						if (PLAYER.pos.x < actor->pos.x) {									
-							actor_vel_x[i]	= -4;							
+							actor_vel_x[i]	= -16;							
 						} else {							
-							actor_vel_x[i]	= 4;
+							actor_vel_x[i]	= 16;
 						}
 					}
 					break;
 				case 2: //Main state
+					if (!(actor_counter_b[i] & 3)){
+						current_actor_x = ((actor->pos.x >> 4) + 8) - draw_scroll_x;
+						if (current_actor_x > BEHAVIOR_DEACTIVATION_THRESHOLD || current_actor_x < BEHAVIOR_DEACTIVATION_LOWER_THRESHOLD || (actor->pos.y >> 7) > image_tile_height){ 
+							actor_states[i] = 255; 
+							break;
+						}					
+						apply_gravity_b(i);
+						apply_velocity_b(i, actor);
+						//Animation
+						if (actor_vel_x[i] < 0) {
+							actor_set_dir(actor, DIR_LEFT, TRUE);
+						} else {
+							actor_set_dir(actor, DIR_RIGHT, TRUE);
+						}
+						if (new_actor_y == actor->pos.y){
+							actor_states[i] = 3;
+							actor_vel_x[i] = actor_vel_x[i] >> 2;						
+						}
+					}
+					actor_counter_b[i]++;
+					break;
+				case 3: //Falling
 					current_actor_x = ((actor->pos.x >> 4) + 8) - draw_scroll_x;
 					if (current_actor_x > BEHAVIOR_DEACTIVATION_THRESHOLD || current_actor_x < BEHAVIOR_DEACTIVATION_LOWER_THRESHOLD || (actor->pos.y >> 7) > image_tile_height){ 
 						actor_states[i] = 255; 
@@ -577,6 +599,10 @@ void actor_behavior_update_b(UBYTE i, actor_t * actor) BANKED {
 						actor_set_dir(actor, DIR_LEFT, TRUE);
 					} else {
 						actor_set_dir(actor, DIR_RIGHT, TRUE);
+					}
+					if (new_actor_y != actor->pos.y){
+						actor_states[i] = 2;
+						actor_vel_x[i] = actor_vel_x[i] << 2;						
 					}
 					break;
 				case 255:
@@ -863,28 +889,31 @@ void actor_behavior_update_b(UBYTE i, actor_t * actor) BANKED {
 					if ((((actor->pos.x >> 4) + 8) - draw_scroll_x) < BEHAVIOR_ACTIVATION_THRESHOLD){ 
 						actor_states[i] = 4; 
 						actor_vel_y[i] = 0;
-						actor_vel_x[i] = -4;
+						actor_vel_x[i] = -16;
 					}
 					break;
 				case 1: //Main state
 				case 2:
 				case 3:
 				case 4:
-					current_actor_x = ((actor->pos.x >> 4) + 8) - draw_scroll_x;
-					if (current_actor_x > BEHAVIOR_DEACTIVATION_THRESHOLD || current_actor_x < BEHAVIOR_DEACTIVATION_LOWER_THRESHOLD){ 
-						actor_states[i] = 255; 
-						break;
+					if (!(actor_counter_b[i] & 3)){
+						current_actor_x = ((actor->pos.x >> 4) + 8) - draw_scroll_x;
+						if (current_actor_x > BEHAVIOR_DEACTIVATION_THRESHOLD || current_actor_x < BEHAVIOR_DEACTIVATION_LOWER_THRESHOLD){ 
+							actor_states[i] = 255; 
+							break;
+						}
+						apply_gravity_b(i);
+						apply_velocity_b(i, actor);
+						//Animation
+						if (actor_vel_x[i] < 0) {
+							actor_set_dir(actor, DIR_LEFT, TRUE);
+						} else if (actor_vel_x[i] > 0) {
+							actor_set_dir(actor, DIR_RIGHT, TRUE);
+						} else {
+							actor_set_anim_idle(actor);
+						}
 					}
-					apply_gravity_b(i);
-					apply_velocity_b(i, actor);
-					//Animation
-					if (actor_vel_x[i] < 0) {
-						actor_set_dir(actor, DIR_LEFT, TRUE);
-					} else if (actor_vel_x[i] > 0) {
-						actor_set_dir(actor, DIR_RIGHT, TRUE);
-					} else {
-						actor_set_anim_idle(actor);
-					}
+					actor_counter_b[i]++;
 					break;
 				case 255: //Deactivate
 					deactivate_actor(actor);

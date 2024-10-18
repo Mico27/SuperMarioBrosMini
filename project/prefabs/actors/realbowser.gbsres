@@ -27,15 +27,6 @@
   "_index": 2,
   "script": [
     {
-      "command": "EVENT_GBVM_SCRIPT",
-      "args": {
-        "script": "VM_SET_CONST_UINT8 _player_iframes, 0",
-        "__collapse": true
-      },
-      "id": "47fb5236-cb08-44b6-a424-9f7461f65231",
-      "children": {}
-    },
-    {
       "command": "EVENT_IF",
       "args": {
         "condition": {

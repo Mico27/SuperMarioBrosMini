@@ -20,6 +20,8 @@ extern UBYTE actor_counter_b[MAX_ACTORS];
 extern UBYTE actor_linked_actor_idx[MAX_ACTORS];
 
 extern WORD current_actor_x;
+extern WORD new_actor_x;
+extern WORD new_actor_y;
 extern WORD col_tx;
 extern WORD col_ty;
 

@@ -1,0 +1,50 @@
+{
+  "_resourceType": "actor",
+  "id": "9e23d91a-c0f2-40e5-9f4f-b80bde6f20d4",
+  "name": "Big_Block_effect",
+  "frame": 0,
+  "animate": false,
+  "spriteSheetId": "d9e6bb21-a4bb-4390-85ad-e2fbac320688",
+  "prefabId": "025e784d-f2b9-4fb9-aa02-195dbc7dcaf4",
+  "direction": "down",
+  "moveSpeed": 1,
+  "animSpeed": 1,
+  "paletteId": "",
+  "isPinned": false,
+  "persistent": false,
+  "collisionGroup": "",
+  "prefabScriptOverrides": {},
+  "symbol": "actor_1208",
+  "script": [],
+  "startScript": [
+    {
+      "command": "EVENT_SET_ACTOR_BEHAVIOR",
+      "args": {
+        "actorId": "$self$",
+        "behaviorId": {
+          "type": "number",
+          "value": 17
+        },
+        "__collapse": true
+      },
+      "id": "3606546a-c999-4059-a455-09e90517c7bb",
+      "children": {}
+    },
+    {
+      "command": "EVENT_ACTOR_DEACTIVATE",
+      "args": {
+        "actorId": "$self$",
+        "__collapse": true
+      },
+      "id": "088166b2-298c-4d8e-8901-40be69728f20",
+      "children": {}
+    }
+  ],
+  "updateScript": [],
+  "hit1Script": [],
+  "hit2Script": [],
+  "hit3Script": [],
+  "x": 2,
+  "y": 1,
+  "_index": 16
+}

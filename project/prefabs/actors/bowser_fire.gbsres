@@ -12,13 +12,6 @@
   "collisionGroup": "2",
   "script": [
     {
-      "command": "EVENT_GBVM_SCRIPT",
-      "args": {
-        "script": "VM_SET_CONST_UINT8 _player_iframes, 0"
-      },
-      "id": "2456ad49-2317-4d26-8b6f-95fa6b1459a8"
-    },
-    {
       "command": "EVENT_IF",
       "args": {
         "condition": {

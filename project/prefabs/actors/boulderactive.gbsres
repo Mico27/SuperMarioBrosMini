@@ -14,14 +14,6 @@
   "_index": 8,
   "script": [
     {
-      "command": "EVENT_GBVM_SCRIPT",
-      "args": {
-        "script": "VM_SET_CONST_UINT8 _player_iframes, 0"
-      },
-      "id": "a5986339-99e5-4fc7-95b2-9550c85a6059",
-      "children": {}
-    },
-    {
       "command": "EVENT_IF",
       "args": {
         "condition": {

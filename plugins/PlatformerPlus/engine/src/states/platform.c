@@ -124,12 +124,6 @@ UBYTE current_bottom_tile;
 UBYTE actors_collisionx_cache[4];
 UBYTE actors_collisiony_cache[4];
 
-UBYTE update_ui_bank;
-UBYTE* update_ui_ptr;
-
-UBYTE hit_block_bank;
-UBYTE* hit_block_ptr;
-
 UBYTE current_vine_tile_x;
 
 UBYTE underwater_pit;
@@ -314,6 +308,34 @@ inline void on_metatile_enter(UBYTE tile_x, UBYTE tile_y) {
 			replace_meta_tile(tile_x, tile_y, 2);
 			script_memory[VAR_FRAMECOINS]++;
 			break;
+		case 202://big coin (top left)
+			replace_meta_tile(tile_x, tile_y, 0);
+			replace_meta_tile(tile_x + 1, tile_y + 1, 0);
+			replace_meta_tile(tile_x + 1, tile_y, 0);
+			replace_meta_tile(tile_x, tile_y + 1, 0);
+			script_memory[VAR_FRAMECOINS] += 4;			
+			break;
+		case 203://big coin (top right)
+			replace_meta_tile(tile_x, tile_y, 0);
+			replace_meta_tile(tile_x - 1, tile_y + 1, 0);
+			replace_meta_tile(tile_x - 1, tile_y, 0);
+			replace_meta_tile(tile_x, tile_y + 1, 0);
+			script_memory[VAR_FRAMECOINS] += 4;			
+			break;
+		case 204://big coin (bottom left)
+			replace_meta_tile(tile_x, tile_y, 0);
+			replace_meta_tile(tile_x + 1, tile_y - 1, 0);
+			replace_meta_tile(tile_x + 1, tile_y, 0);
+			replace_meta_tile(tile_x, tile_y - 1, 0);
+			script_memory[VAR_FRAMECOINS] += 4;			
+			break;
+		case 205://big coin (bottom right)
+			replace_meta_tile(tile_x, tile_y, 0);
+			replace_meta_tile(tile_x - 1, tile_y - 1, 0);
+			replace_meta_tile(tile_x - 1, tile_y, 0);
+			replace_meta_tile(tile_x, tile_y - 1, 0);
+			script_memory[VAR_FRAMECOINS] += 4;			
+			break;
 	}
 }
 
@@ -408,6 +430,11 @@ void on_player_metatile_collision(UBYTE tile_x, UBYTE tile_y, UBYTE direction) B
 					case 171://egg brick
 					case 172://egg block
 					case 173://invis egg block
+					case 198://Big coin block (top left)
+					case 199://Big coin block (top right)
+					case 200://Big coin block (bottom left)
+					case 201://Big coin block (bottom right)
+					case 210://Big brick
 						if(specific_events[HIT_BLOCK_EVENT].script_addr != 0){
 							script_memory[VAR_HITBLOCKID] = tile_id;
 							script_memory[VAR_HITBLOCKX] = tile_x;
