@@ -430,7 +430,7 @@ void actor_behavior_update(void) BANKED {
 			case 6://Horizontal projectile (Bowser fire, bullet bill, tatanga attack 1)
 			switch(actor_states[i]){
 				case 0: //Init
-					if ((((actor->pos.x >> 4) + 8) - draw_scroll_x) < BEHAVIOR_ACTIVATION_THRESHOLD){ 
+					if ((((actor->pos.x >> 4)) - draw_scroll_x) < BEHAVIOR_ACTIVATION_THRESHOLD){ 
 						actor_states[i] = 1; 
 						if (actor_vel_x[i] == 0){
 							actor_vel_x[i] = -12;

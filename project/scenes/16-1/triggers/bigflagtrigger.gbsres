@@ -3,12 +3,19 @@
   "id": "d80c6956-e6eb-4002-95da-5da118c46de2",
   "name": "BigFlagTrigger",
   "prefabId": "b87e2e54-dd2d-4866-899f-a82b2ae0d389",
-  "x": 183,
+  "x": 191,
   "y": 0,
   "symbol": "trigger_413",
-  "prefabScriptOverrides": {},
+  "prefabScriptOverrides": {
+    "e956bd58-9b8a-4d3a-9b50-422786adecae": {
+      "id": "e956bd58-9b8a-4d3a-9b50-422786adecae",
+      "args": {
+        "time": 6
+      }
+    }
+  },
   "width": 1,
-  "height": 14,
+  "height": 30,
   "script": [
     {
       "command": "EVENT_MUSIC_STOP",

@@ -14,6 +14,7 @@ BYTE camera_offset_y;
 BYTE camera_deadzone_x;
 BYTE camera_deadzone_y;
 UBYTE camera_settings;
+UBYTE scroll_lock;
 
 void camera_init(void) BANKED {
     camera_settings = CAMERA_LOCK_FLAG;
@@ -26,22 +27,22 @@ void camera_update(void) NONBANKED {
     if ((camera_settings & CAMERA_LOCK_X_FLAG)) {
         UWORD a_x = PLAYER.pos.x + CAMERA_FIXED_OFFSET_X;
         // Left lock
-        if (camera_x < a_x - (camera_deadzone_x << 4) - (camera_offset_x << 4)) { 
+        if (scroll_lock & 1 && (camera_x < a_x - (camera_deadzone_x << 4) - (camera_offset_x << 4))) { 
             camera_x = a_x - (camera_deadzone_x << 4) - (camera_offset_x << 4);
-        } //else if (camera_x > a_x + (camera_deadzone_x << 4) - (camera_offset_x << 4)) { 
-            //camera_x = a_x + (camera_deadzone_x << 4) - (camera_offset_x << 4);
-        //}
+        }
+		if (scroll_lock & 2 && (camera_x > a_x + (camera_deadzone_x << 4) - (camera_offset_x << 4))) { 
+            camera_x = a_x + (camera_deadzone_x << 4) - (camera_offset_x << 4);
+        }
     }
 
     if ((camera_settings & CAMERA_LOCK_Y_FLAG)) {
         UWORD a_y = PLAYER.pos.y + CAMERA_FIXED_OFFSET_Y;
         // Bottom lock
-		if (camera_y > a_y + (camera_deadzone_y << 4) - (camera_offset_y << 4)) { 
+		if (scroll_lock & 4 && (camera_y > a_y + (camera_deadzone_y << 4) - (camera_offset_y << 4))){ 
             camera_y = a_y + (camera_deadzone_y << 4) - (camera_offset_y << 4);
-        }
-		/*
-        if (camera_y < a_y - (camera_deadzone_y << 4) - (camera_offset_y << 4)) { 
+        }		
+        if (scroll_lock & 8 && (camera_y < a_y - (camera_deadzone_y << 4) - (camera_offset_y << 4))) { 
             camera_y = a_y - (camera_deadzone_y << 4) - (camera_offset_y << 4);
-        }*/
+        }
     }
 }

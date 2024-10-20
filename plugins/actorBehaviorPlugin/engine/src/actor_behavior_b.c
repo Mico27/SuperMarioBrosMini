@@ -708,6 +708,7 @@ void actor_behavior_update_b(UBYTE i, actor_t * actor) BANKED {
 				actor_vel_y[i] = MIN(actor_vel_y[i], plat_max_fall_vel >> 8);
 				//Apply velocity
 				actor->pos.y =  actor->pos.y + actor_vel_y[i];
+				actor->collision_enabled = false;
 				break;
 			case 255: //Deactivate
 				deactivate_actor(actor);
@@ -745,7 +746,7 @@ void actor_behavior_update_b(UBYTE i, actor_t * actor) BANKED {
 								activate_actor(bullet_actor);
 							}
 							bullet_actor->collision_enabled = true;
-							bullet_actor->pos.y = ((rand() & 15) + 2) << 7;
+							bullet_actor->pos.y = (draw_scroll_y + ((rand() & 127) + 16)) << 4;
 							bullet_actor->pos.x = (draw_scroll_x + 160) << 4;
 							actor_set_dir(bullet_actor, DIR_LEFT, TRUE);
 							actor_vel_x[bullet_idx] = -16;
@@ -877,6 +878,7 @@ void actor_behavior_update_b(UBYTE i, actor_t * actor) BANKED {
 				actor_vel_y[i] = MIN(actor_vel_y[i], plat_max_fall_vel >> 8);
 				//Apply velocity
 				actor->pos.y =  actor->pos.y + actor_vel_y[i];
+				actor->collision_enabled = false;
 				break;
 			case 255: //Deactivate
 				deactivate_actor(actor);

@@ -306,7 +306,7 @@
             "command": "EVENT_GROUP",
             "args": {
               "__label": "Brick Block",
-              "__collapse": false
+              "__collapse": true
             },
             "children": {
               "true": [
@@ -348,7 +348,7 @@
                       "value": "$24$ > 0 || $60$ != 0"
                     },
                     "__collapseElse": false,
-                    "__collapse": false
+                    "__collapse": true
                   },
                   "children": {
                     "true": [
@@ -780,7 +780,7 @@
                         "command": "EVENT_GROUP",
                         "args": {
                           "__label": "Mushroom Block",
-                          "__collapse": true
+                          "__collapse": false
                         },
                         "children": {
                           "true": [
@@ -911,7 +911,7 @@
                                 "actorId": "1",
                                 "xVelocity": {
                                   "type": "number",
-                                  "value": 32
+                                  "value": 16
                                 },
                                 "__collapse": true
                               },
@@ -1774,7 +1774,7 @@
                                 "actorId": "1",
                                 "xVelocity": {
                                   "type": "number",
-                                  "value": 32
+                                  "value": 16
                                 },
                                 "__collapse": false
                               },
@@ -2208,7 +2208,7 @@
                     "variable": "37",
                     "value": {
                       "type": "number",
-                      "value": 5
+                      "value": 6
                     },
                     "__collapse": true
                   },
@@ -2819,7 +2819,7 @@
             "command": "EVENT_GROUP",
             "args": {
               "__label": "Invis Powerup Block",
-              "__collapse": false
+              "__collapse": true
             },
             "children": {
               "true": [
@@ -2846,7 +2846,7 @@
                         "command": "EVENT_GROUP",
                         "args": {
                           "__label": "Mushroom Block",
-                          "__collapse": true
+                          "__collapse": false
                         },
                         "children": {
                           "true": [
@@ -2977,7 +2977,7 @@
                                 "actorId": "1",
                                 "xVelocity": {
                                   "type": "number",
-                                  "value": 32
+                                  "value": 16
                                 },
                                 "__collapse": false
                               },
@@ -3831,7 +3831,7 @@
                     "variable": "37",
                     "value": {
                       "type": "number",
-                      "value": 5
+                      "value": 6
                     },
                     "__collapse": true
                   },
@@ -3924,7 +3924,8 @@
               "value7": {
                 "type": "number",
                 "value": 210
-              }
+              },
+              "__collapse": false
             },
             "children": {
               "true0": [

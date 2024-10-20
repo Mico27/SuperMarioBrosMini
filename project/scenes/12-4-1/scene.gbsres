@@ -53,7 +53,7 @@
       "args": {
         "specific_event": "1",
         "__scriptTabs": "scriptinput",
-        "__collapse": false
+        "__collapse": true
       },
       "children": {
         "script": [
@@ -91,7 +91,7 @@
         ],
         "override": false,
         "__scriptTabs": "press",
-        "__collapse": false
+        "__collapse": true
       },
       "children": {
         "true": [
@@ -124,6 +124,26 @@
         "__collapse": true
       },
       "id": "764b133b-0d33-4c78-acc6-582ecb5e7684"
+    },
+    {
+      "command": "EVENT_ENGINE_FIELD_SET",
+      "args": {
+        "engineFieldKey": "plat_camera_block",
+        "value": {
+          "type": "expression",
+          "value": "7"
+        },
+        "__collapse": true
+      },
+      "id": "3ab1fdc7-ba32-4760-bc75-e14d023f232c"
+    },
+    {
+      "command": "EVENT_GBVM_SCRIPT",
+      "args": {
+        "script": "VM_SET_CONST_UINT8 _scroll_lock, 4",
+        "__collapse": true
+      },
+      "id": "865f47d2-d948-4293-adc0-eb22e408f3a3"
     }
   ],
   "playerHit1Script": [],

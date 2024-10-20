@@ -684,7 +684,7 @@ void crouch_state(void) BANKED {
 							case CROUCH_INIT:
 								if (is_leftmost == 1){//check only mario's left leg for left pipe part
 									UBYTE tile_id = sram_map_data[VRAM_OFFSET(tile_start, tile_y)];
-									if (tile_id == 57 && specific_events[ENTER_DOWN_PIPE_EVENT].script_addr != 0){
+									if ((tile_id == 57 || tile_id == 233) && specific_events[ENTER_DOWN_PIPE_EVENT].script_addr != 0){
 										script_execute(specific_events[ENTER_DOWN_PIPE_EVENT].script_bank, specific_events[ENTER_DOWN_PIPE_EVENT].script_addr, 0, 0);
 									}
 								}

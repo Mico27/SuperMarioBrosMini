@@ -169,7 +169,7 @@
               "actorId": "f725a04c-73bb-43c4-90a1-c80f10404960",
               "spriteStateId": "Death",
               "loopAnim": true,
-              "__collapse": true
+              "__collapse": false
             },
             "id": "a25ff700-a816-4eb7-8939-416e72b40271"
           },
@@ -181,7 +181,7 @@
                 "type": "number",
                 "value": 3
               },
-              "__collapse": true
+              "__collapse": false
             },
             "id": "e1609a82-dd5a-424a-84f0-c8caa69312cf"
           },
@@ -311,7 +311,8 @@
                       "type": "number",
                       "value": 0
                     },
-                    "speed": 1
+                    "speed": 1,
+                    "__collapse": false
                   },
                   "id": "1e45f792-11e6-4471-ae1e-d42d4b5857e3"
                 }

@@ -5,8 +5,8 @@
   "name": "16-1",
   "backgroundId": "e13780ec-c08b-439f-a583-cb7ec641221f",
   "tilesetId": "9ecbffea-374f-49ec-a07d-46fea9501295",
-  "width": 200,
-  "height": 18,
+  "width": 208,
+  "height": 32,
   "type": "PLATFORM",
   "paletteIds": [
     "0b34ba59-4ceb-4897-bd6a-6e6458884900",
@@ -28,7 +28,7 @@
     "9cd57f2b-2f5a-4821-b106-4ccfd4b1b91b",
     "4e2257ea-1c03-4a88-a41c-3bf1b504c15e"
   ],
-  "collisions": "00e10+",
+  "collisions": "",
   "autoFadeSpeed": null,
   "symbol": "scene_16_1",
   "x": 2144,
@@ -51,7 +51,7 @@
       "args": {
         "specific_event": "1",
         "__scriptTabs": "scriptinput",
-        "__collapse": false
+        "__collapse": true
       },
       "children": {
         "script": [
@@ -124,6 +124,14 @@
         "__collapse": true
       },
       "id": "849f631c-2f62-4bcb-a962-79b1da703739"
+    },
+    {
+      "command": "EVENT_GBVM_SCRIPT",
+      "args": {
+        "script": "VM_SET_CONST_UINT8 _scroll_lock, 13",
+        "__collapse": false
+      },
+      "id": "86acc774-a43b-4586-a5ed-b7734f3bf1b7"
     }
   ],
   "playerHit1Script": [],

@@ -144,6 +144,7 @@ void actor_behavior_update_c(UBYTE i, actor_t * actor) BANKED {
 				actor_vel_y[i] = MIN(actor_vel_y[i], plat_max_fall_vel >> 8);
 				//Apply velocity
 				actor->pos.y =  actor->pos.y + actor_vel_y[i];
+				actor->collision_enabled = false;
 				break;
 			case 255: //Deactivate
 				deactivate_actor(actor);
@@ -206,6 +207,7 @@ void actor_behavior_update_c(UBYTE i, actor_t * actor) BANKED {
 				actor_vel_y[i] = MIN(actor_vel_y[i], plat_max_fall_vel >> 8);
 				//Apply velocity
 				actor->pos.y =  actor->pos.y + actor_vel_y[i];
+				actor->collision_enabled = false;
 				break;
 			case 255: //Deactivate
 				deactivate_actor(actor);
@@ -420,6 +422,7 @@ void actor_behavior_update_c(UBYTE i, actor_t * actor) BANKED {
 				actor_vel_y[i] = MIN(actor_vel_y[i], plat_max_fall_vel >> 8);
 				//Apply velocity
 				actor->pos.y =  actor->pos.y + actor_vel_y[i];
+				actor->collision_enabled = false;
 				break;
 			case 255: //Deactivate
 				deactivate_actor(actor);
@@ -539,7 +542,19 @@ void actor_behavior_update_c(UBYTE i, actor_t * actor) BANKED {
 				break;
 			case 5: //static
 				break;
-			case 6: //death
+			case 6: //hurt init
+				actor_counter_a[i] = (rand() & 15) + 15;
+				actor_states[i] = 7; 
+			case 7: //hurt				
+				if (!(game_time & 3)){
+					actor_counter_a[i]--;					
+					if (actor_counter_a[i] <= 0){
+						actor_states[i] = 1;
+						load_animations(actor->sprite.ptr, actor->sprite.bank, STATE_DEFAULT, actor->animations);				
+					}				
+				}				
+				break;
+			case 8: //death
 				if ((actor->pos.y >> 7) > (image_tile_height + 4)){ 
 					actor_states[i] = 255; 
 					break;
@@ -548,6 +563,7 @@ void actor_behavior_update_c(UBYTE i, actor_t * actor) BANKED {
 				actor_vel_y[i] = MIN(actor_vel_y[i], plat_max_fall_vel >> 8);
 				//Apply velocity
 				actor->pos.y =  actor->pos.y + actor_vel_y[i];
+				actor->collision_enabled = false;
 				break;
 			case 255: //Deactivate
 				deactivate_actor(actor);

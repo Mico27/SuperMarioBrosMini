@@ -124,6 +124,26 @@
         "__collapse": true
       },
       "id": "325531de-4f72-4389-b9cc-e4e7d80b9b08"
+    },
+    {
+      "command": "EVENT_ENGINE_FIELD_SET",
+      "args": {
+        "engineFieldKey": "plat_camera_block",
+        "value": {
+          "type": "expression",
+          "value": "7"
+        },
+        "__collapse": true
+      },
+      "id": "6b0ed87a-93f9-4c06-9411-9ad2ae0b7619"
+    },
+    {
+      "command": "EVENT_GBVM_SCRIPT",
+      "args": {
+        "script": "VM_SET_CONST_UINT8 _scroll_lock, 4",
+        "__collapse": true
+      },
+      "id": "aed62e94-5d14-4e92-9490-e13f90a52b98"
     }
   ],
   "playerHit1Script": [],
