@@ -1,0 +1,121 @@
+{
+  "_resourceType": "actor",
+  "id": "3a133ed2-5ca0-4df6-9170-5642214bb9de",
+  "name": "Donkey Kong",
+  "frame": 0,
+  "animate": false,
+  "spriteSheetId": "57f3149f-f8bd-44ea-a534-1a2c8f79e99a",
+  "prefabId": "9dee84f2-0df0-4e68-945a-91f4ce6d88e9",
+  "direction": "down",
+  "moveSpeed": 1,
+  "animSpeed": 15,
+  "paletteId": "",
+  "isPinned": false,
+  "persistent": false,
+  "collisionGroup": "1",
+  "prefabScriptOverrides": {},
+  "symbol": "actor_1345",
+  "script": [
+    {
+      "command": "EVENT_IF",
+      "args": {
+        "condition": {
+          "type": "lte",
+          "valueA": {
+            "type": "variable",
+            "value": "38"
+          },
+          "valueB": {
+            "type": "number",
+            "value": 0
+          }
+        },
+        "__collapseElse": false,
+        "__collapse": false
+      },
+      "children": {
+        "true": [
+          {
+            "command": "EVENT_IF",
+            "args": {
+              "condition": {
+                "type": "eq",
+                "valueA": {
+                  "type": "variable",
+                  "value": "23"
+                },
+                "valueB": {
+                  "type": "number",
+                  "value": 0
+                }
+              },
+              "__collapseElse": true
+            },
+            "children": {
+              "true": [
+                {
+                  "command": "EVENT_CALL_CUSTOM_EVENT",
+                  "args": {
+                    "customEventId": "7cc914c2-6df4-4f26-a46f-72d7e3165f2c",
+                    "__comment": false
+                  },
+                  "id": "1cd55bb3-bd36-4345-b325-045b923932b3",
+                  "children": {}
+                }
+              ],
+              "false": []
+            },
+            "id": "0c56e29f-f65a-40b9-bad5-ebcd8645f0f8"
+          }
+        ],
+        "false": []
+      },
+      "id": "b9ea2064-9d08-4ec2-ae01-457adceb1407"
+    }
+  ],
+  "startScript": [
+    {
+      "command": "EVENT_SET_ACTOR_BEHAVIOR",
+      "args": {
+        "actorId": "$self$",
+        "behaviorId": {
+          "type": "number",
+          "value": 30
+        },
+        "__collapse": false
+      },
+      "id": "4156cf56-a256-4c04-95a1-682afb855258",
+      "children": {}
+    },
+    {
+      "command": "EVENT_SET_ACTOR_STATE",
+      "args": {
+        "actorId": "$self$",
+        "stateId": {
+          "type": "number",
+          "value": 0
+        },
+        "__collapse": true
+      },
+      "id": "b5de4586-0a3e-4289-a73a-fbd15e0f57a7",
+      "children": {}
+    },
+    {
+      "command": "EVENT_SET_ACTOR_LINKED_ACTOR",
+      "args": {
+        "actorId": "$self$",
+        "linkedActorId": "e38211b4-a84e-4f5f-8e56-b44bbcc0d146",
+        "__collapse": false
+      },
+      "id": "8655576f-4c27-4d85-97c5-acf68de21e83",
+      "children": {}
+    }
+  ],
+  "updateScript": [],
+  "hit1Script": [],
+  "hit2Script": [],
+  "hit3Script": [],
+  "x": 2,
+  "y": 31,
+  "_index": 3
+}

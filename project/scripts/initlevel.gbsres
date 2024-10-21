@@ -32,7 +32,7 @@
               "variable": "18",
               "value": {
                 "type": "expression",
-                "value": "rnd(9)+1"
+                "value": "rnd(11)+1"
               },
               "__collapse": true
             },
@@ -118,7 +118,7 @@
             "command": "EVENT_SWITCH",
             "args": {
               "variable": "18",
-              "choices": 10,
+              "choices": 11,
               "__collapseCase0": false,
               "__collapseCase1": false,
               "__collapseCase2": false,
@@ -176,6 +176,10 @@
               "value9": {
                 "type": "constant",
                 "value": "9fe73cd3-ebfc-43f8-8b06-c8460c1c2f4e"
+              },
+              "value10": {
+                "type": "constant",
+                "value": "259ae8dc-7142-4a39-9fd8-4ed98b0e717d"
               }
             },
             "children": {
@@ -208,7 +212,7 @@
                     "palette6": "9cd57f2b-2f5a-4821-b106-4ccfd4b1b91b",
                     "palette7": "4e2257ea-1c03-4a88-a41c-3bf1b504c15e",
                     "commit": false,
-                    "__collapse": false
+                    "__collapse": true
                   },
                   "id": "c3c4bd7e-f745-4a95-8d43-82d464dac41d"
                 },
@@ -639,7 +643,52 @@
                   "id": "9f62d1fb-e478-4fdc-8992-1301424c5520"
                 }
               ],
-              "true10": [],
+              "true10": [
+                {
+                  "command": "EVENT_PALETTE_SET_BACKGROUND_EX",
+                  "args": {
+                    "palette0": "1d52d1ee-ddb0-462a-a0bc-81840eef5478",
+                    "palette1": "16602aa2-2c7d-4f74-a1bb-5d5bcf9b7741",
+                    "palette2": "553590c9-0a42-4823-8e32-347826d15d8f",
+                    "palette3": "7832734a-100f-42e5-9588-8440033756ca",
+                    "palette4": "c15b4347-cfc4-4d31-aabc-927e1ab00414",
+                    "palette5": "keep",
+                    "palette6": "keep",
+                    "palette7": "553590c9-0a42-4823-8e32-347826d15d8f",
+                    "commit": false,
+                    "__collapse": true
+                  },
+                  "id": "5940ee8e-59cd-4237-b30c-b54336a5f726"
+                },
+                {
+                  "command": "EVENT_PALETTE_SET_SPRITE_EX",
+                  "args": {
+                    "palette0": "keep",
+                    "palette1": "e8d06bfc-bcfa-4fec-ab80-6da69a5c78b3",
+                    "palette2": "208e4138-0984-4c70-aaa1-3a3d73cc30f6",
+                    "palette3": "b38a1471-560c-45dc-ac6b-67484fdd459b",
+                    "palette4": "0b14eb86-24d3-4c8a-911f-3feaf79b40b1",
+                    "palette5": "faa089d0-a8fb-4001-884e-e973b47fdb80",
+                    "palette6": "9cd57f2b-2f5a-4821-b106-4ccfd4b1b91b",
+                    "palette7": "4e2257ea-1c03-4a88-a41c-3bf1b504c15e",
+                    "commit": false,
+                    "__collapse": true
+                  },
+                  "id": "6fe968f2-c256-4b55-8f1b-165e1d3e017b"
+                },
+                {
+                  "command": "EVENT_SET_VALUE",
+                  "args": {
+                    "variable": "62",
+                    "value": {
+                      "type": "number",
+                      "value": 0
+                    },
+                    "__collapse": true
+                  },
+                  "id": "b7d4045d-3288-41de-acac-19ab2b276ee5"
+                }
+              ],
               "true11": [],
               "true12": [],
               "true13": [],
