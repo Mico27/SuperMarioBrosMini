@@ -248,6 +248,44 @@
                   "id": "2593d348-fe79-4024-b48e-728bebfdb48c"
                 },
                 {
+                  "command": "EVENT_LOAD_PROJECTILE_SLOT",
+                  "args": {
+                    "__section": "presets",
+                    "slot": 0,
+                    "spriteSheetId": "8a540f8d-26fb-41fc-b83c-ce6c4807188b",
+                    "spriteStateId": "Score20",
+                    "speed": 0.25,
+                    "animSpeed": 127,
+                    "lifeTime": 0.5,
+                    "initialOffset": 8,
+                    "loopAnim": false,
+                    "destroyOnHit": false,
+                    "collisionGroup": "3",
+                    "collisionMask": [],
+                    "__collapse": true,
+                    "__presetId": "bd768145-ca8d-4a6e-b2fe-15ab74bf1a08"
+                  },
+                  "id": "a20d5e11-a29c-44f2-8f19-5d9aabe8ae69"
+                },
+                {
+                  "command": "EVENT_LAUNCH_PROJECTILE_SLOT",
+                  "args": {
+                    "__section": "source",
+                    "actorId": "0",
+                    "x": 0,
+                    "y": 0,
+                    "directionType": "direction",
+                    "otherActorId": "$self$",
+                    "direction": "up",
+                    "angle": 0,
+                    "angleVariable": "V0",
+                    "targetActorId": "$self$",
+                    "slot": 0,
+                    "__collapse": true
+                  },
+                  "id": "832ef3de-bf5f-4e16-887e-fcdd03806a49"
+                },
+                {
                   "command": "EVENT_WAIT",
                   "args": {
                     "time": 0.5,
@@ -306,7 +344,7 @@
             "command": "EVENT_GROUP",
             "args": {
               "__label": "Brick Block",
-              "__collapse": true
+              "__collapse": false
             },
             "children": {
               "true": [
@@ -348,7 +386,7 @@
                       "value": "$24$ > 0 || $60$ != 0"
                     },
                     "__collapseElse": false,
-                    "__collapse": true
+                    "__collapse": false
                   },
                   "children": {
                     "true": [
@@ -404,12 +442,29 @@
                         "id": "41a88d86-f19f-410b-9236-e4e22eee18a9"
                       },
                       {
-                        "command": "FO_EVENT_LAUNCH_LOADED_PROJECTILE",
+                        "command": "EVENT_LOAD_PROJECTILE_SLOT",
                         "args": {
-                          "spriteSheetId": "8dbb443a-eb83-48bb-86c9-ffd9012f45c7",
+                          "__section": "presets",
                           "slot": 3,
-                          "source": 0,
-                          "scene": "1304aa69-6c99-485c-b8f9-0f6668eb66ae",
+                          "spriteSheetId": "8dbb443a-eb83-48bb-86c9-ffd9012f45c7",
+                          "spriteStateId": "BrickBreak",
+                          "speed": 0,
+                          "animSpeed": 3,
+                          "lifeTime": 0.4,
+                          "initialOffset": 0,
+                          "loopAnim": true,
+                          "destroyOnHit": false,
+                          "collisionGroup": "3",
+                          "collisionMask": [],
+                          "__collapse": true,
+                          "__presetId": "8d9cef29-009f-4ef1-b717-3f010dae4c8e"
+                        },
+                        "id": "68990244-96a0-4111-be2f-0a5d7e08278b"
+                      },
+                      {
+                        "command": "EVENT_LAUNCH_PROJECTILE_SLOT",
+                        "args": {
+                          "__section": "source",
                           "actorId": "0",
                           "x": -4,
                           "y": -32,
@@ -419,11 +474,10 @@
                           "angle": 0,
                           "angleVariable": "V0",
                           "targetActorId": "$self$",
-                          "loopAnim": true,
-                          "destroyOnHit": false,
-                          "__collapse": true
+                          "slot": 3,
+                          "__collapse": false
                         },
-                        "id": "acd6b314-5250-47d0-9b90-383a1eac19e0"
+                        "id": "9a9b194c-cc58-408e-9d7c-29554b0920f3"
                       },
                       {
                         "command": "EVENT_CALL_CUSTOM_EVENT",
@@ -609,12 +663,29 @@
                   "id": "09da1288-e8e6-4866-afc1-14b5ee82c271"
                 },
                 {
-                  "command": "FO_EVENT_LAUNCH_LOADED_PROJECTILE",
+                  "command": "EVENT_LOAD_PROJECTILE_SLOT",
                   "args": {
-                    "spriteSheetId": "8a540f8d-26fb-41fc-b83c-ce6c4807188b",
+                    "__section": "presets",
                     "slot": 0,
-                    "source": 0,
-                    "scene": "7be35212-1274-4a18-9e29-0f08cf39db7e",
+                    "spriteSheetId": "8a540f8d-26fb-41fc-b83c-ce6c4807188b",
+                    "spriteStateId": "Score20",
+                    "speed": 0.25,
+                    "animSpeed": 127,
+                    "lifeTime": 0.5,
+                    "initialOffset": 8,
+                    "loopAnim": false,
+                    "destroyOnHit": false,
+                    "collisionGroup": "3",
+                    "collisionMask": [],
+                    "__collapse": true,
+                    "__presetId": "bd768145-ca8d-4a6e-b2fe-15ab74bf1a08"
+                  },
+                  "id": "b9c62da7-4e79-465a-bc14-86c7314ce806"
+                },
+                {
+                  "command": "EVENT_LAUNCH_PROJECTILE_SLOT",
+                  "args": {
+                    "__section": "source",
                     "actorId": "0",
                     "x": 0,
                     "y": 0,
@@ -624,11 +695,10 @@
                     "angle": 0,
                     "angleVariable": "V0",
                     "targetActorId": "$self$",
-                    "loopAnim": false,
-                    "destroyOnHit": false,
+                    "slot": 0,
                     "__collapse": true
                   },
-                  "id": "0b930abd-24f1-4a8b-84da-95927037c2ef"
+                  "id": "1e7572cd-32b9-4fe8-bb74-fc961d973dca"
                 },
                 {
                   "command": "EVENT_WAIT",
@@ -753,7 +823,7 @@
             "command": "EVENT_GROUP",
             "args": {
               "__label": "Powerup Brick",
-              "__collapse": false
+              "__collapse": true
             },
             "children": {
               "true": [
@@ -1616,7 +1686,7 @@
             "command": "EVENT_GROUP",
             "args": {
               "__label": "Powerup Block",
-              "__collapse": false
+              "__collapse": true
             },
             "children": {
               "true": [
@@ -2725,12 +2795,29 @@
                   "id": "1d9860ee-20af-4833-971d-affe4fbc9450"
                 },
                 {
-                  "command": "FO_EVENT_LAUNCH_LOADED_PROJECTILE",
+                  "command": "EVENT_LOAD_PROJECTILE_SLOT",
                   "args": {
-                    "spriteSheetId": "8a540f8d-26fb-41fc-b83c-ce6c4807188b",
+                    "__section": "presets",
                     "slot": 0,
-                    "source": 0,
-                    "scene": "7be35212-1274-4a18-9e29-0f08cf39db7e",
+                    "spriteSheetId": "8a540f8d-26fb-41fc-b83c-ce6c4807188b",
+                    "spriteStateId": "Score20",
+                    "speed": 0.25,
+                    "animSpeed": 127,
+                    "lifeTime": 0.5,
+                    "initialOffset": 8,
+                    "loopAnim": false,
+                    "destroyOnHit": false,
+                    "collisionGroup": "3",
+                    "collisionMask": [],
+                    "__collapse": true,
+                    "__presetId": "bd768145-ca8d-4a6e-b2fe-15ab74bf1a08"
+                  },
+                  "id": "73806081-d129-4c77-9f3d-66154b8ac270"
+                },
+                {
+                  "command": "EVENT_LAUNCH_PROJECTILE_SLOT",
+                  "args": {
+                    "__section": "source",
                     "actorId": "0",
                     "x": 0,
                     "y": 0,
@@ -2740,11 +2827,10 @@
                     "angle": 0,
                     "angleVariable": "V0",
                     "targetActorId": "$self$",
-                    "loopAnim": false,
-                    "destroyOnHit": false,
+                    "slot": 0,
                     "__collapse": true
                   },
-                  "id": "44263c53-5ca6-41d1-9275-08d955be9761"
+                  "id": "3ff7e153-9fac-4b0e-8daf-568c0c294a8e"
                 },
                 {
                   "command": "EVENT_SOUND_PLAY_EFFECT",
@@ -4734,13 +4820,30 @@
                         "id": "6f3b8bcd-f43b-4d8b-a53d-0068b8b0a4a9"
                       },
                       {
-                        "command": "FO_EVENT_LAUNCH_LOADED_PROJECTILE",
+                        "command": "EVENT_LOAD_PROJECTILE_SLOT",
                         "args": {
+                          "__section": "presets",
+                          "slot": 2,
                           "spriteSheetId": "8a540f8d-26fb-41fc-b83c-ce6c4807188b",
-                          "slot": 0,
-                          "source": 0,
-                          "scene": "7be35212-1274-4a18-9e29-0f08cf39db7e",
-                          "actorId": "2",
+                          "spriteStateId": "Score80",
+                          "speed": 0.25,
+                          "animSpeed": 127,
+                          "lifeTime": 0.5,
+                          "initialOffset": 8,
+                          "loopAnim": false,
+                          "destroyOnHit": false,
+                          "collisionGroup": "3",
+                          "collisionMask": [],
+                          "__collapse": true,
+                          "__presetId": "72fb210f-3761-4e75-bd0b-7a82303fd871"
+                        },
+                        "id": "b5f8a3ef-5ed9-47af-82e8-b4099ca956f4"
+                      },
+                      {
+                        "command": "EVENT_LAUNCH_PROJECTILE_SLOT",
+                        "args": {
+                          "__section": "source",
+                          "actorId": "0",
                           "x": 0,
                           "y": 0,
                           "directionType": "direction",
@@ -4749,11 +4852,10 @@
                           "angle": 0,
                           "angleVariable": "V0",
                           "targetActorId": "$self$",
-                          "loopAnim": false,
-                          "destroyOnHit": false,
+                          "slot": 2,
                           "__collapse": true
                         },
-                        "id": "b8fae50b-d76a-4395-a179-20653c41034d"
+                        "id": "b114f845-5e04-44fd-9e94-0dc83c5bde81"
                       },
                       {
                         "command": "EVENT_WAIT",
@@ -5024,13 +5126,30 @@
                         "id": "41a3ab1b-725f-498e-9564-e18e9f755e55"
                       },
                       {
-                        "command": "FO_EVENT_LAUNCH_LOADED_PROJECTILE",
+                        "command": "EVENT_LOAD_PROJECTILE_SLOT",
                         "args": {
+                          "__section": "presets",
+                          "slot": 2,
                           "spriteSheetId": "8a540f8d-26fb-41fc-b83c-ce6c4807188b",
-                          "slot": 0,
-                          "source": 0,
-                          "scene": "7be35212-1274-4a18-9e29-0f08cf39db7e",
-                          "actorId": "2",
+                          "spriteStateId": "Score80",
+                          "speed": 0.25,
+                          "animSpeed": 127,
+                          "lifeTime": 0.5,
+                          "initialOffset": 8,
+                          "loopAnim": false,
+                          "destroyOnHit": false,
+                          "collisionGroup": "3",
+                          "collisionMask": [],
+                          "__collapse": true,
+                          "__presetId": "72fb210f-3761-4e75-bd0b-7a82303fd871"
+                        },
+                        "id": "060c08f4-8dd9-4d54-9ecb-42f11bcfb5f4"
+                      },
+                      {
+                        "command": "EVENT_LAUNCH_PROJECTILE_SLOT",
+                        "args": {
+                          "__section": "source",
+                          "actorId": "0",
                           "x": 0,
                           "y": 0,
                           "directionType": "direction",
@@ -5039,11 +5158,10 @@
                           "angle": 0,
                           "angleVariable": "V0",
                           "targetActorId": "$self$",
-                          "loopAnim": false,
-                          "destroyOnHit": false,
-                          "__collapse": false
+                          "slot": 2,
+                          "__collapse": true
                         },
-                        "id": "858df3d1-7575-405a-b566-53d91f50cb6d"
+                        "id": "2d43ae8e-a7d0-42cd-af04-0ed0d2d477dc"
                       },
                       {
                         "command": "EVENT_WAIT",
@@ -5314,13 +5432,30 @@
                         "id": "e9feebd4-0d50-4d12-a9fe-62e484741c77"
                       },
                       {
-                        "command": "FO_EVENT_LAUNCH_LOADED_PROJECTILE",
+                        "command": "EVENT_LOAD_PROJECTILE_SLOT",
                         "args": {
+                          "__section": "presets",
+                          "slot": 2,
                           "spriteSheetId": "8a540f8d-26fb-41fc-b83c-ce6c4807188b",
-                          "slot": 0,
-                          "source": 0,
-                          "scene": "7be35212-1274-4a18-9e29-0f08cf39db7e",
-                          "actorId": "2",
+                          "spriteStateId": "Score80",
+                          "speed": 0.25,
+                          "animSpeed": 127,
+                          "lifeTime": 0.5,
+                          "initialOffset": 8,
+                          "loopAnim": false,
+                          "destroyOnHit": false,
+                          "collisionGroup": "3",
+                          "collisionMask": [],
+                          "__collapse": true,
+                          "__presetId": "72fb210f-3761-4e75-bd0b-7a82303fd871"
+                        },
+                        "id": "e3213979-60c6-4f97-9527-0d31638494e4"
+                      },
+                      {
+                        "command": "EVENT_LAUNCH_PROJECTILE_SLOT",
+                        "args": {
+                          "__section": "source",
+                          "actorId": "0",
                           "x": 0,
                           "y": 0,
                           "directionType": "direction",
@@ -5329,11 +5464,10 @@
                           "angle": 0,
                           "angleVariable": "V0",
                           "targetActorId": "$self$",
-                          "loopAnim": false,
-                          "destroyOnHit": false,
-                          "__collapse": false
+                          "slot": 2,
+                          "__collapse": true
                         },
-                        "id": "987b9353-7ed0-44c7-87c8-639b8eca6d47"
+                        "id": "ab2b32e2-c1de-4377-9ec6-882377a97fa9"
                       },
                       {
                         "command": "EVENT_WAIT",
@@ -5592,13 +5726,30 @@
                         "id": "9e608d5c-459e-42b5-8f80-1ee1d05b8c7e"
                       },
                       {
-                        "command": "FO_EVENT_LAUNCH_LOADED_PROJECTILE",
+                        "command": "EVENT_LOAD_PROJECTILE_SLOT",
                         "args": {
+                          "__section": "presets",
+                          "slot": 2,
                           "spriteSheetId": "8a540f8d-26fb-41fc-b83c-ce6c4807188b",
-                          "slot": 0,
-                          "source": 0,
-                          "scene": "7be35212-1274-4a18-9e29-0f08cf39db7e",
-                          "actorId": "2",
+                          "spriteStateId": "Score80",
+                          "speed": 0.25,
+                          "animSpeed": 127,
+                          "lifeTime": 0.5,
+                          "initialOffset": 8,
+                          "loopAnim": false,
+                          "destroyOnHit": false,
+                          "collisionGroup": "3",
+                          "collisionMask": [],
+                          "__collapse": true,
+                          "__presetId": "72fb210f-3761-4e75-bd0b-7a82303fd871"
+                        },
+                        "id": "18446d62-73a1-4516-941c-9630cc9b71c1"
+                      },
+                      {
+                        "command": "EVENT_LAUNCH_PROJECTILE_SLOT",
+                        "args": {
+                          "__section": "source",
+                          "actorId": "0",
                           "x": 0,
                           "y": 0,
                           "directionType": "direction",
@@ -5607,11 +5758,10 @@
                           "angle": 0,
                           "angleVariable": "V0",
                           "targetActorId": "$self$",
-                          "loopAnim": false,
-                          "destroyOnHit": false,
-                          "__collapse": false
+                          "slot": 2,
+                          "__collapse": true
                         },
-                        "id": "a5702718-4464-4bd7-9b63-a19718f8290c"
+                        "id": "4518a08b-b4a1-4620-b825-8cfd30b1019c"
                       },
                       {
                         "command": "EVENT_WAIT",
@@ -5729,7 +5879,7 @@
                   "command": "EVENT_GROUP",
                   "args": {
                     "__label": "Brick Block",
-                    "__collapse": false
+                    "__collapse": true
                   },
                   "children": {
                     "true": [
@@ -5900,13 +6050,30 @@
                               "id": "be80d4c3-8b43-408b-9575-1eeca55c8abd"
                             },
                             {
-                              "command": "FO_EVENT_LAUNCH_LOADED_PROJECTILE",
+                              "command": "EVENT_LOAD_PROJECTILE_SLOT",
                               "args": {
-                                "spriteSheetId": "8dbb443a-eb83-48bb-86c9-ffd9012f45c7",
+                                "__section": "presets",
                                 "slot": 3,
-                                "source": 0,
-                                "scene": "75b553e8-cacf-40de-a1d0-063df9ddb401",
-                                "actorId": "2",
+                                "spriteSheetId": "d9e6bb21-a4bb-4390-85ad-e2fbac320688",
+                                "spriteStateId": "BrickBreak",
+                                "speed": 0.25,
+                                "animSpeed": 3,
+                                "lifeTime": 0.4,
+                                "initialOffset": 0,
+                                "loopAnim": true,
+                                "destroyOnHit": false,
+                                "collisionGroup": "3",
+                                "collisionMask": [],
+                                "__collapse": true,
+                                "__presetId": "d158b378-ea08-4d2b-8dbd-f86e5282b533"
+                              },
+                              "id": "d14deeac-6706-4a54-be41-994d6a249331"
+                            },
+                            {
+                              "command": "EVENT_LAUNCH_PROJECTILE_SLOT",
+                              "args": {
+                                "__section": "source",
+                                "actorId": "0",
                                 "x": 0,
                                 "y": -24,
                                 "directionType": "direction",
@@ -5915,11 +6082,10 @@
                                 "angle": 0,
                                 "angleVariable": "V0",
                                 "targetActorId": "$self$",
-                                "loopAnim": true,
-                                "destroyOnHit": false,
+                                "slot": 3,
                                 "__collapse": true
                               },
-                              "id": "9dd4e776-be0f-4c83-ab0c-e2e6a2851ebe"
+                              "id": "3f6c6823-8292-41af-b0e2-3432d9fc3e48"
                             },
                             {
                               "command": "EVENT_CALL_CUSTOM_EVENT",
@@ -5927,7 +6093,7 @@
                                 "customEventId": "ef8fedfd-2e98-4b70-ba50-4d41a57a7116",
                                 "$variable[V0]$": {
                                   "type": "number",
-                                  "value": 5
+                                  "value": 20
                                 },
                                 "__collapse": true
                               },

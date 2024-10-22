@@ -1,0 +1,128 @@
+{
+  "_resourceType": "actor",
+  "id": "dbae8450-2a6c-4f41-a506-cbe1c4d3a594",
+  "name": "Donkey Kong",
+  "frame": 0,
+  "animate": false,
+  "spriteSheetId": "57f3149f-f8bd-44ea-a534-1a2c8f79e99a",
+  "prefabId": "9dee84f2-0df0-4e68-945a-91f4ce6d88e9",
+  "direction": "down",
+  "moveSpeed": 1,
+  "animSpeed": 15,
+  "paletteId": "",
+  "isPinned": false,
+  "persistent": false,
+  "collisionGroup": "1",
+  "prefabScriptOverrides": {
+    "474840c5-2a17-4400-ba57-fbfd42dd8a80": {
+      "id": "474840c5-2a17-4400-ba57-fbfd42dd8a80",
+      "args": {
+        "linkedActorId": "caa5be30-4ab2-4694-be29-18c7f3c6ae1e"
+      }
+    }
+  },
+  "symbol": "actor_1404",
+  "script": [
+    {
+      "command": "EVENT_IF",
+      "args": {
+        "condition": {
+          "type": "lte",
+          "valueA": {
+            "type": "variable",
+            "value": "38"
+          },
+          "valueB": {
+            "type": "number",
+            "value": 0
+          }
+        },
+        "__collapseElse": false,
+        "__collapse": false
+      },
+      "children": {
+        "true": [
+          {
+            "command": "EVENT_IF",
+            "args": {
+              "condition": {
+                "type": "eq",
+                "valueA": {
+                  "type": "variable",
+                  "value": "23"
+                },
+                "valueB": {
+                  "type": "number",
+                  "value": 0
+                }
+              },
+              "__collapseElse": true
+            },
+            "children": {
+              "true": [
+                {
+                  "command": "EVENT_CALL_CUSTOM_EVENT",
+                  "args": {
+                    "customEventId": "7cc914c2-6df4-4f26-a46f-72d7e3165f2c",
+                    "__comment": false
+                  },
+                  "id": "ad1da082-9052-4b7d-96e6-edb57e037312",
+                  "children": {}
+                }
+              ],
+              "false": []
+            },
+            "id": "daa0e06f-0ee3-4351-8da2-db96973c7c8e"
+          }
+        ],
+        "false": []
+      },
+      "id": "ddbe5aa7-4942-4c0e-9bfb-3ab7553b481f"
+    }
+  ],
+  "startScript": [
+    {
+      "command": "EVENT_SET_ACTOR_BEHAVIOR",
+      "args": {
+        "actorId": "$self$",
+        "behaviorId": {
+          "type": "number",
+          "value": 30
+        },
+        "__collapse": false
+      },
+      "id": "6fb01be9-9033-49ff-b232-6f0c608b0d20",
+      "children": {}
+    },
+    {
+      "command": "EVENT_SET_ACTOR_STATE",
+      "args": {
+        "actorId": "$self$",
+        "stateId": {
+          "type": "number",
+          "value": 0
+        },
+        "__collapse": true
+      },
+      "id": "808601d2-34b8-4506-b735-571ca7ab94ae",
+      "children": {}
+    },
+    {
+      "command": "EVENT_SET_ACTOR_LINKED_ACTOR",
+      "args": {
+        "actorId": "$self$",
+        "linkedActorId": "caa5be30-4ab2-4694-be29-18c7f3c6ae1e",
+        "__collapse": false
+      },
+      "id": "576370ac-495f-4f8d-8c7f-84779fad9095",
+      "children": {}
+    }
+  ],
+  "updateScript": [],
+  "hit1Script": [],
+  "hit2Script": [],
+  "hit3Script": [],
+  "x": 1,
+  "y": 5,
+  "_index": 3
+}

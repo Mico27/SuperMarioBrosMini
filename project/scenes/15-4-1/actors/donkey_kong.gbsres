@@ -1,6 +1,6 @@
 {
   "_resourceType": "actor",
-  "id": "3a133ed2-5ca0-4df6-9170-5642214bb9de",
+  "id": "62d3b2e9-ccff-40cb-961a-100481a512b2",
   "name": "Donkey Kong",
   "frame": 0,
   "animate": false,
@@ -13,8 +13,15 @@
   "isPinned": false,
   "persistent": false,
   "collisionGroup": "1",
-  "prefabScriptOverrides": {},
-  "symbol": "actor_1345",
+  "prefabScriptOverrides": {
+    "474840c5-2a17-4400-ba57-fbfd42dd8a80": {
+      "id": "474840c5-2a17-4400-ba57-fbfd42dd8a80",
+      "args": {
+        "linkedActorId": "2aad75ed-27d9-49dd-ae0d-d3d4478a9dce"
+      }
+    }
+  },
+  "symbol": "actor_1357",
   "script": [
     {
       "command": "EVENT_IF",
@@ -59,18 +66,18 @@
                     "customEventId": "7cc914c2-6df4-4f26-a46f-72d7e3165f2c",
                     "__comment": false
                   },
-                  "id": "1cd55bb3-bd36-4345-b325-045b923932b3",
+                  "id": "5a3c054b-3982-41a8-89c6-a84af768c4f3",
                   "children": {}
                 }
               ],
               "false": []
             },
-            "id": "0c56e29f-f65a-40b9-bad5-ebcd8645f0f8"
+            "id": "30fde5a5-acfd-4538-b00c-b48e55b85ad2"
           }
         ],
         "false": []
       },
-      "id": "b9ea2064-9d08-4ec2-ae01-457adceb1407"
+      "id": "a7329101-55cb-40ee-9655-c664dc6657c0"
     }
   ],
   "startScript": [
@@ -84,7 +91,7 @@
         },
         "__collapse": false
       },
-      "id": "4156cf56-a256-4c04-95a1-682afb855258",
+      "id": "5c24efff-87ea-4744-8ef0-9a3fc83fa090",
       "children": {}
     },
     {
@@ -97,17 +104,17 @@
         },
         "__collapse": true
       },
-      "id": "b5de4586-0a3e-4289-a73a-fbd15e0f57a7",
+      "id": "4ed81dd6-c795-4f24-bd37-ac42b68279c9",
       "children": {}
     },
     {
       "command": "EVENT_SET_ACTOR_LINKED_ACTOR",
       "args": {
         "actorId": "$self$",
-        "linkedActorId": "e38211b4-a84e-4f5f-8e56-b44bbcc0d146",
+        "linkedActorId": "2aad75ed-27d9-49dd-ae0d-d3d4478a9dce",
         "__collapse": false
       },
-      "id": "8655576f-4c27-4d85-97c5-acf68de21e83",
+      "id": "cf1e46a6-70eb-420d-8c10-b153f7e27c91",
       "children": {}
     }
   ],
@@ -116,6 +123,6 @@
   "hit2Script": [],
   "hit3Script": [],
   "x": 2,
-  "y": 31,
+  "y": 5,
   "_index": 3
 }

@@ -7,6 +7,7 @@
   "startAnimSpeed": 7,
   "startDirection": "right",
   "showCollisionExtraTiles": false,
+  "collisionLayerOpacity": 50,
   "sgbEnabled": false,
   "customHead": "",
   "defaultBackgroundPaletteIds": [
@@ -116,7 +117,220 @@
           "initialOffset": 0
         }
       }
+    },
+    "EVENT_LOAD_PROJECTILE_SLOT": {
+      "bd768145-ca8d-4a6e-b2fe-15ab74bf1a08": {
+        "id": "bd768145-ca8d-4a6e-b2fe-15ab74bf1a08",
+        "name": "Score20",
+        "groups": [
+          "slot",
+          "projectile"
+        ],
+        "args": {
+          "slot": 0,
+          "spriteSheetId": "8a540f8d-26fb-41fc-b83c-ce6c4807188b",
+          "spriteStateId": "Score20",
+          "speed": 0.25,
+          "animSpeed": 127,
+          "lifeTime": 0.5,
+          "loopAnim": false,
+          "destroyOnHit": false,
+          "initialOffset": 8,
+          "collisionGroup": "3",
+          "collisionMask": []
+        }
+      },
+      "10f9ed64-c9a0-42ab-a591-a4b1e46bddfa": {
+        "id": "10f9ed64-c9a0-42ab-a591-a4b1e46bddfa",
+        "name": "Score40",
+        "groups": [
+          "slot",
+          "projectile"
+        ],
+        "args": {
+          "slot": 1,
+          "spriteSheetId": "8a540f8d-26fb-41fc-b83c-ce6c4807188b",
+          "spriteStateId": "Score40",
+          "speed": 0.25,
+          "animSpeed": 127,
+          "lifeTime": 0.5,
+          "loopAnim": false,
+          "destroyOnHit": false,
+          "initialOffset": 8,
+          "collisionGroup": "3",
+          "collisionMask": []
+        }
+      },
+      "72fb210f-3761-4e75-bd0b-7a82303fd871": {
+        "id": "72fb210f-3761-4e75-bd0b-7a82303fd871",
+        "name": "Score80",
+        "groups": [
+          "slot",
+          "projectile"
+        ],
+        "args": {
+          "slot": 2,
+          "spriteSheetId": "8a540f8d-26fb-41fc-b83c-ce6c4807188b",
+          "spriteStateId": "Score80",
+          "speed": 0.25,
+          "animSpeed": 127,
+          "lifeTime": 0.5,
+          "loopAnim": false,
+          "destroyOnHit": false,
+          "initialOffset": 8,
+          "collisionGroup": "3",
+          "collisionMask": []
+        }
+      },
+      "d32ad347-5c98-4533-ad79-5d46aed686f8": {
+        "id": "d32ad347-5c98-4533-ad79-5d46aed686f8",
+        "name": "Score100",
+        "groups": [
+          "slot",
+          "projectile"
+        ],
+        "args": {
+          "slot": 0,
+          "spriteSheetId": "8a540f8d-26fb-41fc-b83c-ce6c4807188b",
+          "spriteStateId": "Score100",
+          "speed": 0.25,
+          "animSpeed": 127,
+          "lifeTime": 0.5,
+          "loopAnim": false,
+          "destroyOnHit": false,
+          "initialOffset": 8,
+          "collisionGroup": "3",
+          "collisionMask": []
+        }
+      },
+      "88a0d684-deb6-46ce-a87f-e7c4d156e116": {
+        "id": "88a0d684-deb6-46ce-a87f-e7c4d156e116",
+        "name": "Score200",
+        "groups": [
+          "slot",
+          "projectile"
+        ],
+        "args": {
+          "slot": 1,
+          "spriteSheetId": "8a540f8d-26fb-41fc-b83c-ce6c4807188b",
+          "spriteStateId": "Score200",
+          "speed": 0.25,
+          "animSpeed": 127,
+          "lifeTime": 0.5,
+          "loopAnim": false,
+          "destroyOnHit": false,
+          "initialOffset": 8,
+          "collisionGroup": "3",
+          "collisionMask": []
+        }
+      },
+      "9cd5b90f-b717-49a1-b329-503b8ecd9259": {
+        "id": "9cd5b90f-b717-49a1-b329-503b8ecd9259",
+        "name": "1Up",
+        "groups": [
+          "slot",
+          "projectile"
+        ],
+        "args": {
+          "slot": 2,
+          "spriteSheetId": "8a540f8d-26fb-41fc-b83c-ce6c4807188b",
+          "spriteStateId": "1Up",
+          "speed": 0.25,
+          "animSpeed": 127,
+          "lifeTime": 0.5,
+          "loopAnim": false,
+          "destroyOnHit": false,
+          "initialOffset": 8,
+          "collisionGroup": "3",
+          "collisionMask": []
+        }
+      },
+      "1eb80bab-35d3-45f4-b07a-025806918d69": {
+        "id": "1eb80bab-35d3-45f4-b07a-025806918d69",
+        "name": "FireballHit",
+        "groups": [
+          "slot",
+          "projectile"
+        ],
+        "args": {
+          "slot": 4,
+          "spriteSheetId": "8dbb443a-eb83-48bb-86c9-ffd9012f45c7",
+          "spriteStateId": "FireballHit",
+          "speed": 0,
+          "animSpeed": 3,
+          "lifeTime": 0.1,
+          "loopAnim": false,
+          "destroyOnHit": false,
+          "initialOffset": 0,
+          "collisionGroup": "3",
+          "collisionMask": []
+        }
+      },
+      "c775f73b-1c51-4f82-b68e-6ae1ab495273": {
+        "id": "c775f73b-1c51-4f82-b68e-6ae1ab495273",
+        "name": "Fireworks",
+        "groups": [
+          "slot",
+          "projectile"
+        ],
+        "args": {
+          "slot": 4,
+          "spriteSheetId": "8dbb443a-eb83-48bb-86c9-ffd9012f45c7",
+          "spriteStateId": "FireballHit",
+          "speed": 0,
+          "animSpeed": 15,
+          "lifeTime": 0.5,
+          "loopAnim": false,
+          "destroyOnHit": false,
+          "initialOffset": 0,
+          "collisionGroup": "2",
+          "collisionMask": []
+        }
+      },
+      "8d9cef29-009f-4ef1-b717-3f010dae4c8e": {
+        "id": "8d9cef29-009f-4ef1-b717-3f010dae4c8e",
+        "name": "BrickBreak",
+        "groups": [
+          "slot",
+          "projectile"
+        ],
+        "args": {
+          "slot": 3,
+          "spriteSheetId": "8dbb443a-eb83-48bb-86c9-ffd9012f45c7",
+          "spriteStateId": "BrickBreak",
+          "speed": 0,
+          "animSpeed": 3,
+          "lifeTime": 0.4,
+          "loopAnim": true,
+          "destroyOnHit": false,
+          "initialOffset": 0,
+          "collisionGroup": "3",
+          "collisionMask": []
+        }
+      },
+      "d158b378-ea08-4d2b-8dbd-f86e5282b533": {
+        "id": "d158b378-ea08-4d2b-8dbd-f86e5282b533",
+        "name": "BigBrickBreak",
+        "groups": [
+          "slot",
+          "projectile"
+        ],
+        "args": {
+          "slot": 3,
+          "spriteSheetId": "d9e6bb21-a4bb-4390-85ad-e2fbac320688",
+          "spriteStateId": "BrickBreak",
+          "speed": 0.25,
+          "animSpeed": 3,
+          "lifeTime": 0.4,
+          "loopAnim": true,
+          "destroyOnHit": false,
+          "initialOffset": 0,
+          "collisionGroup": "3",
+          "collisionMask": []
+        }
+      }
     }
   },
-  "scriptEventDefaultPresets": {}
+  "scriptEventDefaultPresets": {},
+  "runSceneSelectionOnly": false
 }

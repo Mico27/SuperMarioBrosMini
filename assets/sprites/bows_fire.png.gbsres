@@ -1,0 +1,159 @@
+{
+  "_resourceType": "sprite",
+  "id": "aeb5e987-58f2-4fe1-991e-dbff5750cbde",
+  "name": "bows_fire",
+  "symbol": "sprite_bows_fire",
+  "width": 16,
+  "height": 16,
+  "states": [
+    {
+      "id": "90f96af8-e4a6-4a1a-90c8-382bb803cf9f",
+      "name": "",
+      "animationType": "fixed",
+      "flipLeft": false,
+      "animations": [
+        {
+          "id": "ddbf0537-4c0a-46d6-8dd4-7dcde5791308",
+          "frames": [
+            {
+              "id": "dbdde7e6-a253-47ae-9a0d-24d8dad102f2",
+              "tiles": [
+                {
+                  "id": "6b85f327-48cb-43e3-b971-9cfd4f339c75",
+                  "x": 0,
+                  "y": 8,
+                  "sliceX": 0,
+                  "sliceY": 0,
+                  "flipX": false,
+                  "flipY": false,
+                  "palette": 0,
+                  "paletteIndex": 2,
+                  "objPalette": "OBP0",
+                  "priority": false
+                },
+                {
+                  "id": "c0d41fc5-bf86-414e-be77-1bae3ae1a70d",
+                  "x": 8,
+                  "y": 8,
+                  "sliceX": 8,
+                  "sliceY": 0,
+                  "flipX": false,
+                  "flipY": false,
+                  "palette": 0,
+                  "paletteIndex": 2,
+                  "objPalette": "OBP0",
+                  "priority": false
+                }
+              ]
+            },
+            {
+              "id": "103048c0-e130-4466-956d-f0918d33e1fe",
+              "tiles": [
+                {
+                  "id": "bb8e90a3-3e6c-494c-85a3-d0e9635ec4cc",
+                  "x": 0,
+                  "y": 1,
+                  "sliceX": 0,
+                  "sliceY": 0,
+                  "palette": 0,
+                  "flipX": false,
+                  "flipY": true,
+                  "objPalette": "OBP0",
+                  "paletteIndex": 2,
+                  "priority": false
+                },
+                {
+                  "id": "dbf89778-a4fa-45ab-90d1-ee05744187be",
+                  "x": 8,
+                  "y": 1,
+                  "sliceX": 8,
+                  "sliceY": 0,
+                  "palette": 0,
+                  "flipX": false,
+                  "flipY": true,
+                  "objPalette": "OBP0",
+                  "paletteIndex": 2,
+                  "priority": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b92b8ae8-fb64-4121-bbc8-501274e4a45e",
+          "frames": [
+            {
+              "id": "33356454-1c45-4d0a-9f1e-f30f93317396",
+              "tiles": []
+            }
+          ]
+        },
+        {
+          "id": "a4c5197f-259c-4d2b-b54f-0dcd442f218e",
+          "frames": [
+            {
+              "id": "cd6399eb-1d20-4478-a390-4a8c9993be21",
+              "tiles": []
+            }
+          ]
+        },
+        {
+          "id": "d0d623f0-b983-475c-86cd-1c8758422a2e",
+          "frames": [
+            {
+              "id": "10b3625a-1cb6-4f94-99a2-90126050295f",
+              "tiles": []
+            }
+          ]
+        },
+        {
+          "id": "7e63b476-c236-4fdd-8ffe-b8cc01e41c72",
+          "frames": [
+            {
+              "id": "7d6e46b5-8b53-4ef7-b2b4-44e32adc8a8e",
+              "tiles": []
+            }
+          ]
+        },
+        {
+          "id": "94f51854-ae13-43f1-b1a0-dc49514f20e9",
+          "frames": [
+            {
+              "id": "ca6979af-c36e-430c-95b7-9cd223af4627",
+              "tiles": []
+            }
+          ]
+        },
+        {
+          "id": "a33ca4b6-150d-476f-a31c-92fc077dc82a",
+          "frames": [
+            {
+              "id": "972c3bf6-f805-439c-8486-ff4766a76a66",
+              "tiles": []
+            }
+          ]
+        },
+        {
+          "id": "520c0e6c-dc57-4b5d-b078-158e7fa0c664",
+          "frames": [
+            {
+              "id": "73a8e296-a662-43c1-b333-aa871cab160f",
+              "tiles": []
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "numTiles": 2,
+  "canvasWidth": 16,
+  "canvasHeight": 24,
+  "boundsX": 1,
+  "boundsY": 10,
+  "boundsWidth": 14,
+  "boundsHeight": 4,
+  "animSpeed": 15,
+  "filename": "bows_fire.png",
+  "checksum": "658a52307005477b14398c56f59a6ebfbce12d3b",
+  "numFrames": 1
+}

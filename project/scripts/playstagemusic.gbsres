@@ -81,7 +81,7 @@
                         "command": "EVENT_SWITCH",
                         "args": {
                           "variable": "18",
-                          "choices": 4,
+                          "choices": 5,
                           "__collapseCase0": false,
                           "__collapseCase1": false,
                           "__collapseCase2": false,
@@ -116,8 +116,8 @@
                             "value": "9fe73cd3-ebfc-43f8-8b06-c8460c1c2f4e"
                           },
                           "value4": {
-                            "type": "number",
-                            "value": 0
+                            "type": "constant",
+                            "value": "259ae8dc-7142-4a39-9fd8-4ed98b0e717d"
                           },
                           "__collapse": false
                         },
@@ -160,7 +160,15 @@
                               "id": "8ecd3a2c-bf4f-45dc-b005-e266b79bdb0f"
                             }
                           ],
-                          "true4": [],
+                          "true4": [
+                            {
+                              "command": "EVENT_MUSIC_PLAY",
+                              "args": {
+                                "musicId": "7852bc83-d06f-445a-a140-ec408fb9ccb4"
+                              },
+                              "id": "4ee12530-a9b5-4cfc-98e9-04944d631a73"
+                            }
+                          ],
                           "true5": [],
                           "true6": [],
                           "true7": [],

@@ -3504,7 +3504,7 @@
         "duration": 0.5,
         "frames": 30,
         "__scriptTabs": "end",
-        "__collapse": true,
+        "__collapse": false,
         "__label": "Palette Animation Timer",
         "units": "frames"
       },
@@ -3607,7 +3607,7 @@
                 "value": 16
               },
               "__collapseElse": false,
-              "__collapse": true
+              "__collapse": false
             },
             "children": {
               "true0": [
@@ -3615,7 +3615,7 @@
                   "command": "EVENT_SWITCH",
                   "args": {
                     "variable": "18",
-                    "choices": 6,
+                    "choices": 7,
                     "__collapseCase0": false,
                     "value0": {
                       "type": "constant",
@@ -3649,7 +3649,7 @@
                     "__collapseCase6": false,
                     "value6": {
                       "type": "constant",
-                      "value": "df2c1c64-206b-4d14-9a2a-8730dbc513a9"
+                      "value": "259ae8dc-7142-4a39-9fd8-4ed98b0e717d"
                     },
                     "__collapseCase7": false,
                     "value7": {
@@ -3697,7 +3697,7 @@
                       "value": 16
                     },
                     "__collapseElse": false,
-                    "__collapse": true
+                    "__collapse": false
                   },
                   "children": {
                     "true0": [
@@ -3802,7 +3802,23 @@
                         "id": "30bb99f8-941c-4eb6-96ec-2e5b42895d56"
                       }
                     ],
-                    "true6": [],
+                    "true6": [
+                      {
+                        "command": "EVENT_PALETTE_SET_BACKGROUND",
+                        "args": {
+                          "palette0": "keep",
+                          "palette1": "keep",
+                          "palette2": "keep",
+                          "palette3": "c15b4347-cfc4-4d31-aabc-927e1ab00414",
+                          "palette4": "keep",
+                          "palette5": "keep",
+                          "palette6": "keep",
+                          "palette7": "keep",
+                          "__collapse": true
+                        },
+                        "id": "205814a5-763a-41c6-a09e-1e68697cc72b"
+                      }
+                    ],
                     "true7": [],
                     "true8": [],
                     "true9": [],
@@ -3838,7 +3854,7 @@
                   "command": "EVENT_SWITCH",
                   "args": {
                     "variable": "18",
-                    "choices": 6,
+                    "choices": 7,
                     "__collapseCase0": false,
                     "value0": {
                       "type": "constant",
@@ -3872,7 +3888,7 @@
                     "__collapseCase6": false,
                     "value6": {
                       "type": "constant",
-                      "value": "df2c1c64-206b-4d14-9a2a-8730dbc513a9"
+                      "value": "259ae8dc-7142-4a39-9fd8-4ed98b0e717d"
                     },
                     "__collapseCase7": false,
                     "value7": {
@@ -3920,7 +3936,7 @@
                       "value": 16
                     },
                     "__collapseElse": false,
-                    "__collapse": true
+                    "__collapse": false
                   },
                   "children": {
                     "true0": [
@@ -4025,7 +4041,23 @@
                         "id": "54fd9aa9-08d0-4fbe-abcb-25cb02397a60"
                       }
                     ],
-                    "true6": [],
+                    "true6": [
+                      {
+                        "command": "EVENT_PALETTE_SET_BACKGROUND",
+                        "args": {
+                          "palette0": "keep",
+                          "palette1": "keep",
+                          "palette2": "keep",
+                          "palette3": "7832734a-100f-42e5-9588-8440033756ca",
+                          "palette4": "keep",
+                          "palette5": "keep",
+                          "palette6": "keep",
+                          "palette7": "keep",
+                          "__collapse": true
+                        },
+                        "id": "a5344224-fb51-484e-ac01-e4ad2f0a4d46"
+                      }
+                    ],
                     "true7": [],
                     "true8": [],
                     "true9": [],
