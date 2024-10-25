@@ -1,15 +1,20 @@
 {
-  "_resourceType": "actorPrefab",
-  "id": "d78e43f3-58d3-41b9-a7b5-c58f93ba95ab",
-  "name": "Peach_Toad",
+  "_resourceType": "actor",
+  "id": "9f1cc870-5d95-4c81-bd82-d9f93baa6b72",
+  "name": "Peach",
   "frame": 0,
   "animate": false,
   "spriteSheetId": "c9bfb6f0-c00f-429e-ba25-eab1c93e6bec",
+  "prefabId": "e6aac39e-2241-4ee6-bd4b-0137e2a33765",
+  "direction": "down",
   "moveSpeed": 1,
   "animSpeed": 15,
   "paletteId": "",
+  "isPinned": false,
   "persistent": false,
   "collisionGroup": "",
+  "prefabScriptOverrides": {},
+  "symbol": "actor_440",
   "script": [],
   "startScript": [
     {
@@ -50,16 +55,20 @@
               "actorId": "$self$",
               "spriteSheetId": "a6c34264-e9db-44cf-be2e-762769d86d1a"
             },
-            "id": "0513b722-8dc5-43d2-bb1e-d3c84e8a8a2c"
+            "id": "54414160-f5a0-43a1-bf11-e26eb893c73a",
+            "children": {}
           }
         ],
         "false": []
       },
-      "id": "5fab5429-9ef6-4e5b-bb4f-d27971d27a0c"
+      "id": "b7239323-cd42-4087-8450-9c5f23f33bf3"
     }
   ],
   "updateScript": [],
   "hit1Script": [],
   "hit2Script": [],
-  "hit3Script": []
+  "hit3Script": [],
+  "x": 59,
+  "y": 15,
+  "_index": 3
 }

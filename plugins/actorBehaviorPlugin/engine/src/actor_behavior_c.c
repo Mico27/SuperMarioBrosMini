@@ -15,6 +15,7 @@
 #include "game_time.h"
 #include "actor_behavior.h"
 #include "actor_behavior_c.h"
+#include "actor_behavior_d.h"
 #include "states/platform.h"
 #include "states/playerstates.h"
 #include "data/states_defines.h"
@@ -22,6 +23,7 @@
 #include "collision.h"
 #include "data_manager.h"
 #include "data/game_globals.h"
+#include "ui.h"
 
 const BYTE spring_bb_top_lookup[] = { -8, -4, 0, -4, -8 };
 
@@ -655,6 +657,7 @@ void actor_behavior_update_c(UBYTE i, actor_t * actor) BANKED {
 							}		
 							if (attack_idx != 0 && (actor_states[attack_idx] == 0 || actor_states[attack_idx] == 255)){
 								actor_t * attack_actor = (actors + attack_idx);
+								actor_behavior_ids[attack_idx] = 42;
 								actor_states[attack_idx] = 0;
 								if (!attack_actor->active){
 									attack_actor->disabled = FALSE;
@@ -753,6 +756,9 @@ void actor_behavior_update_c(UBYTE i, actor_t * actor) BANKED {
 				deactivate_actor(actor);
 				break;
 		}		
-		break;	
+		break;			
+		default:
+			actor_behavior_update_d(i, actor);
+		break;
 	}			
 }

@@ -32,7 +32,7 @@
 
 script_state_t state_events[24];
 
-script_state_t specific_events[7];
+script_state_t specific_events[8];
 
 UBYTE grounded;
 

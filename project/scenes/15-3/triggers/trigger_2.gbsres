@@ -1,0 +1,86 @@
+{
+  "_resourceType": "trigger",
+  "id": "a8ae1707-eff5-4a03-8373-ee687aba68af",
+  "name": "",
+  "prefabId": "",
+  "x": 47,
+  "y": 0,
+  "symbol": "trigger_466",
+  "prefabScriptOverrides": {},
+  "width": 1,
+  "height": 18,
+  "script": [
+    {
+      "command": "EVENT_SCRIPT_UNLOCK",
+      "args": {
+        "__collapse": true
+      },
+      "id": "47a91548-2335-48e7-a453-d72bc98b69e3"
+    },
+    {
+      "command": "EVENT_CALL_CUSTOM_EVENT",
+      "args": {
+        "customEventId": "7472c75b-28ba-4e82-9e18-5c1cc4daf097",
+        "$variable[V2]$": {
+          "type": "number",
+          "value": 1
+        },
+        "$variable[V1]$": {
+          "type": "number",
+          "value": 6
+        },
+        "$variable[V0]$": {
+          "type": "number",
+          "value": 67
+        },
+        "$actor[0]$": "1c923516-33f8-4226-b389-a41b23dbe53f",
+        "__collapse": true
+      },
+      "id": "5049ea46-edda-4c5a-81fc-e6687f690967"
+    },
+    {
+      "command": "EVENT_CALL_CUSTOM_EVENT",
+      "args": {
+        "customEventId": "7472c75b-28ba-4e82-9e18-5c1cc4daf097",
+        "$variable[V2]$": {
+          "type": "number",
+          "value": 1
+        },
+        "$variable[V1]$": {
+          "type": "number",
+          "value": 13
+        },
+        "$variable[V0]$": {
+          "type": "number",
+          "value": 67
+        },
+        "$actor[0]$": "dc6fd408-7623-4511-b202-be2c2267daef",
+        "__collapse": true
+      },
+      "id": "9ce0ba0e-b4fb-4aa7-8411-e62795922dcf"
+    },
+    {
+      "command": "EVENT_CALL_CUSTOM_EVENT",
+      "args": {
+        "customEventId": "7472c75b-28ba-4e82-9e18-5c1cc4daf097",
+        "$variable[V2]$": {
+          "type": "number",
+          "value": 1
+        },
+        "$variable[V1]$": {
+          "type": "number",
+          "value": 13
+        },
+        "$variable[V0]$": {
+          "type": "number",
+          "value": 70
+        },
+        "$actor[0]$": "1fd9cb50-9e13-4d47-b04a-28de09fe6e54",
+        "__collapse": true
+      },
+      "id": "dcaeae74-803f-4af2-8154-069c78f0915f"
+    }
+  ],
+  "leaveScript": [],
+  "_index": 2
+}
