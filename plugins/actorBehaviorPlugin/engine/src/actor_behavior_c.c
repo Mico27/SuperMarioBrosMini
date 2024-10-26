@@ -746,6 +746,7 @@ void actor_behavior_update_c(UBYTE i, actor_t * actor) BANKED {
 								actor_t * attack_actor = (actors + attack_idx);
 								actor_behavior_ids[attack_idx] = 42;
 								actor_states[attack_idx] = 0;
+								load_animations(attack_actor->sprite.ptr, attack_actor->sprite.bank, STATE_DEFAULT, attack_actor->animations);
 								if (!attack_actor->active){
 									attack_actor->disabled = FALSE;
 									activate_actor(attack_actor);
