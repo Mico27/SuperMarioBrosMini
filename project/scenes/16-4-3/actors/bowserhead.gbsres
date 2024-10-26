@@ -268,6 +268,18 @@
   ],
   "startScript": [
     {
+      "command": "EVENT_SET_VALUE",
+      "args": {
+        "variable": "69",
+        "value": {
+          "type": "number",
+          "value": 0
+        },
+        "__collapse": true
+      },
+      "id": "f222a6d5-06a8-49fe-8bc5-14f821eac5cb"
+    },
+    {
       "command": "EVENT_ACTOR_HIDE",
       "args": {
         "actorId": "$self$",
@@ -372,7 +384,7 @@
               "customEventId": "83aa10a4-8257-4f75-bfc0-fec9fe8b7b7e",
               "$actor[0]$": "21285095-5706-4e39-8a6f-9c05115d4f97",
               "$actor[1]$": "11cd2ad9-0977-49bf-9696-12a6b8150da0",
-              "__collapse": true
+              "__collapse": false
             },
             "id": "c0b24c52-cc92-4eea-a03a-25021fbcb84c"
           }

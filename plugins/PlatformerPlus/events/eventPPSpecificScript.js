@@ -17,6 +17,7 @@ const fields = [
 		  ["5", "Fell in pit"],
 		  ["6", "Enter left pipe"],
 		  ["7", "Change Bowser Background Frame"],
+		  ["8", "Earthquake"],
         ],
     },
     {

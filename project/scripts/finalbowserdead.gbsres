@@ -126,7 +126,7 @@
           {
             "command": "EVENT_CAMERA_SHAKE",
             "args": {
-              "time": 5,
+              "time": 8,
               "frames": 30,
               "shakeDirection": "horizontal",
               "magnitude": {
@@ -136,15 +136,6 @@
               "__collapse": true
             },
             "id": "afe7ec48-9883-4291-b3ba-1f2ba9dc825c"
-          },
-          {
-            "command": "EVENT_WAIT",
-            "args": {
-              "time": 7,
-              "frames": 30,
-              "__collapse": true
-            },
-            "id": "39a38b18-44e8-471f-a182-6e52759df210"
           },
           {
             "command": "EVENT_MUSIC_PLAY",

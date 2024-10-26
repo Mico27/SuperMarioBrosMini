@@ -43,26 +43,7 @@
             "command": "EVENT_WAIT",
             "args": {
               "time": 0.5,
-              "frames": 4,
-              "units": "frames",
-              "__collapse": false
-            },
-            "id": "ca3112d3-3be0-4f09-828a-5f02127bdb24"
-          },
-          {
-            "command": "EVENT_GBVM_SCRIPT",
-            "args": {
-              "script": "VM_CALL_NATIVE b_vm_do_yoshi_swallow_attack, _vm_do_yoshi_swallow_attack",
-              "references": [],
-              "__collapse": false
-            },
-            "id": "b58f16a6-10bc-4212-a41c-28b676beb9d6"
-          },
-          {
-            "command": "EVENT_WAIT",
-            "args": {
-              "time": 0.5,
-              "frames": 16,
+              "frames": 20,
               "units": "frames",
               "__collapse": false
             },

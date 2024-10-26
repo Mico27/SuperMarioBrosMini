@@ -356,13 +356,29 @@
       "args": {
         "customEventId": "c99bf8d3-9942-4d5f-be4c-bdb1a43de650",
         "$variable[V0]$": {
-          "type": "number",
-          "value": 0
+          "type": "variable",
+          "value": "45"
         },
         "__collapse": true
       },
       "id": "1653204b-89c6-47ff-8bc9-f9acc70655b8",
       "children": {}
+    },
+    {
+      "command": "EVENT_INC_VALUE",
+      "args": {
+        "variable": "45",
+        "__collapse": true
+      },
+      "id": "10151fa5-1f93-4378-b4aa-7683d39c87f4"
+    },
+    {
+      "command": "EVENT_ACTOR_COLLISIONS_DISABLE",
+      "args": {
+        "actorId": "$self$",
+        "__collapse": true
+      },
+      "id": "2446ae3c-08b0-4853-b350-ce3f5191ad20"
     },
     {
       "command": "EVENT_SOUND_PLAY_EFFECT",

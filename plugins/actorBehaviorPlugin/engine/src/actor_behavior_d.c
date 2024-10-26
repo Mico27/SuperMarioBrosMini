@@ -33,6 +33,7 @@ actor_t * right_bowser_hand;
 actor_t * left_bowser_hand;
 UBYTE right_bowser_hand_idx;
 UBYTE left_bowser_hand_idx;
+UBYTE debris_idx;
 
 void set_bowser_frame(UBYTE frame_idx) BANKED {
 	if (frame_idx != script_memory[VAR_BOWSER_BACKGROUND_IDX]){
@@ -44,13 +45,13 @@ void set_bowser_frame(UBYTE frame_idx) BANKED {
 }
 
 void actor_behavior_update_d(UBYTE i, actor_t * actor) BANKED {
-	switch(actor_behavior_ids[i]){					
+	switch(current_behavior){					
 		case 44: //Giant Bowser
 		switch(actor_states[i]){
 			case 0:
 				actor_states[i] = 1; 				
 				ui_set_pos((actor->pos.x >> 4) - 24, (actor->pos.y >> 4) - 32);
-				set_bowser_frame(2);
+				set_bowser_frame(3);
 				actor_counter_a[i] = 0;
 				actor_counter_b[i] = 0;	
 				actor_vel_x[i] = 0;
@@ -65,15 +66,15 @@ void actor_behavior_update_d(UBYTE i, actor_t * actor) BANKED {
 				right_bowser_hand->frame = right_bowser_hand->frame_start + 1;
 				left_bowser_hand->frame = left_bowser_hand->frame_start + 1;	
 				right_bowser_hand->collision_enabled = false;
-				left_bowser_hand->collision_enabled = false;				
+				left_bowser_hand->collision_enabled = false;
 				break;
 			case 1: //Intro
 				if (!(game_time & 1)){
 					if (actor->pos.y > 1408){
 						actor_vel_y[i] = -8;
 					} else {
-						set_bowser_frame(0);
 						actor_states[i] = 2; 
+						set_bowser_frame(3);
 						actor_counter_a[i] = 0;
 						actor_counter_b[i] = 0;
 						actor_vel_y[i] = 0;
@@ -96,9 +97,9 @@ void actor_behavior_update_d(UBYTE i, actor_t * actor) BANKED {
 				if (!(game_time & 1)){	
 				
 					//Head
-					if (actor->pos.y < 1280){
+					if (actor->pos.y < 1152){
 						actor_counter_b[i] = 1;					
-					} else if (actor->pos.y >= 1408){
+					} else if (actor->pos.y >= 1280){
 						actor_counter_b[i] = 0;
 					}
 					if (!(game_time & 3)){	
@@ -209,11 +210,7 @@ void actor_behavior_update_d(UBYTE i, actor_t * actor) BANKED {
 						}
 					}
 					actor_counter_a[i]++;
-					if (PLAYER.pos.y < actor->pos.y && PLAYER.pos.x > actor->pos.x && PLAYER.pos.x < actor->pos.x + 256){
-						set_bowser_frame(1);
-					} else {
-						set_bowser_frame(0);
-					}
+					set_bowser_frame(3);
 					
 				}
 				break;
@@ -221,7 +218,7 @@ void actor_behavior_update_d(UBYTE i, actor_t * actor) BANKED {
 				actor_counter_a[i] = 16;
 				actor_states[i] = 4; 
 				actor_vel_y[i] = 8;
-				set_bowser_frame(5);
+				set_bowser_frame(1);
 				actor->collision_enabled = false;
 				right_bowser_hand->frame = right_bowser_hand->frame_start + 1;
 				left_bowser_hand->frame = left_bowser_hand->frame_start + 1;
@@ -231,7 +228,7 @@ void actor_behavior_update_d(UBYTE i, actor_t * actor) BANKED {
 					actor_counter_a[i]--;					
 					if (actor_counter_a[i] <= 0){
 						actor_states[i] = 2;
-						set_bowser_frame(0);
+						set_bowser_frame(3);
 						actor->collision_enabled = true;	
 						right_bowser_hand->frame = right_bowser_hand->frame_start;
 						left_bowser_hand->frame = left_bowser_hand->frame_start;						
@@ -294,6 +291,9 @@ void actor_behavior_update_d(UBYTE i, actor_t * actor) BANKED {
 						actor_states[i] = 8;
 						actor_vel_y[i] = 0;
 						actor_counter_b[i] = 0;
+						if(specific_events[EARTHQUAKE_EVENT].script_addr != 0){
+							script_execute(specific_events[EARTHQUAKE_EVENT].script_bank, specific_events[EARTHQUAKE_EVENT].script_addr, 0, 0);
+						}
 						break;
 					}
 					if (right_bowser_hand->pos.y <= 2048){
@@ -316,7 +316,7 @@ void actor_behavior_update_d(UBYTE i, actor_t * actor) BANKED {
 				break;
 			case 8: //Debris fall
 				//debris 1							
-				UBYTE debris_idx = actor_linked_actor_idx[left_bowser_hand_idx];
+				debris_idx = actor_linked_actor_idx[left_bowser_hand_idx];
 				if (actor_states[debris_idx] != 0 && actor_states[debris_idx] != 255){
 					//debris 2
 					debris_idx = actor_linked_actor_idx[debris_idx];
@@ -349,22 +349,44 @@ void actor_behavior_update_d(UBYTE i, actor_t * actor) BANKED {
 					}
 				}
 				break;
-			case 9: //Dead
+			case 9: //init death
+				//debris 1							
+				debris_idx = actor_linked_actor_idx[left_bowser_hand_idx];
+				actor_t * debris_actor = (actors + debris_idx);
+				deactivate_actor(debris_actor);
+				//debris 2
+				debris_idx = actor_linked_actor_idx[debris_idx];
+				debris_actor = (actors + debris_idx);
+				deactivate_actor(debris_actor);
+				//debris 3
+				debris_idx = actor_linked_actor_idx[debris_idx];
+				debris_actor = (actors + debris_idx);
+				deactivate_actor(debris_actor);
+				//debris 4
+				debris_idx = actor_linked_actor_idx[debris_idx];
+				debris_actor = (actors + debris_idx);
+				deactivate_actor(debris_actor);
+				set_bowser_frame(2);
+				actor->collision_enabled = false;
+				right_bowser_hand->collision_enabled = false;
+				left_bowser_hand->collision_enabled = false;
+				right_bowser_hand->frame = right_bowser_hand->frame_start + 1;
+				left_bowser_hand->frame = left_bowser_hand->frame_start + 1;
+				actor_states[i] = 10;
+			case 10: //Dead
 				if (actor->pos.y > 2560){
 					actor_states[i] = 255;
-				} else {
-					set_bowser_frame(2);
-					actor->collision_enabled = false;
-					right_bowser_hand->collision_enabled = false;
-					left_bowser_hand->collision_enabled = false;
-					right_bowser_hand->frame = right_bowser_hand->frame_start + 1;
-					left_bowser_hand->frame = left_bowser_hand->frame_start + 1;				
+				} else {	
 					actor->pos.y =  actor->pos.y + 4;
+					right_bowser_hand->pos.y =  right_bowser_hand->pos.y + 4;
+					left_bowser_hand->pos.y =  left_bowser_hand->pos.y + 4;
 					ui_set_pos((actor->pos.x >> 4) - 24, (actor->pos.y >> 4) - 32);
 				}
 			break;
 			case 255: //Deactivate
 				deactivate_actor(actor);
+				deactivate_actor(right_bowser_hand);
+				deactivate_actor(left_bowser_hand);
 				ui_set_pos(0, 144);
 				break;
 		}		

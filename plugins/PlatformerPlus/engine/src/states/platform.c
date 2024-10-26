@@ -32,7 +32,7 @@
 
 script_state_t state_events[24];
 
-script_state_t specific_events[8];
+script_state_t specific_events[9];
 
 UBYTE grounded;
 
@@ -289,6 +289,28 @@ void platform_update(void) BANKED {
     }
 	if (script_memory[VAR_PLAYER_IFRAMES] > 0){
 		script_memory[VAR_PLAYER_IFRAMES]--;
+	}
+	if (script_memory[VAR_HASYOSHI] && que_attacking){
+		point16_t tongue_offset;
+		bounding_box_t yoshi_tongue_boundingbox;
+		tongue_offset.y = PLAYER.pos.y + ((crouched)? 32: -64);
+		tongue_offset.x = PLAYER.pos.x + ((PLAYER.dir == DIR_LEFT)? -320: 64);
+		yoshi_tongue_boundingbox.right = 23;
+		yoshi_tongue_boundingbox.left = 0;
+		yoshi_tongue_boundingbox.top = 0;
+		yoshi_tongue_boundingbox.bottom = 7;	
+		
+		for (UBYTE i = 1; i < MAX_ACTORS; i++){
+			actor_t * hit_actor = (actors + i);
+			if (!hit_actor->active || !hit_actor->collision_enabled){
+				continue;
+			}
+			if (bb_intersects(&yoshi_tongue_boundingbox, &tongue_offset, &hit_actor->bounds, &hit_actor->pos)) {
+				if (hit_actor->script.bank){
+					script_execute(hit_actor->script.bank, hit_actor->script.ptr, 0, 1, 2);
+				}
+			}
+		}
 	}
 	check_player_metatiles_entered();
 	if(script_memory[VAR_FRAMECOINS] && specific_events[COIN_COLLECTED_EVENT].script_addr != 0){
@@ -1263,29 +1285,4 @@ void clear_specific_script(SCRIPT_CTX * THIS) OLDCALL BANKED {
     UWORD *slot = VM_REF_TO_PTR(FN_ARG0);
     specific_events[*slot].script_bank = NULL;
     specific_events[*slot].script_addr = NULL;
-}
-
-void vm_do_yoshi_swallow_attack(SCRIPT_CTX * THIS) OLDCALL BANKED {
-	THIS;
-	point16_t tongue_offset;
-	bounding_box_t yoshi_tongue_boundingbox;
-	tongue_offset.y = PLAYER.pos.y + ((crouched)? 32: -64);
-	tongue_offset.x = PLAYER.pos.x + ((PLAYER.dir == DIR_LEFT)? -320: 64);
-	yoshi_tongue_boundingbox.right = 23;
-	yoshi_tongue_boundingbox.left = 0;
-	yoshi_tongue_boundingbox.top = 0;
-	yoshi_tongue_boundingbox.bottom = 7;	
-	
-	for (UBYTE i = 1; i < MAX_ACTORS; i++){
-		actor_t * hit_actor = (actors + i);
-		if (!hit_actor->active || !hit_actor->collision_enabled){
-			continue;
-		}
-		if (bb_intersects(&yoshi_tongue_boundingbox, &tongue_offset, &hit_actor->bounds, &hit_actor->pos)) {
-			if (hit_actor->script.bank){
-				script_execute(hit_actor->script.bank, hit_actor->script.ptr, 0, 1, 2);
-			}
-		}
-	}
-	
 }

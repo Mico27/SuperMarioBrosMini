@@ -344,7 +344,7 @@
             "command": "EVENT_GROUP",
             "args": {
               "__label": "Brick Block",
-              "__collapse": false
+              "__collapse": true
             },
             "children": {
               "true": [
@@ -823,7 +823,7 @@
             "command": "EVENT_GROUP",
             "args": {
               "__label": "Powerup Brick",
-              "__collapse": true
+              "__collapse": false
             },
             "children": {
               "true": [
@@ -850,7 +850,7 @@
                         "command": "EVENT_GROUP",
                         "args": {
                           "__label": "Mushroom Block",
-                          "__collapse": false
+                          "__collapse": true
                         },
                         "children": {
                           "true": [
@@ -957,7 +957,7 @@
                                 "actorId": "1",
                                 "behaviorId": {
                                   "type": "number",
-                                  "value": 1
+                                  "value": 5
                                 },
                                 "__collapse": true
                               },
@@ -981,7 +981,7 @@
                                 "actorId": "1",
                                 "xVelocity": {
                                   "type": "number",
-                                  "value": 16
+                                  "value": 8
                                 },
                                 "__collapse": true
                               },
@@ -1161,7 +1161,7 @@
                                 "actorId": "1",
                                 "behaviorId": {
                                   "type": "number",
-                                  "value": 1
+                                  "value": 5
                                 },
                                 "__collapse": true
                               },
@@ -1589,7 +1589,7 @@
                     "actorId": "1",
                     "behaviorId": {
                       "type": "number",
-                      "value": 1
+                      "value": 5
                     },
                     "__collapse": true
                   },
@@ -1613,9 +1613,9 @@
                     "actorId": "1",
                     "xVelocity": {
                       "type": "number",
-                      "value": 32
+                      "value": 8
                     },
-                    "__collapse": false
+                    "__collapse": true
                   },
                   "id": "8ac04c26-a07e-4f2a-966d-0cb68da562d3"
                 },
@@ -1820,7 +1820,7 @@
                                 "actorId": "1",
                                 "behaviorId": {
                                   "type": "number",
-                                  "value": 1
+                                  "value": 5
                                 },
                                 "__collapse": true
                               },
@@ -1844,9 +1844,9 @@
                                 "actorId": "1",
                                 "xVelocity": {
                                   "type": "number",
-                                  "value": 16
+                                  "value": 8
                                 },
-                                "__collapse": false
+                                "__collapse": true
                               },
                               "id": "9c9d8321-4f75-496d-9ab1-da2c65e4d677"
                             },
@@ -2024,9 +2024,9 @@
                                 "actorId": "1",
                                 "behaviorId": {
                                   "type": "number",
-                                  "value": 1
+                                  "value": 5
                                 },
-                                "__collapse": true
+                                "__collapse": false
                               },
                               "id": "97cef149-d96e-44b4-8039-e8823e7e9186"
                             },
@@ -2537,7 +2537,7 @@
             "command": "EVENT_GROUP",
             "args": {
               "__label": "1UP Block",
-              "__collapse": true
+              "__collapse": false
             },
             "children": {
               "true": [
@@ -2644,7 +2644,7 @@
                     "actorId": "1",
                     "behaviorId": {
                       "type": "number",
-                      "value": 1
+                      "value": 5
                     },
                     "__collapse": true
                   },
@@ -2668,9 +2668,9 @@
                     "actorId": "1",
                     "xVelocity": {
                       "type": "number",
-                      "value": 32
+                      "value": 8
                     },
-                    "__collapse": false
+                    "__collapse": true
                   },
                   "id": "2ecb078c-06c3-4be1-b533-dcc61f3c1dc9"
                 },
@@ -2905,7 +2905,7 @@
             "command": "EVENT_GROUP",
             "args": {
               "__label": "Invis Powerup Block",
-              "__collapse": true
+              "__collapse": false
             },
             "children": {
               "true": [
@@ -2932,7 +2932,7 @@
                         "command": "EVENT_GROUP",
                         "args": {
                           "__label": "Mushroom Block",
-                          "__collapse": false
+                          "__collapse": true
                         },
                         "children": {
                           "true": [
@@ -3039,7 +3039,7 @@
                                 "actorId": "1",
                                 "behaviorId": {
                                   "type": "number",
-                                  "value": 1
+                                  "value": 5
                                 },
                                 "__collapse": true
                               },
@@ -3063,9 +3063,9 @@
                                 "actorId": "1",
                                 "xVelocity": {
                                   "type": "number",
-                                  "value": 16
+                                  "value": 8
                                 },
-                                "__collapse": false
+                                "__collapse": true
                               },
                               "id": "0f96b64b-456c-4f97-933b-08477c9a5c6c"
                             },
@@ -3243,7 +3243,7 @@
                                 "actorId": "1",
                                 "behaviorId": {
                                   "type": "number",
-                                  "value": 1
+                                  "value": 5
                                 },
                                 "__collapse": true
                               },
@@ -3564,7 +3564,7 @@
             "command": "EVENT_GROUP",
             "args": {
               "__label": "Invis 1UP Block",
-              "__collapse": true
+              "__collapse": false
             },
             "children": {
               "true": [
@@ -3671,7 +3671,7 @@
                     "actorId": "1",
                     "behaviorId": {
                       "type": "number",
-                      "value": 1
+                      "value": 5
                     },
                     "__collapse": true
                   },
@@ -3695,9 +3695,9 @@
                     "actorId": "1",
                     "xVelocity": {
                       "type": "number",
-                      "value": 32
+                      "value": 8
                     },
-                    "__collapse": false
+                    "__collapse": true
                   },
                   "id": "d4b90961-36ac-47c8-86d5-ccba9c663f19"
                 },

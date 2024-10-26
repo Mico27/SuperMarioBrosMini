@@ -151,7 +151,7 @@
         "actorId": "$self$",
         "behaviorId": {
           "type": "number",
-          "value": 34
+          "value": 33
         },
         "__collapse": true
       },
@@ -187,13 +187,21 @@
             "args": {
               "customEventId": "c99bf8d3-9942-4d5f-be4c-bdb1a43de650",
               "$variable[V0]$": {
-                "type": "number",
-                "value": 0
+                "type": "variable",
+                "value": "45"
               },
               "__collapse": true
             },
             "id": "79c25d6e-18e0-4311-93dc-a5d143af433d",
             "children": {}
+          },
+          {
+            "command": "EVENT_INC_VALUE",
+            "args": {
+              "variable": "45",
+              "__collapse": true
+            },
+            "id": "a36774f9-91ea-4165-a51d-aef58cb4696c"
           },
           {
             "command": "EVENT_SOUND_PLAY_EFFECT",

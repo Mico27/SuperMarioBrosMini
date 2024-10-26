@@ -367,13 +367,21 @@
       "args": {
         "customEventId": "c99bf8d3-9942-4d5f-be4c-bdb1a43de650",
         "$variable[V0]$": {
-          "type": "number",
-          "value": 0
+          "type": "variable",
+          "value": "45"
         },
         "__collapse": true
       },
       "id": "663ff429-8ef0-4f1b-ad7e-1d73008400e2",
       "children": {}
+    },
+    {
+      "command": "EVENT_INC_VALUE",
+      "args": {
+        "variable": "45",
+        "__collapse": true
+      },
+      "id": "59f6ca90-441a-46e2-89cb-d18aa2dd99e8"
     },
     {
       "command": "EVENT_SOUND_PLAY_EFFECT",

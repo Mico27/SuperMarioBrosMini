@@ -19,6 +19,7 @@ extern UBYTE actor_counter_a[MAX_ACTORS];
 extern UBYTE actor_counter_b[MAX_ACTORS];
 extern UBYTE actor_linked_actor_idx[MAX_ACTORS];
 
+extern UBYTE current_behavior;
 extern WORD current_actor_x;
 extern WORD new_actor_x;
 extern WORD new_actor_y;
