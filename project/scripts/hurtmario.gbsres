@@ -420,19 +420,59 @@
                         "id": "8df5998d-5df9-455c-8a96-35d26491b452"
                       },
                       {
-                        "command": "EVENT_PALETTE_SET_SPRITE",
+                        "command": "EVENT_IF",
                         "args": {
-                          "palette0": "e3b4697e-c57b-4ada-bc32-8e8cf3d244e4",
-                          "palette1": "keep",
-                          "palette2": "keep",
-                          "palette3": "keep",
-                          "palette4": "keep",
-                          "palette5": "keep",
-                          "palette6": "keep",
-                          "palette7": "keep",
-                          "__collapse": true
+                          "condition": {
+                            "type": "eq",
+                            "valueA": {
+                              "type": "variable",
+                              "value": "11"
+                            },
+                            "valueB": {
+                              "type": "number",
+                              "value": 0
+                            }
+                          },
+                          "__collapseElse": false,
+                          "__collapse": false
                         },
-                        "id": "105357b7-40d0-4bfa-b503-15bbdc44220d"
+                        "children": {
+                          "true": [
+                            {
+                              "command": "EVENT_PALETTE_SET_SPRITE",
+                              "args": {
+                                "palette0": "e3b4697e-c57b-4ada-bc32-8e8cf3d244e4",
+                                "palette1": "keep",
+                                "palette2": "keep",
+                                "palette3": "keep",
+                                "palette4": "keep",
+                                "palette5": "keep",
+                                "palette6": "keep",
+                                "palette7": "keep",
+                                "__collapse": true
+                              },
+                              "id": "105357b7-40d0-4bfa-b503-15bbdc44220d"
+                            }
+                          ],
+                          "false": [
+                            {
+                              "command": "EVENT_PALETTE_SET_SPRITE",
+                              "args": {
+                                "palette0": "bef8b617-da16-4cfa-86f2-a468ed493d5c",
+                                "palette1": "keep",
+                                "palette2": "keep",
+                                "palette3": "keep",
+                                "palette4": "keep",
+                                "palette5": "keep",
+                                "palette6": "keep",
+                                "palette7": "keep",
+                                "__collapse": true
+                              },
+                              "id": "1c359b5f-0eb6-4758-9623-6fe6f71f06d6"
+                            }
+                          ]
+                        },
+                        "id": "ed5fc496-07aa-49d8-ad3a-409403a57b50"
                       },
                       {
                         "command": "EVENT_ACTOR_SET_STATE",

@@ -213,15 +213,51 @@
             "children": {}
           },
           {
-            "command": "EVENT_UI_ALT_DISPLAY_TEXT",
+            "command": "EVENT_IF",
             "args": {
-              "text": "THANK YOU MARIO!",
-              "x": 2,
-              "y": 5,
+              "condition": {
+                "type": "eq",
+                "valueA": {
+                  "type": "variable",
+                  "value": "11"
+                },
+                "valueB": {
+                  "type": "number",
+                  "value": 0
+                }
+              },
+              "__collapseElse": false,
               "__collapse": true
             },
-            "id": "414edff9-8831-498e-bf3e-eec1bdfa4c00",
-            "children": {}
+            "children": {
+              "true": [
+                {
+                  "command": "EVENT_UI_ALT_DISPLAY_TEXT",
+                  "args": {
+                    "text": "THANK YOU MARIO!",
+                    "x": 2,
+                    "y": 5,
+                    "__collapse": false
+                  },
+                  "id": "a3ff5f08-3e86-4f8a-960e-81103fd392ba",
+                  "children": {}
+                }
+              ],
+              "false": [
+                {
+                  "command": "EVENT_UI_ALT_DISPLAY_TEXT",
+                  "args": {
+                    "text": "THANK YOU LUIGI!",
+                    "x": 2,
+                    "y": 5,
+                    "__collapse": false
+                  },
+                  "id": "b70701f9-9ec1-4024-84ff-2eaf2c1777bf",
+                  "children": {}
+                }
+              ]
+            },
+            "id": "19dd015e-4bdd-455e-92d5-ce0abf0b1eff"
           },
           {
             "command": "EVENT_WAIT",

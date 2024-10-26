@@ -47,15 +47,51 @@
       "children": {}
     },
     {
-      "command": "EVENT_UI_ALT_DISPLAY_TEXT",
+      "command": "EVENT_IF",
       "args": {
-        "text": "THANK YOU MARIO!",
-        "x": 42,
-        "y": 6,
+        "condition": {
+          "type": "eq",
+          "valueA": {
+            "type": "variable",
+            "value": "11"
+          },
+          "valueB": {
+            "type": "number",
+            "value": 0
+          }
+        },
+        "__collapseElse": false,
         "__collapse": false
       },
-      "id": "b1bce7ab-0cd4-4cf7-a9f3-e6f0ab90a265",
-      "children": {}
+      "children": {
+        "true": [
+          {
+            "command": "EVENT_UI_ALT_DISPLAY_TEXT",
+            "args": {
+              "text": "THANK YOU MARIO!",
+              "x": 42,
+              "y": 6,
+              "__collapse": false
+            },
+            "id": "c4057ff5-5bc8-4832-b5da-5f35359d5ace",
+            "children": {}
+          }
+        ],
+        "false": [
+          {
+            "command": "EVENT_UI_ALT_DISPLAY_TEXT",
+            "args": {
+              "text": "THANK YOU LUIGI!",
+              "x": 42,
+              "y": 6,
+              "__collapse": false
+            },
+            "id": "bfcf5f22-0828-44e0-bbf8-8d9c60bdc02f",
+            "children": {}
+          }
+        ]
+      },
+      "id": "ad08eb24-341e-4c49-9be1-212a69e4b905"
     },
     {
       "command": "EVENT_WAIT",

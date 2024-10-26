@@ -723,7 +723,7 @@ void actor_behavior_update_c(UBYTE i, actor_t * actor) BANKED {
 					}
 					if (!(actor_counter_a[i] & 127)){	
 						actor_counter_a[i] = rand() & 63;	
-						if (actor_counter_a[i] < 32){
+						if (actor_counter_a[i] < 48){
 							//barrel 1							
 							UBYTE attack_idx = actor_linked_actor_idx[i];
 							if (actor_states[attack_idx] != 0 && actor_states[attack_idx] != 255){
