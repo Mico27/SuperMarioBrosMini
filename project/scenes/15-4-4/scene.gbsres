@@ -117,10 +117,6 @@
           "type": "number",
           "value": 1
         },
-        "$variable[V1]$": {
-          "type": "number",
-          "value": 2
-        },
         "__collapse": true
       },
       "id": "f7739e34-0883-4d04-b1a1-f3a0cefe6cbe"
@@ -156,6 +152,14 @@
         "__collapse": true
       },
       "id": "97013cb5-d35a-4d1c-a00c-858338111135"
+    },
+    {
+      "command": "EVENT_MUSIC_PLAY",
+      "args": {
+        "musicId": "8b5e3c6d-c0bd-4784-92fd-4c39c79f3c96",
+        "__collapse": true
+      },
+      "id": "dcea8fcb-dff2-47aa-bc8b-ca443c445c87"
     }
   ],
   "playerHit1Script": [],

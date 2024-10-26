@@ -3,7 +3,13 @@
   "id": "32d76253-2c63-4808-a673-2c3b44b8615b",
   "name": "InitLevel",
   "description": "",
-  "variables": {},
+  "variables": {
+    "V0": {
+      "id": "V0",
+      "name": "SkipMusic",
+      "passByReference": false
+    }
+  },
   "actors": {},
   "symbol": "script_6",
   "script": [
@@ -44,12 +50,37 @@
       "id": "fc514fb8-55a9-4aba-a64c-904795c9eb91"
     },
     {
-      "command": "EVENT_CALL_CUSTOM_EVENT",
+      "command": "EVENT_IF",
       "args": {
-        "customEventId": "67f8ee9d-9af9-40b2-906f-962bf8c36cf7",
-        "__collapse": true
+        "condition": {
+          "type": "eq",
+          "valueA": {
+            "type": "variable",
+            "value": "V0"
+          },
+          "valueB": {
+            "type": "number",
+            "value": 0
+          }
+        },
+        "__collapseElse": true,
+        "__collapse": false,
+        "__comment": false
       },
-      "id": "8e9fa897-93a7-4b8d-907b-afaa062af2d7"
+      "children": {
+        "true": [
+          {
+            "command": "EVENT_CALL_CUSTOM_EVENT",
+            "args": {
+              "customEventId": "67f8ee9d-9af9-40b2-906f-962bf8c36cf7",
+              "__collapse": true
+            },
+            "id": "8e9fa897-93a7-4b8d-907b-afaa062af2d7"
+          }
+        ],
+        "false": []
+      },
+      "id": "3cc993f6-00ad-4bf5-956d-604b23afbbd8"
     },
     {
       "command": "EVENT_CAMERA_SET_POSITION",
@@ -766,7 +797,7 @@
                 }
               },
               "__collapseElse": false,
-              "__collapse": false
+              "__collapse": true
             },
             "children": {
               "true": [
@@ -1574,7 +1605,7 @@
                 }
               },
               "__collapseElse": false,
-              "__collapse": false
+              "__collapse": true
             },
             "children": {
               "true": [
@@ -2134,7 +2165,7 @@
       "command": "EVENT_GROUP",
       "args": {
         "__label": "Start Menu",
-        "__collapse": true,
+        "__collapse": false,
         "__comment": false
       },
       "children": {
@@ -3139,7 +3170,7 @@
                           ],
                           "override": true,
                           "__scriptTabs": "press",
-                          "__collapse": false
+                          "__collapse": true
                         },
                         "children": {
                           "true": [
@@ -4887,7 +4918,7 @@
               ],
               "override": true,
               "__scriptTabs": "press",
-              "__collapse": true
+              "__collapse": false
             },
             "children": {
               "true": [

@@ -51,7 +51,7 @@
       "args": {
         "specific_event": "1",
         "__scriptTabs": "scriptinput",
-        "__collapse": false
+        "__collapse": true
       },
       "children": {
         "script": [
@@ -117,10 +117,6 @@
           "type": "number",
           "value": 1
         },
-        "$variable[V1]$": {
-          "type": "number",
-          "value": 2
-        },
         "__collapse": true
       },
       "id": "a5dbaf03-9909-4cbf-a649-0869a00340d9"
@@ -156,6 +152,14 @@
         "__collapse": true
       },
       "id": "56cecd6e-2f5d-4b70-b846-bd50bf172bda"
+    },
+    {
+      "command": "EVENT_MUSIC_PLAY",
+      "args": {
+        "musicId": "fc0d1b32-54d0-467b-b6c4-ed5f1054056c",
+        "__collapse": true
+      },
+      "id": "98f7936c-a7e5-48ad-996f-70a494933e8c"
     }
   ],
   "playerHit1Script": [],

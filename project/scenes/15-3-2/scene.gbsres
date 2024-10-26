@@ -35,6 +35,13 @@
   "y": 5456,
   "script": [
     {
+      "command": "EVENT_MUSIC_STOP",
+      "args": {
+        "__collapse": true
+      },
+      "id": "cdf4f7fa-8f5e-4853-a8e6-3b4daad7be75"
+    },
+    {
       "command": "EVENT_SET_VALUE",
       "args": {
         "variable": "18",
@@ -117,10 +124,6 @@
           "type": "number",
           "value": 1
         },
-        "$variable[V1]$": {
-          "type": "number",
-          "value": 2
-        },
         "__collapse": true
       },
       "id": "7fdb6c5d-62da-430a-b691-2845907be024"
@@ -139,14 +142,6 @@
               "__collapse": true
             },
             "id": "f6357914-a7fb-494a-9f53-95ed58b491d4",
-            "children": {}
-          },
-          {
-            "command": "EVENT_MUSIC_STOP",
-            "args": {
-              "__collapse": true
-            },
-            "id": "096e9b07-a32a-4bd0-9986-ce51361060ea",
             "children": {}
           },
           {
@@ -284,6 +279,14 @@
               "units": "frames"
             },
             "id": "573e9f1f-a60d-4d47-8480-788d67ebd628"
+          },
+          {
+            "command": "EVENT_MUSIC_PLAY",
+            "args": {
+              "musicId": "08801a94-7eaf-4f02-916d-0ed6eb17245c",
+              "__collapse": true
+            },
+            "id": "46e55a45-105f-4391-b8f3-f04cf08b6de3"
           },
           {
             "command": "EVENT_START_SIMULATED_INPUTS",

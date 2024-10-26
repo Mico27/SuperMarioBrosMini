@@ -31,11 +31,23 @@
       "children": {
         "true": [
           {
+            "command": "EVENT_SET_VALUE",
+            "args": {
+              "variable": "45",
+              "value": {
+                "type": "number",
+                "value": 2
+              },
+              "__collapse": true
+            },
+            "id": "053905c9-49d6-47d1-8352-6923fa975c28"
+          },
+          {
             "command": "EVENT_GBVM_SCRIPT",
             "args": {
               "script": "VM_SET_CONST_UINT8 _que_attacking, 1",
               "references": [],
-              "__collapse": false
+              "__collapse": true
             },
             "id": "99311129-b83f-474b-a0a7-6843b7cd5fe4"
           },
@@ -45,7 +57,7 @@
               "time": 0.5,
               "frames": 20,
               "units": "frames",
-              "__collapse": false
+              "__collapse": true
             },
             "id": "82c6fc7d-19f1-48c3-85ce-f6c7133bd1d5"
           },
@@ -54,7 +66,7 @@
             "args": {
               "script": "VM_SET_CONST_UINT8 _que_attacking, 0",
               "references": [],
-              "__collapse": false
+              "__collapse": true
             },
             "id": "20b0b4a2-479a-4513-aa31-425e2299ae90"
           }

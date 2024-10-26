@@ -61,6 +61,13 @@
       "children": {
         "true": [
           {
+            "command": "EVENT_MUSIC_STOP",
+            "args": {
+              "__collapse": true
+            },
+            "id": "78de9304-ac10-4188-afec-1956234c26b3"
+          },
+          {
             "command": "EVENT_TIMER_DISABLE",
             "args": {
               "timer": 1,
@@ -85,7 +92,7 @@
             "command": "EVENT_ACTOR_DEACTIVATE",
             "args": {
               "actorId": "9c715198-87b8-4bdd-bae4-1a9153428515",
-              "__collapse": false
+              "__collapse": true
             },
             "id": "a826ee03-3709-4ce3-ad4c-c9f524873727"
           },
@@ -93,7 +100,7 @@
             "command": "EVENT_ACTOR_DEACTIVATE",
             "args": {
               "actorId": "e8b62f7e-8212-44cf-8ed9-1e5a28381066",
-              "__collapse": false
+              "__collapse": true
             },
             "id": "dcf8bb50-808d-4fae-9207-3082b440699c"
           },
@@ -101,7 +108,7 @@
             "command": "EVENT_ACTOR_DEACTIVATE",
             "args": {
               "actorId": "aea82260-266d-40c2-bdc0-3756d650008a",
-              "__collapse": false
+              "__collapse": true
             },
             "id": "a8e92f4b-cf9a-48a6-a07b-c18807c3c57c"
           },
@@ -109,7 +116,7 @@
             "command": "EVENT_ACTOR_DEACTIVATE",
             "args": {
               "actorId": "e02f8bae-f9db-4413-95f9-aaf916f6be68",
-              "__collapse": false
+              "__collapse": true
             },
             "id": "c8501745-96bd-4cb0-9baf-9ccf7ac4926f"
           },
@@ -117,42 +124,47 @@
             "command": "EVENT_ACTOR_DEACTIVATE",
             "args": {
               "actorId": "eb39aad0-864e-483a-9774-46ce7b80a38d",
-              "__collapse": false
+              "__collapse": true
             },
             "id": "d606ab87-f45d-4258-bd4b-1605f7679408"
           },
           {
             "command": "EVENT_ACTOR_DEACTIVATE",
             "args": {
-              "actorId": "cae6c4b3-121a-4eb5-9726-73857cf9b452"
+              "actorId": "cae6c4b3-121a-4eb5-9726-73857cf9b452",
+              "__collapse": true
             },
             "id": "038ba207-0618-42c1-8955-908dc28adb77"
           },
           {
             "command": "EVENT_ACTOR_DEACTIVATE",
             "args": {
-              "actorId": "3bb79605-ff0c-4b25-ad17-1e12f92b4194"
+              "actorId": "3bb79605-ff0c-4b25-ad17-1e12f92b4194",
+              "__collapse": true
             },
             "id": "bdba5a9a-979d-4510-b6a9-36ab13d02a8b"
           },
           {
             "command": "EVENT_ACTOR_DEACTIVATE",
             "args": {
-              "actorId": "81130a5f-82ad-4771-ac53-f3d5147e0378"
+              "actorId": "81130a5f-82ad-4771-ac53-f3d5147e0378",
+              "__collapse": true
             },
             "id": "32eac32a-b6e7-494c-9f2f-2f334e7deb76"
           },
           {
             "command": "EVENT_ACTOR_DEACTIVATE",
             "args": {
-              "actorId": "c79c98f9-4ab8-4d60-93d9-c9cd618071d3"
+              "actorId": "c79c98f9-4ab8-4d60-93d9-c9cd618071d3",
+              "__collapse": true
             },
             "id": "cc104ce0-60c3-4ada-93d2-d0e996641f3d"
           },
           {
             "command": "EVENT_ACTOR_DEACTIVATE",
             "args": {
-              "actorId": "14bc16d4-7ac0-4ce5-b262-cd0083154794"
+              "actorId": "14bc16d4-7ac0-4ce5-b262-cd0083154794",
+              "__collapse": true
             },
             "id": "f2bb0b83-8a3e-4b38-b8bd-0c4754b7d5d2"
           },
@@ -171,7 +183,7 @@
                 "type": "number",
                 "value": 0
               },
-              "__collapse": false
+              "__collapse": true
             },
             "id": "e4e786ec-c55c-4e79-acb2-a9a0f3492da6",
             "children": {}
@@ -655,7 +667,7 @@
           {
             "command": "EVENT_MUSIC_PLAY",
             "args": {
-              "musicId": "df9ee2cd-ba1a-42d7-8bf8-072532cf1bcd",
+              "musicId": "756f2dad-60d2-44e1-ac47-c879a18ce1d7",
               "__collapse": true
             },
             "id": "812106c7-bb0a-4ef4-838e-b136e118b831",

@@ -49,6 +49,29 @@
       "id": "4c806ced-3ebd-4427-bc29-951e6b7d2dc7"
     },
     {
+      "command": "EVENT_IF",
+      "args": {
+        "condition": {
+          "type": "expression",
+          "value": "$09$ == 15 && $10$ == 4"
+        },
+        "__collapseElse": true
+      },
+      "children": {
+        "true": [
+          {
+            "command": "EVENT_MUSIC_PLAY",
+            "args": {
+              "musicId": "a4d8bd2d-95f7-4a1f-abf4-e3e1c9ee2e83"
+            },
+            "id": "95feec80-a599-4326-a78f-53773a40a7af"
+          }
+        ],
+        "false": []
+      },
+      "id": "6c7ac15f-9936-4e41-a8dd-d1064b1e94e1"
+    },
+    {
       "command": "EVENT_SET_INPUT_SCRIPT",
       "args": {
         "input": [
@@ -576,7 +599,7 @@
           }
         },
         "__collapseElse": false,
-        "__collapse": false
+        "__collapse": true
       },
       "children": {
         "true": [

@@ -51,7 +51,7 @@
       "args": {
         "specific_event": "1",
         "__scriptTabs": "scriptinput",
-        "__collapse": false
+        "__collapse": true
       },
       "children": {
         "script": [
@@ -116,10 +116,6 @@
         "$variable[V0]$": {
           "type": "number",
           "value": 1
-        },
-        "$variable[V1]$": {
-          "type": "number",
-          "value": 2
         },
         "__collapse": true
       },
@@ -259,6 +255,14 @@
               "__collapse": true
             },
             "id": "3d5e21a7-6cca-4f41-90af-a51cec627d66"
+          },
+          {
+            "command": "EVENT_MUSIC_PLAY",
+            "args": {
+              "musicId": "c9327740-d37c-4512-aa7c-8e334a3c8641",
+              "__collapse": true
+            },
+            "id": "384d5b3e-3f52-450d-8856-53fb5d641f52"
           },
           {
             "command": "EVENT_ACTOR_SET_SPRITE",
@@ -800,6 +804,14 @@
               "__collapse": true
             },
             "id": "bafcee5f-7a28-4b4e-bea3-d47d2a479466"
+          },
+          {
+            "command": "EVENT_MUSIC_PLAY",
+            "args": {
+              "musicId": "fc0d1b32-54d0-467b-b6c4-ed5f1054056c",
+              "__collapse": true
+            },
+            "id": "cab91eb0-9c4d-4a0c-9b11-f9a202936602"
           }
         ]
       },
