@@ -7,5 +7,4 @@ Michirin
 Itch.io: https://michirin.itch.io/
 YouTube: https://www.youtube.com/@Michirin9801
 
-
-https://www.youtube.com/watch?v=TkYDwZK8aNk
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/TkYDwZK8aNk/0.jpg)](https://www.youtube.com/watch?v=TkYDwZK8aNk)
