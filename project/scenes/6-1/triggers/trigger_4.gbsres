@@ -19,7 +19,8 @@
       "command": "EVENT_GET_ACTOR_STATE",
       "args": {
         "actorId": "3ec8fb75-9434-4b19-a568-dbb4d9865850",
-        "variable": "40"
+        "variable": "40",
+        "__collapse": true
       },
       "id": "9fdf3b2b-c7d3-497c-8fa3-fe42d4d0510c"
     },
@@ -37,7 +38,8 @@
             "value": 1
           }
         },
-        "__collapseElse": true
+        "__collapseElse": true,
+        "__collapse": true
       },
       "children": {
         "true": [
@@ -66,6 +68,18 @@
         "false": []
       },
       "id": "67ac6518-daca-439a-8737-66aec1aed966"
+    },
+    {
+      "command": "EVENT_SET_VALUE",
+      "args": {
+        "variable": "36",
+        "value": {
+          "type": "number",
+          "value": 0
+        },
+        "__collapse": true
+      },
+      "id": "329e4a1e-38d8-4739-b065-d757a1d15f45"
     }
   ],
   "leaveScript": [],

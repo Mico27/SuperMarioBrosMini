@@ -1730,7 +1730,7 @@
       "command": "EVENT_GROUP",
       "args": {
         "__label": "Init Mario",
-        "__collapse": false
+        "__collapse": true
       },
       "children": {
         "true": [
@@ -2165,7 +2165,7 @@
       "command": "EVENT_GROUP",
       "args": {
         "__label": "Start Menu",
-        "__collapse": false,
+        "__collapse": true,
         "__comment": false
       },
       "children": {
@@ -4878,6 +4878,18 @@
         "__collapse": true
       },
       "id": "b1d5dafe-31a1-49aa-9bde-7febcc5ae6b5"
+    },
+    {
+      "command": "EVENT_SET_VALUE",
+      "args": {
+        "variable": "36",
+        "value": {
+          "type": "number",
+          "value": 0
+        },
+        "__collapse": true
+      },
+      "id": "73530f68-e1dc-4afe-ace6-078d9365f0ca"
     },
     {
       "command": "EVENT_ENGINE_FIELD_SET",

@@ -595,7 +595,7 @@
             "command": "EVENT_GROUP",
             "args": {
               "__label": "Multi Coin Brick",
-              "__collapse": true
+              "__collapse": false
             },
             "children": {
               "true": [
@@ -723,29 +723,48 @@
                   "id": "915270a9-a40f-41c3-b30f-2e6ff28de48b"
                 },
                 {
-                  "command": "EVENT_INC_VALUE",
-                  "args": {
-                    "variable": "36",
-                    "__collapse": true
-                  },
-                  "id": "0021f537-5589-449e-af68-66f714474795"
-                },
-                {
                   "command": "EVENT_IF",
                   "args": {
                     "condition": {
-                      "type": "gte",
+                      "type": "eq",
                       "valueA": {
                         "type": "variable",
                         "value": "36"
                       },
                       "valueB": {
                         "type": "number",
-                        "value": 10
+                        "value": 0
                       }
                     },
-                    "__collapseElse": false,
+                    "__collapseElse": true,
                     "__collapse": true
+                  },
+                  "children": {
+                    "true": [
+                      {
+                        "command": "EVENT_SET_VALUE",
+                        "args": {
+                          "variable": "36",
+                          "value": {
+                            "type": "variable",
+                            "value": "0"
+                          }
+                        },
+                        "id": "3c3fba86-5710-4125-affa-aced807f99be"
+                      }
+                    ],
+                    "false": []
+                  },
+                  "id": "e41778ab-5ed4-4c38-9186-bee41e7780c5"
+                },
+                {
+                  "command": "EVENT_IF",
+                  "args": {
+                    "condition": {
+                      "type": "expression",
+                      "value": "$36$ - $00$ > 10"
+                    },
+                    "__collapseElse": false
                   },
                   "children": {
                     "true": [
@@ -803,7 +822,7 @@
                       }
                     ]
                   },
-                  "id": "e25f576f-317f-4ba1-94b8-7c07d2501bd8"
+                  "id": "82272813-2b76-45c9-a7f0-64c65f701123"
                 },
                 {
                   "command": "EVENT_ACTOR_DEACTIVATE",
