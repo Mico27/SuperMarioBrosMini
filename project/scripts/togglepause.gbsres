@@ -28,7 +28,7 @@
     {
       "command": "EVENT_GBVM_SCRIPT",
       "args": {
-        "script": "VM_SET_CONST_UINT8 _music_play_isr_pause, 1"
+        "script": "VM_MUSIC_MUTE 0b1111\nVM_SET_CONST_UINT8 _music_play_isr_pause, 1\nVM_MUSIC_MUTE 0b0000"
       },
       "id": "9dc35d03-87f7-4c47-8ea4-19d48b8222e6"
     },
