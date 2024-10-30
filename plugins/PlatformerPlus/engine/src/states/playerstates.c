@@ -556,12 +556,12 @@ void crouch_state(void) BANKED {
 
     //DECELERATION
     if (pl_vel_x < 0) {
-        pl_vel_x += plat_dec;
+        pl_vel_x += (plat_dec >> 1);
         if (pl_vel_x > 0) {
             pl_vel_x = 0;
         }
     } else if (pl_vel_x > 0) {
-        pl_vel_x -= plat_dec;
+        pl_vel_x -= (plat_dec >> 1);
         if (pl_vel_x < 0) {
             pl_vel_x = 0;
         }
@@ -1314,7 +1314,7 @@ void climb_state(void) BANKED {
     //ANIMATION---------------------------------------------------------------------------------------------------
     //Button direction overrides velocity, for slippery run reasons
     if (INPUT_PRESSED(INPUT_LEFT)){
-		actor_set_dir(&PLAYER, DIR_LEFT, (pl_vel_y != 0)?TRUE:FALSE);		
+		actor_set_dir(&PLAYER, DIR_LEFT, (pl_vel_y != 0)?TRUE:FALSE);
     } else if (INPUT_PRESSED(INPUT_RIGHT)){
 		actor_set_dir(&PLAYER, DIR_RIGHT, (pl_vel_y != 0)?TRUE:FALSE);
     } else if (pl_vel_y != 0) {
