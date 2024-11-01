@@ -103,11 +103,11 @@ void actor_behavior_update_d(UBYTE i, actor_t * actor) BANKED {
 						actor_counter_b[i] = 0;
 					}
 					if (!(game_time & 3)){	
-						if (actor->pos.x < PLAYER.pos.x){
+						if (actor->pos.x < 2048 && actor->pos.x < PLAYER.pos.x){
 							if (actor_vel_x[i] < 8){
 								actor_vel_x[i]++;
 							}		
-						} else if (actor->pos.x >= PLAYER.pos.x + 128){
+						} else if (actor->pos.x > 512 && actor->pos.x >= PLAYER.pos.x + 256){
 							if (actor_vel_x[i] > -8){
 								actor_vel_x[i]--;
 							}
@@ -187,27 +187,30 @@ void actor_behavior_update_d(UBYTE i, actor_t * actor) BANKED {
 					left_bowser_hand->pos.y =  left_bowser_hand->pos.y + actor_vel_y[left_bowser_hand_idx];
 					
 					
-					if (actor_counter_a[i] > 128){
+					if (actor_counter_a[i] > 96){
 						actor_counter_a[i] = rand();
-						if (actor_counter_a[i] < 64){
-							actor_counter_a[i] = 0;
-							actor_counter_b[i] = 0;
-							actor_states[i] = 5; 							
-							left_bowser_hand->frame = left_bowser_hand->frame_start + 1;
-							break;
-						} else if (actor_counter_a[i] < 128){
-							actor_counter_a[i] = 0;
-							actor_counter_b[i] = 0;
-							actor_states[i] = 6; 							
-							right_bowser_hand->frame = right_bowser_hand->frame_start + 1;
-							break;
+						if (actor_counter_a[i] < 128){
+							if (actor->pos.x < 1280){
+								actor_counter_a[i] = 0;
+								actor_counter_b[i] = 0;
+								actor_states[i] = 6; 							
+								right_bowser_hand->frame = right_bowser_hand->frame_start + 1;
+								break;		
+							} else {
+								actor_counter_a[i] = 0;
+								actor_counter_b[i] = 0;
+								actor_states[i] = 5; 							
+								left_bowser_hand->frame = left_bowser_hand->frame_start + 1;
+								break;
+							}
+							
 						} else {
 							actor_counter_a[i] = 0;
 							actor_counter_b[i] = 0;
 							actor_states[i] = 7;
 							actor_vel_y[i] = 0;
 							break;
-						}
+						}						
 					}
 					actor_counter_a[i]++;
 					set_bowser_frame(3);

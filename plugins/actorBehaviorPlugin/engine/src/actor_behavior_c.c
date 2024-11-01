@@ -296,9 +296,9 @@ void actor_behavior_update_c(UBYTE i, actor_t * actor) BANKED {
 				//Animation				
 				if (!(game_time & 1)){
 					actor_set_dir(actor, DIR_LEFT, actor_counter_b[i]);
-					if (!(actor_counter_a[i] & 63)){	
-						actor_counter_a[i] = rand();	
-						if (actor_counter_a[i] < 128 && (PLAYER.pos.x < actor->pos.x)){
+					if (actor_counter_a[i] > 64){	
+						actor_counter_a[i] = (rand() & 31);	
+						if (PLAYER.pos.x < actor->pos.x){
 							//boulder 1							
 							UBYTE attack_idx = actor_linked_actor_idx[i];
 							if (actor_states[attack_idx] != 0 && actor_states[attack_idx] != 255){
