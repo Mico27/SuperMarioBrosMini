@@ -843,7 +843,7 @@
                       }
                     },
                     "__collapseElse": false,
-                    "__collapse": true
+                    "__collapse": false
                   },
                   "children": {
                     "true": [
@@ -875,7 +875,7 @@
                             "type": "number",
                             "value": 11
                           },
-                          "__collapse": false,
+                          "__collapse": true,
                           "__label": "Display Title"
                         },
                         "id": "2cbeee4e-e4aa-4262-b98c-7215998cf850"
@@ -914,7 +914,7 @@
                                   }
                                 },
                                 "__collapseElse": false,
-                                "__collapse": false
+                                "__collapse": true
                               },
                               "children": {
                                 "true": [
@@ -1056,7 +1056,7 @@
                               "command": "EVENT_GROUP",
                               "args": {
                                 "__label": "Render Top SCore",
-                                "__collapse": false
+                                "__collapse": true
                               },
                               "children": {
                                 "true": [
@@ -1112,7 +1112,7 @@
                                   "type": "number",
                                   "value": 7
                                 },
-                                "__collapse": false,
+                                "__collapse": true,
                                 "__label": "Display Title"
                               },
                               "id": "3b0f64ba-19b1-40eb-aa97-0d683a5d451e"
@@ -1368,7 +1368,7 @@
                                     "command": "EVENT_GBVM_SCRIPT",
                                     "args": {
                                       "script": "VM_SWITCH_TEXT_LAYER .TEXT_LAYER_BKG\nVM_LOAD_TEXT 2 \n.dw VAR_SELECTEDWORLD\n.dw VAR_SELECTEDLEVEL\n.asciz \"\\003\\013\\012%D2\\003\\016\\012%D1\"\nVM_CALL_NATIVE b_ui_alt_display_text, _ui_alt_display_text",
-                                      "__collapse": true,
+                                      "__collapse": false,
                                       "references": [
                                         {
                                           "type": "variable",
@@ -1502,7 +1502,7 @@
                           "duration": 1,
                           "frames": 32,
                           "__scriptTabs": "end",
-                          "__collapse": false,
+                          "__collapse": true,
                           "units": "frames"
                         },
                         "children": {
@@ -2256,7 +2256,7 @@
       "command": "EVENT_GROUP",
       "args": {
         "__label": "Start Menu",
-        "__collapse": true,
+        "__collapse": false,
         "__comment": false
       },
       "children": {
@@ -2667,7 +2667,7 @@
                           ],
                           "override": true,
                           "__scriptTabs": "press",
-                          "__collapse": true
+                          "__collapse": false
                         },
                         "children": {
                           "true": [
@@ -2991,23 +2991,23 @@
                                     "command": "EVENT_GROUP",
                                     "args": {
                                       "__label": "Render world and level",
-                                      "__collapse": true
+                                      "__collapse": false
                                     },
                                     "children": {
                                       "true": [
                                         {
                                           "command": "EVENT_GBVM_SCRIPT",
                                           "args": {
-                                            "script": "VM_SWITCH_TEXT_LAYER .TEXT_LAYER_BKG\nVM_LOAD_TEXT 2 \n.dw VAR_CURRENTWORLD\n.dw VAR_CURRENTLEVEL\n.asciz \"\\003\\013\\012%D2\\003\\016\\012%D1\"\nVM_CALL_NATIVE b_ui_alt_display_text, _ui_alt_display_text",
+                                            "script": "VM_SWITCH_TEXT_LAYER .TEXT_LAYER_BKG\nVM_LOAD_TEXT 2 \n.dw VAR_SELECTEDWORLD\n.dw VAR_SELECTEDLEVEL\n.asciz \"\\003\\013\\012%D2\\003\\016\\012%D1\"\nVM_CALL_NATIVE b_ui_alt_display_text, _ui_alt_display_text",
                                             "__collapse": false,
                                             "references": [
                                               {
                                                 "type": "variable",
-                                                "id": "9"
+                                                "id": "65"
                                               },
                                               {
                                                 "type": "variable",
-                                                "id": "10"
+                                                "id": "67"
                                               }
                                             ]
                                           },
