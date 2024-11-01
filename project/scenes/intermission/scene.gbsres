@@ -35,6 +35,61 @@
   "y": 256,
   "script": [
     {
+      "command": "EVENT_SET_VALUE",
+      "args": {
+        "variable": "74",
+        "value": {
+          "type": "variable",
+          "value": "9"
+        }
+      },
+      "id": "586b2c40-9263-4754-b88a-14566ab5945a"
+    },
+    {
+      "command": "EVENT_SET_VALUE",
+      "args": {
+        "variable": "75",
+        "value": {
+          "type": "variable",
+          "value": "10"
+        }
+      },
+      "id": "bc2cf872-d5e5-4033-ae63-b5b6f3df586c"
+    },
+    {
+      "command": "EVENT_SET_VALUE",
+      "args": {
+        "variable": "76",
+        "value": {
+          "type": "variable",
+          "value": "22"
+        }
+      },
+      "id": "c560eabe-b7f8-48a8-8d4e-ff70a3f8efeb"
+    },
+    {
+      "command": "EVENT_SET_VALUE",
+      "args": {
+        "variable": "78",
+        "value": {
+          "type": "number",
+          "value": 0
+        }
+      },
+      "id": "f3efdf13-ac83-4241-952d-38946ee89161"
+    },
+    {
+      "command": "EVENT_SET_VALUE",
+      "args": {
+        "variable": "79",
+        "value": {
+          "type": "number",
+          "value": 0
+        }
+      },
+      "id": "5ee2c6ae-3c97-4550-a58e-4f2affd24044"
+    },
+    {
       "command": "EVENT_OVERLAY_HIDE",
       "args": {
         "__collapse": true

@@ -26,6 +26,17 @@
       "id": "fa833136-5139-4b23-87c7-a032a4a138db"
     },
     {
+      "command": "EVENT_SET_VALUE",
+      "args": {
+        "variable": "77",
+        "value": {
+          "type": "number",
+          "value": 1
+        }
+      },
+      "id": "fb154d54-dee6-4e6f-a5b8-6cb924e91af1"
+    },
+    {
       "command": "EVENT_GBVM_SCRIPT",
       "args": {
         "script": "VM_MUSIC_MUTE 0b1111\nVM_SET_CONST_UINT8 _music_play_isr_pause, 1\nVM_MUSIC_MUTE 0b0000"
@@ -61,6 +72,17 @@
         "effect": 0
       },
       "id": "1611b1ac-a462-46be-983b-50dc041ccce6"
+    },
+    {
+      "command": "EVENT_SET_VALUE",
+      "args": {
+        "variable": "77",
+        "value": {
+          "type": "number",
+          "value": 0
+        }
+      },
+      "id": "07cc24aa-8c33-4112-9582-3f0dbbd73ab9"
     },
     {
       "command": "EVENT_GBVM_SCRIPT",
