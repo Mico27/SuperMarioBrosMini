@@ -52,7 +52,7 @@
       "args": {
         "specific_event": "1",
         "__scriptTabs": "scriptinput",
-        "__collapse": false
+        "__collapse": true
       },
       "children": {
         "script": [
@@ -121,6 +121,18 @@
         "__collapse": true
       },
       "id": "db0009fd-057f-43a6-8fb1-601efce312ed"
+    },
+    {
+      "command": "EVENT_SET_VALUE",
+      "args": {
+        "variable": "78",
+        "value": {
+          "type": "number",
+          "value": 1
+        },
+        "__collapse": true
+      },
+      "id": "b4d714e3-cf99-4f44-a7e2-40d149574af0"
     }
   ],
   "playerHit1Script": [],
