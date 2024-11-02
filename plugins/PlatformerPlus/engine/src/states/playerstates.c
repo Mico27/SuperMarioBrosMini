@@ -1296,7 +1296,9 @@ void climb_state(void) BANKED {
                 tile_start++;
             }
             PLAYER.pos.y = new_y;
-        }
+        } else if (sram_map_data[VRAM_OFFSET(current_vine_tile_x, ((PLAYER.pos.y >> 4) + PLAYER.bounds.bottom) >> 3)] != 151 && sram_map_data[VRAM_OFFSET(current_vine_tile_x, (((PLAYER.pos.y >> 4) + PLAYER.bounds.top) >> 3))] != 151){
+			que_state = JUMP_INIT;			
+		}
     }
 
     //Actor Collisions
@@ -1331,7 +1333,6 @@ void climb_state(void) BANKED {
         if (nocollide == 0){
             //Standard Jump
             que_state = JUMP_INIT;
-			pl_vel_x = ((PLAYER.dir == DIR_LEFT)? -1024: 1024);
         }
     }
     jb_val = 0;

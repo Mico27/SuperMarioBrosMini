@@ -200,6 +200,18 @@
             "id": "5b84e45c-8c3f-41d4-9c5f-de8964909897"
           },
           {
+            "command": "EVENT_SET_VALUE",
+            "args": {
+              "variable": "29",
+              "value": {
+                "type": "number",
+                "value": 0
+              },
+              "__collapse": true
+            },
+            "id": "64fd0ae7-e928-4d29-b876-37c0ecbdbc59"
+          },
+          {
             "command": "EVENT_IF",
             "args": {
               "condition": {
@@ -213,7 +225,8 @@
                   "value": 1
                 }
               },
-              "__collapseElse": true
+              "__collapseElse": true,
+              "__collapse": true
             },
             "children": {
               "true": [

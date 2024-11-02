@@ -20,7 +20,8 @@
         "value": {
           "type": "variable",
           "value": "9"
-        }
+        },
+        "__collapse": true
       },
       "id": "515cc747-2e12-45ca-8e7e-e5793ce91ac7"
     },
@@ -31,7 +32,8 @@
         "value": {
           "type": "variable",
           "value": "10"
-        }
+        },
+        "__collapse": true
       },
       "id": "c5d82d5e-2589-4fbc-bad8-cc75ce9d8c9a"
     },
@@ -42,7 +44,8 @@
         "value": {
           "type": "variable",
           "value": "22"
-        }
+        },
+        "__collapse": true
       },
       "id": "3dbbdafb-ae45-49fe-88a3-c000661d9b28"
     },
@@ -53,7 +56,8 @@
         "value": {
           "type": "number",
           "value": 0
-        }
+        },
+        "__collapse": true
       },
       "id": "d7d65d7b-21b6-4b81-97d3-521f5a9a9011"
     },
@@ -64,7 +68,8 @@
         "value": {
           "type": "number",
           "value": 0
-        }
+        },
+        "__collapse": true
       },
       "id": "c793d2e3-0bb5-42eb-b825-2ae8032ffe2c"
     },
@@ -771,7 +776,7 @@
       "command": "EVENT_GROUP",
       "args": {
         "__label": "Initialize Level UI",
-        "__collapse": false
+        "__collapse": true
       },
       "children": {
         "true": [
@@ -2030,6 +2035,18 @@
               "__collapse": true
             },
             "id": "8731f7a6-a07a-4a23-8868-cd801495a2d2"
+          },
+          {
+            "command": "EVENT_SET_VALUE",
+            "args": {
+              "variable": "44",
+              "value": {
+                "type": "number",
+                "value": 0
+              },
+              "__collapse": true
+            },
+            "id": "d0537833-2094-41ad-aa08-95e50ae3f412"
           }
         ]
       },
@@ -2311,7 +2328,7 @@
       "command": "EVENT_GROUP",
       "args": {
         "__label": "Start Menu",
-        "__collapse": false,
+        "__collapse": true,
         "__comment": false
       },
       "children": {
