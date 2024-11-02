@@ -1283,7 +1283,7 @@ void climb_state(void) BANKED {
         } else if (deltaY < 0) {
             //Moving Upward
             WORD new_y = PLAYER.pos.y + deltaY;
-            UBYTE tile_y = (((new_y >> 4) + PLAYER.bounds.top) >> 3);
+            tile_y = (((new_y >> 4) + PLAYER.bounds.top) >> 3);
             while (tile_start < tile_end) {
                 if (sram_map_data[VRAM_OFFSET(current_vine_tile_x, tile_y)] != 151 || tile_at(tile_start, tile_y) & COLLISION_BOTTOM) {					
                     new_y = ((((UBYTE)(tile_y + 1) << 3) - PLAYER.bounds.top) << 4) + 1;
