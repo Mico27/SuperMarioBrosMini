@@ -87,7 +87,7 @@
                 }
               },
               "__collapseElse": true,
-              "__collapse": true
+              "__collapse": false
             },
             "children": {
               "true": [
@@ -233,16 +233,45 @@
                         "id": "167c51ff-2ec0-4e9e-983d-463d2036dfb6"
                       },
                       {
-                        "command": "EVENT_SET_ACTOR_Y_VELOCITY",
+                        "command": "EVENT_IF_INPUT",
                         "args": {
-                          "actorId": "0",
-                          "yVelocity": {
-                            "type": "number",
-                            "value": -16
-                          },
+                          "input": [
+                            "up"
+                          ],
+                          "__collapseElse": false,
                           "__collapse": true
                         },
-                        "id": "91bdc4b1-3674-4b3e-b747-ed0518f8f76a"
+                        "children": {
+                          "true": [
+                            {
+                              "command": "EVENT_SET_ACTOR_Y_VELOCITY",
+                              "args": {
+                                "actorId": "0",
+                                "yVelocity": {
+                                  "type": "number",
+                                  "value": -16
+                                },
+                                "__collapse": true
+                              },
+                              "id": "91bdc4b1-3674-4b3e-b747-ed0518f8f76a"
+                            }
+                          ],
+                          "false": [
+                            {
+                              "command": "EVENT_SET_ACTOR_Y_VELOCITY",
+                              "args": {
+                                "actorId": "0",
+                                "yVelocity": {
+                                  "type": "number",
+                                  "value": 16
+                                },
+                                "__collapse": true
+                              },
+                              "id": "183c682e-8bb6-40b0-b270-a6e8a3620a2a"
+                            }
+                          ]
+                        },
+                        "id": "61cce9cb-4170-41a8-869d-c2222f0d5967"
                       },
                       {
                         "command": "EVENT_ACTOR_ACTIVATE",

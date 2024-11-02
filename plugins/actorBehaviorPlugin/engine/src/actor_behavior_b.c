@@ -398,7 +398,7 @@ void actor_behavior_update_b(UBYTE i, actor_t * actor) BANKED {
 						} else {
 							actor_vel_x[i] = 16;
 						}	
-						actor_counter_a[i] = rand();
+						actor_counter_a[i] = (rand() & 15) + 1;
 						actor_states[i] = 1;
 					}
 				}

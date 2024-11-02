@@ -1333,6 +1333,7 @@ void climb_state(void) BANKED {
         if (nocollide == 0){
             //Standard Jump
             que_state = JUMP_INIT;
+			pl_vel_x = ((INPUT_LEFT)? -plat_run_vel: (INPUT_RIGHT)? plat_run_vel: 0);
         }
     }
     jb_val = 0;

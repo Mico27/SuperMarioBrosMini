@@ -3,7 +3,7 @@
   "id": "f7bfc9e5-1ee2-47ae-8d53-bdaae44919e2",
   "name": "",
   "prefabId": "",
-  "x": 153,
+  "x": 155,
   "y": 0,
   "symbol": "trigger_170",
   "prefabScriptOverrides": {},
@@ -130,27 +130,6 @@
         }
       },
       "id": "fb6a7281-b208-4e5a-8d06-23066056261e"
-    },
-    {
-      "command": "EVENT_CALL_CUSTOM_EVENT",
-      "args": {
-        "customEventId": "7472c75b-28ba-4e82-9e18-5c1cc4daf097",
-        "$variable[V0]$": {
-          "type": "number",
-          "value": 156
-        },
-        "$variable[V1]$": {
-          "type": "number",
-          "value": 13
-        },
-        "$actor[0]$": "d2f3a291-d25d-411e-8bfc-5dce5d2bfb9b",
-        "__collapse": true,
-        "$variable[V2]$": {
-          "type": "number",
-          "value": 7
-        }
-      },
-      "id": "823bb0c7-4dd2-43b7-ab67-231ec10e40b4"
     },
     {
       "command": "EVENT_CALL_CUSTOM_EVENT",

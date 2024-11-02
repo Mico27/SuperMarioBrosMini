@@ -525,7 +525,6 @@ void fall_state(void) BANKED {
     temp_y = PLAYER.pos.y;    
 
     //Horizontal Movement----------------------------------------------------------------------------------------
-
     //C. ACCELERATION
     if (INPUT_LEFT || INPUT_RIGHT){
         BYTE dir = 1;
@@ -932,27 +931,15 @@ void swim_state(void) BANKED {
             dir = -1;
             pl_vel_x = -pl_vel_x;
         }
-
-        if (INPUT_PLATFORM_RUN){
-            //Type 1: Smooth Acceleration as the Default in GBStudio
-            pl_vel_x = CLAMP(pl_vel_x + plat_run_acc, plat_min_vel >> 1, plat_run_vel >> 1);
-            pl_vel_x *= dir;
-            deltaX += pl_vel_x >> 8;
-            run_stage = 1;
-        } else {
-            //Ordinay Walk
-            if(pl_vel_x < 0 && plat_turn_acc != 0){
-                pl_vel_x += plat_turn_acc;
-                run_stage = -1;
-            } else {
-                run_stage = 0;
-                pl_vel_x += plat_walk_acc;
-                pl_vel_x = CLAMP(pl_vel_x, plat_min_vel >> 1, plat_walk_vel >> 1); 
-            }
-            pl_vel_x *= dir;
-            deltaX += pl_vel_x >> 8;
-
-        }
+		if (pl_vel_x > (plat_run_vel >> 1)){
+			pl_vel_x = CLAMP(pl_vel_x - 64, plat_min_vel >> 1, pl_vel_x);
+		} else {
+			pl_vel_x = CLAMP(pl_vel_x + plat_run_acc, plat_min_vel >> 1, plat_run_vel >> 1);
+		}
+		
+        pl_vel_x *= dir;
+        deltaX += pl_vel_x >> 8;
+        run_stage = 1;
     } else{
         //DECELERATION
         if (pl_vel_x < 0) {
@@ -1213,6 +1200,7 @@ void swim_state(void) BANKED {
     if (INPUT_PRESSED(INPUT_PLATFORM_JUMP) && PLAYER.pos.y > 768){		
 		que_state = SWIM_INIT;
 		hold_jump_val = plat_hold_jump_max; 
+		pl_vel_x = ((INPUT_LEFT)? -4096: (INPUT_RIGHT)? 4096: pl_vel_x);
     } 
 	
 	//Swim out check
