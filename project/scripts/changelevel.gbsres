@@ -26,7 +26,8 @@
         "value": {
           "type": "variable",
           "value": "22"
-        }
+        },
+        "__collapse": true
       },
       "id": "edcad2ab-8390-4929-b70a-8ce9da3e408f"
     },
@@ -45,7 +46,7 @@
           }
         },
         "__collapseElse": false,
-        "__collapse": false
+        "__collapse": true
       },
       "children": {
         "true": [
@@ -864,7 +865,7 @@
                 "type": "number",
                 "value": 0
               },
-              "__collapseCase1": false,
+              "__collapseCase1": true,
               "value1": {
                 "type": "number",
                 "value": 1
@@ -924,7 +925,7 @@
                 "type": "number",
                 "value": 12
               },
-              "__collapseCase13": true,
+              "__collapseCase13": false,
               "value13": {
                 "type": "number",
                 "value": 13
@@ -8254,7 +8255,7 @@
                             "value": 16
                           },
                           "__collapseElse": false,
-                          "__collapse": true
+                          "__collapse": false
                         },
                         "children": {
                           "true0": [
@@ -8288,7 +8289,7 @@
                                   "type": "number",
                                   "value": 2
                                 },
-                                "__collapse": true
+                                "__collapse": false
                               },
                               "children": {
                                 "true0": [
@@ -8302,7 +8303,7 @@
                                       },
                                       "y": {
                                         "type": "number",
-                                        "value": 9
+                                        "value": 13
                                       },
                                       "direction": "right",
                                       "fadeSpeed": 1,

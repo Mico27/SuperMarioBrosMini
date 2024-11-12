@@ -97,9 +97,9 @@ void actor_behavior_update_d(UBYTE i, actor_t * actor) BANKED {
 				if (!(game_time & 1)){	
 				
 					//Head
-					if (actor->pos.y < 1152){
+					if (actor->pos.y < 1088){
 						actor_counter_b[i] = 1;					
-					} else if (actor->pos.y >= 1280){
+					} else if (actor->pos.y >= 1216){
 						actor_counter_b[i] = 0;
 					}
 					if (!(game_time & 3)){	

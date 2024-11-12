@@ -77,6 +77,18 @@
             "children": {}
           },
           {
+            "command": "EVENT_SET_VALUE",
+            "args": {
+              "variable": "79",
+              "value": {
+                "type": "number",
+                "value": 1
+              },
+              "__collapse": true
+            },
+            "id": "da05eb2c-9842-4bf8-bfbc-22b44c508c12"
+          },
+          {
             "command": "EVENT_SET_ACTOR_STATE",
             "args": {
               "actorId": "8436c0e8-7737-483f-9be2-8bf543fae374",

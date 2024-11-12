@@ -17,6 +17,18 @@
       "children": {}
     },
     {
+      "command": "EVENT_SET_VALUE",
+      "args": {
+        "variable": "79",
+        "value": {
+          "type": "number",
+          "value": 1
+        },
+        "__collapse": true
+      },
+      "id": "d3f15763-dca2-4efd-a02f-c1a522c37025"
+    },
+    {
       "command": "EVENT_SET_INPUT_SCRIPT",
       "args": {
         "input": [
@@ -30,7 +42,8 @@
           "select"
         ],
         "override": true,
-        "__scriptTabs": "press"
+        "__scriptTabs": "press",
+        "__collapse": true
       },
       "children": {
         "true": []
@@ -41,7 +54,8 @@
       "command": "EVENT_WAIT",
       "args": {
         "time": 2,
-        "frames": 30
+        "frames": 30,
+        "__collapse": true
       },
       "id": "d4ac130a-b697-41e0-80e7-69ce8243fa6c",
       "children": {}
@@ -61,7 +75,7 @@
           }
         },
         "__collapseElse": false,
-        "__collapse": false
+        "__collapse": true
       },
       "children": {
         "true": [
@@ -109,7 +123,7 @@
         "text": "YOUR QUEST IS",
         "x": 41,
         "y": 8,
-        "__collapse": false
+        "__collapse": true
       },
       "id": "59268131-da15-4b3f-84db-93d172e70829",
       "children": {}
@@ -140,7 +154,7 @@
       "args": {
         "variable": "25",
         "__scriptTabs": "true",
-        "__collapse": false
+        "__collapse": true
       },
       "children": {
         "true": [

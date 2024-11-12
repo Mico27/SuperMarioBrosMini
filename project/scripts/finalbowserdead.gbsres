@@ -82,6 +82,18 @@
             "children": {}
           },
           {
+            "command": "EVENT_SET_VALUE",
+            "args": {
+              "variable": "79",
+              "value": {
+                "type": "number",
+                "value": 1
+              },
+              "__collapse": true
+            },
+            "id": "49d56760-0f44-4a7a-9033-90d9963a1e24"
+          },
+          {
             "command": "EVENT_SOUND_PLAY_EFFECT",
             "args": {
               "type": "42d760ec-ccd0-4f3f-a2e7-a6c9b3b176a4",
