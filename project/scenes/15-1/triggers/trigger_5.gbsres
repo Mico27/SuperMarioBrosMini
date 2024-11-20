@@ -41,7 +41,7 @@
                 "type": "number",
                 "value": 3
               },
-              "__collapse": false
+              "__collapse": true
             },
             "id": "b7eb66fc-bbe1-4592-9ef8-48875512c69c"
           },
@@ -56,9 +56,22 @@
                 "type": "number",
                 "value": 0
               },
-              "speed": 2
+              "speed": 2,
+              "__collapse": true
             },
             "id": "fa82c4cf-2d96-41b5-a4be-d764dcf5dc31"
+          },
+          {
+            "command": "EVENT_SET_VALUE",
+            "args": {
+              "variable": "64",
+              "value": {
+                "type": "number",
+                "value": 3
+              },
+              "__collapse": true
+            },
+            "id": "096f2077-9e26-4663-8d7c-f53f37efdace"
           }
         ],
         "false": []

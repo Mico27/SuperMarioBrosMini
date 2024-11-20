@@ -7,7 +7,7 @@
   "y": 0,
   "symbol": "trigger_447",
   "prefabScriptOverrides": {},
-  "width": 1,
+  "width": 5,
   "height": 18,
   "script": [
     {
@@ -41,14 +41,15 @@
                 "type": "number",
                 "value": 4
               },
-              "__collapse": false
+              "__collapse": true
             },
             "id": "bb903d71-1af6-4952-98ea-140306b83013"
           },
           {
             "command": "EVENT_GBVM_SCRIPT",
             "args": {
-              "script": "VM_INVOKE b_vm_camera_move_to_player, _vm_camera_move_to_player, 0, 0"
+              "script": "VM_INVOKE b_vm_camera_move_to_player, _vm_camera_move_to_player, 0, 0",
+              "__collapse": true
             },
             "id": "521e7c97-9be8-44f7-b7a2-940ec7ed1cb2"
           }

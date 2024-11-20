@@ -56,9 +56,22 @@
                 "type": "number",
                 "value": 0
               },
-              "speed": 2
+              "speed": 2,
+              "__collapse": true
             },
             "id": "50fb5d40-cae1-4ceb-8630-9bfae612ea5a"
+          },
+          {
+            "command": "EVENT_SET_VALUE",
+            "args": {
+              "variable": "64",
+              "value": {
+                "type": "number",
+                "value": 1
+              },
+              "__collapse": true
+            },
+            "id": "75fb62c7-bcbe-4f6d-add5-87ac3b4b065f"
           }
         ],
         "false": []

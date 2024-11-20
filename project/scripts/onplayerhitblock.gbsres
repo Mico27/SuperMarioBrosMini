@@ -1772,7 +1772,7 @@
                         "command": "EVENT_GROUP",
                         "args": {
                           "__label": "Mushroom Block",
-                          "__collapse": true
+                          "__collapse": false
                         },
                         "children": {
                           "true": [
@@ -2208,7 +2208,7 @@
             "command": "EVENT_GROUP",
             "args": {
               "__label": "Beanstalk Block",
-              "__collapse": true
+              "__collapse": false
             },
             "children": {
               "true": [
@@ -2274,16 +2274,6 @@
                     "__collapse": true
                   },
                   "id": "e524ba5c-a95d-4d4c-8b1b-cd6a92656050"
-                },
-                {
-                  "command": "EVENT_WAIT",
-                  "args": {
-                    "time": 0.5,
-                    "frames": 8,
-                    "units": "frames",
-                    "__collapse": true
-                  },
-                  "id": "38374e22-eafa-474b-9b2e-1a4254095a3a"
                 },
                 {
                   "command": "EVENT_ACTOR_DEACTIVATE",
@@ -2362,6 +2352,16 @@
                     "__collapse": true
                   },
                   "id": "7146c299-14be-410e-bd54-c5636e69516f"
+                },
+                {
+                  "command": "EVENT_WAIT",
+                  "args": {
+                    "time": 0.5,
+                    "frames": 8,
+                    "units": "frames",
+                    "__collapse": true
+                  },
+                  "id": "62377bee-272d-4d74-bf19-0bc8a1b64372"
                 },
                 {
                   "command": "EVENT_REPLACE_META_TILE",
@@ -3907,7 +3907,7 @@
             "command": "EVENT_GROUP",
             "args": {
               "__label": "Beanstalk Brick",
-              "__collapse": true
+              "__collapse": false
             },
             "children": {
               "true": [
@@ -3975,16 +3975,6 @@
                   "id": "ca60ab18-6f82-4058-9a33-ad00205bfbad"
                 },
                 {
-                  "command": "EVENT_WAIT",
-                  "args": {
-                    "time": 0.5,
-                    "frames": 8,
-                    "units": "frames",
-                    "__collapse": true
-                  },
-                  "id": "1fd01a2f-72e9-4f47-9d8f-53e2da788d50"
-                },
-                {
                   "command": "EVENT_ACTOR_DEACTIVATE",
                   "args": {
                     "actorId": "1",
@@ -4006,7 +3996,7 @@
                     },
                     "__collapse": true
                   },
-                  "id": "4b9fef60-5a3a-4b2f-8807-a0cf514a724c"
+                  "id": "f4d4dfc1-f6af-4507-98f7-4f35453de6e6"
                 },
                 {
                   "command": "EVENT_SET_ACTOR_BEHAVIOR",
@@ -4061,6 +4051,16 @@
                     "__collapse": true
                   },
                   "id": "0d022699-0f62-4db3-9746-f7b7337f6919"
+                },
+                {
+                  "command": "EVENT_WAIT",
+                  "args": {
+                    "time": 0.5,
+                    "frames": 8,
+                    "units": "frames",
+                    "__collapse": true
+                  },
+                  "id": "d1e3a3dc-986a-4564-8a22-08ebf5ab4831"
                 },
                 {
                   "command": "EVENT_REPLACE_META_TILE",

@@ -681,7 +681,6 @@ void actor_behavior_update(void) BANKED {
 							actor_states[i] = 1; 
 							actor->pos.y = (actor->pos.y >> 7) << 7;
 							actor->pos.x = (actor->pos.x >> 7) << 7;
-							replace_meta_tile((actor->pos.x >> 7), (actor->pos.y >> 7) - 1, 151);
 						}
 						break;
 					case 1: //Move up state
@@ -694,10 +693,11 @@ void actor_behavior_update(void) BANKED {
 							actor->pos.y = actor->pos.y - 8;	
 							actor_counter_a[i] = actor_counter_a[i] + 1;
 							if (actor_counter_a[i] > 15){
-								actor_counter_a[i] = 0;
-								replace_meta_tile((actor->pos.x >> 7), (actor->pos.y >> 7) - 1, 151);
-								if (tile_at((actor->pos.x >> 7), (actor->pos.y >> 7) - 2) & COLLISION_BOTTOM) {
+								actor_counter_a[i] = 0;								
+								if (tile_at((actor->pos.x >> 7), (actor->pos.y >> 7)) & COLLISION_BOTTOM) {
 									actor_states[i] = 255; 
+								} else {
+									replace_meta_tile((actor->pos.x >> 7), (actor->pos.y >> 7), 151);
 								}
 							}
 						}	

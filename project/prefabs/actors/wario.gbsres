@@ -182,7 +182,7 @@
                   "args": {
                     "condition": {
                       "type": "expression",
-                      "value": "$20$ == 1 || $01$ < ($28$ - 8)"
+                      "value": "$20$ == 1 || $01$ < ($28$ - 16)"
                     },
                     "__collapseElse": false,
                     "__collapse": false
@@ -643,7 +643,7 @@
           }
         },
         "__collapseElse": false,
-        "__collapse": true
+        "__collapse": false
       },
       "children": {
         "true": [
